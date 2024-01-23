@@ -70,6 +70,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6F4580DA2B5F631500869FF9 /* RegistrationModule */ = {
+			isa = PBXGroup;
+			children = (
+				6F4580DD2B5F636400869FF9 /* Model */,
+				6F4580DC2B5F635500869FF9 /* View */,
+				6F4580DB2B5F633C00869FF9 /* Presenter */,
+			);
+			path = RegistrationModule;
+			sourceTree = "<group>";
+		};
+		6F4580DB2B5F633C00869FF9 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		6F4580DC2B5F635500869FF9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6F4580DD2B5F636400869FF9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		6F61E48F2B5D8A0B00F8AB20 = {
 			isa = PBXGroup;
 			children = (
@@ -84,6 +115,7 @@
 				6F61E4C72B5E996300F8AB20 /* Support */,
 				6F61E4B02B5E694100F8AB20 /* AppConfiguration */,
 				6F61E4AF2B5E691D00F8AB20 /* OnboardingModule */,
+				6F4580DA2B5F631500869FF9 /* RegistrationModule */,
 			);
 			path = KirisShygysAppStore;
 			sourceTree = "<group>";

@@ -11,6 +11,7 @@
 "onboarding_firstPage_description" = "Станьте своим собственным финансовым менеджером и считайте каждый цент";
 "onboarding_secondPage_title" = "Знайте, куда уходят ваши деньги";
 "onboarding_secondPage_description" = "Легко отслеживайте ваши транзакции с помощью финансового отчета";
+"absentAccount_title" = "У вас нет аккаунта? ";
 
 //MARK: - Buttons
 "signIn_button_title" = "Войти";

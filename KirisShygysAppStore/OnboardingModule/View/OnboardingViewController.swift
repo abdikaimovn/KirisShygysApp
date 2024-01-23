@@ -46,11 +46,6 @@ final class OnboardingViewController: UIViewController {
     
     private lazy var signUpButton: UIButton = {
         var button = UIButton()
-        button.setTitle("signUp_button_title".localized, for: .normal)
-        button.backgroundColor = UIColor.shared.brownColor
-        button.titleLabel?.font = UIFont.defaultButtonFont()
-        button.layer.cornerRadius = 15
-        button.clipsToBounds = true
         button.addTarget(self, action: #selector(signUp), for: .touchUpInside)
         return button
     }()
@@ -64,6 +59,12 @@ final class OnboardingViewController: UIViewController {
         button.titleLabel?.font = UIFont.defaultButtonFont()
         button.addTarget(self, action: #selector(signIn), for: .touchUpInside)
         return button
+    }()
+    
+    private let separatorLine: UIView = {
+        let view = UIView()
+        view.backgroundColor = .lightGray
+        return view
     }()
     
     //MARK: - App Lifecycle
@@ -100,20 +101,41 @@ final class OnboardingViewController: UIViewController {
             make.leading.trailing.equalToSuperview().inset(20)
         }
         
-        view.addSubview(signUpButton)
-        signUpButton.snp.makeConstraints { make in
+        view.addSubview(signInButton)
+        signInButton.snp.makeConstraints { make in
             make.top.equalTo(pageControl.snp.bottom).offset(20)
             make.leading.trailing.equalToSuperview().inset(20)
             make.height.equalTo(55)
         }
         
-        view.addSubview(signInButton)
-        signInButton.snp.makeConstraints { make in
-            make.top.equalTo(signUpButton.snp.bottom).offset(15)
+        view.addSubview(separatorLine)
+        separatorLine.snp.makeConstraints { make in
+            make.top.equalTo(signInButton.snp.bottom).offset(20)
+            make.leading.trailing.equalToSuperview().inset(30)
+            make.height.equalTo(1)
+        }
+        
+        view.addSubview(signUpButton)
+        signUpButton.setAttributedTitle(configureSignUpButtonTitle(), for: .normal)
+        signUpButton.snp.makeConstraints { make in
+            make.top.equalTo(separatorLine.snp.bottom).offset(10)
             make.leading.trailing.equalToSuperview().inset(20)
-            make.height.equalTo(55)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-20)
         }
+    }
+    
+    private func configureSignUpButtonTitle() -> NSAttributedString {
+        let registrationTitle = NSMutableAttributedString(string: "absentAccount_title".localized,
+                                                          attributes: [
+                                                            NSAttributedString.Key.font: UIFont.defaultFont(),
+                                                            NSAttributedString.Key.foregroundColor: UIColor.gray])
+        
+        registrationTitle.append(NSAttributedString(string: "signUp_button_title".localized, 
+                                                    attributes: [
+                                                        NSAttributedString.Key.font: UIFont.defaultBoldFont(),
+                                                        NSAttributedString.Key.foregroundColor: UIColor.systemBlue,
+                                                        NSAttributedString.Key.underlineStyle: true]))
+        return registrationTitle
     }
 }
 
