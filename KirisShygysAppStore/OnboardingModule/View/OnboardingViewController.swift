@@ -151,9 +151,13 @@ extension OnboardingViewController: UICollectionViewDataSource, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OnboardingCollectionCell.typeName, for: indexPath) as! OnboardingCollectionCell
-        cell.configure(onboardingModel: onboardingData[indexPath.row])
-        return cell
+        
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OnboardingCollectionCell.typeName, for: indexPath) as? OnboardingCollectionCell {
+            cell.configure(onboardingModel: onboardingData[indexPath.row])
+            return cell
+        } else {
+            return UICollectionViewCell(frame: .zero)
+        }
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
