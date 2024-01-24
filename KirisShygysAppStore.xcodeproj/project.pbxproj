@@ -7,21 +7,59 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F4580D92B5EE1D600869FF9 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6F4580D82B5EE1D600869FF9 /* SnapKit */; };
+		6F4580E52B601A0E00869FF9 /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4580E42B601A0E00869FF9 /* NSObject+Extension.swift */; };
+		6F4580E72B60FB0400869FF9 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F4580E62B60FB0400869FF9 /* Roboto-Regular.ttf */; };
 		6F61E49C2B5D8A0B00F8AB20 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F61E49B2B5D8A0B00F8AB20 /* AppDelegate.swift */; };
 		6F61E49E2B5D8A0B00F8AB20 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F61E49D2B5D8A0B00F8AB20 /* SceneDelegate.swift */; };
-		6F61E4A02B5D8A0B00F8AB20 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F61E49F2B5D8A0B00F8AB20 /* ViewController.swift */; };
+		6F61E4A02B5D8A0B00F8AB20 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F61E49F2B5D8A0B00F8AB20 /* OnboardingViewController.swift */; };
 		6F61E4A52B5D8A0D00F8AB20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F61E4A42B5D8A0D00F8AB20 /* Assets.xcassets */; };
 		6F61E4A82B5D8A0D00F8AB20 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F61E4A62B5D8A0D00F8AB20 /* LaunchScreen.storyboard */; };
+		6F61E4C92B5E997500F8AB20 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F61E4C82B5E997500F8AB20 /* UIColor+Extension.swift */; };
+		6F61E4CB2B5E9AB700F8AB20 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F61E4CA2B5E9AB700F8AB20 /* UIFont+Extension.swift */; };
+		6F61E4CD2B5EA50700F8AB20 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F61E4CC2B5EA50700F8AB20 /* OnboardingModel.swift */; };
+		6F61E4CF2B5EA58600F8AB20 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F61E4CE2B5EA58600F8AB20 /* String+Extension.swift */; };
+		6F61E4D92B5EA89800F8AB20 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6F61E4DB2B5EA89800F8AB20 /* Localizable.strings */; };
+		6F61E4DF2B5EA8F100F8AB20 /* OnboardingCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F61E4DE2B5EA8F100F8AB20 /* OnboardingCollectionCell.swift */; };
+		6F61E4E52B5ED4B300F8AB20 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F61E4E32B5ED4B300F8AB20 /* Roboto-Light.ttf */; };
+		6F61E4E62B5ED4B300F8AB20 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F61E4E42B5ED4B300F8AB20 /* Roboto-Bold.ttf */; };
+		6F61E4E82B5ED89C00F8AB20 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F61E4E72B5ED89B00F8AB20 /* Roboto-Medium.ttf */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		6F61E4EC2B5EDC4500F8AB20 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		6F61E4982B5D8A0B00F8AB20 /* KirisShygysAppStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KirisShygysAppStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F4580D62B5EDFB200869FF9 /* KirisShygysAppStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KirisShygysAppStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F4580E42B601A0E00869FF9 /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
+		6F4580E62B60FB0400869FF9 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		6F61E49B2B5D8A0B00F8AB20 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6F61E49D2B5D8A0B00F8AB20 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		6F61E49F2B5D8A0B00F8AB20 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6F61E49F2B5D8A0B00F8AB20 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		6F61E4A42B5D8A0D00F8AB20 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6F61E4A72B5D8A0D00F8AB20 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6F61E4A92B5D8A0D00F8AB20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6F61E4C82B5E997500F8AB20 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		6F61E4CA2B5E9AB700F8AB20 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
+		6F61E4CC2B5EA50700F8AB20 /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
+		6F61E4CE2B5EA58600F8AB20 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		6F61E4DA2B5EA89800F8AB20 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		6F61E4DC2B5EA8B000F8AB20 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		6F61E4DD2B5EA8B000F8AB20 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		6F61E4DE2B5EA8F100F8AB20 /* OnboardingCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionCell.swift; sourceTree = "<group>"; };
+		6F61E4E32B5ED4B300F8AB20 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
+		6F61E4E42B5ED4B300F8AB20 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		6F61E4E72B5ED89B00F8AB20 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F4580D92B5EE1D600869FF9 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -39,29 +78,96 @@
 			isa = PBXGroup;
 			children = (
 				6F61E49A2B5D8A0B00F8AB20 /* KirisShygysAppStore */,
-				6F61E4992B5D8A0B00F8AB20 /* Products */,
+				6F4580D62B5EDFB200869FF9 /* KirisShygysAppStore.app */,
 			);
-			sourceTree = "<group>";
-		};
-		6F61E4992B5D8A0B00F8AB20 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				6F61E4982B5D8A0B00F8AB20 /* KirisShygysAppStore.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		6F61E49A2B5D8A0B00F8AB20 /* KirisShygysAppStore */ = {
 			isa = PBXGroup;
 			children = (
+				6F61E4C72B5E996300F8AB20 /* Support */,
+				6F61E4B02B5E694100F8AB20 /* AppConfiguration */,
+				6F61E4AF2B5E691D00F8AB20 /* OnboardingModule */,
+			);
+			path = KirisShygysAppStore;
+			sourceTree = "<group>";
+		};
+		6F61E4AF2B5E691D00F8AB20 /* OnboardingModule */ = {
+			isa = PBXGroup;
+			children = (
+				6F61E4B32B5E6AA700F8AB20 /* Model */,
+				6F61E4B22B5E6AA100F8AB20 /* View */,
+				6F61E4B12B5E6A9600F8AB20 /* Presenter */,
+			);
+			path = OnboardingModule;
+			sourceTree = "<group>";
+		};
+		6F61E4B02B5E694100F8AB20 /* AppConfiguration */ = {
+			isa = PBXGroup;
+			children = (
 				6F61E49B2B5D8A0B00F8AB20 /* AppDelegate.swift */,
 				6F61E49D2B5D8A0B00F8AB20 /* SceneDelegate.swift */,
-				6F61E49F2B5D8A0B00F8AB20 /* ViewController.swift */,
 				6F61E4A42B5D8A0D00F8AB20 /* Assets.xcassets */,
 				6F61E4A62B5D8A0D00F8AB20 /* LaunchScreen.storyboard */,
 				6F61E4A92B5D8A0D00F8AB20 /* Info.plist */,
 			);
-			path = KirisShygysAppStore;
+			path = AppConfiguration;
+			sourceTree = "<group>";
+		};
+		6F61E4B12B5E6A9600F8AB20 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		6F61E4B22B5E6AA100F8AB20 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6F61E49F2B5D8A0B00F8AB20 /* OnboardingViewController.swift */,
+				6F61E4DE2B5EA8F100F8AB20 /* OnboardingCollectionCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6F61E4B32B5E6AA700F8AB20 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6F61E4CC2B5EA50700F8AB20 /* OnboardingModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6F61E4C72B5E996300F8AB20 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				6F61E4E02B5ED43A00F8AB20 /* Fonts */,
+				6F61E4D12B5EA85200F8AB20 /* Localization */,
+				6F61E4C82B5E997500F8AB20 /* UIColor+Extension.swift */,
+				6F61E4CA2B5E9AB700F8AB20 /* UIFont+Extension.swift */,
+				6F61E4CE2B5EA58600F8AB20 /* String+Extension.swift */,
+				6F4580E42B601A0E00869FF9 /* NSObject+Extension.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		6F61E4D12B5EA85200F8AB20 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				6F61E4DB2B5EA89800F8AB20 /* Localizable.strings */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
+		6F61E4E02B5ED43A00F8AB20 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				6F4580E62B60FB0400869FF9 /* Roboto-Regular.ttf */,
+				6F61E4E72B5ED89B00F8AB20 /* Roboto-Medium.ttf */,
+				6F61E4E42B5ED4B300F8AB20 /* Roboto-Bold.ttf */,
+				6F61E4E32B5ED4B300F8AB20 /* Roboto-Light.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,14 +180,18 @@
 				6F61E4942B5D8A0B00F8AB20 /* Sources */,
 				6F61E4952B5D8A0B00F8AB20 /* Frameworks */,
 				6F61E4962B5D8A0B00F8AB20 /* Resources */,
+				6F61E4EC2B5EDC4500F8AB20 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = KirisShygysAppStore;
+			packageProductDependencies = (
+				6F4580D82B5EE1D600869FF9 /* SnapKit */,
+			);
 			productName = KirisShygysAppAppStoreVersion;
-			productReference = 6F61E4982B5D8A0B00F8AB20 /* KirisShygysAppStore.app */;
+			productReference = 6F4580D62B5EDFB200869FF9 /* KirisShygysAppStore.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -106,9 +216,13 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 6F61E48F2B5D8A0B00F8AB20;
-			productRefGroup = 6F61E4992B5D8A0B00F8AB20 /* Products */;
+			packageReferences = (
+				6F4580D72B5EE1D600869FF9 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
+			productRefGroup = 6F61E48F2B5D8A0B00F8AB20;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -123,6 +237,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F61E4A82B5D8A0D00F8AB20 /* LaunchScreen.storyboard in Resources */,
+				6F4580E72B60FB0400869FF9 /* Roboto-Regular.ttf in Resources */,
+				6F61E4D92B5EA89800F8AB20 /* Localizable.strings in Resources */,
+				6F61E4E82B5ED89C00F8AB20 /* Roboto-Medium.ttf in Resources */,
+				6F61E4E62B5ED4B300F8AB20 /* Roboto-Bold.ttf in Resources */,
+				6F61E4E52B5ED4B300F8AB20 /* Roboto-Light.ttf in Resources */,
 				6F61E4A52B5D8A0D00F8AB20 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -134,9 +253,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F61E4A02B5D8A0B00F8AB20 /* ViewController.swift in Sources */,
+				6F61E4DF2B5EA8F100F8AB20 /* OnboardingCollectionCell.swift in Sources */,
+				6F61E4A02B5D8A0B00F8AB20 /* OnboardingViewController.swift in Sources */,
 				6F61E49C2B5D8A0B00F8AB20 /* AppDelegate.swift in Sources */,
+				6F61E4CD2B5EA50700F8AB20 /* OnboardingModel.swift in Sources */,
+				6F61E4CF2B5EA58600F8AB20 /* String+Extension.swift in Sources */,
 				6F61E49E2B5D8A0B00F8AB20 /* SceneDelegate.swift in Sources */,
+				6F61E4CB2B5E9AB700F8AB20 /* UIFont+Extension.swift in Sources */,
+				6F61E4C92B5E997500F8AB20 /* UIColor+Extension.swift in Sources */,
+				6F4580E52B601A0E00869FF9 /* NSObject+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,8 +272,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				6F61E4A72B5D8A0D00F8AB20 /* Base */,
+				6F61E4DC2B5EA8B000F8AB20 /* ru */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		6F61E4DB2B5EA89800F8AB20 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6F61E4DA2B5EA89800F8AB20 /* en */,
+				6F61E4DD2B5EA8B000F8AB20 /* ru */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -159,6 +294,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -206,6 +342,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = KirisShygysAppStore/AppConfiguration/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -222,6 +359,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -263,6 +401,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = KirisShygysAppStore/AppConfiguration/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -282,12 +421,13 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FDQK3FFVD6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = KirisShygysAppAppStoreVersion/Info.plist;
+				INFOPLIST_FILE = KirisShygysAppStore/AppConfiguration/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "kiris shygys";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -295,9 +435,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = nuriks.KirisShygysAppAppStoreVersion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -310,12 +453,13 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FDQK3FFVD6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = KirisShygysAppAppStoreVersion/Info.plist;
+				INFOPLIST_FILE = KirisShygysAppStore/AppConfiguration/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "kiris shygys";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -323,9 +467,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = nuriks.KirisShygysAppAppStoreVersion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -339,7 +486,7 @@
 				6F61E4AB2B5D8A0D00F8AB20 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		6F61E4AC2B5D8A0D00F8AB20 /* Build configuration list for PBXNativeTarget "KirisShygysAppStore" */ = {
 			isa = XCConfigurationList;
@@ -348,9 +495,28 @@
 				6F61E4AE2B5D8A0D00F8AB20 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6F4580D72B5EE1D600869FF9 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6F4580D82B5EE1D600869FF9 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6F4580D72B5EE1D600869FF9 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6F61E4902B5D8A0B00F8AB20 /* Project object */;
 }

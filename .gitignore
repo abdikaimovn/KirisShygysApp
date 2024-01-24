@@ -1,0 +1,5 @@
+# macOS-specific entries:
+.DS_Store
+KirisShygysAppStore.xcodeproj/project.xcworkspace/contents.xcworkspacedata
+
+# End of https://www.toptal.com/developers/gitignore/api/swift,macos
