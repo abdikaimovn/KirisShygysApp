@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F0B87462B6141F200434150 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0B87452B6141F200434150 /* AuthorizationViewController.swift */; };
+		6F0B87482B618DD000434150 /* OnboardingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0B87472B618DD000434150 /* OnboardingPresenter.swift */; };
 		6F4580D92B5EE1D600869FF9 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6F4580D82B5EE1D600869FF9 /* SnapKit */; };
 		6F4580E52B601A0E00869FF9 /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4580E42B601A0E00869FF9 /* NSObject+Extension.swift */; };
 		6F4580E72B60FB0400869FF9 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F4580E62B60FB0400869FF9 /* Roboto-Regular.ttf */; };
@@ -40,6 +42,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6F0B87452B6141F200434150 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
+		6F0B87472B618DD000434150 /* OnboardingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPresenter.swift; sourceTree = "<group>"; };
 		6F4580D62B5EDFB200869FF9 /* KirisShygysAppStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KirisShygysAppStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F4580E42B601A0E00869FF9 /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
 		6F4580E62B60FB0400869FF9 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
@@ -74,6 +78,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6F0B87412B6130E500434150 /* AuthorizationModule */ = {
+			isa = PBXGroup;
+			children = (
+				6F0B87442B61311D00434150 /* Model */,
+				6F0B87432B61311600434150 /* View */,
+				6F0B87422B61310400434150 /* Presenter */,
+			);
+			path = AuthorizationModule;
+			sourceTree = "<group>";
+		};
+		6F0B87422B61310400434150 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		6F0B87432B61311600434150 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6F0B87452B6141F200434150 /* AuthorizationViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6F0B87442B61311D00434150 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		6F61E48F2B5D8A0B00F8AB20 = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +124,7 @@
 				6F61E4C72B5E996300F8AB20 /* Support */,
 				6F61E4B02B5E694100F8AB20 /* AppConfiguration */,
 				6F61E4AF2B5E691D00F8AB20 /* OnboardingModule */,
+				6F0B87412B6130E500434150 /* AuthorizationModule */,
 			);
 			path = KirisShygysAppStore;
 			sourceTree = "<group>";
@@ -117,6 +154,7 @@
 		6F61E4B12B5E6A9600F8AB20 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				6F0B87472B618DD000434150 /* OnboardingPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -257,10 +295,12 @@
 				6F61E4A02B5D8A0B00F8AB20 /* OnboardingViewController.swift in Sources */,
 				6F61E49C2B5D8A0B00F8AB20 /* AppDelegate.swift in Sources */,
 				6F61E4CD2B5EA50700F8AB20 /* OnboardingModel.swift in Sources */,
+				6F0B87482B618DD000434150 /* OnboardingPresenter.swift in Sources */,
 				6F61E4CF2B5EA58600F8AB20 /* String+Extension.swift in Sources */,
 				6F61E49E2B5D8A0B00F8AB20 /* SceneDelegate.swift in Sources */,
 				6F61E4CB2B5E9AB700F8AB20 /* UIFont+Extension.swift in Sources */,
 				6F61E4C92B5E997500F8AB20 /* UIColor+Extension.swift in Sources */,
+				6F0B87462B6141F200434150 /* AuthorizationViewController.swift in Sources */,
 				6F4580E52B601A0E00869FF9 /* NSObject+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

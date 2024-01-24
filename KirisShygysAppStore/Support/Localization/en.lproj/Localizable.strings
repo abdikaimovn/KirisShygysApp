@@ -12,6 +12,12 @@
 "onboarding_secondPage_title" = "Know where your money goes";
 "onboarding_secondPage_description" = "Track your transaction easily, with a financial report";
 "absentAccount_title" = "Don't have an account? ";
+
 //MARK: - Buttons
 "signIn_button_title" = "Sign In";
 "signUp_button_title" = "Sign Up";
+
+//MARK: - Text field placeholders
+"name_textField_placeholder" = "Name";
+"email_textField_placeholder" = "Email";
+"password_textField_placeholder" = "Password";
