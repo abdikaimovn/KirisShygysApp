@@ -7,45 +7,46 @@
 
 import UIKit
 
+enum FontStyle {
+    case body
+    case title
+    case button
+    case large
+    case regularLarge
+    
+    var fontSize: CGFloat {
+        switch self {
+        case .body:
+            return 16.0
+        case .title:
+            return 16.0
+        case .button:
+            return 18.0
+        case .large:
+            return 28.0
+        case .regularLarge:
+            return 28.0
+        }
+    }
+    
+    var fontName: String {
+        switch self {
+        case .body:
+            return "Roboto Light"
+        case .title:
+            return "Roboto Bold"
+        case .button:
+            return "Roboto Bold"
+        case .large:
+            return "Roboto Medium"
+        case .regularLarge:
+            return "Roboto Regular"
+        }
+    }
+}
+
 extension UIFont {
-    static func defaultFont() -> UIFont {
-        let fontSize: CGFloat = 16.0
-        
-        guard let font = UIFont(name: "Roboto Light", size: fontSize) else {
-            return UIFont.systemFont(ofSize: fontSize)
-        }
-
-        return font
-    }
-    
-    static func defaultButtonFont() -> UIFont {
-        let fontSize: CGFloat = 18.0
-        
-        guard let font = UIFont(name: "Roboto Bold", size: fontSize) else {
-            return UIFont.systemFont(ofSize: fontSize, weight: .bold)
-        }
-        
-
-        return font
-    }
-    
-    static func defaultBoldFont() -> UIFont {
-        let fontSize: CGFloat = 16.0
-        
-        guard let font = UIFont(name: "Roboto Bold", size: fontSize) else {
-            return UIFont.systemFont(ofSize: fontSize, weight: .bold)
-        }
-
-        return font
-    }
-    
-    static func largeTitleFont() -> UIFont {
-        let fontSize: CGFloat = 28.0
-
-        guard let font = UIFont(name: "Roboto Medium", size: fontSize) else {
-            return UIFont.systemFont(ofSize: fontSize, weight: .bold)
-        }
-        
-        return font
+    static func font(style: FontStyle) -> UIFont {
+        UIFont(name: style.fontName, size: style.fontSize) ?? UIFont.systemFont(ofSize: style.fontSize)
     }
 }

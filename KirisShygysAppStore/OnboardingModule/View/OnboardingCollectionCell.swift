@@ -8,32 +8,35 @@
 import UIKit
 
 final class OnboardingCollectionCell: UICollectionViewCell {
+    //MARK: - UI Elements
     private let imageView: UIImageView = {
-        var imgView = UIImageView()
+        let imgView = UIImageView()
         imgView.contentMode = .scaleAspectFit
         return imgView
     }()
     
     private let titleLabel: UILabel = {
-        var title = UILabel()
-        title.font = UIFont.largeTitleFont()
+        let title = UILabel()
+        title.font = UIFont.font(style: .regularLarge)
         title.textColor = .black
         title.textAlignment = .center
         title.numberOfLines = 0
         return title
     }()
     
-    private var descriptionLabel: UILabel = {
-        var label = UILabel()
-        label.font = UIFont.defaultFont()
+    private let descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.font =  UIFont.font(style: .body)
         label.textColor = .darkGray
         label.textAlignment = .center
         label.numberOfLines = 0
         return label
     }()
     
+    //MARK: - AppLifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         setupViews()
     }
     
@@ -42,9 +45,9 @@ final class OnboardingCollectionCell: UICollectionViewCell {
     }
     
     func configure(onboardingModel: OnboardingModel) {
-        self.imageView.image = onboardingModel.image
-        self.titleLabel.text = onboardingModel.title
-        self.descriptionLabel.text = onboardingModel.description
+        imageView.image = onboardingModel.image
+        titleLabel.text = onboardingModel.title
+        descriptionLabel.text = onboardingModel.description
     }
     
     private func setupViews() {

@@ -10,7 +10,6 @@ import UIKit
 
 // Extensing UIColor class to adopt HEX colors
 extension UIColor {
-    static var shared = UIColor()
     convenience init?(hex: String) {
         var formattedHex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         var rgbValue: UInt64 = 0
@@ -30,52 +29,28 @@ extension UIColor {
         }
     }
     
-    var brownColor: UIColor {
-        if let color = UIColor(hex: "#C7B08E") {
-            return color
-        } else {
-            return .brown
-        }
+    static var brownColor: UIColor {
+        UIColor(hex: "#C7B08E") ?? .brown
     }
     
-    var expenseColor: UIColor {
-        if let color = UIColor(hex: "#E94D58") {
-            return color
-        } else {
-            return .red
-        }
+    static var expenseColor: UIColor {
+        UIColor(hex: "#E94D58") ?? .red
     }
     
-    var incomeColor: UIColor {
-        if let color = UIColor(hex: "#2BA478") {
-            return color
-        } else {
-            return .green
-        }
+    static var incomeColor: UIColor {
+        UIColor(hex: "#2BA478") ?? .green
     }
     
-    var lightGrayColor: UIColor {
-        if let color = UIColor(hex: "#f9f9f9") {
-            return color
-        } else {
-            return .lightGray
-        }
+    static var lightGrayColor: UIColor {
+        UIColor(hex: "#f9f9f9") ?? .lightGray
     }
     
-    var grayColor: UIColor {
-        if let color = UIColor(hex: "#e0e0e0") {
-            return color
-        } else {
-            return .gray
-        }
+    static var grayColor: UIColor {
+        UIColor(hex: "#e0e0e0") ?? .lightGray
     }
     
-    var lightBrownColor: UIColor {
-        if let color = UIColor(hex: "#ddd0bb") {
-            return color
-        } else {
-            return .brown
-        }
+    static var lightBrownColor: UIColor {
+        UIColor(hex: "#ddd0bb") ?? .brown
     }
 
 }

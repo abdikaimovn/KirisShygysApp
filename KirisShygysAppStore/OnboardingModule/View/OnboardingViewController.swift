@@ -9,57 +9,37 @@ import UIKit
 import SnapKit
 
 final class OnboardingViewController: UIViewController {
-    //Constant data
+    //MARK: - Constant data
     private let onboardingData: [OnboardingModel] = [
         OnboardingModel(title: "onboarding_firstPage_title".localized,
                         description: "onboarding_firstPage_description".localized,
-                        image: UIImage(named: "onbng1")!),
+                        image: UIImage(named: "onbng1")),
         OnboardingModel(title: "onboarding_secondPage_title".localized,
                         description:"onboarding_secondPage_description".localized,
-                        image: UIImage(named: "onbng2")!)
+                        image: UIImage(named: "onbng2"))
     ]
     
-    //UI Elements
-    private lazy var sliderCollView: UICollectionView = {
-        var layout = UICollectionViewFlowLayout()
+    //MARK: - UI Elements
+    private let sliderCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 0
-        layout.itemSize = CGSize(width: view.bounds.width, height: view.bounds.height * 0.6)
-        var cView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cView.dataSource = self
-        cView.delegate = self
-        cView.backgroundColor = .white
-        cView.isPagingEnabled = true
-        cView.showsHorizontalScrollIndicator = false
-        cView.register(OnboardingCollectionCell.self, forCellWithReuseIdentifier: "OnboardingCollectionCell")
-        return cView
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        return collectionView
     }()
     
     private let pageControl: UIPageControl = {
         var pageControl = UIPageControl()
         pageControl.numberOfPages = 2
         pageControl.currentPage = 0
-        pageControl.currentPageIndicatorTintColor = UIColor.shared.brownColor
+        pageControl.currentPageIndicatorTintColor = .brownColor
         pageControl.pageIndicatorTintColor = .gray
         return pageControl
     }()
     
-    private lazy var signUpButton: UIButton = {
-        var button = UIButton()
-        button.addTarget(self, action: #selector(signUp), for: .touchUpInside)
-        return button
-    }()
+    private let signUpButton = UIButton()
     
-    private lazy var signInButton: UIButton = {
-        var button = UIButton()
-        button.layer.cornerRadius = 15
-        button.clipsToBounds = true
-        button.setTitle("signIn_button_title".localized, for: .normal)
-        button.backgroundColor = UIColor.shared.brownColor
-        button.titleLabel?.font = UIFont.defaultButtonFont()
-        button.addTarget(self, action: #selector(signIn), for: .touchUpInside)
-        return button
-    }()
+    private let signInButton = UIButton()
     
     private let separatorLine: UIView = {
         let view = UIView()
@@ -87,17 +67,16 @@ final class OnboardingViewController: UIViewController {
     private func setupView() {
         view.backgroundColor = .white
         
-        view.addSubview(sliderCollView)
-        sliderCollView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
+        view.addSubview(sliderCollectionView)
         
-        sliderCollView.snp.makeConstraints { make in
+        sliderCollectionView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.leading.trailing.equalToSuperview()
         }
     
         view.addSubview(pageControl)
         pageControl.snp.makeConstraints { make in
-            make.top.equalTo(sliderCollView.snp.bottom).offset(20)
+            make.top.equalTo(sliderCollectionView.snp.bottom).offset(20)
             make.leading.trailing.equalToSuperview().inset(20)
         }
         
@@ -112,40 +91,67 @@ final class OnboardingViewController: UIViewController {
         separatorLine.snp.makeConstraints { make in
             make.top.equalTo(signInButton.snp.bottom).offset(20)
             make.leading.trailing.equalToSuperview().inset(30)
-            make.height.equalTo(1)
+            make.height.equalTo(0.5)
         }
         
         view.addSubview(signUpButton)
-        signUpButton.setAttributedTitle(configureSignUpButtonTitle(), for: .normal)
+        signUpButton.setAttributedTitle(setupSignUpButton(), for: .normal)
         signUpButton.snp.makeConstraints { make in
             make.top.equalTo(separatorLine.snp.bottom).offset(10)
             make.leading.trailing.equalToSuperview().inset(20)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-20)
         }
+        
+        setupSignInButton()
+        setupCollectionView()
     }
     
-    private func configureSignUpButtonTitle() -> NSAttributedString {
+    private func setupCollectionView() {
+        sliderCollectionView.backgroundColor = .white
+        sliderCollectionView.isPagingEnabled = true
+        sliderCollectionView.showsHorizontalScrollIndicator = false
+        sliderCollectionView.register(OnboardingCollectionCell.self, forCellWithReuseIdentifier: OnboardingCollectionCell.typeName)
+        sliderCollectionView.dataSource = self
+        sliderCollectionView.delegate = self
+    }
+    
+    private func setupSignInButton() {
+        signInButton.layer.cornerRadius = 15
+        signInButton.clipsToBounds = true
+        signInButton.setTitle("signIn_button_title".localized, for: .normal)
+        signInButton.backgroundColor = .brownColor
+        signInButton.titleLabel?.font = UIFont.font(style: .button)
+        signInButton.addTarget(self, action: #selector(signIn), for: .touchUpInside)
+    }
+    
+    private func setupSignUpButton() -> NSAttributedString {
+        signUpButton.addTarget(self, action: #selector(signUp), for: .touchUpInside)
+        
         let registrationTitle = NSMutableAttributedString(string: "absentAccount_title".localized,
                                                           attributes: [
-                                                            NSAttributedString.Key.font: UIFont.defaultFont(),
+                                                            NSAttributedString.Key.font: UIFont.font(style: .body),
                                                             NSAttributedString.Key.foregroundColor: UIColor.gray])
         
-        registrationTitle.append(NSAttributedString(string: "signUp_button_title".localized, 
+        registrationTitle.append(NSAttributedString(string: "signUp_button_title".localized,
                                                     attributes: [
-                                                        NSAttributedString.Key.font: UIFont.defaultBoldFont(),
+                                                        NSAttributedString.Key.font: UIFont.font(style: .body),
                                                         NSAttributedString.Key.foregroundColor: UIColor.systemBlue,
                                                         NSAttributedString.Key.underlineStyle: true]))
         return registrationTitle
     }
 }
 
-extension OnboardingViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension OnboardingViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         onboardingData.count
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OnboardingCollectionCell", for: indexPath) as! OnboardingCollectionCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OnboardingCollectionCell.typeName, for: indexPath) as! OnboardingCollectionCell
         cell.configure(onboardingModel: onboardingData[indexPath.row])
         return cell
     }
