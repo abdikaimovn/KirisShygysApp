@@ -55,12 +55,26 @@ final class AuthorizationViewController: UIViewController {
         setupView()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
+    private func setupTextFields() {
         emailTextField.delegate = self
         passwordTextField.delegate = self
         emailTextField.becomeFirstResponder()
+        
+        //Имитация отступа у textFields
+        let leftPaddingViewEmail = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: 1))
+        emailTextField.leftView = leftPaddingViewEmail
+        emailTextField.leftViewMode = .always
+        
+        let leftPaddingViewPassword = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: 1))
+        passwordTextField.leftView = leftPaddingViewPassword
+        passwordTextField.leftViewMode = .always
+        
+        //Кнопка скрытия и показа текста в passwordTextField
+        let rightViewButton = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        rightViewButton.addSubview(hidePasswordFieldButton)
+        
+        passwordTextField.rightView = rightViewButton
+        passwordTextField.rightViewMode = .always
     }
     
     //TODO: Реализовать вход в систему
@@ -94,6 +108,11 @@ final class AuthorizationViewController: UIViewController {
     
     private func setupView() {
         view.backgroundColor = .white
+        
+        setupSignInButton()
+        setupHidePasswordButton()
+        setupTextFields()
+        
         view.addSubview(imageLogo)
         imageLogo.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
@@ -122,29 +141,10 @@ final class AuthorizationViewController: UIViewController {
             make.height.equalTo(55)
         }
         
-        //Имитация отступа у textFields
-        let leftPaddingViewName = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: 1))
-        emailTextField.leftView = leftPaddingViewName
-        emailTextField.leftViewMode = .always
-        
-        let leftPaddingViewPassword = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: 1))
-        passwordTextField.leftView = leftPaddingViewPassword
-        passwordTextField.leftViewMode = .always
-        
-        //Кнопка скрытия и показа текста в passwordTextField
-        let rightPaddingButton = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-        rightPaddingButton.addSubview(hidePasswordFieldButton)
-        
         hidePasswordFieldButton.snp.makeConstraints { make in
             make.leading.top.bottom.equalToSuperview()
             make.trailing.equalToSuperview().inset(10)
         }
-        
-        passwordTextField.rightView = rightPaddingButton
-        passwordTextField.rightViewMode = .always
-        
-        setupSignInButton()
-        setupHidePasswordButton()
     }
 }
 

@@ -183,7 +183,6 @@ extension OnboardingViewController: UICollectionViewDataSource, UICollectionView
 
 extension OnboardingViewController: OnboardingViewProtocol {
     func showAuthorizationPage() {
-        // Убрал описание "Назад" и изменил цвет
         let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         backBarButtonItem.tintColor = .brownColor
         navigationItem.backBarButtonItem = backBarButtonItem
