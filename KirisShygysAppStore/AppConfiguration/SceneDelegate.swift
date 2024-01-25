@@ -15,7 +15,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = UINavigationController(rootViewController: OnboardingViewController())
+        
+        //TODO: Исправить после реализаций NETWORK Layer, пока можно
+        let onboardingPresenter = OnboardingPresenter()
+        let onboardingView = OnboardingViewController(presenter: onboardingPresenter)
+        onboardingPresenter.view = onboardingView
+        
+        window?.rootViewController = UINavigationController(rootViewController: onboardingView)
         window?.makeKeyAndVisible()
     }
 }

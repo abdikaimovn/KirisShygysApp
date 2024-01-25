@@ -9,6 +9,8 @@ import UIKit
 import SnapKit
 
 final class OnboardingViewController: UIViewController {
+    private let presenter: OnboardingPresenter
+    
     //MARK: - Constant data
     private let onboardingData: [OnboardingModel] = [
         OnboardingModel(title: "onboarding_firstPage_title".localized,
@@ -48,6 +50,15 @@ final class OnboardingViewController: UIViewController {
     }()
     
     //MARK: - App Lifecycle
+    init(presenter: OnboardingPresenter) {
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     
@@ -56,7 +67,7 @@ final class OnboardingViewController: UIViewController {
     
     //TODO: - Создать модуль Авторизаций
     @objc func signIn() {
-        
+        presenter.signInDidTapped()
     }
     
     //TODO: - Создать модуль Регистраций
@@ -66,7 +77,6 @@ final class OnboardingViewController: UIViewController {
     
     private func setupView() {
         view.backgroundColor = .white
-        
         view.addSubview(sliderCollectionView)
         
         sliderCollectionView.snp.makeConstraints { make in
@@ -107,7 +117,6 @@ final class OnboardingViewController: UIViewController {
     }
     
     private func setupCollectionView() {
-        sliderCollectionView.backgroundColor = .white
         sliderCollectionView.isPagingEnabled = true
         sliderCollectionView.showsHorizontalScrollIndicator = false
         sliderCollectionView.register(OnboardingCollectionCell.self, forCellWithReuseIdentifier: OnboardingCollectionCell.typeName)
@@ -139,6 +148,12 @@ final class OnboardingViewController: UIViewController {
                                                         NSAttributedString.Key.underlineStyle: true]))
         return registrationTitle
     }
+    
+    private func createAuthorizationModule() -> UIViewController {
+        //Пока что так, потом добавлю презентер и сервис
+        let view = AuthorizationViewController()
+        return view
+    }
 }
 
 extension OnboardingViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -163,5 +178,17 @@ extension OnboardingViewController: UICollectionViewDataSource, UICollectionView
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let width = scrollView.frame.width
         pageControl.currentPage = Int(scrollView.contentOffset.x / width)
+    }
+}
+
+extension OnboardingViewController: OnboardingViewProtocol {
+    func showAuthorizationPage() {
+        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        backBarButtonItem.tintColor = .brownColor
+        navigationItem.backBarButtonItem = backBarButtonItem
+        
+        let authorizationView = createAuthorizationModule()
+        
+        self.navigationController?.pushViewController(authorizationView, animated: true)
     }
 }

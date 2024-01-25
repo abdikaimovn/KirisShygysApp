@@ -16,3 +16,8 @@
 //MARK: - Buttons
 "signIn_button_title" = "Войти";
 "signUp_button_title" = "Регистрация";
+
+//MARK: - Text field placeholders
+"name_textField_placeholder" = "Имя";
+"email_textField_placeholder" = "Эл. почта";
+"password_textField_placeholder" = "Пароль";
