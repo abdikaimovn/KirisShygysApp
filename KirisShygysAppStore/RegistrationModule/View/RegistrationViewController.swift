@@ -1,14 +1,14 @@
 //
-//  AuthorizationViewController.swift
+//  RegistrationViewController.swift
 //  KirisShygysAppStore
 //
-//  Created by Нурдаулет on 24.01.2024.
+//  Created by Нурдаулет on 25.01.2024.
 //
 
 import UIKit
 import SnapKit
 
-final class AuthorizationViewController: UIViewController {
+final class RegistrationViewController: UIViewController {
     //MARK: - UI Elements
     private let imageLogo: UIImageView = {
         let imageView = UIImageView()
@@ -20,12 +20,13 @@ final class AuthorizationViewController: UIViewController {
         return imageView
     }()
     
+    private let nameTextField = UITextField()
     private let emailTextField = UITextField()
     private let passwordTextField = UITextField()
     
     private let hidePasswordFieldButton = UIButton()
     
-    private let signInButton = UIButton()
+    private let signUpButton = UIButton()
     
     //MARK: - App Lifecycle
     override func viewDidLoad() {
@@ -35,7 +36,7 @@ final class AuthorizationViewController: UIViewController {
     }
     
     private func setupTextFields() {
-        [emailTextField, passwordTextField].forEach { textField in
+        [nameTextField, emailTextField, passwordTextField].forEach { textField in
             textField.borderStyle = .line
             textField.layer.cornerRadius = 10
             textField.layer.borderWidth = 1.0
@@ -44,19 +45,23 @@ final class AuthorizationViewController: UIViewController {
             textField.font = UIFont.font(style: .body)
         }
         
+        nameTextField.delegate = self
         emailTextField.delegate = self
         passwordTextField.delegate = self
         
+        nameTextField.placeholder = "name_textField_placeholder".localized
         emailTextField.placeholder = "email_textField_placeholder".localized
         passwordTextField.placeholder = "password_textField_placeholder".localized
-        
-        passwordTextField.isSecureTextEntry = true
         
         addingPaddingsInTextFields()
     }
     
     private func addingPaddingsInTextFields() {
         //Имитация отступа у textFields
+        let leftPaddingViewName = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: 1))
+        nameTextField.leftView = leftPaddingViewName
+        nameTextField.leftViewMode = .always
+        
         let leftPaddingViewEmail = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: 1))
         emailTextField.leftView = leftPaddingViewEmail
         emailTextField.leftViewMode = .always
@@ -73,8 +78,8 @@ final class AuthorizationViewController: UIViewController {
         passwordTextField.rightViewMode = .always
     }
     
-    //TODO: Реализовать вход в систему
-    @objc func signInPressed() {
+    //TODO: Реализовать регистрацию в систему
+    @objc func signUpPressed() {
 
     }
     
@@ -85,15 +90,15 @@ final class AuthorizationViewController: UIViewController {
         hidePasswordFieldButton.addTarget(self, action: #selector(hideTextField(_:)), for: .touchUpInside)
     }
     
-    private func setupSignInButton() {
-        signInButton.backgroundColor = UIColor.brownColor
-        signInButton.setTitle("signIn_button_title".localized, for: .normal)
-        signInButton.layer.cornerRadius = 12
-        signInButton.titleLabel?.font = UIFont.font(style: .button)
-        signInButton.clipsToBounds = true
-        signInButton.tintColor = .black
-        signInButton.addTarget(self, action: #selector(signInPressed), for: .touchUpInside)
-        signInButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
+    private func setupSignUpButton() {
+        signUpButton.backgroundColor = UIColor.brownColor
+        signUpButton.setTitle("signUp_button_title".localized, for: .normal)
+        signUpButton.layer.cornerRadius = 12
+        signUpButton.titleLabel?.font = UIFont.font(style: .button)
+        signUpButton.clipsToBounds = true
+        signUpButton.tintColor = .black
+        signUpButton.addTarget(self, action: #selector(signUpPressed), for: .touchUpInside)
+        signUpButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
     }
 
     @objc func hideTextField(_ sender: UIButton) {
@@ -105,7 +110,7 @@ final class AuthorizationViewController: UIViewController {
     private func setupView() {
         view.backgroundColor = .white
         
-        setupSignInButton()
+        setupSignUpButton()
         setupHidePasswordButton()
         setupTextFields()
         
@@ -116,10 +121,17 @@ final class AuthorizationViewController: UIViewController {
             make.size.equalTo(view.bounds.width * 0.2)
         }
         
+        view.addSubview(nameTextField)
+        nameTextField.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(15)
+            make.top.equalTo(imageLogo.snp.bottom).offset(50)
+            make.height.equalTo(50)
+        }
+        
         view.addSubview(emailTextField)
         emailTextField.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(15)
-            make.top.equalTo(imageLogo.snp.bottom).offset(50)
+            make.top.equalTo(nameTextField.snp.bottom).offset(20)
             make.height.equalTo(50)
         }
         
@@ -130,8 +142,8 @@ final class AuthorizationViewController: UIViewController {
             make.height.equalTo(50)
         }
         
-        view.addSubview(signInButton)
-        signInButton.snp.makeConstraints { make in
+        view.addSubview(signUpButton)
+        signUpButton.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(15)
             make.top.equalTo(passwordTextField.snp.bottom).offset(20)
             make.height.equalTo(55)
@@ -139,7 +151,7 @@ final class AuthorizationViewController: UIViewController {
     }
 }
 
-extension AuthorizationViewController: UITextFieldDelegate {
+extension RegistrationViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // Скрытие клавиатуры при нажатий кнопки Done(return)
         textField.resignFirstResponder()
