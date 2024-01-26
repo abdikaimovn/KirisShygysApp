@@ -21,3 +21,13 @@
 "name_textField_placeholder" = "Name";
 "email_textField_placeholder" = "Email";
 "password_textField_placeholder" = "Password";
+
+//MARK: - ERRORS
+"authorization_error_title" = "Authorization Error";
+"registration_error_title" = "Registration Error";
+"network_error_title" = "Network Error";
+"unknown_error_title" = "Unknown Error";
+"credentialAlreadyInUse_error" = "The credentials are already in use";
+"invalidCredential_error" = "The supplied auth credential is malformed or has expired.";
+"network_error" = "The network connection was interrupted";
+"unknown_error" = "Something went wrong";
