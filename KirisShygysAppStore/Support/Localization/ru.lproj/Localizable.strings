@@ -21,3 +21,13 @@
 "name_textField_placeholder" = "Имя";
 "email_textField_placeholder" = "Эл. почта";
 "password_textField_placeholder" = "Пароль";
+
+//MARK: - ERRORS
+"authorization_error_title" = "Ошибка Авторизации";
+"registration_error_title" = "Ошибка Регистрации";
+"unknown_error_title" = "Неизвестная ошибка";
+"network_error_title" = "Ошибка сети";
+"credentialAlreadyInUse_error" = "Учетные данные уже используются";
+"invalidCredential_error" = "Предоставленные учетные данные для аутентификации неверны или срок их действия истек.";
+"network_error" = "Сетевое подключение было прервано";
+"unknown_error" = "Произошла неизвестная ошибка";
