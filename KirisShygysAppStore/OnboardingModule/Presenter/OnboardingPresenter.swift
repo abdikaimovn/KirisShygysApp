@@ -7,6 +7,7 @@
 
 protocol OnboardingViewProtocol: AnyObject {
     func showAuthorizationPage()
+    func showRegistrationPage()
 }
 
 final class OnboardingPresenter {
@@ -14,5 +15,9 @@ final class OnboardingPresenter {
     
     func signInDidTapped() {
         view?.showAuthorizationPage()
+    }
+    
+    func signUpDidTapped() {
+        view?.showRegistrationPage()
     }
 }

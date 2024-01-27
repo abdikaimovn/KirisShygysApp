@@ -40,7 +40,7 @@ enum FontStyle {
         case .large:
             return "Roboto Medium"
         case .regularLarge:
-            return "Roboto Regular"
+            return "Roboto-Regular"
         }
     }
 }

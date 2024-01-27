@@ -21,6 +21,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let onboardingView = OnboardingViewController(presenter: onboardingPresenter)
         onboardingPresenter.view = onboardingView
         
+        //Приложение будет поддерживать только светлую тему
+        window?.overrideUserInterfaceStyle = .light
+        
         window?.rootViewController = UINavigationController(rootViewController: onboardingView)
         window?.makeKeyAndVisible()
     }

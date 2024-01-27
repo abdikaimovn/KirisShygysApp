@@ -64,15 +64,13 @@ final class OnboardingViewController: UIViewController {
     
         setupView()
     }
-    
-    //TODO: - Создать модуль Авторизаций
+
     @objc func signIn() {
         presenter.signInDidTapped()
     }
-    
-    //TODO: - Создать модуль Регистраций
+
     @objc func signUp() {
-        
+        presenter.signUpDidTapped()
     }
     
     private func setupView() {
@@ -154,6 +152,12 @@ final class OnboardingViewController: UIViewController {
         let view = AuthorizationViewController()
         return view
     }
+    
+    private func createRegistrationModule() -> UIViewController {
+        //Пока что так, потом добавлю презентер и сервис
+        let view = RegistrationViewController()
+        return view
+    }
 }
 
 extension OnboardingViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -182,6 +186,16 @@ extension OnboardingViewController: UICollectionViewDataSource, UICollectionView
 }
 
 extension OnboardingViewController: OnboardingViewProtocol {
+    func showRegistrationPage() {
+        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        backBarButtonItem.tintColor = .brownColor
+        navigationItem.backBarButtonItem = backBarButtonItem
+        
+        let registrationView = createRegistrationModule()
+        
+        self.navigationController?.pushViewController(registrationView, animated: true)
+    }
+    
     func showAuthorizationPage() {
         let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         backBarButtonItem.tintColor = .brownColor
