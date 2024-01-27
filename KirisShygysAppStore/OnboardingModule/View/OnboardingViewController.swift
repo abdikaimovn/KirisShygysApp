@@ -36,6 +36,7 @@ final class OnboardingViewController: UIViewController {
         pageControl.currentPage = 0
         pageControl.currentPageIndicatorTintColor = .brownColor
         pageControl.pageIndicatorTintColor = .gray
+        pageControl.isUserInteractionEnabled = false
         return pageControl
     }()
     
