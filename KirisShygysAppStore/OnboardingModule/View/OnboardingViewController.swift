@@ -156,7 +156,10 @@ final class OnboardingViewController: UIViewController {
     
     private func createRegistrationModule() -> UIViewController {
         //Пока что так, потом добавлю презентер и сервис
-        let view = RegistrationViewController()
+        let networkService = AuthenticationService()
+        let presenter = RegistrationPresenter(networkService: networkService)
+        let view = RegistrationViewController(presenter: presenter)
+        presenter.view = view
         return view
     }
 }

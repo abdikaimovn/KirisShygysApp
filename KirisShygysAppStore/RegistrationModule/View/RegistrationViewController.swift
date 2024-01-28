@@ -9,6 +9,8 @@ import UIKit
 import SnapKit
 
 final class RegistrationViewController: UIViewController {
+    private let presenter: RegistrationPresenter
+    
     //MARK: - UI Elements
     private let imageLogo: UIImageView = {
         let imageView = UIImageView()
@@ -20,6 +22,17 @@ final class RegistrationViewController: UIViewController {
         return imageView
     }()
     
+    private let errorLabel: UILabel = {
+        let label = UILabel()
+        label.isHidden = true
+        label.font = UIFont.font(style: .body)
+        label.textColor = .red
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    private let loaderView = LoaderView(frame: .zero)
+    
     private let nameTextField = UITextField()
     private let emailTextField = UITextField()
     private let passwordTextField = UITextField()
@@ -29,6 +42,15 @@ final class RegistrationViewController: UIViewController {
     private let signUpButton = UIButton()
     
     //MARK: - App Lifecycle
+    init(presenter: RegistrationPresenter) {
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,6 +70,8 @@ final class RegistrationViewController: UIViewController {
         nameTextField.delegate = self
         emailTextField.delegate = self
         passwordTextField.delegate = self
+        
+        passwordTextField.isSecureTextEntry = true
         
         nameTextField.placeholder = "name_textField_placeholder".localized
         emailTextField.placeholder = "email_textField_placeholder".localized
@@ -80,7 +104,12 @@ final class RegistrationViewController: UIViewController {
     
     //TODO: Реализовать регистрацию в систему
     @objc func signUpPressed() {
-
+        errorLabel.isHidden = true
+        presenter.signUpDidTapped(with: RegistrationModel(
+            name: nameTextField.text ?? "",
+            email: emailTextField.text ?? "",
+            password: passwordTextField.text ?? "")
+        )
     }
     
     private func setupHidePasswordButton() {
@@ -148,6 +177,19 @@ final class RegistrationViewController: UIViewController {
             make.top.equalTo(passwordTextField.snp.bottom).offset(20)
             make.height.equalTo(55)
         }
+        
+        view.addSubview(errorLabel)
+        errorLabel.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.top.equalTo(signUpButton.snp.bottom).offset(20)
+            make.bottom.lessThanOrEqualTo(view.safeAreaLayoutGuide.snp.bottom).offset(-20)
+        }
+        
+        view.addSubview(loaderView)
+        loaderView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.size.equalTo(70)
+        }
     }
 }
 
@@ -156,5 +198,40 @@ extension RegistrationViewController: UITextFieldDelegate {
         // Скрытие клавиатуры при нажатий кнопки Done(return)
         textField.resignFirstResponder()
         return true
+    }
+}
+
+extension RegistrationViewController: RegistrationViewProtocol {
+    func showInvalidEmailError() {
+        errorLabel.text = "invalidEmail_error".localized
+        errorLabel.isHidden = false
+    }
+    
+    func showInvalidUsernameError() {
+        errorLabel.text = "invalidUsername_error".localized
+        errorLabel.isHidden = false
+    }
+    
+    func showInvalidPasswordError() {
+        errorLabel.text = "invalidPassword_error".localized
+        errorLabel.isHidden = false
+    }
+    
+    func showLoader() {
+        loaderView.showLoader(with: .medium)
+    }
+    
+    func hideLoader() {
+        loaderView.hideLoader()
+    }
+    
+    func showRegistrationError(with model: NetworkErrorModel) {
+        AlertManager.showAlert(on: self, title: model.title, message: model.description)
+    }
+    
+    func showHomeView() {
+        if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
+            sceneDelegate.checkAuthentication()
+        }
     }
 }

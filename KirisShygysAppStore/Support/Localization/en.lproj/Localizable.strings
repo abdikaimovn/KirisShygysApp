@@ -31,3 +31,11 @@
 "invalidCredential_error" = "The supplied auth credential is malformed or has expired.";
 "network_error" = "The network connection was interrupted";
 "unknown_error" = "Something went wrong";
+
+//MARK: - Validator Errors
+"invalidUsername_error" = "• Username must be 2-24 characters, no whitespaces.";
+"invalidEmail_error" = "• Invalid email format or contains whitespaces.";
+"invalidPassword_error" = "• Password must be 6-32 characters, include lowercase, uppercase, digit, and a special character, no whitespaces.";
+
+//MARK: - Alerts
+"alert_dismissButton_title" = "Retry";
