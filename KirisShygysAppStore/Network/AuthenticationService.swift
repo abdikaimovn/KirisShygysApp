@@ -26,10 +26,11 @@ final class AuthenticationService {
         let errorCode = AuthErrorCode(_nsError: error as NSError)
         switch errorCode.code {
         case .emailAlreadyInUse:
-            return NetworkErrorModel(title: "registration_error_title".localized,
-                              error: error,
-                              text: error.localizedDescription,
-                              description: "credentialAlreadyInUse_error".localized)
+            return NetworkErrorModel(
+                title: "registration_error_title".localized,
+                error: error,
+                text: error.localizedDescription,
+                description: "credentialAlreadyInUse_error".localized)
         case .networkError:
             return NetworkErrorModel(
                 title: "network_error_title".localized,
@@ -38,7 +39,7 @@ final class AuthenticationService {
                 description: "network_error".localized)
         case .invalidCredential:
             return NetworkErrorModel(
-                title: "authorization_error".localized,
+                title: "authorization_error_title".localized,
                 error: error,
                 text: error.localizedDescription,
                 description: "invalidCredential_error".localized)

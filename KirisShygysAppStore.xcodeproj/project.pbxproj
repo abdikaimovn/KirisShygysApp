@@ -63,6 +63,7 @@
 		6F6444882B65A0180018238D /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6444872B65A0180018238D /* LoaderView.swift */; };
 		6F64448B2B66388C0018238D /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F64448A2B66388C0018238D /* AlertManager.swift */; };
 		6F6444902B663A130018238D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F64448F2B663A130018238D /* HomeViewController.swift */; };
+		6F6444932B6688880018238D /* AuthorizationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6444922B6688880018238D /* AuthorizationPresenter.swift */; };
 		6FA432322B62946E00F79721 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA432312B62946E00F79721 /* RegistrationViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -112,6 +113,7 @@
 		6F6444872B65A0180018238D /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
 		6F64448A2B66388C0018238D /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		6F64448F2B663A130018238D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		6F6444922B6688880018238D /* AuthorizationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationPresenter.swift; sourceTree = "<group>"; };
 		6FA432312B62946E00F79721 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -159,6 +161,7 @@
 			children = (
 				6F6444772B6580E20018238D /* Model */,
 				6F0B87432B61311600434150 /* View */,
+				6F6444912B6688740018238D /* Presenter */,
 			);
 			path = AuthorizationModule;
 			sourceTree = "<group>";
@@ -349,6 +352,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		6F6444912B6688740018238D /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				6F6444922B6688880018238D /* AuthorizationPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 		6FA4322D2B62941600F79721 /* RegistrationModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -483,6 +494,7 @@
 				6F61E4A02B5D8A0B00F8AB20 /* OnboardingViewController.swift in Sources */,
 				6F61E49C2B5D8A0B00F8AB20 /* AppDelegate.swift in Sources */,
 				6F61E4CD2B5EA50700F8AB20 /* OnboardingModel.swift in Sources */,
+				6F6444932B6688880018238D /* AuthorizationPresenter.swift in Sources */,
 				6F0B87482B618DD000434150 /* OnboardingPresenter.swift in Sources */,
 				6F6444902B663A130018238D /* HomeViewController.swift in Sources */,
 				6F6444832B6586400018238D /* RegistrationPresenter.swift in Sources */,

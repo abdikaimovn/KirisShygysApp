@@ -24,19 +24,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     public func checkAuthentication() {
-        if AuthenticationService.checkAuthentication() == nil {
+//        if AuthenticationService.checkAuthentication() == nil {
             let presenter = OnboardingPresenter()
             let onboardingView = OnboardingViewController(presenter: presenter)
             presenter.view = onboardingView
             let navController = UINavigationController(rootViewController: onboardingView)
             navController.modalPresentationStyle = .fullScreen
             self.goToController(with: navController)
-        } else {
-            let homeView = HomeViewController()
-            let navController = UINavigationController(rootViewController: homeView)
-            navController.modalPresentationStyle = .fullScreen
-            self.goToController(with: navController)
-        }
+//        } else {
+//            let homeView = HomeViewController()
+//            let navController = UINavigationController(rootViewController: homeView)
+//            navController.modalPresentationStyle = .fullScreen
+//            self.goToController(with: navController)
+//        }
     }
     
     private func goToController(with viewController: UIViewController) {

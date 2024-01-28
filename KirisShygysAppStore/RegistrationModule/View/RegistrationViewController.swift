@@ -101,8 +101,7 @@ final class RegistrationViewController: UIViewController {
         passwordTextField.rightView = rightViewButton
         passwordTextField.rightViewMode = .always
     }
-    
-    //TODO: Реализовать регистрацию в систему
+
     @objc func signUpPressed() {
         errorLabel.isHidden = true
         presenter.signUpDidTapped(with: RegistrationModel(
@@ -218,7 +217,7 @@ extension RegistrationViewController: RegistrationViewProtocol {
     }
     
     func showLoader() {
-        loaderView.showLoader(with: .medium)
+        loaderView.showLoader(with: .large)
     }
     
     func hideLoader() {
