@@ -105,9 +105,9 @@ final class RegistrationViewController: UIViewController {
     @objc func signUpPressed() {
         errorLabel.isHidden = true
         presenter.signUpDidTapped(with: RegistrationModel(
-            name: nameTextField.text ?? "",
-            email: emailTextField.text ?? "",
-            password: passwordTextField.text ?? "")
+            name: nameTextField.text,
+            email: emailTextField.text,
+            password: passwordTextField.text)
         )
     }
     
@@ -217,7 +217,7 @@ extension RegistrationViewController: RegistrationViewProtocol {
     }
     
     func showLoader() {
-        loaderView.showLoader(with: .large)
+        loaderView.showLoader()
     }
     
     func hideLoader() {
@@ -230,7 +230,7 @@ extension RegistrationViewController: RegistrationViewProtocol {
     
     func showHomeView() {
         if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
-            sceneDelegate.checkAuthentication()
+            sceneDelegate.getToNeededView()
         }
     }
 }

@@ -8,19 +8,37 @@
 import UIKit
 import SnapKit
 
-class LoaderView: UIView {
+final class LoaderView: UIView {
     private let loader = UIActivityIndicatorView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupView()
+        setupView(with: .large)
+    }
+    
+    init(with style: UIActivityIndicatorView.Style) {
+        super.init(frame: .zero)
+        setupView(with: style)
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        nil
     }
     
-    func showLoader(with style: UIActivityIndicatorView.Style) {
+    func showLoader() {
+        isHidden = false
+    }
+    
+    func hideLoader() {
+        isHidden = true
+    }
+    
+    private func setupView(with style: UIActivityIndicatorView.Style) {
+        backgroundColor = .lightGrayColor
+        layer.cornerRadius = 20
+        layer.cornerCurve = .continuous
+        isHidden = true
+        
         addSubview(loader)
         loader.style = style
         loader.color = .darkGray
@@ -30,18 +48,5 @@ class LoaderView: UIView {
         }
         
         loader.startAnimating()
-        
-        isHidden = false
-    }
-    
-    func hideLoader() {
-        isHidden = true
-    }
-    
-    private func setupView() {
-        backgroundColor = .lightGrayColor
-        layer.cornerRadius = 20
-        layer.cornerCurve = .continuous
-        isHidden = true
     }
 }

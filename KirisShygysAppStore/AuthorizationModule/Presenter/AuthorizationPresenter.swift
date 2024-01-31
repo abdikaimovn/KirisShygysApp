@@ -23,27 +23,24 @@ final class AuthorizationPresenter {
     }
     
     func signInDidTapped(with userData: AuthorizationModel) {
-        let email = userData.email
-        let password = userData.password
-        
-        if !Validator.isValidEmail(for: email) {
+        guard let email = userData.email, Validator.isValidEmail(for: email) else {
             view?.showInvalidEmailError()
             return
         }
         
-        if !Validator.isValidPassword(for: password) {
+        guard let password = userData.password, Validator.isValidPassword(for: password) else {
             view?.showInvalidPasswordError()
             return
         }
         
         view?.showLoader()
-        authorizationService.authorizeUser(with: userData) { authorizationResult in
-            self.view?.hideLoader()
+        authorizationService.authorizeUser(with: userData) { [weak self] authorizationResult in
+            self?.view?.hideLoader()
             switch authorizationResult {
             case .success():
-                self.view?.showHomeView()
+                self?.view?.showHomeView()
             case .failure(let error):
-                self.view?.showAuthorizationError(with: error)
+                self?.view?.showAuthorizationError(with: error)
             }
         }
     }

@@ -18,8 +18,8 @@ protocol AuthorizationNetworkService {
 }
 
 final class AuthenticationService {
-    static func checkAuthentication() -> User? {
-        return Auth.auth().currentUser
+    static var user: User? {
+        Auth.auth().currentUser
     }
     
     private func handleError(with error: Error) -> NetworkErrorModel {
@@ -54,46 +54,54 @@ final class AuthenticationService {
 }
 
 extension AuthenticationService: RegistrationNetworkService {
+    private func setUserToDB(
+        with uid: String,
+        username: String,
+        email: String,
+        completion: @escaping ((Result<(), NetworkErrorModel>) -> ())) {
+            let db = Firestore.firestore()
+            db.collection(FirebaseDocumentName.users.rawValue)
+                .document(uid)
+                .setData([
+                    "username": username,
+                    "email": email
+                ]) { error in
+                    if let error = error {
+                        completion(.failure(
+                            NetworkErrorModel(
+                                title: "unknown_error_title".localized,
+                                error: error,
+                                text: error.localizedDescription,
+                                description: "unknown_error".localized)))
+                        return
+                    }
+                    
+                    completion(.success(()))
+                }
+    }
+    
     func registerUser(with userData: RegistrationModel,
                       completion: @escaping (Result<(), NetworkErrorModel>) -> Void) {
-        let username = userData.name
-        let email = userData.email
-        let password = userData.password
+        let username = userData.name ?? ""
+        let email = userData.email ?? ""
+        let password = userData.password ?? ""
         
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             if let error = error {
                 completion(.failure(self.handleError(with: error)))
                 return
-            } else {
-                guard let userResult = result?.user else {
-                    completion(.failure(NetworkErrorModel(
-                        title: "unknown_error_title".localized,
-                        error: nil,
-                        text: nil,
-                        description: "unknown_error".localized)))
-                    return
-                }
-                
-                let db = Firestore.firestore()
-                db.collection(FirebaseDocumentName.users.rawValue)
-                    .document(userResult.uid)
-                    .setData([
-                        "username": username,
-                        "email": email
-                    ]) { error in
-                        if let error = error {
-                            completion(.failure(
-                                NetworkErrorModel(
-                                    title: "unknown_error_title".localized,
-                                    error: error,
-                                    text: error.localizedDescription,
-                                    description: "unknown_error".localized)))
-                            return
-                        }
-                        
-                        completion(.success(()))
-                    }
             }
+            
+            guard let userResult = result?.user else {
+                completion(.failure(NetworkErrorModel(
+                    title: "unknown_error_title".localized,
+                    error: nil,
+                    text: nil,
+                    description: "unknown_error".localized)))
+                return
+            } 
+            
+            self.setUserToDB(with: userResult.uid, username: username, email: email, completion: completion)
         }
     }
 }
@@ -101,16 +109,16 @@ extension AuthenticationService: RegistrationNetworkService {
 extension AuthenticationService: AuthorizationNetworkService {
     func authorizeUser(with userData: AuthorizationModel,
                        completion: @escaping (Result<(), NetworkErrorModel>) -> Void) {
-        let email = userData.email
-        let password = userData.password
-        
+        let email = userData.email ?? ""
+        let password = userData.password ?? ""
+
         Auth.auth().signIn(withEmail: email, password: password) { result, error in
             if let error = error {
                 completion(.failure(self.handleError(with: error)))
                 return
-            } else {
-                completion(.success(()))
             }
+            
+            completion(.success(()))
         }
     }
 }

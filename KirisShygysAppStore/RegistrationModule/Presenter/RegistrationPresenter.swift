@@ -24,29 +24,29 @@ final class RegistrationPresenter {
     }
     
     func signUpDidTapped(with userData: RegistrationModel) {
-        if !Validator.isValidUsername(for: userData.name) {
+        guard let username = userData.name, Validator.isValidUsername(for: username) else {
             view?.showInvalidUsernameError()
             return
         }
         
-        if !Validator.isValidEmail(for: userData.email) {
+        guard let email = userData.email, Validator.isValidEmail(for: email) else {
             view?.showInvalidEmailError()
             return
         }
         
-        if !Validator.isValidPassword(for: userData.password) {
+        guard let password = userData.password, Validator.isValidPassword(for: password) else {
             view?.showInvalidPasswordError()
             return
         }
         
         view?.showLoader()
-        networkService.registerUser(with: userData) { registrationResult in
-            self.view?.hideLoader()
+        networkService.registerUser(with: userData) { [weak self] registrationResult in
+            self?.view?.hideLoader()
             switch registrationResult {
             case .success():
-                self.view?.showHomeView()
+                self?.view?.showHomeView()
             case .failure(let error):
-                self.view?.showRegistrationError(with: error)
+                self?.view?.showRegistrationError(with: error)
             }
         }
     }

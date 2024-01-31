@@ -47,7 +47,7 @@ final class AuthorizationViewController: UIViewController {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        nil
     }
     
     override func viewDidLoad() {
@@ -98,8 +98,8 @@ final class AuthorizationViewController: UIViewController {
     @objc func signInPressed() {
         errorLabel.isHidden = true
         presenter.signInDidTapped(with: AuthorizationModel(
-            email: emailTextField.text ?? "",
-            password: passwordTextField.text ?? "")
+            email: emailTextField.text,
+            password: passwordTextField.text)
         )
     }
     
@@ -197,7 +197,7 @@ extension AuthorizationViewController: AuthorizationViewProtocol {
     }
     
     func showLoader() {
-        loaderView.showLoader(with: .large)
+        loaderView.showLoader()
     }
     
     func hideLoader() {
@@ -206,7 +206,7 @@ extension AuthorizationViewController: AuthorizationViewProtocol {
     
     func showHomeView() {
         if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
-            sceneDelegate.checkAuthentication()
+            sceneDelegate.getToNeededView()
         }
     }
     

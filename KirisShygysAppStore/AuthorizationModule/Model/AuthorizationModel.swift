@@ -6,6 +6,6 @@
 //
 
 struct AuthorizationModel {
-    let email: String
-    let password: String
+    let email: String?
+    let password: String?
 }
