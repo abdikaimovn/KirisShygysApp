@@ -21,3 +21,21 @@
 "name_textField_placeholder" = "Name";
 "email_textField_placeholder" = "Email";
 "password_textField_placeholder" = "Password";
+
+//MARK: - ERRORS
+"authorization_error_title" = "Authorization Error";
+"registration_error_title" = "Registration Error";
+"unknown_error_title" = "Unknown Error";
+"network_error_title" = "Network Error";
+"credentialAlreadyInUse_error" = "The credentials are already in use";
+"invalidCredential_error" = "The supplied auth credential is malformed or has expired.";
+"network_error" = "The network connection was interrupted";
+"unknown_error" = "Something went wrong";
+
+//MARK: - Validator Errors
+"invalidUsername_error" = "• Username must be 2-24 characters, no whitespaces.";
+"invalidEmail_error" = "• Invalid email format or contains whitespaces.";
+"invalidPassword_error" = "• Password must be 6-32 characters, include lowercase, uppercase, digit, and a special character, no whitespaces.";
+
+//MARK: - Alerts
+"alert_dismissButton_title" = "Retry";

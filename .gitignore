@@ -1,5 +1,7 @@
 # macOS-specific entries:
 .DS_Store
 KirisShygysAppStore.xcodeproj/project.xcworkspace/contents.xcworkspacedata
+KirisShygysAppStore.xcodeproj/project.xcworkspace/xcuserdata/nurik.xcuserdatad/UserInterfaceState.xcuserstate
+
 
 # End of https://www.toptal.com/developers/gitignore/api/swift,macos

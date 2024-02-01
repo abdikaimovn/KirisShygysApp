@@ -9,6 +9,8 @@ import UIKit
 import SnapKit
 
 final class AuthorizationViewController: UIViewController {
+    private let presenter: AuthorizationPresenter
+    
     //MARK: - UI Elements
     private let imageLogo: UIImageView = {
         let imageView = UIImageView()
@@ -27,7 +29,27 @@ final class AuthorizationViewController: UIViewController {
     
     private let signInButton = UIButton()
     
+    private let errorLabel: UILabel = {
+        let label = UILabel()
+        label.isHidden = true
+        label.font = UIFont.font(style: .body)
+        label.textColor = .red
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    private let loaderView = LoaderView(frame: .zero)
+    
     //MARK: - App Lifecycle
+    init(presenter: AuthorizationPresenter) {
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        nil
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -73,9 +95,12 @@ final class AuthorizationViewController: UIViewController {
         passwordTextField.rightViewMode = .always
     }
     
-    //TODO: Реализовать вход в систему
     @objc func signInPressed() {
-
+        errorLabel.isHidden = true
+        presenter.signInDidTapped(with: AuthorizationModel(
+            email: emailTextField.text,
+            password: passwordTextField.text)
+        )
     }
     
     private func setupHidePasswordButton() {
@@ -136,6 +161,19 @@ final class AuthorizationViewController: UIViewController {
             make.top.equalTo(passwordTextField.snp.bottom).offset(20)
             make.height.equalTo(55)
         }
+        
+        view.addSubview(errorLabel)
+        errorLabel.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.top.equalTo(signInButton.snp.bottom).offset(20)
+            make.bottom.lessThanOrEqualTo(view.safeAreaLayoutGuide.snp.bottom).offset(-20)
+        }
+        
+        view.addSubview(loaderView)
+        loaderView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.size.equalTo(70)
+        }
     }
 }
 
@@ -144,5 +182,35 @@ extension AuthorizationViewController: UITextFieldDelegate {
         // Скрытие клавиатуры при нажатий кнопки Done(return)
         textField.resignFirstResponder()
         return true
+    }
+}
+
+extension AuthorizationViewController: AuthorizationViewProtocol {
+    func showInvalidEmailError() {
+        errorLabel.text = "invalidEmail_error".localized
+        errorLabel.isHidden = false
+    }
+    
+    func showInvalidPasswordError() {
+        errorLabel.text = "invalidPassword_error".localized
+        errorLabel.isHidden = false
+    }
+    
+    func showLoader() {
+        loaderView.showLoader()
+    }
+    
+    func hideLoader() {
+        loaderView.hideLoader()
+    }
+    
+    func showHomeView() {
+        if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
+            sceneDelegate.getToNeededView()
+        }
+    }
+    
+    func showAuthorizationError(with error: NetworkErrorModel) {
+        AlertManager.showAlert(on: self, title: error.title, message: error.description)
     }
 }
