@@ -33,7 +33,7 @@ final class OnboardingCollectionCell: UICollectionViewCell {
         return label
     }()
     
-    //MARK: - AppLifecycle
+    //MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         

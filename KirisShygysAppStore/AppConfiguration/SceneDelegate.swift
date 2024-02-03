@@ -12,7 +12,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         setupWindow(with: scene)
-        getToNeededView()
+        showInitialModule()
     }
     
     private func setupWindow(with scene: UIScene) {
@@ -23,14 +23,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window?.makeKeyAndVisible()
     }
     
-    public func getToNeededView() {
+    func showInitialModule() {
         //        if AuthenticationService.checkAuthentication() == nil {
-        let presenter = OnboardingPresenter()
-        let view = OnboardingViewController(presenter: presenter)
-        presenter.view = view
-        let navController = UINavigationController(rootViewController: view)
-        navController.modalPresentationStyle = .fullScreen
-        goToController(with: navController)
+        let tabVC = TabBarContoller()
+        let navController = tabVC
+        self.goToController(with: navController)
         //        } else {
         //            let homeView = HomeViewController()
         //            let navController = UINavigationController(rootViewController: homeView)

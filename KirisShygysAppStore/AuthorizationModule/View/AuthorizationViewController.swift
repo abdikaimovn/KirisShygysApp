@@ -40,7 +40,7 @@ final class AuthorizationViewController: UIViewController {
     
     private let loaderView = LoaderView(frame: .zero)
     
-    //MARK: - App Lifecycle
+    //MARK: - Lifecycle
     init(presenter: AuthorizationPresenter) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
@@ -205,9 +205,7 @@ extension AuthorizationViewController: AuthorizationViewProtocol {
     }
     
     func showHomeView() {
-        if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
-            sceneDelegate.getToNeededView()
-        }
+        sceneDelegate?.showInitialModule()
     }
     
     func showAuthorizationError(with error: NetworkErrorModel) {
