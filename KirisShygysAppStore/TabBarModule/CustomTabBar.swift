@@ -11,7 +11,13 @@ final class CustomTabBar: UITabBar {
     private var shapeLayer: CAShapeLayer?
     
     override func draw(_ rect: CGRect) {
-        addShape()
+        if !isShapeExisted() {
+            addShape()
+        }
+    }
+    
+    private func isShapeExisted() -> Bool {
+        return shapeLayer != nil
     }
     
     private func addShape() {
@@ -71,7 +77,7 @@ final class CustomTabBar: UITabBar {
         
         return path.cgPath
     }
-
+    
     override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
         let extendedBounds = bounds.insetBy(dx: -30, dy: -30)
         return extendedBounds.contains(point)

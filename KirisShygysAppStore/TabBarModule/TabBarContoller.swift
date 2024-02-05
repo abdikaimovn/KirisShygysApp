@@ -21,7 +21,6 @@ final class TabBarContoller: UITabBarController {
         setValue(customTabBar, forKey: "tabBar")
         tabBar.tintColor = .brownColor
         tabBar.backgroundColor = .lightGrayColor
-        
         viewControllers = [
             createVC(for: createHomeModule(),
                      icon: UIImage(systemName: "house")),
@@ -34,17 +33,17 @@ final class TabBarContoller: UITabBarController {
         plusButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.centerY.equalTo(tabBar.snp.top).inset(5)
+            make.size.equalTo(60)
         }
     }
     
     private func setupPlusButton() -> UIButton {
-        let buttonSize: CGFloat = 60
         let image = UIImage(systemName: "plus.circle.fill")?.withTintColor(.brownColor, renderingMode: .alwaysOriginal)
-        let resizedImage = image?.resized(to: CGSize(width: buttonSize, height: buttonSize))
-        
-        let plusButton = ExtendedTapAreaButton(type: .custom)
-        plusButton.setImage(resizedImage, for: .normal)
-        plusButton.backgroundColor = .clear
+        let plusButton = ExtendedTapAreaButton()
+        plusButton.setImage(image, for: .normal)
+        plusButton.imageView?.contentMode = .scaleAspectFill
+        plusButton.contentHorizontalAlignment = .fill
+        plusButton.contentVerticalAlignment = .fill
         plusButton.addTarget(self, action: #selector(addTransactionPressed), for: .touchUpInside)
         return plusButton
     }

@@ -27,7 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //        if AuthenticationService.checkAuthentication() == nil {
         let tabVC = TabBarContoller()
         let navController = tabVC
-        self.goToController(with: navController)
+        goToController(with: navController)
         //        } else {
         //            let homeView = HomeViewController()
         //            let navController = UINavigationController(rootViewController: homeView)
