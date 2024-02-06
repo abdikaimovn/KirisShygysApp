@@ -86,7 +86,11 @@ extension AuthenticationService: RegistrationNetworkService {
         let email = userData.email ?? ""
         let password = userData.password ?? ""
         
-        Auth.auth().createUser(withEmail: email, password: password) { result, error in
+        Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, error in
+            guard let self else {
+                return
+            }
+            
             if let error = error {
                 completion(.failure(self.handleError(with: error)))
                 return
@@ -112,7 +116,10 @@ extension AuthenticationService: AuthorizationNetworkService {
         let email = userData.email ?? ""
         let password = userData.password ?? ""
 
-        Auth.auth().signIn(withEmail: email, password: password) { result, error in
+        Auth.auth().signIn(withEmail: email, password: password) { [weak self] result, error in
+            guard let self else {
+                return
+            }
             if let error = error {
                 completion(.failure(self.handleError(with: error)))
                 return

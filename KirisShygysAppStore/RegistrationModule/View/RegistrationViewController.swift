@@ -41,7 +41,7 @@ final class RegistrationViewController: UIViewController {
     
     private let signUpButton = UIButton()
     
-    //MARK: - App Lifecycle
+    //MARK: - Lifecycle
     init(presenter: RegistrationPresenter) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
@@ -229,8 +229,6 @@ extension RegistrationViewController: RegistrationViewProtocol {
     }
     
     func showHomeView() {
-        if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
-            sceneDelegate.getToNeededView()
-        }
+        sceneDelegate?.showInitialModule()
     }
 }

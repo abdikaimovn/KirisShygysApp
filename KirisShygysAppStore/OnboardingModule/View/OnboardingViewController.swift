@@ -50,7 +50,7 @@ final class OnboardingViewController: UIViewController {
         return view
     }()
     
-    //MARK: - App Lifecycle
+    //MARK: - Lifecycle
     init(presenter: OnboardingPresenter) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
