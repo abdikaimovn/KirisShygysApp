@@ -39,3 +39,12 @@
 
 //MARK: - Alerts
 "alert_dismissButton_title" = "Повторить";
+
+//MARK: - Home page
+"welcome_label" = "С Возвращением";
+"totalBalance_label" = "Баланс";
+"incomes_label" = "Доходы";
+"expenses_label" = "Расходы";
+"total_label" = "Итого";
+"transactions_label" = "Транзакции";
+"history_label" = "История";

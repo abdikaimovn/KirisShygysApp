@@ -39,3 +39,12 @@
 
 //MARK: - Alerts
 "alert_dismissButton_title" = "Retry";
+
+//MARK: - Home page
+"welcome_label" = "Welcome back";
+"totalBalance_label" = "Total balance";
+"incomes_label" = "Incomes";
+"expenses_label" = "Expenses";
+"total_label" = "Total";
+"transactions_label" = "Transactions";
+"history_label" = "History";

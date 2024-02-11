@@ -61,8 +61,9 @@ final class TabBarContoller: UITabBarController {
     
     //TODO: - FIX
     private func createHomeModule() -> UIViewController {
-        let view = UIViewController()
-        view.view.backgroundColor = .white
+        let presenter = HomePresenter()
+        let view = HomeViewController(presenter: presenter)
+        presenter.view = view
         return view
     }
     

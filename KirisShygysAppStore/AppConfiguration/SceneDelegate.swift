@@ -24,16 +24,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func showInitialModule() {
-        //        if AuthenticationService.checkAuthentication() == nil {
-        let tabVC = TabBarContoller()
-        let navController = tabVC
-        goToController(with: navController)
-        //        } else {
-        //            let homeView = HomeViewController()
-        //            let navController = UINavigationController(rootViewController: homeView)
-        //            navController.modalPresentationStyle = .fullScreen
-        //            self.goToController(with: navController)
-        //        }
+        if AuthenticationService.user == nil {
+            let presenter = OnboardingPresenter()
+            let view = OnboardingViewController(presenter: presenter)
+            presenter.view = view
+            let navController = UINavigationController(rootViewController: view)
+            goToController(with: navController)
+        } else {
+            let tabVC = TabBarContoller()
+            goToController(with: tabVC)
+        }
     }
     
     private func goToController(with viewController: UIViewController) {
