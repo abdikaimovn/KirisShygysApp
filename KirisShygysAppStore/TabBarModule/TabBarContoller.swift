@@ -50,7 +50,8 @@ final class TabBarContoller: UITabBarController {
     
     //TODO: Добавить модуль добавления новых транзакций
     @objc private func addTransactionPressed() {
-
+        let view = TransactionViewController()
+        present(view, animated: true)
     }
     
     private func createVC(for rootViewController: UIViewController, icon: UIImage?) -> UIViewController{
