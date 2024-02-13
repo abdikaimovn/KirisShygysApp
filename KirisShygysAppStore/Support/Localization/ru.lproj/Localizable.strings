@@ -19,18 +19,26 @@
 
 //MARK: - Buttons
 "signIn_button_title" = "Войти";
+"absentAccount_title" = "У вас нет аккаунта? ";
 "signUp_button_title" = "Регистрация";
 "alert_dismissButton_title" = "Ок";
 "apply_button_title" = "Применить";
 "save_button_title" = "Сохранить";
 "reset_button_title" = "Сброс";
 
+//MARK: - Authorization Validator errors
+"invalidEmail_error" = "• Email должен быть валидным согласно стандартам адресов электронной почты.";
+"invalidUsername_error" = "• Имя пользователя должно состоять из 2 до 24 символов и может содержать буквы, цифры";
+"invalidPassword_error" = "• Пароль должен быть длиной от 6 до 32 символов и содержать как минимум одну строчную букву, одну заглавную букву, одну цифру и один специальный символ из следующего набора: $, @, #, !, _, ., %, *, ?, &.";
+
 //MARK: - ERRORS
 "authorization_error_title" = "Ошибка авторизации";
 "registration_error_title" = "Ошибка регистрации";
 "credentialAlreadyInUse_error" = "Учетные данные уже используются";
 "invalidCredential_error" = "Предоставленные учетные данные недействительны или устарели";
+"network_error_title" = "Ошибка сети";
 "network_error" = "Прервано сетевое подключение";
+"unknown_error_title" = "Неизвестная ошибка";
 "unknown_error" = "Произошла неизвестная ошибка";
 "noTransaction" = "Вы не совершали никаких транзакций за последний месяц";
 
@@ -67,6 +75,8 @@
 "name_label" = "Название";
 "description_label" = "Описание";
 "date_label" = "Дата";
+"emptyTransactionFieldError_title" = "Ошибка";
+"emptyTransactionField_error" = "Вам необходимо указать обязательные поля, такие как: название, сумма";
 
 //MARK: - Transaciton Info page
 //(BILL - Чек)

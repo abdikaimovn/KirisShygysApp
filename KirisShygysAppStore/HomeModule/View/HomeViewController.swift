@@ -331,7 +331,7 @@ extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: TransactionTableViewCell.typeName, for: indexPath) as? TransactionTableViewCell {
-            cell.configure(transactionData: TransactionModel(id: "1", transactionAmount: 15, transactionType: .expense, transactionName: "test", transactionDescription: "test", transactionDate: "11.02.2024"))
+            cell.configure(transactionData: TransactionModel(amount: 15.0, type: .expense, name: "test", description: "test", date: "11.02.2024"))
             return cell
         } else {
             return UITableViewCell(frame: .zero)

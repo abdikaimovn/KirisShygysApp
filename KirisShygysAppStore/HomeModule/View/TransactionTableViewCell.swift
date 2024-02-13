@@ -68,9 +68,9 @@ final class TransactionTableViewCell: UITableViewCell {
         let currentData = Date.now.formatted().prefix(10)
         
         self.transName.text = transactionData.transactionName
-        self.priceLabel.text = "\("currency".localized) \(transactionData.transactionAmount)"
+        self.priceLabel.text = "\("currency".localized) \(transactionData.transactionAmount ?? 1.0)"
         self.priceLabel.textColor = transactionData.transactionType == .income ? UIColor.incomeColor : UIColor.expenseColor
-        self.purchasedData.text = transactionData.transactionDate.prefix(10) == currentData ? "today_label".localized : String(transactionData.transactionDate.prefix(10))
+        self.purchasedData.text = transactionData.transactionDate!.prefix(10) == currentData ? "today_label".localized : String(transactionData.transactionDate!.prefix(10))
         viewImage.backgroundColor = priceLabel.textColor
         image.image = transactionData.transactionType == .income ? UIImage(systemName: "square.and.arrow.down") : UIImage(systemName: "square.and.arrow.up")
     }
@@ -117,19 +117,4 @@ final class TransactionTableViewCell: UITableViewCell {
         
         priceLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
     }
-}
-
-//Уберу модельки данных когда буду проектировать слой добавления транзакции
-struct TransactionModel {
-    let id: String
-    let transactionAmount: Int
-    let transactionType: TransactionType
-    let transactionName: String
-    let transactionDescription: String
-    let transactionDate: String
-}
-
-enum TransactionType: String {
-    case income = "Incomes"
-    case expense = "Expenses"
 }

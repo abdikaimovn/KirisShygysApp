@@ -50,7 +50,10 @@ final class TabBarContoller: UITabBarController {
     
     //TODO: Добавить модуль добавления новых транзакций
     @objc private func addTransactionPressed() {
-        let view = TransactionViewController()
+        let service = UserDataService()
+        let presenter = TransactionPresenter(networkService: service)
+        let view = TransactionViewController(presenter: presenter)
+        presenter.view = view
         present(view, animated: true)
     }
     

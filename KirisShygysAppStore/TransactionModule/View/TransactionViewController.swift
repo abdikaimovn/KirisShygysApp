@@ -7,8 +7,10 @@
 
 import UIKit
 import SnapKit
+import AudioToolbox
 
 final class TransactionViewController: UIViewController {
+    private let presenter: TransactionPresenter
     
     private let surfaceView: UIView = {
         let view = UIView()
@@ -80,7 +82,7 @@ final class TransactionViewController: UIViewController {
         field.placeholder = "0"
         field.textColor = .white
         field.layer.cornerRadius = 16
-        field.keyboardType = .numberPad
+        field.keyboardType = .decimalPad
         field.returnKeyType = .default
         return field
     }()
@@ -122,16 +124,51 @@ final class TransactionViewController: UIViewController {
         return calendar
     }()
     
+    init(presenter: TransactionPresenter) {
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        nil
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupView()
         setupTextFieldDelegates()
+        setupSegmentedControl()
+        setupSaveButton()
+    }
+    
+    private func setupSaveButton() {
+        saveButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc private func saveButtonTapped() {
+        presenter.saveTransactionDidTapped(
+            with: TransactionModel(
+                amount: Double(amountTextField.text ?? "0.0"),
+                type: segmentedControl.selectedSegmentIndex == 0 ? .income : .expense,
+                name: transNameTextField.text,
+                description: descriptionTextField.text,
+                date: datePicker.date.formatted()
+            )
+        )
     }
 
     private func setupTextFieldDelegates() {
         transNameTextField.delegate = self
         descriptionTextField.delegate = self
+    }
+    
+    private func setupSegmentedControl() {
+        segmentedControl.addTarget(self, action: #selector(segmentedControlChosen), for: .valueChanged)
+    }
+    
+    @objc func segmentedControlChosen() {
+        presenter.segmentedControlChosen(index: segmentedControl.selectedSegmentIndex)
     }
     
     private func setupView() {
@@ -235,5 +272,54 @@ extension TransactionViewController: UITextFieldDelegate, UITextViewDelegate {
         // Dismiss the keyboard when return is tapped
         textField.resignFirstResponder()
         return true
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            // Dismiss the keyboard when return is tapped
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+    
+}
+
+extension TransactionViewController: TransactionViewProtocol {
+    func showFailure(with error: NetworkErrorModel) {
+        AlertManager.showAlert(on: self, title: error.title , message: error.description)
+    }
+    
+    func showSuccess() {
+        NotificationCenter.default.post(name: Notification.Name(NotificationCenterEnum.updateAfterTransaction.rawValue), object: nil)
+        dismiss(animated: true)
+    }
+    
+    func updateAppereanceWithIncomeColor() {
+        view.backgroundColor = .incomeColor
+        segmentedControl.selectedSegmentTintColor = .incomeColor
+        datePicker.tintColor = .incomeColor
+        saveButton.backgroundColor = .incomeColor
+    }
+    
+    func updateAppereanceWithExpenseColor() {
+        view.backgroundColor = .expenseColor
+        segmentedControl.selectedSegmentTintColor = .expenseColor
+        datePicker.tintColor = .expenseColor
+        saveButton.backgroundColor = .expenseColor
+    }
+    
+    func showInvalidAmountAlert() {
+        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+        AlertManager.showAlert(on: self, 
+                               title: "emptyTransactionFieldError_title".localized,
+                               message: "emptyTransactionField_error".localized)
+    }
+    
+    func showInvalidNameAlert() {
+        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+        AlertManager.showAlert(on: self,
+                               title: "emptyTransactionFieldError_title".localized,
+                               message: "emptyTransactionField_error".localized)
     }
 }
