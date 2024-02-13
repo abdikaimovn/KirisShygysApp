@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		6F0B87462B6141F200434150 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0B87452B6141F200434150 /* AuthorizationViewController.swift */; };
 		6F0B87482B618DD000434150 /* OnboardingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0B87472B618DD000434150 /* OnboardingPresenter.swift */; };
+		6F0E031C2B78EE5F00B9FF21 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0E031B2B78EE5F00B9FF21 /* HomePresenter.swift */; };
+		6F0E031E2B7921C200B9FF21 /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0E031D2B7921C200B9FF21 /* TransactionTableViewCell.swift */; };
+		6F0E03242B7A355300B9FF21 /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0E03232B7A355300B9FF21 /* TransactionViewController.swift */; };
 		6F36899F2B6C07870052BAB7 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F36899E2B6C07870052BAB7 /* UIViewController+Extension.swift */; };
 		6F4580D92B5EE1D600869FF9 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6F4580D82B5EE1D600869FF9 /* SnapKit */; };
 		6F4580E52B601A0E00869FF9 /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4580E42B601A0E00869FF9 /* NSObject+Extension.swift */; };
@@ -65,6 +68,10 @@
 		6F64448B2B66388C0018238D /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F64448A2B66388C0018238D /* AlertManager.swift */; };
 		6F6444902B663A130018238D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F64448F2B663A130018238D /* HomeViewController.swift */; };
 		6F6444932B6688880018238D /* AuthorizationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6444922B6688880018238D /* AuthorizationPresenter.swift */; };
+		6F705A342B7B5E800029CB66 /* TransactionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F705A332B7B5E800029CB66 /* TransactionPresenter.swift */; };
+		6F705A362B7B5EF90029CB66 /* UserDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F705A352B7B5EF90029CB66 /* UserDataService.swift */; };
+		6F705A382B7B60CF0029CB66 /* TransactionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F705A372B7B60CF0029CB66 /* TransactionModel.swift */; };
+		6F705A3A2B7BA0420029CB66 /* NotificationCenterEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F705A392B7BA0420029CB66 /* NotificationCenterEnum.swift */; };
 		6FA432322B62946E00F79721 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA432312B62946E00F79721 /* RegistrationViewController.swift */; };
 		6FF0DE442B6E2699007C51F8 /* TabBarContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF0DE432B6E2699007C51F8 /* TabBarContoller.swift */; };
 		6FF0DE462B6E26C3007C51F8 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF0DE452B6E26C3007C51F8 /* CustomTabBar.swift */; };
@@ -87,6 +94,9 @@
 /* Begin PBXFileReference section */
 		6F0B87452B6141F200434150 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
 		6F0B87472B618DD000434150 /* OnboardingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPresenter.swift; sourceTree = "<group>"; };
+		6F0E031B2B78EE5F00B9FF21 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		6F0E031D2B7921C200B9FF21 /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
+		6F0E03232B7A355300B9FF21 /* TransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewController.swift; sourceTree = "<group>"; };
 		6F36899E2B6C07870052BAB7 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		6F4580D62B5EDFB200869FF9 /* KirisShygysAppStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KirisShygysAppStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F4580E42B601A0E00869FF9 /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
@@ -119,6 +129,10 @@
 		6F64448A2B66388C0018238D /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		6F64448F2B663A130018238D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		6F6444922B6688880018238D /* AuthorizationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationPresenter.swift; sourceTree = "<group>"; };
+		6F705A332B7B5E800029CB66 /* TransactionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionPresenter.swift; sourceTree = "<group>"; };
+		6F705A352B7B5EF90029CB66 /* UserDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataService.swift; sourceTree = "<group>"; };
+		6F705A372B7B60CF0029CB66 /* TransactionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionModel.swift; sourceTree = "<group>"; };
+		6F705A392B7BA0420029CB66 /* NotificationCenterEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterEnum.swift; sourceTree = "<group>"; };
 		6FA432312B62946E00F79721 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		6FF0DE432B6E2699007C51F8 /* TabBarContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarContoller.swift; sourceTree = "<group>"; };
 		6FF0DE452B6E26C3007C51F8 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
@@ -182,6 +196,24 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		6F0E031F2B792BF000B9FF21 /* TransactionModule */ = {
+			isa = PBXGroup;
+			children = (
+				6F705A312B7B5C200029CB66 /* Model */,
+				6F0E03212B7A345100B9FF21 /* View */,
+				6F705A322B7B5C240029CB66 /* Presenter */,
+			);
+			path = TransactionModule;
+			sourceTree = "<group>";
+		};
+		6F0E03212B7A345100B9FF21 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6F0E03232B7A355300B9FF21 /* TransactionViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		6F3689A02B6C09740052BAB7 /* TabBarModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -202,14 +234,15 @@
 		6F61E49A2B5D8A0B00F8AB20 /* KirisShygysAppStore */ = {
 			isa = PBXGroup;
 			children = (
-				6F61E4C72B5E996300F8AB20 /* Support */,
 				6F61E4B02B5E694100F8AB20 /* AppConfiguration */,
+				6F61E4C72B5E996300F8AB20 /* Support */,
 				6F6444282B657E920018238D /* Network */,
 				6F61E4AF2B5E691D00F8AB20 /* OnboardingModule */,
 				6F0B87412B6130E500434150 /* AuthorizationModule */,
 				6FA4322D2B62941600F79721 /* RegistrationModule */,
 				6F3689A02B6C09740052BAB7 /* TabBarModule */,
 				6F6444892B66379D0018238D /* HomeModule */,
+				6F0E031F2B792BF000B9FF21 /* TransactionModule */,
 			);
 			path = KirisShygysAppStore;
 			sourceTree = "<group>";
@@ -272,6 +305,7 @@
 				6F6444842B6593650018238D /* Validator.swift */,
 				6F64448A2B66388C0018238D /* AlertManager.swift */,
 				6FF0DE4A2B6E4B9B007C51F8 /* ExtendedTapAreaButton.swift */,
+				6F705A392B7BA0420029CB66 /* NotificationCenterEnum.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -300,6 +334,7 @@
 			children = (
 				6F6444342B65804A0018238D /* AuthenticationService.swift */,
 				6F64447D2B65813D0018238D /* NetworkModel.swift */,
+				6F705A352B7B5EF90029CB66 /* UserDataService.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -349,6 +384,7 @@
 		6F64448C2B6639F90018238D /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				6F0E031B2B78EE5F00B9FF21 /* HomePresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -357,6 +393,7 @@
 			isa = PBXGroup;
 			children = (
 				6F64448F2B663A130018238D /* HomeViewController.swift */,
+				6F0E031D2B7921C200B9FF21 /* TransactionTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -372,6 +409,22 @@
 			isa = PBXGroup;
 			children = (
 				6F6444922B6688880018238D /* AuthorizationPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		6F705A312B7B5C200029CB66 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6F705A372B7B60CF0029CB66 /* TransactionModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6F705A322B7B5C240029CB66 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				6F705A332B7B5E800029CB66 /* TransactionPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -526,6 +579,8 @@
 				6F0B87482B618DD000434150 /* OnboardingPresenter.swift in Sources */,
 				6F6444902B663A130018238D /* HomeViewController.swift in Sources */,
 				6F36899F2B6C07870052BAB7 /* UIViewController+Extension.swift in Sources */,
+				6F705A382B7B60CF0029CB66 /* TransactionModel.swift in Sources */,
+				6F705A362B7B5EF90029CB66 /* UserDataService.swift in Sources */,
 				6F6444832B6586400018238D /* RegistrationPresenter.swift in Sources */,
 				6F61E4CF2B5EA58600F8AB20 /* String+Extension.swift in Sources */,
 				6F6444882B65A0180018238D /* LoaderView.swift in Sources */,
@@ -540,9 +595,14 @@
 				6F0B87462B6141F200434150 /* AuthorizationViewController.swift in Sources */,
 				6F6444352B65804A0018238D /* AuthenticationService.swift in Sources */,
 				6FF0DE462B6E26C3007C51F8 /* CustomTabBar.swift in Sources */,
+				6F705A3A2B7BA0420029CB66 /* NotificationCenterEnum.swift in Sources */,
+				6F0E031E2B7921C200B9FF21 /* TransactionTableViewCell.swift in Sources */,
 				6F4580E52B601A0E00869FF9 /* NSObject+Extension.swift in Sources */,
 				6F6444792B6580ED0018238D /* AuthorizationModel.swift in Sources */,
+				6F0E031C2B78EE5F00B9FF21 /* HomePresenter.swift in Sources */,
 				6FF0DE4B2B6E4B9B007C51F8 /* ExtendedTapAreaButton.swift in Sources */,
+				6F705A342B7B5E800029CB66 /* TransactionPresenter.swift in Sources */,
+				6F0E03242B7A355300B9FF21 /* TransactionViewController.swift in Sources */,
 				6F64447C2B6581290018238D /* RegistrationModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

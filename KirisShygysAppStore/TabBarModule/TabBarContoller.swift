@@ -50,7 +50,11 @@ final class TabBarContoller: UITabBarController {
     
     //TODO: Добавить модуль добавления новых транзакций
     @objc private func addTransactionPressed() {
-
+        let service = UserDataService()
+        let presenter = TransactionPresenter(networkService: service)
+        let view = TransactionViewController(presenter: presenter)
+        presenter.view = view
+        present(view, animated: true)
     }
     
     private func createVC(for rootViewController: UIViewController, icon: UIImage?) -> UIViewController{
@@ -61,8 +65,9 @@ final class TabBarContoller: UITabBarController {
     
     //TODO: - FIX
     private func createHomeModule() -> UIViewController {
-        let view = UIViewController()
-        view.view.backgroundColor = .white
+        let presenter = HomePresenter()
+        let view = HomeViewController(presenter: presenter)
+        presenter.view = view
         return view
     }
     
