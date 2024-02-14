@@ -47,8 +47,7 @@ final class TabBarContoller: UITabBarController {
         plusButton.addTarget(self, action: #selector(addTransactionPressed), for: .touchUpInside)
         return plusButton
     }
-    
-    //TODO: Добавить модуль добавления новых транзакций
+
     @objc private func addTransactionPressed() {
         let service = UserDataService()
         let presenter = TransactionPresenter(networkService: service)
@@ -62,8 +61,7 @@ final class TabBarContoller: UITabBarController {
         navViewController.tabBarItem.image = icon
         return navViewController
     }
-    
-    //TODO: - FIX
+
     private func createHomeModule() -> UIViewController {
         let presenter = HomePresenter()
         let view = HomeViewController(presenter: presenter)

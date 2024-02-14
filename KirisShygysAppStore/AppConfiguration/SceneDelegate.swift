@@ -31,8 +31,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let navController = UINavigationController(rootViewController: view)
             goToController(with: navController)
         } else {
-            let tabVC = TabBarContoller()
-            goToController(with: tabVC)
+            goToController(with: TabBarContoller())
         }
     }
     

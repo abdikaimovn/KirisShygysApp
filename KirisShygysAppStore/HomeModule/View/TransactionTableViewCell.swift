@@ -67,10 +67,10 @@ final class TransactionTableViewCell: UITableViewCell {
     func configure(transactionData: TransactionModel) {
         let currentData = Date.now.formatted().prefix(10)
         
-        self.transName.text = transactionData.transactionName
-        self.priceLabel.text = "\("currency".localized) \(transactionData.transactionAmount ?? 1.0)"
-        self.priceLabel.textColor = transactionData.transactionType == .income ? UIColor.incomeColor : UIColor.expenseColor
-        self.purchasedData.text = transactionData.transactionDate!.prefix(10) == currentData ? "today_label".localized : String(transactionData.transactionDate!.prefix(10))
+        transName.text = transactionData.transactionName
+        priceLabel.text = "\("currency".localized) \(transactionData.transactionAmount ?? 1.0)"
+        priceLabel.textColor = transactionData.transactionType == .income ? UIColor.incomeColor : UIColor.expenseColor
+        purchasedData.text = transactionData.transactionDate!.prefix(10) == currentData ? "today_label".localized : String(transactionData.transactionDate!.prefix(10))
         viewImage.backgroundColor = priceLabel.textColor
         image.image = transactionData.transactionType == .income ? UIImage(systemName: "square.and.arrow.down") : UIImage(systemName: "square.and.arrow.up")
     }

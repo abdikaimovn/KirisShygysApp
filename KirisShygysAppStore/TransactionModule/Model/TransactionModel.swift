@@ -8,12 +8,12 @@
 import Foundation
 
 struct TransactionModel {
-    var id: String?
-    var transactionAmount: Double?
-    var transactionType: TransactionType
-    var transactionName: String?
-    var transactionDescription: String?
-    var transactionDate: String?
+    let id: String?
+    let transactionAmount: Double?
+    let transactionType: TransactionType
+    let transactionName: String?
+    let transactionDescription: String?
+    let transactionDate: String?
 
     // Инициализатор для преобразования данных из Firebase
     init(data: [String: Any]) {
@@ -27,6 +27,7 @@ struct TransactionModel {
 
     // Инициализатор для создания объекта из явных параметров
     init(amount: Double?, type: TransactionType, name: String?, description: String?, date: String?) {
+        id = nil
         transactionAmount = amount
         transactionType = type
         transactionName = name
@@ -36,12 +37,12 @@ struct TransactionModel {
 }
 
 struct ValidatedTransactionModel {
-    var id: String?
-    var transactionAmount: Double
-    var transactionType: TransactionType
-    var transactionName: String
-    var transactionDescription: String
-    var transactionDate: String
+    let id: String?
+    let transactionAmount: Double
+    let transactionType: TransactionType
+    let transactionName: String
+    let transactionDescription: String
+    let transactionDate: String
 }
 
 enum TransactionType: String {
