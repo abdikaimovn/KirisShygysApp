@@ -31,6 +31,7 @@ extension UserDataService: TransactionServiceProtocol {
         
         // Уникальный id для транзакций
         let transactionId = UUID().uuidString
+        
         // Создание словаря для данных транзакции
         let transactionDataDict: [String: Any] = [
             "id": transactionId,

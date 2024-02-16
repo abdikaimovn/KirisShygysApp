@@ -40,6 +40,7 @@ final class TransactionPresenter {
         let date = model.transactionDate ?? ""
         
         let data = ValidatedTransactionModel(
+            id: nil,
             transactionAmount: validAmount,
             transactionType: transactionType,
             transactionName: validName,
