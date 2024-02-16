@@ -10,6 +10,8 @@ import UIKit
 enum FontStyle {
     case body
     case title
+    case label
+    case mediumLabel
     case button
     case large
     case regularLarge
@@ -20,6 +22,10 @@ enum FontStyle {
             return 16.0
         case .title:
             return 16.0
+        case .label:
+            return 18.0
+        case .mediumLabel:
+            return 18.0
         case .button:
             return 18.0
         case .large:
@@ -32,9 +38,13 @@ enum FontStyle {
     var fontName: String {
         switch self {
         case .body:
-            return "Roboto Light"
+            return "Roboto-Regular"
         case .title:
             return "Roboto Bold"
+        case .label:
+            return "Roboto-Regular"
+        case .mediumLabel:
+            return "Roboto Medium"
         case .button:
             return "Roboto Bold"
         case .large:
@@ -48,5 +58,9 @@ enum FontStyle {
 extension UIFont {
     static func font(style: FontStyle) -> UIFont {
         UIFont(name: style.fontName, size: style.fontSize) ?? UIFont.systemFont(ofSize: style.fontSize)
+    }
+    
+    static func font(style: FontStyle, withSize: CGFloat) -> UIFont {
+        UIFont(name: style.fontName, size: withSize) ?? UIFont.systemFont(ofSize: withSize)
     }
 }

@@ -198,7 +198,7 @@ extension OnboardingViewController: OnboardingViewProtocol {
         
         let registrationView = createRegistrationModule()
         
-        self.navigationController?.pushViewController(registrationView, animated: true)
+        navigationController?.pushViewController(registrationView, animated: true)
     }
     
     func showAuthorizationPage() {
@@ -208,6 +208,6 @@ extension OnboardingViewController: OnboardingViewProtocol {
         
         let authorizationView = createAuthorizationModule()
         
-        self.navigationController?.pushViewController(authorizationView, animated: true)
+        navigationController?.pushViewController(authorizationView, animated: true)
     }
 }
