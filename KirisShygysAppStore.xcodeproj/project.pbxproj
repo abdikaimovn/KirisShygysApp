@@ -72,6 +72,7 @@
 		6F705A362B7B5EF90029CB66 /* UserDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F705A352B7B5EF90029CB66 /* UserDataService.swift */; };
 		6F705A382B7B60CF0029CB66 /* TransactionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F705A372B7B60CF0029CB66 /* TransactionModel.swift */; };
 		6F705A3A2B7BA0420029CB66 /* NotificationCenterEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F705A392B7BA0420029CB66 /* NotificationCenterEnum.swift */; };
+		6F74A7132B80AF80009433EF /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F74A7122B80AF80009433EF /* HomeModel.swift */; };
 		6FA432322B62946E00F79721 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA432312B62946E00F79721 /* RegistrationViewController.swift */; };
 		6FF0DE442B6E2699007C51F8 /* TabBarContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF0DE432B6E2699007C51F8 /* TabBarContoller.swift */; };
 		6FF0DE462B6E26C3007C51F8 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF0DE452B6E26C3007C51F8 /* CustomTabBar.swift */; };
@@ -133,6 +134,7 @@
 		6F705A352B7B5EF90029CB66 /* UserDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataService.swift; sourceTree = "<group>"; };
 		6F705A372B7B60CF0029CB66 /* TransactionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionModel.swift; sourceTree = "<group>"; };
 		6F705A392B7BA0420029CB66 /* NotificationCenterEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterEnum.swift; sourceTree = "<group>"; };
+		6F74A7122B80AF80009433EF /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		6FA432312B62946E00F79721 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		6FF0DE432B6E2699007C51F8 /* TabBarContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarContoller.swift; sourceTree = "<group>"; };
 		6FF0DE452B6E26C3007C51F8 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
@@ -401,6 +403,7 @@
 		6F64448E2B663A050018238D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6F74A7122B80AF80009433EF /* HomeModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -597,6 +600,7 @@
 				6FF0DE462B6E26C3007C51F8 /* CustomTabBar.swift in Sources */,
 				6F705A3A2B7BA0420029CB66 /* NotificationCenterEnum.swift in Sources */,
 				6F0E031E2B7921C200B9FF21 /* TransactionTableViewCell.swift in Sources */,
+				6F74A7132B80AF80009433EF /* HomeModel.swift in Sources */,
 				6F4580E52B601A0E00869FF9 /* NSObject+Extension.swift in Sources */,
 				6F6444792B6580ED0018238D /* AuthorizationModel.swift in Sources */,
 				6F0E031C2B78EE5F00B9FF21 /* HomePresenter.swift in Sources */,

@@ -64,15 +64,17 @@ final class TransactionTableViewCell: UITableViewCell {
         nil
     }
     
-    func configure(transactionData: TransactionModel) {
+    func configure(transactionData: ValidatedTransactionModel?) {
         let currentData = Date.now.formatted().prefix(10)
         
-        transName.text = transactionData.transactionName
-        priceLabel.text = "\("currency".localized) \(transactionData.transactionAmount ?? 1.0)"
-        priceLabel.textColor = transactionData.transactionType == .income ? UIColor.incomeColor : UIColor.expenseColor
-        purchasedData.text = transactionData.transactionDate!.prefix(10) == currentData ? "today_label".localized : String(transactionData.transactionDate!.prefix(10))
-        viewImage.backgroundColor = priceLabel.textColor
-        image.image = transactionData.transactionType == .income ? UIImage(systemName: "square.and.arrow.down") : UIImage(systemName: "square.and.arrow.up")
+        if let safeData = transactionData {
+            transName.text = safeData.transactionName
+            priceLabel.text = "\("currency".localized) \(safeData.transactionAmount)"
+            priceLabel.textColor = safeData.transactionType == .income ? UIColor.incomeColor : UIColor.expenseColor
+            purchasedData.text = safeData.transactionDate.prefix(10) == currentData ? "today_label".localized : String(safeData.transactionDate.prefix(10))
+            viewImage.backgroundColor = priceLabel.textColor
+            image.image = safeData.transactionType == .income ? UIImage(systemName: "square.and.arrow.down") : UIImage(systemName: "square.and.arrow.up")
+        }
     }
     
     private func setupView() {

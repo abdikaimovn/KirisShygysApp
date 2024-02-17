@@ -63,7 +63,7 @@ final class TabBarContoller: UITabBarController {
     }
 
     private func createHomeModule() -> UIViewController {
-        let presenter = HomePresenter()
+        let presenter = HomePresenter(networkService: UserDataService())
         let view = HomeViewController(presenter: presenter)
         presenter.view = view
         return view

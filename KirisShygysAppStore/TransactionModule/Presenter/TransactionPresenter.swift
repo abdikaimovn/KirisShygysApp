@@ -25,12 +25,12 @@ final class TransactionPresenter {
     }
     
     func saveTransactionDidTapped(with model: TransactionModel) {
-        guard let validAmount = model.transactionAmount, validAmount != 0.0 else {
+        guard let validAmount = model.transactionAmount, validAmount != 0 else {
             view?.showInvalidAmountAlert()
             return
         }
         
-        guard let validName = model.transactionName else {
+        guard let validName = model.transactionName, !validName.isEmpty else {
             view?.showInvalidNameAlert()
             return
         }
@@ -40,12 +40,11 @@ final class TransactionPresenter {
         let date = model.transactionDate ?? ""
         
         let data = ValidatedTransactionModel(
-            id: nil,
-            transactionAmount: validAmount,
-            transactionType: transactionType,
-            transactionName: validName,
-            transactionDescription: description ?? "emptyDescription".localized,
-            transactionDate: date
+            amount: validAmount,
+            type: transactionType,
+            name: validName,
+            description: description ?? "",
+            date: date
         )
         
         networkService.insertNewTransaction(transaction: data) { [weak self] result in
