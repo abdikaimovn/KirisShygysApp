@@ -9,7 +9,6 @@ import UIKit
 
 final class HomeViewController: UIViewController {
     private let presenter: HomePresenter
-    private var transactionData: [ValidatedTransactionModel]?
     
     private let headerView: UIView = {
         let view = UIView()
@@ -347,7 +346,7 @@ final class HomeViewController: UIViewController {
 
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        transactionData?.count ?? 0
+        presenter.numberOfRowsInSection()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -356,7 +355,7 @@ extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: TransactionTableViewCell.typeName, for: indexPath) as? TransactionTableViewCell {
-            cell.configure(transactionData: transactionData?[indexPath.row])
+            cell.configure(transactionData: presenter.dataForRowAt(indexPath.row))
             return cell
         } else {
             return UITableViewCell(frame: .zero)
@@ -371,8 +370,7 @@ extension HomeViewController: HomeViewProtocol {
         incomeLabel.text = incomes
     }
     
-    func setTransactionData(data: [ValidatedTransactionModel]) {
-        transactionData = data
+    func reloadTransactionTableView() {
         transactionsTableView.reloadData()
     }
     

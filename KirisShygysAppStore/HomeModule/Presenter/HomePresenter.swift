@@ -12,13 +12,14 @@ protocol HomeViewProtocol: AnyObject {
     func hideLoader()
     func setUsername(username: String)
     func setCardValues(total: String, expenses: String, incomes: String)
-    func setTransactionData(data: [ValidatedTransactionModel])
+    func reloadTransactionTableView()
     func showFailure(with error: NetworkErrorModel)
 }
 
 final class HomePresenter {
     weak var view: HomeViewProtocol?
     private let networkService: HomeServiceProtocol
+    private var transactionData: [ValidatedTransactionModel]?
     
     init(networkService: HomeServiceProtocol) {
         self.networkService = networkService
@@ -49,6 +50,14 @@ final class HomePresenter {
         return CardModel(total: total, incomes: incomes, expenses: expenses)
     }
     
+    func numberOfRowsInSection() -> Int {
+        transactionData?.count ?? 0
+    }
+    
+    func dataForRowAt(_ index: Int) -> ValidatedTransactionModel? {
+        transactionData?[index]
+    }
+    
     func viewDidLoaded() {
         view?.showLoader()
         
@@ -66,6 +75,8 @@ final class HomePresenter {
             
             switch result {
             case .success(let transactionData):
+                self?.transactionData = transactionData
+                
                 let cardModel = self?.calculateCardValues(data: transactionData)
                 
                 self?.view?.setCardValues(
@@ -74,7 +85,7 @@ final class HomePresenter {
                     incomes: "\("currency".localized) \(cardModel?.incomes ?? 0)"
                 )
                 
-                self?.view?.setTransactionData(data: transactionData)
+                self?.view?.reloadTransactionTableView()
             case .failure(let failure):
                 self?.view?.showFailure(with: failure)
             }

@@ -122,6 +122,7 @@ extension UserDataService: HomeServiceProtocol {
                         text: error.localizedDescription,
                         description: "usernameFetching_error".localized)
                 ))
+                return
             }
             
             if let snapshot = snapshot, let userData = snapshot.data(), let name = userData[FirebaseDocumentName.username.rawValue] as? String {
@@ -157,23 +158,23 @@ extension UserDataService: HomeServiceProtocol {
                             description: "documentFetching_error".localized)
                     ))
                     return
-                } else {
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "dd.MM.yyyy, HH:mm"
-                    
-                    let transactions = querySnapshot?.documents.compactMap { document in
-                        return ValidatedTransactionModel(data: document.data())
-                    } ?? []
-                    
-                    let sortedTransactionData = transactions.sorted{ (transaction1: ValidatedTransactionModel, transaction2: ValidatedTransactionModel) -> Bool in
-                        if let date1 = dateFormatter.date(from: transaction1.transactionDate), let date2 = dateFormatter.date(from: transaction2.transactionDate) {
-                            return date1 > date2
-                        }
-                        return false
-                    }
-
-                    completion(.success(sortedTransactionData))
                 }
+                
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "dd.MM.yyyy, HH:mm"
+                
+                let transactions = querySnapshot?.documents.compactMap { document in
+                    return ValidatedTransactionModel(data: document.data())
+                } ?? []
+                
+                let sortedTransactionData = transactions.sorted{ (transaction1: ValidatedTransactionModel, transaction2: ValidatedTransactionModel) -> Bool in
+                    if let date1 = dateFormatter.date(from: transaction1.transactionDate), let date2 = dateFormatter.date(from: transaction2.transactionDate) {
+                        return date1 > date2
+                    }
+                    return false
+                }
+                
+                completion(.success(sortedTransactionData))
             }
     }
 }
