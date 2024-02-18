@@ -30,7 +30,6 @@ final class HomeViewController: UIViewController {
     private let userNameLabel: UILabel = {
         let label = UILabel()
         label.font = .font(style: .title, withSize: 20)
-        label.text = "Nurdaulet"
         label.textColor = .darkGray
         return label
     }()
@@ -55,7 +54,6 @@ final class HomeViewController: UIViewController {
     private let totalBalance: UILabel = {
         let label = UILabel()
         label.font = .font(style: .mediumLabel, withSize: 30)
-        label.text = "$ 123"
         label.textColor = .white
         label.numberOfLines = 0
         return label
@@ -89,7 +87,6 @@ final class HomeViewController: UIViewController {
         let label = UILabel()
         label.font = .font(style: .label)
         label.textColor = .white
-        label.text = "$ 123"
         return label
     }()
     
@@ -121,7 +118,6 @@ final class HomeViewController: UIViewController {
         let label = UILabel()
         label.font = .font(style: .label)
         label.textColor = .white
-        label.text = "$ 123"
         return label
     }()
     
@@ -158,6 +154,8 @@ final class HomeViewController: UIViewController {
         return tableView
     }()
     
+    private let loaderView = LoaderView(with: .medium)
+    
     //MARK: - Lifecycle
     init(presenter: HomePresenter) {
         self.presenter = presenter
@@ -180,6 +178,13 @@ final class HomeViewController: UIViewController {
 
         setupView()
         setupSeeAllButton()
+        setupNotificationCenter()
+        
+        presenter.viewDidLoaded()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     //MARK: - Functions
@@ -199,6 +204,20 @@ final class HomeViewController: UIViewController {
         seeAllButton.addTarget(self, action: #selector(showAllTransactions), for: .touchUpInside)
     }
     
+    private func setupNotificationCenter() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updateView),
+            name: Notification.Name(NotificationCenterEnum.updateAfterTransaction.rawValue),
+            object: nil
+        )
+    }
+    
+    @objc private func updateView() {
+        presenter.viewDidLoaded()
+    }
+    
+    //TODO: - Добавить показ историй транзакции
     @objc private func showAllTransactions() {
         
     }
@@ -317,12 +336,17 @@ final class HomeViewController: UIViewController {
             make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-20)
         }
+        
+        view.addSubview(loaderView)
+        loaderView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
 }
 
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        presenter.numberOfRowsInSection()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -331,7 +355,7 @@ extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: TransactionTableViewCell.typeName, for: indexPath) as? TransactionTableViewCell {
-            cell.configure(transactionData: TransactionModel(amount: 15.0, type: .expense, name: "test", description: "test", date: "11.02.2024"))
+            cell.configure(transactionData: presenter.dataForRowAt(indexPath.row))
             return cell
         } else {
             return UITableViewCell(frame: .zero)
@@ -340,5 +364,29 @@ extension HomeViewController: UITableViewDataSource {
 }
 
 extension HomeViewController: HomeViewProtocol {
+    func setCardValues(total: String, expenses: String, incomes: String) {
+        totalBalance.text = total
+        expenseLabel.text = expenses
+        incomeLabel.text = incomes
+    }
     
+    func reloadTransactionTableView() {
+        transactionsTableView.reloadData()
+    }
+    
+    func showLoader() {
+        loaderView.showLoader()
+    }
+    
+    func hideLoader() {
+        loaderView.hideLoader()
+    }
+    
+    func setUsername(username: String) {
+        userNameLabel.text = username
+    }
+    
+    func showFailure(with error: NetworkErrorModel) {
+        AlertManager.showAlert(on: self, title: error.title , message: error.description)
+    }
 }

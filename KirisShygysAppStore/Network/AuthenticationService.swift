@@ -17,7 +17,7 @@ protocol AuthorizationNetworkService {
                        completion: @escaping (Result<(), NetworkErrorModel>) -> Void)
 }
 
-final class AuthenticationService {
+struct AuthenticationService {
     static var user: User? {
         Auth.auth().currentUser
     }
@@ -86,13 +86,9 @@ extension AuthenticationService: RegistrationNetworkService {
         let email = userData.email ?? ""
         let password = userData.password ?? ""
         
-        Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, error in
-            guard let self else {
-                return
-            }
-            
+        Auth.auth().createUser(withEmail: email, password: password) { result, error in
             if let error = error {
-                completion(.failure(self.handleError(with: error)))
+                completion(.failure(handleError(with: error)))
                 return
             }
             
@@ -105,7 +101,7 @@ extension AuthenticationService: RegistrationNetworkService {
                 return
             } 
             
-            self.setUserToDB(with: userResult.uid, username: username, email: email, completion: completion)
+            setUserToDB(with: userResult.uid, username: username, email: email, completion: completion)
         }
     }
 }
@@ -116,12 +112,9 @@ extension AuthenticationService: AuthorizationNetworkService {
         let email = userData.email ?? ""
         let password = userData.password ?? ""
 
-        Auth.auth().signIn(withEmail: email, password: password) { [weak self] result, error in
-            guard let self else {
-                return
-            }
+        Auth.auth().signIn(withEmail: email, password: password) { result, error in
             if let error = error {
-                completion(.failure(self.handleError(with: error)))
+                completion(.failure(handleError(with: error)))
                 return
             }
             

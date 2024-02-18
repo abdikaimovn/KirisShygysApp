@@ -41,6 +41,9 @@
 "unknown_error_title" = "Unknown Error";
 "unknown_error" = "Something went wrong";
 "noTransaction" = "You have not made any transactions in the current month";
+"error_title" = "Error";
+"usernameFetching_error" = "Error with extracting the user name";
+"documentFetching_error" = "Error with extracting the user's transactions";
 
 //MARK: - Home page
 "welcome_label" = "Welcome back";

@@ -41,6 +41,9 @@
 "unknown_error_title" = "Неизвестная ошибка";
 "unknown_error" = "Произошла неизвестная ошибка";
 "noTransaction" = "Вы не совершали никаких транзакций за последний месяц";
+"error_title" = "Ошибка";
+"usernameFetching_error" = "Ошибка с извлечением имени пользователя";
+"documentFetching_error" = "Ошибка при извлечении транзакций пользователя";
 
 //MARK: - Home page
 "welcome_label" = "С Возвращением";

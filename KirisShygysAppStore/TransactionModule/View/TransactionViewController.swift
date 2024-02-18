@@ -82,7 +82,7 @@ final class TransactionViewController: UIViewController {
         field.placeholder = "0"
         field.textColor = .white
         field.layer.cornerRadius = 16
-        field.keyboardType = .decimalPad
+        field.keyboardType = .numberPad
         field.returnKeyType = .default
         return field
     }()
@@ -149,7 +149,7 @@ final class TransactionViewController: UIViewController {
     @objc private func saveButtonTapped() {
         presenter.saveTransactionDidTapped(
             with: TransactionModel(
-                amount: Double(amountTextField.text ?? "0.0"),
+                amount: Int(amountTextField.text ?? "0"),
                 type: segmentedControl.selectedSegmentIndex == 0 ? .income : .expense,
                 name: transNameTextField.text,
                 description: descriptionTextField.text,
