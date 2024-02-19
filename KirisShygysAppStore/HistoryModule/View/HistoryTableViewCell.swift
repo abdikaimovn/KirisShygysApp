@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 final class HistoryTableViewCell: UITableViewCell {
     private let mainView: UIView = {
@@ -40,13 +41,6 @@ final class HistoryTableViewCell: UITableViewCell {
         return label
     }()
     
-    private let purchasedData: UILabel = {
-        let label = UILabel()
-        label.font = .font(style: .body, withSize: 14)
-        label.textColor = .black
-        return label
-    }()
-    
     private let priceLabel: UILabel = {
         let label = UILabel()
         label.font = .font(style: .title)
@@ -64,13 +58,10 @@ final class HistoryTableViewCell: UITableViewCell {
     }
     
     func configure(transactionData: ValidatedTransactionModel?) {
-        let currentData = Date.now.formatted().prefix(10)
-        
         if let safeData = transactionData {
             transName.text = safeData.transactionName
             priceLabel.text = "\("currency".localized) \(safeData.transactionAmount)"
             priceLabel.textColor = safeData.transactionType == .income ? UIColor.incomeColor : UIColor.expenseColor
-            purchasedData.text = safeData.transactionDate.prefix(10) == currentData ? "today_label".localized : String(safeData.transactionDate.prefix(10))
             viewImage.backgroundColor = priceLabel.textColor
             image.image = safeData.transactionType == .income ? UIImage(systemName: "square.and.arrow.down") : UIImage(systemName: "square.and.arrow.up")
         }
@@ -100,15 +91,9 @@ final class HistoryTableViewCell: UITableViewCell {
         mainView.addSubview(transName)
         transName.snp.makeConstraints { make in
             make.leading.equalTo(viewImage.snp.trailing).offset(15)
-            make.top.equalTo(viewImage.snp.top)
+            make.centerY.equalToSuperview()
         }
     
-        mainView.addSubview(purchasedData)
-        purchasedData.snp.makeConstraints { make in
-            make.leading.equalTo(viewImage.snp.trailing).offset(15)
-            make.bottom.equalTo(viewImage.snp.bottom)
-        }
-        
         mainView.addSubview(priceLabel)
         priceLabel.snp.makeConstraints { make in
             make.leading.greaterThanOrEqualTo(transName.snp.trailing).offset(10)

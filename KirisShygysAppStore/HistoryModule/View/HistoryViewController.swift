@@ -11,6 +11,8 @@ import SnapKit
 final class HistoryViewController: UIViewController {
     private let presenter: HistoryPresenter
     
+    private let loaderView = LoaderView(with: .medium)
+    
     private let filterTransactionLabel: UILabel = {
         let label = UILabel()
         label.text = "filterTransactions_label".localized
@@ -38,7 +40,7 @@ final class HistoryViewController: UIViewController {
         let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         backBarButtonItem.tintColor = .brownColor
         navigationController?.navigationBar.topItem?.backBarButtonItem = backBarButtonItem
-        
+         
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
@@ -48,6 +50,8 @@ final class HistoryViewController: UIViewController {
         setupView()
         setupFilterButton()
         setupTransactionsTableView()
+        
+        presenter.viewDidLoaded()
     }
     
     private func setupTransactionsTableView() {
@@ -96,12 +100,25 @@ final class HistoryViewController: UIViewController {
             make.bottom.equalToSuperview()
             make.top.equalTo(filterButton.snp.bottom).offset(10)
         }
+        
+        view.addSubview(loaderView)
+        loaderView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
 }
 
 extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        presenter.numberOfSections()
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        presenter.numberOfRowsInSection()
+        presenter.numberOfRowsInSection(section)
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        presenter.titleForHeaderInSection(section)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -110,7 +127,9 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: HistoryTableViewCell.typeName, for: indexPath) as? HistoryTableViewCell {
-            cell.configure(transactionData: presenter.dataForRowAt(indexPath.row))
+            
+            cell.configure(transactionData: presenter.dataForRowAt(indexPath))
+            
             return cell
         } else {
             return UITableViewCell(frame: .zero)
@@ -119,5 +138,17 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension HistoryViewController: HistoryViewProtocol {
+    func reloadTransactionsTableView() {
+        
+    }
+    
+    func showLoader() {
+        
+    }
+    
+    func hideLoader() {
+        
+    }
+    
     
 }

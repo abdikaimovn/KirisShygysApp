@@ -10,6 +10,8 @@
 		6F0668642B825735003D8925 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0668632B825735003D8925 /* HistoryViewController.swift */; };
 		6F0668662B825762003D8925 /* HistoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0668652B825762003D8925 /* HistoryPresenter.swift */; };
 		6F0668682B8294EE003D8925 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0668672B8294EE003D8925 /* HistoryTableViewCell.swift */; };
+		6F06686A2B83828C003D8925 /* HistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0668692B83828C003D8925 /* HistoryModel.swift */; };
+		6F06686C2B838987003D8925 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F06686B2B838987003D8925 /* Date+Extension.swift */; };
 		6F0B87462B6141F200434150 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0B87452B6141F200434150 /* AuthorizationViewController.swift */; };
 		6F0B87482B618DD000434150 /* OnboardingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0B87472B618DD000434150 /* OnboardingPresenter.swift */; };
 		6F0E031C2B78EE5F00B9FF21 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0E031B2B78EE5F00B9FF21 /* HomePresenter.swift */; };
@@ -99,6 +101,8 @@
 		6F0668632B825735003D8925 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		6F0668652B825762003D8925 /* HistoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryPresenter.swift; sourceTree = "<group>"; };
 		6F0668672B8294EE003D8925 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
+		6F0668692B83828C003D8925 /* HistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryModel.swift; sourceTree = "<group>"; };
+		6F06686B2B838987003D8925 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		6F0B87452B6141F200434150 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
 		6F0B87472B618DD000434150 /* OnboardingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPresenter.swift; sourceTree = "<group>"; };
 		6F0E031B2B78EE5F00B9FF21 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
@@ -216,6 +220,7 @@
 		6F0668622B825720003D8925 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6F0668692B83828C003D8925 /* HistoryModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -499,6 +504,7 @@
 				6F61E4CE2B5EA58600F8AB20 /* String+Extension.swift */,
 				6F4580E42B601A0E00869FF9 /* NSObject+Extension.swift */,
 				6F36899E2B6C07870052BAB7 /* UIViewController+Extension.swift */,
+				6F06686B2B838987003D8925 /* Date+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -617,6 +623,7 @@
 			files = (
 				6F61E4DF2B5EA8F100F8AB20 /* OnboardingCollectionCell.swift in Sources */,
 				6F61E4A02B5D8A0B00F8AB20 /* OnboardingViewController.swift in Sources */,
+				6F06686C2B838987003D8925 /* Date+Extension.swift in Sources */,
 				6F61E49C2B5D8A0B00F8AB20 /* AppDelegate.swift in Sources */,
 				6F61E4CD2B5EA50700F8AB20 /* OnboardingModel.swift in Sources */,
 				6F6444932B6688880018238D /* AuthorizationPresenter.swift in Sources */,
@@ -627,6 +634,7 @@
 				6F705A362B7B5EF90029CB66 /* UserDataService.swift in Sources */,
 				6F6444832B6586400018238D /* RegistrationPresenter.swift in Sources */,
 				6F61E4CF2B5EA58600F8AB20 /* String+Extension.swift in Sources */,
+				6F06686A2B83828C003D8925 /* HistoryModel.swift in Sources */,
 				6F6444882B65A0180018238D /* LoaderView.swift in Sources */,
 				6FA432322B62946E00F79721 /* RegistrationViewController.swift in Sources */,
 				6F61E49E2B5D8A0B00F8AB20 /* SceneDelegate.swift in Sources */,
