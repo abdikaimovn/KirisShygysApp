@@ -13,7 +13,9 @@ protocol HomeViewProtocol: AnyObject {
     func setUsername(username: String)
     func setCardValues(total: String, expenses: String, incomes: String)
     func reloadTransactionTableView()
+    func showHistoryModule(transactionsData: [ValidatedTransactionModel])
     func showFailure(with error: NetworkErrorModel)
+//    func showAbsenceDataAlert()
 }
 
 final class HomePresenter {
@@ -23,6 +25,14 @@ final class HomePresenter {
     
     init(networkService: HomeServiceProtocol) {
         self.networkService = networkService
+    }
+    
+    func showAllTransactionsTapped() {
+        guard let safeData = transactionData, !safeData.isEmpty else {
+            return
+        }
+        
+        view?.showHistoryModule(transactionsData: safeData)
     }
     
     private func calculateCardValues(data: [ValidatedTransactionModel]) -> CardModel {

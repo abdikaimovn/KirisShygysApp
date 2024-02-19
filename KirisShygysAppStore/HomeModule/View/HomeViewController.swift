@@ -166,6 +166,11 @@ final class HomeViewController: UIViewController {
         nil
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
@@ -219,7 +224,7 @@ final class HomeViewController: UIViewController {
     
     //TODO: - Добавить показ историй транзакции
     @objc private func showAllTransactions() {
-        
+        presenter.showAllTransactionsTapped()
     }
     
     private func setupView() {
@@ -364,6 +369,14 @@ extension HomeViewController: UITableViewDataSource {
 }
 
 extension HomeViewController: HomeViewProtocol {
+    func showHistoryModule(transactionsData: [ValidatedTransactionModel]) {
+        let presenter = HistoryPresenter(transactionData: transactionsData)
+        let view = HistoryViewController(presenter: presenter)
+        presenter.view = view
+    
+        navigationController?.pushViewController(view, animated: true)
+    }
+    
     func setCardValues(total: String, expenses: String, incomes: String) {
         totalBalance.text = total
         expenseLabel.text = expenses

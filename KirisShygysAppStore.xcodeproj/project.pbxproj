@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F0668642B825735003D8925 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0668632B825735003D8925 /* HistoryViewController.swift */; };
+		6F0668662B825762003D8925 /* HistoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0668652B825762003D8925 /* HistoryPresenter.swift */; };
+		6F0668682B8294EE003D8925 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0668672B8294EE003D8925 /* HistoryTableViewCell.swift */; };
 		6F0B87462B6141F200434150 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0B87452B6141F200434150 /* AuthorizationViewController.swift */; };
 		6F0B87482B618DD000434150 /* OnboardingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0B87472B618DD000434150 /* OnboardingPresenter.swift */; };
 		6F0E031C2B78EE5F00B9FF21 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0E031B2B78EE5F00B9FF21 /* HomePresenter.swift */; };
@@ -93,6 +96,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6F0668632B825735003D8925 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		6F0668652B825762003D8925 /* HistoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryPresenter.swift; sourceTree = "<group>"; };
+		6F0668672B8294EE003D8925 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		6F0B87452B6141F200434150 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
 		6F0B87472B618DD000434150 /* OnboardingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPresenter.swift; sourceTree = "<group>"; };
 		6F0E031B2B78EE5F00B9FF21 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
@@ -180,6 +186,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6F06685F2B8256B6003D8925 /* HistoryModule */ = {
+			isa = PBXGroup;
+			children = (
+				6F0668622B825720003D8925 /* Model */,
+				6F0668612B82571B003D8925 /* View */,
+				6F0668602B825713003D8925 /* Presenter */,
+			);
+			path = HistoryModule;
+			sourceTree = "<group>";
+		};
+		6F0668602B825713003D8925 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				6F0668652B825762003D8925 /* HistoryPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		6F0668612B82571B003D8925 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6F0668632B825735003D8925 /* HistoryViewController.swift */,
+				6F0668672B8294EE003D8925 /* HistoryTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6F0668622B825720003D8925 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		6F0B87412B6130E500434150 /* AuthorizationModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -245,6 +285,7 @@
 				6F3689A02B6C09740052BAB7 /* TabBarModule */,
 				6F6444892B66379D0018238D /* HomeModule */,
 				6F0E031F2B792BF000B9FF21 /* TransactionModule */,
+				6F06685F2B8256B6003D8925 /* HistoryModule */,
 			);
 			path = KirisShygysAppStore;
 			sourceTree = "<group>";
@@ -593,10 +634,12 @@
 				6FF0DE442B6E2699007C51F8 /* TabBarContoller.swift in Sources */,
 				6F6444852B6593650018238D /* Validator.swift in Sources */,
 				6F64448B2B66388C0018238D /* AlertManager.swift in Sources */,
+				6F0668662B825762003D8925 /* HistoryPresenter.swift in Sources */,
 				6F61E4CB2B5E9AB700F8AB20 /* UIFont+Extension.swift in Sources */,
 				6F61E4C92B5E997500F8AB20 /* UIColor+Extension.swift in Sources */,
 				6F0B87462B6141F200434150 /* AuthorizationViewController.swift in Sources */,
 				6F6444352B65804A0018238D /* AuthenticationService.swift in Sources */,
+				6F0668682B8294EE003D8925 /* HistoryTableViewCell.swift in Sources */,
 				6FF0DE462B6E26C3007C51F8 /* CustomTabBar.swift in Sources */,
 				6F705A3A2B7BA0420029CB66 /* NotificationCenterEnum.swift in Sources */,
 				6F0E031E2B7921C200B9FF21 /* TransactionTableViewCell.swift in Sources */,
@@ -607,6 +650,7 @@
 				6FF0DE4B2B6E4B9B007C51F8 /* ExtendedTapAreaButton.swift in Sources */,
 				6F705A342B7B5E800029CB66 /* TransactionPresenter.swift in Sources */,
 				6F0E03242B7A355300B9FF21 /* TransactionViewController.swift in Sources */,
+				6F0668642B825735003D8925 /* HistoryViewController.swift in Sources */,
 				6F64447C2B6581290018238D /* RegistrationModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
