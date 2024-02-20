@@ -7,12 +7,12 @@
 
 import UIKit
 
-protocol FilterViewControllerDelegate: AnyObject {
+protocol FilterViewDelegate: AnyObject {
     func didGetFilterSettings(filterData: FilterModel)
 }
 
 final class FilterViewController: UIViewController {
-    weak var delegate: FilterViewControllerDelegate?
+    weak var delegate: FilterViewDelegate?
     private var filterModel = FilterModel(filterBy: nil, sortBy: nil, period: nil)
     
     //MARK: - UI Elements
@@ -73,7 +73,7 @@ final class FilterViewController: UIViewController {
     }()
     
     //MARK: - Lifecycle
-    init(delegate: FilterViewControllerDelegate?) {
+    init(delegate: FilterViewDelegate?) {
         self.delegate = delegate
         super.init(nibName: nil, bundle: nil)
     }
@@ -89,11 +89,7 @@ final class FilterViewController: UIViewController {
         setupButtons()
         activateButtons()
     }
-    
-    deinit {
-        print("Filter vc deinited")
-    }
-    
+
     //MARK: - Functions
     private func setupButtons() {
         configureButton(filterByExpenseButton, "expenses_label".localized)

@@ -234,16 +234,8 @@
 			children = (
 				6F0668702B8397FE003D8925 /* Model */,
 				6F06686F2B8397F8003D8925 /* View */,
-				6F06686E2B8397F1003D8925 /* Presenter */,
 			);
 			path = FilterTransactionsModule;
-			sourceTree = "<group>";
-		};
-		6F06686E2B8397F1003D8925 /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Presenter;
 			sourceTree = "<group>";
 		};
 		6F06686F2B8397F8003D8925 /* View */ = {

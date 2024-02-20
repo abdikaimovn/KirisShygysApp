@@ -16,14 +16,11 @@ protocol HistoryViewProtocol: AnyObject {
 final class HistoryPresenter {
     weak var view: HistoryViewProtocol?
     private let transactionData: [ValidatedTransactionModel]
-    private var changedTransactionData: [ValidatedTransactionModel]
-    
     private var groupedTransactions: [String: [ValidatedTransactionModel]] = [:]
     private var sectionTitles: [SectionTitleModel] = []
     
     init(transactionData: [ValidatedTransactionModel]) {
         self.transactionData = transactionData
-        changedTransactionData = transactionData
     }
     
     func numberOfSections() -> Int {
@@ -63,6 +60,55 @@ final class HistoryPresenter {
         }
     }
     
+    func didGetFilterSettings(filterModel: FilterModel) {
+        view?.showLoader()
+        
+        if filterModel.period == nil &&
+            filterModel.filterBy == nil && 
+            filterModel.sortBy == nil {
+            updateTransactions(transactionData)
+            view?.reloadTransactionsTableView()
+            view?.hideLoader()
+            return
+        }
+        
+        let filter = TransactionFilter()
+        var filteredTransactionData = transactionData
+        
+        if let filterBy = filterModel.filterBy {
+            filteredTransactionData = filter.applyFilterBy(filterBy: filterBy, transactionData: filteredTransactionData)
+        }
+        
+        if let sortBy = filterModel.sortBy {
+            filteredTransactionData = filter.applySortBy(sortBy: sortBy, transactionData: filteredTransactionData)
+        }
+        
+        if let period = filterModel.period {
+            filteredTransactionData = filter.applyTransactionsByPeriod(period: period, transactionData: filteredTransactionData)
+        }
+        
+        updateTransactions(filteredTransactionData)
+        view?.reloadTransactionsTableView()
+        view?.hideLoader()
+    }
+    
+    private func updateTransactions(_ data: [ValidatedTransactionModel]) {
+        groupedTransactions = Dictionary(
+            grouping: data,
+            by: { String($0.transactionDate.prefix(10))}
+        )
+        
+        sectionTitles = [SectionTitleModel]()
+        
+        var uniqueElementData = Set<String>()
+        for element in data {
+            if !uniqueElementData.contains(String(element.transactionDate.prefix(10))) {
+                sectionTitles.append(SectionTitleModel(fullDate: element.transactionDate))
+            }
+            uniqueElementData.insert(String(element.transactionDate.prefix(10)))
+        }
+    }
+    
     func viewDidLoaded() {
         view?.showLoader()
         
@@ -73,12 +119,12 @@ final class HistoryPresenter {
         
         sectionTitles = [SectionTitleModel]()
         
-        var uniqueElementDate = Set<String>()
+        var uniqueElementData = Set<String>()
         for element in transactionData {
-            if !uniqueElementDate.contains(String(element.transactionDate.prefix(10))) {
+            if !uniqueElementData.contains(String(element.transactionDate.prefix(10))) {
                 sectionTitles.append(SectionTitleModel(fullDate: element.transactionDate))
             }
-            uniqueElementDate.insert(String(element.transactionDate.prefix(10)))
+            uniqueElementData.insert(String(element.transactionDate.prefix(10)))
         }
         
         view?.hideLoader()

@@ -158,8 +158,8 @@ extension HistoryViewController: HistoryViewProtocol {
     }
 }
 
-extension HistoryViewController: FilterViewControllerDelegate {
+extension HistoryViewController: FilterViewDelegate {
     func didGetFilterSettings(filterData: FilterModel) {
-        
+        presenter.didGetFilterSettings(filterModel: filterData)
     }
 }
