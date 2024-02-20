@@ -12,18 +12,25 @@ protocol HistoryViewProtocol: AnyObject {
     func hideLoader()
     func reloadTransactionsTableView()
     func showFailure(with errorModel: NetworkErrorModel)
+    func showAbsenceDataView()
+    func hideAbsenceDataView()
+    func hideDetailedTransactionInfo()
+    func showDetailedTransactionInfo(with data: ValidatedTransactionModel)
 }
 
 final class HistoryPresenter {
     weak var view: HistoryViewProtocol?
     private let networkService: HistoryServiceProtocol
     private var transactionData: [ValidatedTransactionModel]
+    
     private var groupedTransactions: [String: [ValidatedTransactionModel]] = [:]
     private var sectionTitles: [SectionTitleModel] = []
+    private var filteredTransactionData: [ValidatedTransactionModel]
     
     init(transactionData: [ValidatedTransactionModel], networkService: HistoryServiceProtocol) {
         self.transactionData = transactionData
         self.networkService = networkService
+        filteredTransactionData = transactionData
     }
     
     func numberOfSections() -> Int {
@@ -52,6 +59,19 @@ final class HistoryPresenter {
         return nil
     }
     
+    func didSelectRowAt(_ indexPath: IndexPath) {
+        let sectionTitle = sectionTitles[indexPath.section].sectionTitleDate
+        
+        if let transactions = groupedTransactions[sectionTitle] {
+            let transaction = transactions[indexPath.row]
+            view?.showDetailedTransactionInfo(with: transaction)
+        }
+    }
+    
+    func closeTransactionInfoTapped() {
+        view?.hideDetailedTransactionInfo()
+    }
+    
     func cellIsDeletingForRow(at indexPath: IndexPath) {
         let sectionTitle = sectionTitles[indexPath.section].sectionTitleDate
         let transactionToDelete = groupedTransactions[sectionTitle]?[indexPath.row]
@@ -69,6 +89,12 @@ final class HistoryPresenter {
             }
         }
         
+        for (index, transaction) in filteredTransactionData.enumerated() {
+            if transaction.id == transactionToDelete.id {
+                filteredTransactionData.remove(at: index)
+            }
+        }
+        
         for (index, transaction) in transactionData.enumerated() {
             if transaction.id == transactionToDelete.id {
                 transactionData.remove(at: index)
@@ -77,7 +103,7 @@ final class HistoryPresenter {
         
         NotificationCenter.default.post(name: Notification.Name(NotificationCenterEnum.updateAfterDeletingTransaction.rawValue), object: nil)
         
-        updateTransactions(transactionData)
+        updateTransactions(filteredTransactionData)
         view?.reloadTransactionsTableView()
     }
     
@@ -105,7 +131,7 @@ final class HistoryPresenter {
         }
         
         let filter = TransactionFilter()
-        var filteredTransactionData = transactionData
+        filteredTransactionData = transactionData
         
         if let filterBy = filterModel.filterBy {
             filteredTransactionData = filter.applyFilterBy(filterBy: filterBy, transactionData: filteredTransactionData)
@@ -125,6 +151,12 @@ final class HistoryPresenter {
     }
     
     private func updateTransactions(_ data: [ValidatedTransactionModel]) {
+        if data.isEmpty {
+            view?.showAbsenceDataView()
+        } else {
+            view?.hideAbsenceDataView()
+        }
+        
         groupedTransactions = Dictionary(
             grouping: data,
             by: { String($0.transactionDate.prefix(10))}
@@ -143,22 +175,7 @@ final class HistoryPresenter {
     
     func viewDidLoaded() {
         view?.showLoader()
-        
-        groupedTransactions = Dictionary(
-            grouping: transactionData,
-            by: { String($0.transactionDate.prefix(10))}
-        )
-        
-        sectionTitles = [SectionTitleModel]()
-        
-        var uniqueElementData = Set<String>()
-        for element in transactionData {
-            if !uniqueElementData.contains(String(element.transactionDate.prefix(10))) {
-                sectionTitles.append(SectionTitleModel(fullDate: element.transactionDate))
-            }
-            uniqueElementData.insert(String(element.transactionDate.prefix(10)))
-        }
-        
+        updateTransactions(transactionData)
         view?.hideLoader()
     }
 }

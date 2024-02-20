@@ -25,6 +25,7 @@
 "apply_button_title" = "Применить";
 "save_button_title" = "Сохранить";
 "reset_button_title" = "Сброс";
+"retry_button_title" = "Повторить";
 
 //MARK: - Authorization Validator errors
 "invalidEmail_error" = "• Email должен быть валидным согласно стандартам адресов электронной почты.";
@@ -60,7 +61,7 @@
 
 //MARK: - Full transactions page
 "filterTransactions_label" = "Фильтр";
-
+"absenceData_label" = "Не найдено никаких транзакций";
 //MARK: - Filter page
 "filterBy_label" = "Фильтровать";
 "sortBy_label" = "Сортировать";
