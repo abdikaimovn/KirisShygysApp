@@ -11,6 +11,7 @@ import SnapKit
 final class HistoryViewController: UIViewController {
     private let presenter: HistoryPresenter
     
+    //MARK: - UI Elements
     private let loaderView = LoaderView(with: .medium)
     
     private let filterTransactionLabel: UILabel = {
@@ -25,6 +26,7 @@ final class HistoryViewController: UIViewController {
     
     private let transactionsTableView = UITableView()
     
+    //MARK: - Lifecycle
     init(presenter: HistoryPresenter) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
@@ -54,6 +56,7 @@ final class HistoryViewController: UIViewController {
         presenter.viewDidLoaded()
     }
     
+    //MARK: - Functions
     private func setupTransactionsTableView() {
         transactionsTableView.backgroundColor = .clear
         transactionsTableView.separatorStyle = .none
@@ -73,7 +76,11 @@ final class HistoryViewController: UIViewController {
     }
     
     @objc private func showFilters() {
-        
+        let transactionFilterVC = FilterViewController(delegate: self)
+        if let sheet = transactionFilterVC.sheetPresentationController {
+            sheet.detents = [.medium()]
+        }
+        self.present(transactionFilterVC, animated: true, completion: nil)
     }
     
     private func setupView() {
@@ -121,10 +128,6 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
         presenter.titleForHeaderInSection(section)
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        70
-    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: HistoryTableViewCell.typeName, for: indexPath) as? HistoryTableViewCell {
             
@@ -135,20 +138,28 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell(frame: .zero)
         }
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        70
+    }
 }
 
 extension HistoryViewController: HistoryViewProtocol {
     func reloadTransactionsTableView() {
-        
+        transactionsTableView.reloadData()
     }
     
     func showLoader() {
-        
+        loaderView.showLoader()
     }
     
     func hideLoader() {
+        loaderView.hideLoader()
+    }
+}
+
+extension HistoryViewController: FilterViewControllerDelegate {
+    func didGetFilterSettings(filterData: FilterModel) {
         
     }
-    
-    
 }

@@ -12,6 +12,8 @@
 		6F0668682B8294EE003D8925 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0668672B8294EE003D8925 /* HistoryTableViewCell.swift */; };
 		6F06686A2B83828C003D8925 /* HistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0668692B83828C003D8925 /* HistoryModel.swift */; };
 		6F06686C2B838987003D8925 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F06686B2B838987003D8925 /* Date+Extension.swift */; };
+		6F0668722B839820003D8925 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0668712B839820003D8925 /* FilterViewController.swift */; };
+		6F0668742B839F15003D8925 /* FilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0668732B839F15003D8925 /* FilterModel.swift */; };
 		6F0B87462B6141F200434150 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0B87452B6141F200434150 /* AuthorizationViewController.swift */; };
 		6F0B87482B618DD000434150 /* OnboardingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0B87472B618DD000434150 /* OnboardingPresenter.swift */; };
 		6F0E031C2B78EE5F00B9FF21 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0E031B2B78EE5F00B9FF21 /* HomePresenter.swift */; };
@@ -103,6 +105,8 @@
 		6F0668672B8294EE003D8925 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		6F0668692B83828C003D8925 /* HistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryModel.swift; sourceTree = "<group>"; };
 		6F06686B2B838987003D8925 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		6F0668712B839820003D8925 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		6F0668732B839F15003D8925 /* FilterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterModel.swift; sourceTree = "<group>"; };
 		6F0B87452B6141F200434150 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
 		6F0B87472B618DD000434150 /* OnboardingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPresenter.swift; sourceTree = "<group>"; };
 		6F0E031B2B78EE5F00B9FF21 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
@@ -225,6 +229,39 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		6F06686D2B838E29003D8925 /* FilterTransactionsModule */ = {
+			isa = PBXGroup;
+			children = (
+				6F0668702B8397FE003D8925 /* Model */,
+				6F06686F2B8397F8003D8925 /* View */,
+				6F06686E2B8397F1003D8925 /* Presenter */,
+			);
+			path = FilterTransactionsModule;
+			sourceTree = "<group>";
+		};
+		6F06686E2B8397F1003D8925 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		6F06686F2B8397F8003D8925 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6F0668712B839820003D8925 /* FilterViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6F0668702B8397FE003D8925 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6F0668732B839F15003D8925 /* FilterModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		6F0B87412B6130E500434150 /* AuthorizationModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -291,6 +328,7 @@
 				6F6444892B66379D0018238D /* HomeModule */,
 				6F0E031F2B792BF000B9FF21 /* TransactionModule */,
 				6F06685F2B8256B6003D8925 /* HistoryModule */,
+				6F06686D2B838E29003D8925 /* FilterTransactionsModule */,
 			);
 			path = KirisShygysAppStore;
 			sourceTree = "<group>";
@@ -624,6 +662,7 @@
 				6F61E4DF2B5EA8F100F8AB20 /* OnboardingCollectionCell.swift in Sources */,
 				6F61E4A02B5D8A0B00F8AB20 /* OnboardingViewController.swift in Sources */,
 				6F06686C2B838987003D8925 /* Date+Extension.swift in Sources */,
+				6F0668742B839F15003D8925 /* FilterModel.swift in Sources */,
 				6F61E49C2B5D8A0B00F8AB20 /* AppDelegate.swift in Sources */,
 				6F61E4CD2B5EA50700F8AB20 /* OnboardingModel.swift in Sources */,
 				6F6444932B6688880018238D /* AuthorizationPresenter.swift in Sources */,
@@ -655,6 +694,7 @@
 				6F4580E52B601A0E00869FF9 /* NSObject+Extension.swift in Sources */,
 				6F6444792B6580ED0018238D /* AuthorizationModel.swift in Sources */,
 				6F0E031C2B78EE5F00B9FF21 /* HomePresenter.swift in Sources */,
+				6F0668722B839820003D8925 /* FilterViewController.swift in Sources */,
 				6FF0DE4B2B6E4B9B007C51F8 /* ExtendedTapAreaButton.swift in Sources */,
 				6F705A342B7B5E800029CB66 /* TransactionPresenter.swift in Sources */,
 				6F0E03242B7A355300B9FF21 /* TransactionViewController.swift in Sources */,
