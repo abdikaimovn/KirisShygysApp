@@ -213,7 +213,14 @@ final class HomeViewController: UIViewController {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(updateView),
-            name: Notification.Name(NotificationCenterEnum.updateAfterTransaction.rawValue),
+            name: Notification.Name(NotificationCenterEnum.updateAfterAddingTranscation.rawValue),
+            object: nil
+        )
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updateView),
+            name: Notification.Name(NotificationCenterEnum.updateAfterDeletingTransaction.rawValue),
             object: nil
         )
     }
@@ -370,7 +377,8 @@ extension HomeViewController: UITableViewDataSource {
 
 extension HomeViewController: HomeViewProtocol {
     func showHistoryModule(transactionsData: [ValidatedTransactionModel]) {
-        let presenter = HistoryPresenter(transactionData: transactionsData)
+        let networkService = UserDataService()
+        let presenter = HistoryPresenter(transactionData: transactionsData, networkService: networkService)
         let view = HistoryViewController(presenter: presenter)
         presenter.view = view
     

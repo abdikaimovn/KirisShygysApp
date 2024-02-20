@@ -44,7 +44,7 @@
 "error_title" = "Ошибка";
 "usernameFetching_error" = "Ошибка с извлечением имени пользователя";
 "documentFetching_error" = "Ошибка при извлечении транзакций пользователя";
-
+"transactionDeleting_error" = "Ошибка при удалении транзакции";
 //MARK: - Home page
 "welcome_label" = "С Возвращением";
 "totalBalance_label" = "Баланс";

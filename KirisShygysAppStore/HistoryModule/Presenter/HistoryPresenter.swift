@@ -11,16 +11,19 @@ protocol HistoryViewProtocol: AnyObject {
     func showLoader()
     func hideLoader()
     func reloadTransactionsTableView()
+    func showFailure(with errorModel: NetworkErrorModel)
 }
 
 final class HistoryPresenter {
     weak var view: HistoryViewProtocol?
-    private let transactionData: [ValidatedTransactionModel]
+    private let networkService: HistoryServiceProtocol
+    private var transactionData: [ValidatedTransactionModel]
     private var groupedTransactions: [String: [ValidatedTransactionModel]] = [:]
     private var sectionTitles: [SectionTitleModel] = []
     
-    init(transactionData: [ValidatedTransactionModel]) {
+    init(transactionData: [ValidatedTransactionModel], networkService: HistoryServiceProtocol) {
         self.transactionData = transactionData
+        self.networkService = networkService
     }
     
     func numberOfSections() -> Int {
@@ -47,6 +50,35 @@ final class HistoryPresenter {
         }
         
         return nil
+    }
+    
+    func cellIsDeletingForRow(at indexPath: IndexPath) {
+        let sectionTitle = sectionTitles[indexPath.section].sectionTitleDate
+        let transactionToDelete = groupedTransactions[sectionTitle]?[indexPath.row]
+        
+        guard let transactionToDelete = transactionToDelete else {
+            return
+        }
+        
+        networkService.deleteTransaction(transactionData: transactionToDelete) { [weak self] result in
+            switch result {
+            case .success():
+                break
+            case .failure(let failure):
+                self?.view?.showFailure(with: failure)
+            }
+        }
+        
+        for (index, transaction) in transactionData.enumerated() {
+            if transaction.id == transactionToDelete.id {
+                transactionData.remove(at: index)
+            }
+        }
+        
+        NotificationCenter.default.post(name: Notification.Name(NotificationCenterEnum.updateAfterDeletingTransaction.rawValue), object: nil)
+        
+        updateTransactions(transactionData)
+        view?.reloadTransactionsTableView()
     }
     
     private func identifySectionTitle(_ sectionTitle: String) -> String {

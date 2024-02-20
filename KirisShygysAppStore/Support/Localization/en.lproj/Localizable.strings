@@ -44,6 +44,7 @@
 "error_title" = "Error";
 "usernameFetching_error" = "Error with extracting the user name";
 "documentFetching_error" = "Error with extracting the user's transactions";
+"transactionDeleting_error" = "Error with deleting the transaction";
 
 //MARK: - Home page
 "welcome_label" = "Welcome back";

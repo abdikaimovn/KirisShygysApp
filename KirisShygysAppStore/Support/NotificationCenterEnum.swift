@@ -8,5 +8,6 @@
 import Foundation
 
 enum NotificationCenterEnum: String {
-    case updateAfterTransaction = "UpdateAfterTransaction"
+    case updateAfterAddingTranscation = "UpdateAfterAddingTransaction"
+    case updateAfterDeletingTransaction = "UpdateAfterDeletingTransaction"
 }

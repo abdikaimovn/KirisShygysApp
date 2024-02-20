@@ -139,12 +139,26 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            presenter.cellIsDeletingForRow(at: indexPath)
+        }
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         70
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        .delete
     }
 }
 
 extension HistoryViewController: HistoryViewProtocol {
+    func showFailure(with errorModel: NetworkErrorModel) {
+        AlertManager.showAlert(on: self, title: errorModel.title, message: errorModel.description)
+    }
+    
     func reloadTransactionsTableView() {
         transactionsTableView.reloadData()
     }
