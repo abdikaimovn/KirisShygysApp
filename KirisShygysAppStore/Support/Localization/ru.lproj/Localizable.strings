@@ -95,7 +95,7 @@
 "menu_label" = "Меню";
 "transactionReport_label" = "Отчет о транзакциях";
 "settings_label" = "Настройки";
-"statisctics_label" = "Статистика";
+"statistics_label" = "Статистика";
 "logout_label" = "Выйти";
 
 //MARK: - Transaction Report page

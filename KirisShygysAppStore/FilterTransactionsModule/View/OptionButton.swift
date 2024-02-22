@@ -23,6 +23,7 @@ final class OptionButton: UIButton {
     private func setupButton() {
         backgroundColor = .clear
         layer.cornerRadius = 5
+        titleLabel?.font = .font(style: .label)
         setTitle(title, for: .normal)
         setTitleColor(.black, for: .normal)
         layer.cornerCurve = .continuous
