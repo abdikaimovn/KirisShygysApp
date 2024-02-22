@@ -165,6 +165,11 @@ final class HomeViewController: UIViewController {
     required init?(coder: NSCoder) {
         nil
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -208,7 +213,14 @@ final class HomeViewController: UIViewController {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(updateView),
-            name: Notification.Name(NotificationCenterEnum.updateAfterTransaction.rawValue),
+            name: Notification.Name(NotificationCenterEnum.updateAfterAddingTranscation.rawValue),
+            object: nil
+        )
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updateView),
+            name: Notification.Name(NotificationCenterEnum.updateAfterDeletingTransaction.rawValue),
             object: nil
         )
     }
@@ -219,7 +231,7 @@ final class HomeViewController: UIViewController {
     
     //TODO: - Добавить показ историй транзакции
     @objc private func showAllTransactions() {
-        
+        presenter.showAllTransactionsTapped()
     }
     
     private func setupView() {
@@ -364,6 +376,19 @@ extension HomeViewController: UITableViewDataSource {
 }
 
 extension HomeViewController: HomeViewProtocol {
+    func showAbsenceDataAlert(_ title: String, _ message: String) {
+        AlertManager.showAlert(on: self, title: title, message: message)
+    }
+    
+    func showHistoryModule(transactionsData: [ValidatedTransactionModel]) {
+        let networkService = UserDataService()
+        let presenter = HistoryPresenter(transactionData: transactionsData, networkService: networkService)
+        let view = HistoryViewController(presenter: presenter)
+        presenter.view = view
+    
+        navigationController?.pushViewController(view, animated: true)
+    }
+    
     func setCardValues(total: String, expenses: String, incomes: String) {
         totalBalance.text = total
         expenseLabel.text = expenses

@@ -29,13 +29,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let view = OnboardingViewController(presenter: presenter)
             presenter.view = view
             let navController = UINavigationController(rootViewController: view)
-            goToController(with: navController)
+            goToController(navController)
         } else {
-            goToController(with: TabBarContoller())
+            goToController(UINavigationController(rootViewController: TabBarContoller()))
         }
     }
     
-    private func goToController(with viewController: UIViewController) {
+    private func goToController(_ viewController: UIViewController) {
         UIView.animate(withDuration: 0.1) {
             self.window?.layer.opacity = 0
         } completion: { [weak self] _ in

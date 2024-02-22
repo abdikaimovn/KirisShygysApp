@@ -18,6 +18,10 @@ protocol HomeServiceProtocol {
     func fetchTransactionsData(completion: @escaping (Result<[ValidatedTransactionModel], NetworkErrorModel>) -> ())
 }
 
+protocol HistoryServiceProtocol {
+    func deleteTransaction(transactionData: ValidatedTransactionModel, completion: @escaping (Result<(), NetworkErrorModel>) -> ())
+}
+
 struct UserDataService {
     
 }
@@ -176,5 +180,61 @@ extension UserDataService: HomeServiceProtocol {
                 
                 completion(.success(sortedTransactionData))
             }
+    }
+}
+
+extension UserDataService: HistoryServiceProtocol {
+    func deleteTransaction(transactionData: ValidatedTransactionModel, completion: @escaping (Result<(), NetworkErrorModel>) -> ()) {
+        let db = Firestore.firestore()
+        
+        let collectionName: String
+        switch transactionData.transactionType {
+        case .income:
+            collectionName = "Incomes"
+        case .expense:
+            collectionName = "Expenses"
+        }
+        
+        guard let transactionId = transactionData.id else {
+            return
+        }
+        
+        // Удаление транзакции из коллекции "Incomes" или "Expenses"
+        db.collection("users")
+            .document(Auth.auth().currentUser!.uid)
+            .collection(collectionName)
+            .document(transactionId)
+            .delete { error in
+                if let error = error {
+                    completion(.failure(
+                        NetworkErrorModel(
+                            title: "error_title".localized,
+                            error: error,
+                            text: error.localizedDescription,
+                            description: "transactionDeleting_error".localized)
+                    ))
+                    return
+                }
+            }
+        
+        // Удаление транзакции из коллекции "Transactions"
+        db.collection("users")
+            .document(Auth.auth().currentUser!.uid)
+            .collection("Transactions")
+            .document(transactionId)
+            .delete { error in
+                if let error = error {
+                    completion(.failure(
+                        NetworkErrorModel(
+                            title: "error_title".localized,
+                            error: error,
+                            text: error.localizedDescription,
+                            description: "transactionDeleting_error".localized)
+                    ))
+                    return
+                }
+            }
+        
+        completion(.success(()))
     }
 }

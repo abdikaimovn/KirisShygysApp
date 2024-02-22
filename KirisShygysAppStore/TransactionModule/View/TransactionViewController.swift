@@ -291,7 +291,7 @@ extension TransactionViewController: TransactionViewProtocol {
     }
     
     func showSuccess() {
-        NotificationCenter.default.post(name: Notification.Name(NotificationCenterEnum.updateAfterTransaction.rawValue), object: nil)
+        NotificationCenter.default.post(name: Notification.Name(NotificationCenterEnum.updateAfterAddingTranscation.rawValue), object: nil)
         dismiss(animated: true)
     }
     
