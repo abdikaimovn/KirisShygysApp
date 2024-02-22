@@ -16,21 +16,21 @@ final class FilterViewController: UIViewController {
     private var filterModel = FilterModel(filterBy: nil, sortBy: nil, period: nil)
     
     //MARK: - UI Elements
-    private let filterByExpenseButton = UIButton()
+    private let filterByExpenseButton = OptionButton(title: "expenses_label".localized)
 
-    private let filterByIncomeButton = UIButton()
+    private let filterByIncomeButton = OptionButton(title: "incomes_label".localized)
     
-    private let sortByNewestButton = UIButton()
+    private let sortByNewestButton = OptionButton(title: "newest_button_title".localized)
     
-    private let sortByOldestButton = UIButton()
+    private let sortByOldestButton = OptionButton(title: "oldest_button_title".localized)
     
-    private let weekPeriodButton = UIButton()
+    private let weekPeriodButton = OptionButton(title: "week_button_title".localized)
     
-    private let monthPeriodButton = UIButton()
+    private let monthPeriodButton = OptionButton(title: "month_button_title".localized)
     
-    private let halfYearPeriodButton = UIButton()
+    private let halfYearPeriodButton = OptionButton(title: "halfYear_button_title".localized)
     
-    private let yearPeriodButton = UIButton()
+    private let yearPeriodButton = OptionButton(title: "year_button_title".localized)
     
     private let resetButton: UIButton = {
         let button = UIButton()
@@ -86,34 +86,11 @@ final class FilterViewController: UIViewController {
         super.viewDidLoad()
 
         setupView()
-        setupButtons()
-        activateButtons()
+        setupTargets()
     }
 
     //MARK: - Functions
-    private func setupButtons() {
-        configureButton(filterByExpenseButton, "expenses_label".localized)
-        configureButton(filterByIncomeButton, "incomes_label".localized)
-        configureButton(sortByNewestButton, "newest_button_title".localized)
-        configureButton(sortByOldestButton, "oldest_button_title".localized)
-        configureButton(weekPeriodButton, "week_button_title".localized)
-        configureButton(monthPeriodButton, "month_button_title".localized)
-        configureButton(halfYearPeriodButton, "halfYear_button_title".localized)
-        configureButton(yearPeriodButton, "year_button_title".localized)
-    }
-    
-    private func configureButton(_ button: UIButton, _ title: String) {
-        button.backgroundColor = .clear
-        button.layer.cornerRadius = 5
-        button.setTitle(title, for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.layer.cornerCurve = .continuous
-        button.layer.borderColor = UIColor.brownColor.cgColor
-        button.layer.borderWidth = 1
-        button.contentHorizontalAlignment = .center
-    }
-    
-    private func activateButtons() {
+    private func setupTargets() {
         resetButton.addTarget(self, action: #selector(resetButtonTapped), for: .touchUpInside)
         
         filterByIncomeButton.addTarget(self, action: #selector(incomeButtonTapped), for: .touchUpInside)

@@ -86,6 +86,7 @@ final class HistoryPresenter {
                 break
             case .failure(let failure):
                 self?.view?.showFailure(with: failure)
+                return
             }
         }
         

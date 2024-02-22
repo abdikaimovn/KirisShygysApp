@@ -8,7 +8,7 @@
 import Foundation
 
 struct SectionTitleModel {
-    var fullDate: String
+    let fullDate: String
     
     var sectionTitleDate: String {
         return String(fullDate.prefix(10))
