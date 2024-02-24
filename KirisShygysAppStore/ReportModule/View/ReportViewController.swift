@@ -45,21 +45,13 @@ final class ReportViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        backBarButtonItem.tintColor = .white
-        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backBarButtonItem
-
-        if let navigationBar = self.navigationController?.navigationBar {
-            navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        }
-
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        setupNavigationBar()
+        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     override func viewDidLoad() {
@@ -69,6 +61,16 @@ final class ReportViewController: UIViewController {
     }
 
     //MARK: - Functions
+    private func setupNavigationBar() {
+        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        backBarButtonItem.tintColor = .white
+        navigationController?.navigationBar.topItem?.backBarButtonItem = backBarButtonItem
+
+        if let navigationBar = navigationController?.navigationBar {
+            navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        }
+    }
+    
     private func setupCollectionView() {
         storiesCollectionView.dataSource = self
         storiesCollectionView.delegate = self

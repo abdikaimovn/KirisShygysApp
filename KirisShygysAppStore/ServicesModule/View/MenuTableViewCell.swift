@@ -56,7 +56,7 @@ final class MenuTableViewCell: UITableViewCell {
         nil
     }
     
-    func configure(_ itemImage: UIImage?, _ itemTitle: String, _ color: UIColor) {
+    func configure(with itemImage: UIImage?, _ itemTitle: String, _ color: UIColor) {
         image.image = itemImage
         title.text = itemTitle
         

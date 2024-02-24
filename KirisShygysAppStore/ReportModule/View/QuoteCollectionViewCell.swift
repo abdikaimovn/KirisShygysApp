@@ -8,24 +8,7 @@
 import UIKit
 
 final class QuoteCollectionViewCell: UICollectionViewCell {
-    private let quotes = [
-        QuoteModel(quote: "aiyaz_uddin_quote".localized, author: "- Aiyaz Uddin"),
-        QuoteModel(quote: "linsey_mill_quote".localized, author: "- Linsey Mill"),
-        QuoteModel(quote: "oscar_wilde_quote".localized, author: "- Oscar Wilde"),
-        QuoteModel(quote: "robert_kiyosaki_quote1".localized, author: "– Robert Kiyosaki"),
-        QuoteModel(quote: "suze_orman_quote".localized, author: "- Suze Orman"),
-        QuoteModel(quote: "robert_kiyosaki_quote2".localized, author: "– Robert Kiyosaki"),
-        QuoteModel(quote: "alan_greenspan_quote".localized, author: "- Alan Greenspan"),
-        QuoteModel(quote: "robert_kiyosaki_quote3".localized, author: "- Robert Kiyosaki"),
-        QuoteModel(quote: "benjamin_franklin_quote".localized, author: "- Benjamin Franklin"),
-        QuoteModel(quote: "orrin_woodward_quote".localized, author: "- Orrin Woodward"),
-        QuoteModel(quote: "asanali_ashimov_quote".localized, author: "- Asanali Ashimov"),
-        QuoteModel(quote: "margulan_seisembai_quote".localized, author: "- Margulan Seisembai"),
-        QuoteModel(quote: "qazaq_quote1".localized, author: "- Kazakh Quote"),
-        QuoteModel(quote: "qazaq_quote2".localized, author: "- Kazakh Quote"),
-        QuoteModel(quote: "qazaq_quote3".localized, author: "- Kazakh Quote"),
-        QuoteModel(quote: "qazaq_quote4".localized, author: "- Kazakh Quote")
-    ]
+    private let quoteGenerator = QuoteGenerator()
     
     private let monthQuoteLabel: UILabel = {
         let label = UILabel()
@@ -54,17 +37,20 @@ final class QuoteCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
+        configureQuoteModel()
     }
     
     required init?(coder: NSCoder) {
         nil
     }
     
+    private func configureQuoteModel() {
+        let quote = quoteGenerator.randomQuote
+        quoteLabel.text = quote.quote
+        quoteAuthor.text = quote.author
+    }
+    
     private func setupView() {
-        let randomQuote = Int.random(in: quotes.indices)
-        quoteLabel.text = quotes[randomQuote].quote
-        quoteAuthor.text = quotes[randomQuote].author
-        
         contentView.addSubview(monthQuoteLabel)
         monthQuoteLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()

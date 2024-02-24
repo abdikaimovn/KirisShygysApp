@@ -38,6 +38,7 @@
 "credentialAlreadyInUse_error" = "Учетные данные уже используются";
 "invalidCredential_error" = "Предоставленные учетные данные недействительны или устарели";
 "network_error_title" = "Ошибка сети";
+"userNotFound_error" = "Пользователь не найден";
 "network_error" = "Прервано сетевое подключение";
 "unknown_error_title" = "Неизвестная ошибка";
 "unknown_error" = "Произошла неизвестная ошибка";

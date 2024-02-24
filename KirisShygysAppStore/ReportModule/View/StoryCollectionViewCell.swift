@@ -90,6 +90,17 @@ final class StoryCollectionViewCell: UICollectionViewCell {
     }
     
     //MARK: - Functions
+    func configure(reportModel: ReportModel) {
+        //hide container if there is an empty amount of money
+        containerView.isHidden = reportModel.isEmptyAmount
+        
+        transactionType.text = reportModel.transactionType
+        amountLabel.text = reportModel.amount
+        biggestTransactionLabel.text = reportModel.biggestTransactionLabel
+        biggestTransactionName.text = reportModel.biggestTransactionName
+        biggestTransactionAmount.text = reportModel.biggestTransactionAmount
+    }
+    
     private func setupView() {
         contentView.addSubview(thisMonthLabel)
         thisMonthLabel.setContentCompressionResistancePriority(.required, for: .vertical)
@@ -148,16 +159,5 @@ final class StoryCollectionViewCell: UICollectionViewCell {
             make.bottom.equalToSuperview().inset(20)
         }
         biggestTransactionAmount.setContentCompressionResistancePriority(.required, for: .vertical)
-    }
-    
-    func configure(reportModel: ReportModel) {
-        //hide container if there is an empty amount of money
-        containerView.isHidden = reportModel.isEmptyAmount
-        
-        transactionType.text = reportModel.transactionType
-        amountLabel.text = reportModel.amount
-        biggestTransactionLabel.text = reportModel.biggestTransactionLabel
-        biggestTransactionName.text = reportModel.biggestTransactionName
-        biggestTransactionAmount.text = reportModel.biggestTransactionAmount
     }
 }

@@ -38,6 +38,7 @@
 "credentialAlreadyInUse_error" = "Tirkelgi derekteri qazirdiń ózinde qoldanysta";
 "invalidCredential_error" = "Berilgen tirkelgi derekteriniń pishini buzylǵan nemese merzimi ótip ketken.";
 "network_error_title" = "Jeli qatesi";
+"userNotFound_error" = "Paıdalanýshy tabylmady";
 "network_error" = "Jeli qosylymy úzildi";
 "unknown_error_title" = "Belgisiz qate";
 "unknown_error" = "Belgisiz qate tabyldy";

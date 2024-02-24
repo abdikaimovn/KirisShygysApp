@@ -24,28 +24,24 @@ final class ReportPresenter {
     }
     
     private func calculateReportData(data: [ValidatedTransactionModel]) {
-        var incomeSum = 0
-        var expenseSum = 0
-        var maxIncome = 0
-        var maxExpense = 0
-        var maxIncomeTitle = "none_label".localized
-        var maxExpenseTitle = "none_label".localized
-        
-        for transaction in data {
-            if transaction.transactionType == .income {
-                incomeSum += transaction.transactionAmount
-                if maxIncome < transaction.transactionAmount {
-                    maxIncome = transaction.transactionAmount
-                    maxIncomeTitle = transaction.transactionName
+        let (incomeSum, maxIncome, maxIncomeTitle) = data.filter { $0.transactionType == .income }
+            .reduce(into: (0, 0, "none_label".localized)) { result, transaction in
+                result.0 += transaction.transactionAmount // Increment incomeSum
+                if transaction.transactionAmount > result.1 {
+                    result.1 = transaction.transactionAmount // Update maxIncome
+                    result.2 = transaction.transactionName // Update maxIncomeTitle
                 }
-            } else {
-                expenseSum += transaction.transactionAmount
-                if maxExpense < transaction.transactionAmount {
-                    maxExpense = transaction.transactionAmount
-                    maxExpenseTitle = transaction.transactionName
-                }
-            }
         }
+
+        let (expenseSum, maxExpense, maxExpenseTitle) = data.filter { $0.transactionType == .expense }
+            .reduce(into: (0, 0, "none_label".localized)) { result, transaction in
+                result.0 += transaction.transactionAmount // Increment expenseSum
+                if transaction.transactionAmount > result.1 {
+                    result.1 = transaction.transactionAmount // Update maxExpense
+                    result.2 = transaction.transactionName // Update maxExpenseTitle
+                }
+        }
+
         
         let isEmptyIncomeAmount = incomeSum == 0
         let isEmptyExpenseAmount = expenseSum == 0

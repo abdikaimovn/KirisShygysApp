@@ -93,22 +93,22 @@ extension ServicesViewController: UITableViewDelegate, UITableViewDataSource {
             switch indexPath.row {
             case 0:
                 cell.configure(
-                    UIImage(systemName:"doc"),
+                    with: UIImage(systemName:"doc"),
                     "transactionReport_label".localized,
                     .lightGrayColor)
             case 1:
                 cell.configure(
-                    UIImage(systemName: "chart.bar.xaxis"),
+                    with: UIImage(systemName: "chart.bar.xaxis"),
                     "statistics_label".localized,
                     .lightGrayColor)
             case 2:
                 cell.configure(
-                    UIImage(systemName: "gear"),
+                    with: UIImage(systemName: "gear"),
                     "settings_label".localized,
                     .lightGrayColor)
             case 3:
                 cell.configure(
-                    UIImage(systemName: "rectangle.portrait.and.arrow.right"),
+                    with: UIImage(systemName: "rectangle.portrait.and.arrow.right"),
                     "logout_label".localized,
                     .lightBrownColor)
             default:
@@ -127,14 +127,24 @@ extension ServicesViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension ServicesViewController: ServicesViewProtocol {
+    func showNetworkFailure(_ failure: NetworkErrorModel) {
+        AlertManager.showAlert(on: self, title: failure.title , message: failure.description)
+    }
+    
+    func showError(_ error: ErrorModel) {
+        AlertManager.showAlert(on: self, title: error.title , message: error.description)
+    }
+    
     func showTransactionReportModule(_ transactionData: [ValidatedTransactionModel]) {
         navigationController?.pushViewController(createTransactionReportModule(transactionData), animated: true)
     }
     
+    //TODO: - Fix
     func showStatisticsModule(_ transactionData: [ValidatedTransactionModel]) {
         
     }
     
+    //TODO: - Fix
     func showSettingsModule() {
         
     }
@@ -149,9 +159,5 @@ extension ServicesViewController: ServicesViewProtocol {
     
     func hideLoader() {
         loaderView.hideLoader()
-    }
-    
-    func showFailure(_ networkError: NetworkErrorModel) {
-        AlertManager.showAlert(on: self, title: networkError.title , message: networkError.description)
     }
 }

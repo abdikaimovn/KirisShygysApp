@@ -15,7 +15,7 @@ protocol HomeViewProtocol: AnyObject {
     func reloadTransactionTableView()
     func showHistoryModule(transactionsData: [ValidatedTransactionModel])
     func showFailure(with error: NetworkErrorModel)
-    func showAbsenceDataAlert(_ title: String, _ message: String)
+    func showAbsenceDataFailure(_ failure: ErrorModel)
 }
 
 final class HomePresenter {
@@ -29,7 +29,7 @@ final class HomePresenter {
     
     func showAllTransactionsTapped() {
         guard let safeData = transactionData, !safeData.isEmpty else {
-            view?.showAbsenceDataAlert("lackDataAlert_title".localized, "historyLackDataAlert_message".localized)
+            view?.showAbsenceDataFailure(ErrorHandler.handleError(.historyLackData))
             return
         }
         

@@ -14,7 +14,8 @@ protocol ServicesViewProtocol: AnyObject {
     func logOut()
     func showLoader()
     func hideLoader()
-    func showFailure(_ networkError: NetworkErrorModel)
+    func showNetworkFailure(_ failure: NetworkErrorModel)
+    func showError(_ error: ErrorModel)
 }
 
 final class ServicesPresenter {
@@ -33,7 +34,7 @@ final class ServicesPresenter {
             case .success():
                 self?.view?.logOut()
             case .failure(let failure):
-                self?.view?.showFailure(failure)
+                self?.view?.showNetworkFailure(failure)
             }
         }
     }
@@ -47,18 +48,12 @@ final class ServicesPresenter {
                 switch result {
                 case .success(let transactionsData):
                     if transactionsData.isEmpty {
-                        self?.view?.showFailure(
-                            NetworkErrorModel(
-                                title: "lackDataAlert_title".localized,
-                                error: nil,
-                                text: nil,
-                                description: "reportLackDataAlert_message".localized)
-                        )
+                        self?.view?.showError(ErrorHandler.handleError(.reportLackData))
                         return
                     }
                     self?.view?.showTransactionReportModule(transactionsData)
                 case .failure(let failure):
-                    self?.view?.showFailure(failure)
+                    self?.view?.showNetworkFailure(failure)
                 }
             }
         case 1:
@@ -68,18 +63,12 @@ final class ServicesPresenter {
                 switch result {
                 case .success(let transactionsData):
                     if transactionsData.isEmpty {
-                        self?.view?.showFailure(
-                            NetworkErrorModel(
-                                title: "lackDataAlert_title".localized,
-                                error: nil,
-                                text: nil,
-                                description: "statisticsLackDataAlert_message".localized)
-                        )
+                        self?.view?.showError(ErrorHandler.handleError(.statisticsLackData))
                         return
                     }
                     self?.view?.showStatisticsModule(transactionsData)
                 case .failure(let failure):
-                    self?.view?.showFailure(failure)
+                    self?.view?.showNetworkFailure(failure)
                 }
             }
         case 2:

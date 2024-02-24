@@ -38,6 +38,7 @@
 "credentialAlreadyInUse_error" = "The credentials are already in use";
 "invalidCredential_error" = "The supplied auth credential is malformed or has expired.";
 "network_error_title" = "Network Error";
+"userNotFound_error" = "User wasn't found";
 "network_error" = "The network connection was interrupted";
 "unknown_error_title" = "Unknown Error";
 "unknown_error" = "Something went wrong";

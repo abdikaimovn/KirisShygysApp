@@ -38,6 +38,7 @@
 "credentialAlreadyInUse_error" = "Тіркелгі деректері қазірдің өзінде қолданыста";
 "invalidCredential_error" = "Берілген тіркелгі деректерінің пішіні бұзылған немесе мерзімі өтіп кеткен.";
 "network_error_title" = "Желі қатесі";
+"userNotFound_error" = "Пайдаланушы табылмады";
 "network_error" = "Желі қосылымы үзілді";
 "unknown_error_title" = "Белгісіз қате";
 "unknown_error" = "Белгісіз қате табылды";
