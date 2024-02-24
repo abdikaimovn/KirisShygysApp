@@ -8,6 +8,9 @@
 import UIKit
 
 final class ServicesViewController: UIViewController {
+    private let presenter: ServicesPresenter
+    
+    //MARK: - UI Elements
     private let menuLabel: UILabel = {
         let label = UILabel()
         label.text = "menu_label".localized
@@ -26,6 +29,18 @@ final class ServicesViewController: UIViewController {
         return tableView
     }()
     
+    private let loaderView = LoaderView(with: .medium)
+    
+    //MARK: - Lifecycle
+    init(presenter: ServicesPresenter) {
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        nil
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -33,11 +48,12 @@ final class ServicesViewController: UIViewController {
         setupTableView()
     }
     
+    //MARK: - Functions
     private func setupTableView() {
         menuTableView.delegate = self
         menuTableView.dataSource = self
     }
-    
+
     private func setupView() {
         view.backgroundColor = .white
         
@@ -52,8 +68,19 @@ final class ServicesViewController: UIViewController {
             make.leading.trailing.equalToSuperview().inset(20)
             make.top.equalTo(menuLabel.snp.bottom).offset(10)
         }
+        
+        view.addSubview(loaderView)
+        loaderView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
 
+    private func createTransactionReportModule(_ transactionData: [ValidatedTransactionModel]) -> UIViewController {
+        let presenter = ReportPresenter(transactionsData: transactionData)
+        let view = ReportViewController(presenter: presenter)
+        presenter.view = view
+        return view
+    }
 }
 
 extension ServicesViewController: UITableViewDelegate, UITableViewDataSource {
@@ -94,4 +121,37 @@ extension ServicesViewController: UITableViewDelegate, UITableViewDataSource {
         return UITableViewCell()
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.didSelectRow(at: indexPath)
+    }
+}
+
+extension ServicesViewController: ServicesViewProtocol {
+    func showTransactionReportModule(_ transactionData: [ValidatedTransactionModel]) {
+        navigationController?.pushViewController(createTransactionReportModule(transactionData), animated: true)
+    }
+    
+    func showStatisticsModule(_ transactionData: [ValidatedTransactionModel]) {
+        
+    }
+    
+    func showSettingsModule() {
+        
+    }
+    
+    func logOut() {
+        sceneDelegate?.showInitialModule()
+    }
+    
+    func showLoader() {
+        loaderView.showLoader()
+    }
+    
+    func hideLoader() {
+        loaderView.hideLoader()
+    }
+    
+    func showFailure(_ networkError: NetworkErrorModel) {
+        AlertManager.showAlert(on: self, title: networkError.title , message: networkError.description)
+    }
 }

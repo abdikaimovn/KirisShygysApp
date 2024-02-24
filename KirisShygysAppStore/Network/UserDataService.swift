@@ -22,6 +22,10 @@ protocol HistoryServiceProtocol {
     func deleteTransaction(transactionData: ValidatedTransactionModel, completion: @escaping (Result<(), NetworkErrorModel>) -> ())
 }
 
+protocol ServicesDataManagerProtocol {
+    func fetchLastMonthTransactionData(completion: @escaping (Result<[ValidatedTransactionModel], NetworkErrorModel>) -> ())
+}
+
 struct UserDataService {
     
 }
@@ -236,5 +240,68 @@ extension UserDataService: HistoryServiceProtocol {
             }
         
         completion(.success(()))
+    }
+}
+
+extension UserDataService: ServicesDataManagerProtocol {
+    func fetchLastMonthTransactionData(completion: @escaping (Result<[ValidatedTransactionModel], NetworkErrorModel>) -> ()) {
+        //Check if user is registered
+        let db = Firestore.firestore()
+        guard let currentUserUID = Auth.auth().currentUser?.uid else {
+            completion(.failure(
+                NetworkErrorModel(
+                    title: "unknown_error_title".localized,
+                    error: nil,
+                    text: nil,
+                    description: "unknown_error".localized)
+            ))
+            return
+        }
+        
+        // Calculate the start and end date for the last month
+        let currentDate = Date()
+        let lastMonthStartDate = Calendar.current.date(byAdding: .month, value: -1, to: currentDate)!
+        let lastMonthEndDate = currentDate
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy, HH:mm"
+        
+        db.collection(FirebaseDocumentName.users.rawValue).document(currentUserUID).collection(FirebaseDocumentName.transactions.rawValue)
+            .getDocuments { (querySnapshot, error) in
+                if let error = error {
+                    completion(.failure(
+                        NetworkErrorModel(
+                            title: "error_title".localized,
+                            error: nil,
+                            text: nil,
+                            description: "documentFetching_error".localized)
+                    ))
+                    return
+                } else {
+                    let transactions = querySnapshot?.documents.compactMap { document in
+                        return ValidatedTransactionModel(data: document.data())
+                    } ?? []
+                    
+                    //Sort data in descending order
+                    let transactionData = transactions.sorted { (transaction1, transaction2) in
+                        if let date1 = dateFormatter.date(from: transaction1.transactionDate),
+                           let date2 = dateFormatter.date(from: transaction2.transactionDate) {
+                            return date1 > date2
+                        }
+                        return false
+                    }
+                    
+                    var lastMonthTransactions = [ValidatedTransactionModel]()
+                    for i in transactionData {
+                        if let date = dateFormatter.date(from: i.transactionDate) {
+                            if date >= lastMonthStartDate && date <= lastMonthEndDate {
+                                lastMonthTransactions.append(i)
+                            }
+                        }
+                    }
+    
+                    completion(.success(lastMonthTransactions))
+                }
+            }
     }
 }

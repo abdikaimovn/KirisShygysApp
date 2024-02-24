@@ -17,6 +17,10 @@ protocol AuthorizationNetworkService {
                        completion: @escaping (Result<(), NetworkErrorModel>) -> Void)
 }
 
+protocol ServicesAuthenticationProtocol {
+    func logOut(completion: @escaping (Result<(), NetworkErrorModel>) -> ())
+}
+
 struct AuthenticationService {
     static var user: User? {
         Auth.auth().currentUser
@@ -119,6 +123,21 @@ extension AuthenticationService: AuthorizationNetworkService {
             }
             
             completion(.success(()))
+        }
+    }
+}
+
+extension AuthenticationService: ServicesAuthenticationProtocol {
+    func logOut(completion: @escaping (Result<(), NetworkErrorModel>) -> ()) {
+        do {
+            try Auth.auth().signOut()
+            completion(.success(()))
+        } catch let error {
+            completion(.failure(NetworkErrorModel(
+                title: "error_title".localized,
+                error: error,
+                text: error.localizedDescription,
+                description: "logOut_error".localized)))
         }
     }
 }
