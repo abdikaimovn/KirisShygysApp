@@ -1,0 +1,156 @@
+/* 
+  Localizable.strings
+  KirisShygysAppStore
+
+  Created by Нурдаулет on 22.01.2024.
+  
+*/
+
+//MARK: - Onboarding page
+"onboarding_firstPage_title" = "Aqshańyzdy tolyq baqylaýǵa alyńyz";
+"onboarding_firstPage_description" = "Ózińizdiń aqsha menedjerińiz bolyp, árbir tıyndy esepteńiz";
+"onboarding_secondPage_title" = "Aqshańyzdyń qaıda ketetinin bilińiz";
+"onboarding_secondPage_description" = "Qarjylyq eseppen aýdarymdaryńyzdy ońaı qadaǵalańyz";
+
+//MARK: - Text field placeholders
+"name_textField_placeholder" = "Aty";
+"email_textField_placeholder" = "Elektrondyq poshta";
+"password_textField_placeholder" = "Qupıa sóz";
+
+//MARK: - Buttons
+"signIn_button_title" = "Kirý";
+"absentAccount_title" = "Akkaýntyńyz joq pa? ";
+"signUp_button_title" = "Tirkelý";
+"alert_dismissButton_title" = "Ok";
+"apply_button_title" = "Iske asyrý";
+"save_button_title" = "Saqtaý";
+"reset_button_title" = "Joıý";
+"retry_button_title" = "Qaıtalaý";
+
+//MARK: - Authorization Validator errors
+"invalidEmail_error" = "• Elektrondyq poshta elektrondyq poshta standarttaryna sáıkes jaramdy bolýy kerek.";
+"invalidUsername_error" = "• Paıdalanýshy aty 2-den 24 tańbaǵa deıin bolýy kerek jáne áripter, sandar qabyldaı alady";
+"invalidPassword_error" = "• Qupıa sózdiń uzyndyǵy 6-dan 32 tańbaǵa deıin bolýy kerek jáne kelesi jıynnan keminde bir kishi árip, bir bas árip, bir san jáne bir arnaıy tańbadan turýy kerek:$,@,#,!, _, ., %, *, ?, &.";
+
+//MARK: - ERRORS
+"authorization_error_title" = "Avtorızasıa katesi";
+"registration_error_title" = "Tirkeý qatesi";
+"credentialAlreadyInUse_error" = "Tirkelgi derekteri qazirdiń ózinde qoldanysta";
+"invalidCredential_error" = "Berilgen tirkelgi derekteriniń pishini buzylǵan nemese merzimi ótip ketken.";
+"network_error_title" = "Jeli qatesi";
+"userNotFound_error" = "Paıdalanýshy tabylmady";
+"network_error" = "Jeli qosylymy úzildi";
+"unknown_error_title" = "Belgisiz qate";
+"unknown_error" = "Belgisiz qate tabyldy";
+"noTransaction" = "Siz aǵymdaǵy aıda eshqandaı aýdarym jasaǵan joqsyz";
+"error_title" = "Qate";
+"usernameFetching_error" = "Paıdalanýshy atyn shyǵarýdaǵy qate";
+"documentFetching_error" = "Paıdalanýshynyń aýdarymdaryn shyǵarýdaǵy qate";
+"transactionDeleting_error" = "Aýdarymdy joıý qatesi";
+"logOut_error" = "Júıeden shyǵý qatesi";
+
+//MARK: - Home page
+"welcome_label" = "Qosh keldińiz";
+"totalBalance_label" = "Jalpy balans";
+"incomes_label" = "Kirister";
+"expenses_label" = "Shyǵystar";
+"total_label" = "Barlyǵy";
+"transactions_label" = "Aýdarymdar";
+"history_label" = "Tarıh";
+
+//MARK: - Days
+"today_label" = "Búgin";
+"yesterday_label" = "Keshe";
+
+//MARK: - Full transactions page
+"filterTransactions_label" = "Súzgi";
+"absenceData_label" = "Eshqandaı aýdarym tabylǵan joq";
+
+//MARK: - Filter page
+"filterBy_label" = "Súzgileý";
+"sortBy_label" = "Suryptaý";
+"period_label" = "Kezeń";
+
+"newest_button_title" = "Eń jańasy";
+"oldest_button_title" = "Eń eskisi";
+"week_button_title" = "Apta";
+"month_button_title" = "Aı";
+"halfYear_button_title" = "Jarty jyl";
+"year_button_title" = "Jyl";
+
+//MARK: - Transaction page
+"amount_label" = "Aqsha kólemi";
+"name_label" = "Aty";
+"description_label" = "Sıpattama";
+"date_label" = "Kúni";
+"emptyTransactionFieldError_title" = "Qate";
+"emptyTransactionField_error" = "Sizge qajetti óristerdi kórsetý kerek, mysaly: aty, aqsha kólemi";
+
+//MARK: - Transaciton Info page
+//(BILL - Чек)
+"transactionType_label" = "Aýdarym túri:";
+"transactionName_label" = "Aty:";
+"transactionAmount_label" = "Aqsha kólemi:";
+"transactionDate_label" = "Kúni:";
+"transactionDescription_label" = "Sıpattama:";
+"emptyDescription" = "Aýdarym sıpattamasy kórsetilmegen";
+
+//MARK: - Services page
+"menu_label" = "Mazır";
+"transactionReport_label" = "Aýdarymdar esebi";
+"settings_label" = "Parametrler";
+"statistics_label" = "Statıstıka";
+"logout_label" = "Shyǵý";
+
+//MARK: - Transaction Report page
+"transactionReportTitle_label" = "Aýdarymdar esebi";
+"thisMonthTitle_label" = "Aǵymdaǵy aı";
+"spend_label" = "Sizdiń shyǵystaryńyz 💸 ";
+"earn_label" = "Sizdiń kiristerińiz 💰 ";
+"biggestSpending_label" = "Jáne sizdiń eń úlken shyǵysyńyz";
+"biggentEarning_label" = "Sizdiń eń úlken kirisińiz";
+"quoteTitle_label" = "Aıdyń dáıeksózi";
+
+//MARK: - Settings page
+"language_label" = "Til";
+"currency_label" = "Valúta";
+"personalInfo_label" = "Jeke aqparat";
+
+//MARK: - Statistics page
+"statisticsTitle_label" = "Aǵymdaǵy aıdyń statısıkasy";
+
+//MARK: - Currencies
+"currency" = "₸";
+"dollar" = "$";
+"tenge" = "₸";
+"ruble" = "₽";
+
+//MARK: - Alerts
+"lackDataAlert_title" = "Derekter jetkiliksiz";
+
+//History page alerts
+"historyLackDataAlert_message" = "Tarıhyńyzdy kórsetý úshin derekter joq. Kórý úshin kez kelgen aýdarym qosyńyz";
+
+//Transaction report alerts
+"reportLackDataAlert_message" = "Esepti kórsetý úshin derekter joq. Kórý úshin kez kelgen aýdarym qosyńyz";
+
+//Statistics page alerts
+"statisticsLackDataAlert_message" = "Statısıkańyzdy kórsetý úshin derekter joq. Kórý úshin kez kelgen aýdarym qosyńyz";
+
+//MARK: - Quotes
+"aiyaz_uddin_quote" = "Aqshany kóp adamdar túsinbeıdi, biraq kóbisi ony tabady, jáne keıbireýleri ǵana ıgeredi";
+"linsey_mill_quote" = "Jaqsy kútilgen aǵza sıaqty, kútilgen aqsha aǵyny sizdiń qarjylyq bolashaǵyńyz úshin óte mańyzdy.";
+"oscar_wilde_quote" = "Jas kezimde aqsha ómirdegi eń mańyzdy nárse dep oıladym. Endi óskenimde onyń solaı ekenine kózim jetti";
+"robert_kiyosaki_quote1" = "Aqshanyń qudyreti týraly kóbirek bilgen saıyn, muǵalimder men synyptastarymyzdan alystap kettik";
+"suze_orman_quote" = "Adamdar túsinýi kerek: eger kámpıt qumyrasynda kámpıt bolmasa, olar kámpıt jeı almaıdy";
+"robert_kiyosaki_quote2" = "Ýger siz baı bolǵyńyz kelse jáne baılyǵyńyzdy saqtap qalǵyńyz kelse, sózben de, sanmen de qarjylyq saýatty bolý mańyzdy";
+"alan_greenspan_quote" = "Búgingi urpaq pen ekonomıkadaǵy birinshi másele - qarjylyq saýattylyqtyń joqtyǵy";
+"robert_kiyosaki_quote3" = "Qarjylyq saýattylyq máselelerdi sheshedi jáne aqsha tabýǵa kómektesedi. Qarjylyq saýattylyqsyz kelgen aqsha - bul kóp uzamaı joǵalyp ketken aqsha";
+"benjamin_franklin_quote" = "Danyshpandar basqalardyń zıanyn, aqymaqtardy ózderiniń zıanynań úırenedi";
+"orrin_woodward_quote" = "Adam óz qarjysyn tártipke keltiredi nemese qarjysy ony tártipke keltiredi";
+"asanali_ashimov_quote" = "Búkil ómirińdi aqsha tabýǵa arnaý – ólimmen teń";
+"margulan_seisembai_quote" = "Áıeldiń otbasyndaǵy negizgi fýnksıasy - táýekelderdi basqarý. Aqsha tabý emes, aqsha únemdeý.";
+"qazaq_quote1" = "Adam bolam deseń, aryńdy aqshaǵa satpa";
+"qazaq_quote2" = "Baı adamnyń ázili árdaıym kúlkili.";
+"qazaq_quote3" = "Aqymaqtyń maqsaty – baılyq, aqyldynyń maqsaty – adamgershilik.";
+"qazaq_quote4" = "Qanaǵat etý – eń úlken baılyq";

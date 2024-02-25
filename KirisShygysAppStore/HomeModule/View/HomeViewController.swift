@@ -376,10 +376,10 @@ extension HomeViewController: UITableViewDataSource {
 }
 
 extension HomeViewController: HomeViewProtocol {
-    func showAbsenceDataAlert(_ title: String, _ message: String) {
-        AlertManager.showAlert(on: self, title: title, message: message)
+    func showAbsenceDataFailure(_ failure: ErrorModel) {
+        AlertManager.showAlert(on: self, title: failure.title, message: failure.description)
     }
-    
+
     func showHistoryModule(transactionsData: [ValidatedTransactionModel]) {
         let networkService = UserDataService()
         let presenter = HistoryPresenter(transactionData: transactionsData, networkService: networkService)

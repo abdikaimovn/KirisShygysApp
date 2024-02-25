@@ -38,6 +38,7 @@
 "credentialAlreadyInUse_error" = "The credentials are already in use";
 "invalidCredential_error" = "The supplied auth credential is malformed or has expired.";
 "network_error_title" = "Network Error";
+"userNotFound_error" = "User wasn't found";
 "network_error" = "The network connection was interrupted";
 "unknown_error_title" = "Unknown Error";
 "unknown_error" = "Something went wrong";
@@ -46,6 +47,7 @@
 "usernameFetching_error" = "Error with extracting the user name";
 "documentFetching_error" = "Error with extracting the user's transactions";
 "transactionDeleting_error" = "Error with deleting the transaction";
+"logOut_error" = "Error with logging out";
 
 //MARK: - Home page
 "welcome_label" = "Welcome back";
@@ -135,4 +137,20 @@
 //Statistics page alerts
 "statisticsLackDataAlert_message" = "Lack of data to display your statistics. Add any transaction for access";
 
-
+//MARK: - Quotes
+"aiyaz_uddin_quote" = "Money is not understood by many, even though many earn it and only a few master it.";
+"linsey_mill_quote" = "Like a well-nourished body, a healthy cash flow is essential for the vitality of your financial future.";
+"oscar_wilde_quote" = "When I was young I thought that money was the most important thing in life; now that I am old I know that it is";
+"robert_kiyosaki_quote1" = "The more we knew about the power of money, the more distant we grew from the teachers and our classmates";
+"suze_orman_quote" = "People have got to learn: if they don’t have cookies in the cookie jar, they can’t eat cookies.";
+"robert_kiyosaki_quote2" = "If you want to be rich and maintain your wealth, it’s important to be financially literate, in words as well as numbers";
+"alan_greenspan_quote" = "The number one problem in today’s generation and economy is the lack of financial literacy";
+"robert_kiyosaki_quote3" = "Intelligence solves problems and produces money. Money without financial intelligence is money soon gone";
+"benjamin_franklin_quote" = "Wise men learn by others harms, fools scarcely by their own.";
+"orrin_woodward_quote" = "A person either disciplines his finances or his finances discipline him";
+"asanali_ashimov_quote" = "To spend your whole life chasing money is to be equal to death.";
+"margulan_seisembai_quote" = "The primary function of a woman in the family is to manage resources, not to earn money.";
+"qazaq_quote1" = "If you call yourself a human, don't sell your dignity for money";
+"qazaq_quote2" = "The humor of a rich man is always funny.";
+"qazaq_quote3" = "The goal of the Fool is wealth, the goal of the Smart is morality.";
+"qazaq_quote4" = "Satisfaction is the greatest wealth";

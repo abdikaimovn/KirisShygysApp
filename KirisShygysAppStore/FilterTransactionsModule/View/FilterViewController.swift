@@ -184,7 +184,7 @@ final class FilterViewController: UIViewController {
     private func generateTitleLabel(_ title: String) -> UILabel {
         let label = UILabel()
         label.text = title
-        label.font = .font(style: .label)
+        label.font = .font(style: .mediumLabel)
         label.textColor = .black
         return label
     }

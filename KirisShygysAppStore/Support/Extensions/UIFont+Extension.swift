@@ -15,6 +15,7 @@ enum FontStyle {
     case button
     case large
     case regularLarge
+    case italicLarge
     
     var fontSize: CGFloat {
         switch self {
@@ -29,10 +30,13 @@ enum FontStyle {
         case .button:
             return 18.0
         case .large:
-            return 28.0
+            return 32.0
         case .regularLarge:
-            return 28.0
+            return 32.0
+        case .italicLarge:
+            return 32.0
         }
+        
     }
     
     var fontName: String {
@@ -51,6 +55,8 @@ enum FontStyle {
             return "Roboto Medium"
         case .regularLarge:
             return "Roboto-Regular"
+        case .italicLarge:
+            return "Roboto-Italic"
         }
     }
 }

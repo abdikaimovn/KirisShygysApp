@@ -17,39 +17,13 @@ protocol AuthorizationNetworkService {
                        completion: @escaping (Result<(), NetworkErrorModel>) -> Void)
 }
 
+protocol ServicesAuthenticationProtocol {
+    func logOut(completion: @escaping (Result<(), NetworkErrorModel>) -> ())
+}
+
 struct AuthenticationService {
     static var user: User? {
         Auth.auth().currentUser
-    }
-    
-    private func handleError(with error: Error) -> NetworkErrorModel {
-        let errorCode = AuthErrorCode(_nsError: error as NSError)
-        switch errorCode.code {
-        case .emailAlreadyInUse:
-            return NetworkErrorModel(
-                title: "registration_error_title".localized,
-                error: error,
-                text: error.localizedDescription,
-                description: "credentialAlreadyInUse_error".localized)
-        case .networkError:
-            return NetworkErrorModel(
-                title: "network_error_title".localized,
-                error: error,
-                text: error.localizedDescription,
-                description: "network_error".localized)
-        case .invalidCredential:
-            return NetworkErrorModel(
-                title: "authorization_error_title".localized,
-                error: error,
-                text: error.localizedDescription,
-                description: "invalidCredential_error".localized)
-        default:
-            return NetworkErrorModel(
-                title: "unknown_error_title",
-                error: error,
-                text: error.localizedDescription,
-                description: "unknown_error".localized)
-        }
     }
 }
 
@@ -67,12 +41,7 @@ extension AuthenticationService: RegistrationNetworkService {
                     "email": email
                 ]) { error in
                     if let error = error {
-                        completion(.failure(
-                            NetworkErrorModel(
-                                title: "unknown_error_title".localized,
-                                error: error,
-                                text: error.localizedDescription,
-                                description: "unknown_error".localized)))
+                        completion(.failure(NetworkErrorHandler.shared.handleError(error: error)))
                         return
                     }
                     
@@ -88,16 +57,12 @@ extension AuthenticationService: RegistrationNetworkService {
         
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             if let error = error {
-                completion(.failure(handleError(with: error)))
+                completion(.failure(NetworkErrorHandler.shared.handleError(error: error)))
                 return
             }
             
             guard let userResult = result?.user else {
-                completion(.failure(NetworkErrorModel(
-                    title: "unknown_error_title".localized,
-                    error: nil,
-                    text: nil,
-                    description: "unknown_error".localized)))
+                completion(.failure(NetworkErrorHandler.shared.unknownError))
                 return
             } 
             
@@ -114,11 +79,23 @@ extension AuthenticationService: AuthorizationNetworkService {
 
         Auth.auth().signIn(withEmail: email, password: password) { result, error in
             if let error = error {
-                completion(.failure(handleError(with: error)))
+                completion(.failure(NetworkErrorHandler.shared.handleError(error: error)))
                 return
             }
             
             completion(.success(()))
+        }
+    }
+}
+
+extension AuthenticationService: ServicesAuthenticationProtocol {
+    func logOut(completion: @escaping (Result<(), NetworkErrorModel>) -> ()) {
+        do {
+            try Auth.auth().signOut()
+            completion(.success(()))
+        } catch let error {
+            completion(.failure(NetworkErrorHandler.shared.handleError(error: error)))
+            return
         }
     }
 }

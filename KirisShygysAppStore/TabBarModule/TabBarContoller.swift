@@ -71,8 +71,11 @@ final class TabBarContoller: UITabBarController {
     
     //TODO: - FIX
     private func createServicesModule() -> UIViewController {
-        let view = UIViewController()
-        view.view.backgroundColor = .white
+        let authService = AuthenticationService()
+        let userDataService = UserDataService()
+        let presenter = ServicesPresenter(authService: authService, userDataService: userDataService)
+        let view = ServicesViewController(presenter: presenter)
+        presenter.view = view
         return view
     }
 }
