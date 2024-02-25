@@ -29,7 +29,7 @@ final class HomePresenter {
     
     func showAllTransactionsTapped() {
         guard let safeData = transactionData, !safeData.isEmpty else {
-            view?.showAbsenceDataFailure(ErrorHandler.handleError(.historyLackData))
+            view?.showAbsenceDataFailure(.historyLackData)
             return
         }
         

@@ -12,36 +12,6 @@ struct NetworkErrorModel: Error {
     let description: String
 }
 
-struct ErrorHandler {
-    static func handleError(_ errorType: ErrorType) -> ErrorModel {
-        switch errorType {
-        case .reportLackData:
-            return ErrorModel(
-                title: "lackDataAlert_title".localized,
-                description: "reportLackDataAlert_message".localized)
-        case .historyLackData:
-            return ErrorModel(
-                title: "lackDataAlert_title".localized,
-                description: "historyLackDataAlert_message".localized)
-        case .statisticsLackData:
-            return ErrorModel(
-                title: "lackDataAlert_title".localized,
-                description: "statisticsLackDataAlert_message".localized)
-        }
-    }
-}
-
-struct ErrorModel {
-    let title: String
-    let description: String
-}
-
-enum ErrorType {
-    case reportLackData
-    case historyLackData
-    case statisticsLackData
-}
-
 enum FirebaseDocumentName: String {
     case users = "users"
     case transactions = "Transactions"

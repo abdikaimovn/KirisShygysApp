@@ -48,7 +48,7 @@ final class ServicesPresenter {
                 switch result {
                 case .success(let transactionsData):
                     if transactionsData.isEmpty {
-                        self?.view?.showError(ErrorHandler.handleError(.reportLackData))
+                        self?.view?.showError(.reportLackData)
                         return
                     }
                     self?.view?.showTransactionReportModule(transactionsData)
@@ -63,7 +63,7 @@ final class ServicesPresenter {
                 switch result {
                 case .success(let transactionsData):
                     if transactionsData.isEmpty {
-                        self?.view?.showError(ErrorHandler.handleError(.statisticsLackData))
+                        self?.view?.showError(.statisticsLackData)
                         return
                     }
                     self?.view?.showStatisticsModule(transactionsData)

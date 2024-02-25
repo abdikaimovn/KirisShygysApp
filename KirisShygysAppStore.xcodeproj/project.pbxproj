@@ -98,6 +98,7 @@
 		6FF0DE442B6E2699007C51F8 /* TabBarContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF0DE432B6E2699007C51F8 /* TabBarContoller.swift */; };
 		6FF0DE462B6E26C3007C51F8 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF0DE452B6E26C3007C51F8 /* CustomTabBar.swift */; };
 		6FF0DE4B2B6E4B9B007C51F8 /* ExtendedTapAreaButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF0DE4A2B6E4B9B007C51F8 /* ExtendedTapAreaButton.swift */; };
+		6FFD497A2B8BA0F700C01286 /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD49792B8BA0F700C01286 /* ErrorModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -185,6 +186,7 @@
 		6FF0DE432B6E2699007C51F8 /* TabBarContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarContoller.swift; sourceTree = "<group>"; };
 		6FF0DE452B6E26C3007C51F8 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		6FF0DE4A2B6E4B9B007C51F8 /* ExtendedTapAreaButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendedTapAreaButton.swift; sourceTree = "<group>"; };
+		6FFD49792B8BA0F700C01286 /* ErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -422,6 +424,7 @@
 				6FF0DE4A2B6E4B9B007C51F8 /* ExtendedTapAreaButton.swift */,
 				6F705A392B7BA0420029CB66 /* NotificationCenterEnum.swift */,
 				6FA057322B87235200F36C9A /* SelfSizingTableView.swift */,
+				6FFD49792B8BA0F700C01286 /* ErrorModel.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -771,6 +774,7 @@
 				6F36899F2B6C07870052BAB7 /* UIViewController+Extension.swift in Sources */,
 				6F705A382B7B60CF0029CB66 /* TransactionModel.swift in Sources */,
 				6FC613F32B84D2E80088CFD1 /* DetailedTransactionInfoView.swift in Sources */,
+				6FFD497A2B8BA0F700C01286 /* ErrorModel.swift in Sources */,
 				6FA057372B875CE400F36C9A /* ServicesPresenter.swift in Sources */,
 				6F40C96A2B88FFA000CB3226 /* StoryCollectionViewCell.swift in Sources */,
 				6F705A362B7B5EF90029CB66 /* UserDataService.swift in Sources */,
