@@ -12,9 +12,9 @@ final class StoryCollectionViewCell: UICollectionViewCell {
     //MARK: - UI Elements
     private let thisMonthLabel: UILabel = {
         let label = UILabel()
-        label.text = "thisMonthTitle_label".localized
+        label.text = "thisMonthTitle_label".localized.uppercased()
         label.textColor = .lightGrayColor
-        label.font = .font(style: .label)
+        label.font = .font(style: .title, withSize: 18)
         label.textAlignment = .center
         return label
     }()

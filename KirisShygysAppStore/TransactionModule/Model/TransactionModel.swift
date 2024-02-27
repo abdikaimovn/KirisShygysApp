@@ -25,7 +25,7 @@ struct TransactionModel {
     }
 }
 
-struct ValidatedTransactionModel {
+struct ValidatedTransactionModel: Identifiable {
     let id: String?
     let transactionAmount: Int
     let transactionType: TransactionType

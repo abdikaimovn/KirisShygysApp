@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 final class ServicesViewController: UIViewController {
     private let presenter: ServicesPresenter
@@ -141,7 +142,11 @@ extension ServicesViewController: ServicesViewProtocol {
     
     //TODO: - Fix
     func showStatisticsModule(_ transactionData: [ValidatedTransactionModel]) {
+        let presenter = StatisticsPresenter(transactionsData: transactionData)
+        let view = StatisticsViewController(presenter: presenter)
+        presenter.view = view
         
+        navigationController?.pushViewController(view, animated: true)
     }
     
     //TODO: - Fix
