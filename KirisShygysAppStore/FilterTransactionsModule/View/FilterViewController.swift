@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 protocol FilterViewDelegate: AnyObject {
     func didGetFilterSettings(filterData: FilterModel)

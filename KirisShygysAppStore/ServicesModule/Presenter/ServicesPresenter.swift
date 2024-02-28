@@ -8,8 +8,8 @@
 import Foundation
 
 protocol ServicesViewProtocol: AnyObject {
-    func showTransactionReportModule(_ transactionData: [ValidatedTransactionModel])
-    func showStatisticsModule(_ transactionData: [ValidatedTransactionModel])
+    func showTransactionReportModule(_ transactionsData: [ValidatedTransactionModel])
+    func showStatisticsModule(_ transactionsData: [ValidatedTransactionModel])
     func showSettingsModule()
     func logOut()
     func showLoader()

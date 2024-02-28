@@ -6,15 +6,16 @@
 //
 
 import UIKit
+import SnapKit
 
 final class QuoteCollectionViewCell: UICollectionViewCell {
     private let quoteGenerator = QuoteGenerator()
     
     private let monthQuoteLabel: UILabel = {
         let label = UILabel()
-        label.text = "quoteTitle_label".localized
+        label.text = "quoteTitle_label".localized.uppercased()
         label.textColor = .lightGrayColor
-        label.font = .font(style: .label)
+        label.font = .font(style: .title, withSize: 18)
         return label
     }()
     

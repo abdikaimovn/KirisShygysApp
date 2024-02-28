@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 final class DetailedTransactionInfoView: UIView {
     private var transactionInfo: ValidatedTransactionModel?

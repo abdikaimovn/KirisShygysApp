@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 final class ReportViewController: UIViewController {
     private let presenter: ReportPresenter
@@ -130,7 +131,6 @@ extension ReportViewController: UICollectionViewDataSource, UICollectionViewDele
             presenter.pageControlDidChange(currentPage)
         }
     }
-    
 }
 
 extension ReportViewController: ReportViewProtocol {
