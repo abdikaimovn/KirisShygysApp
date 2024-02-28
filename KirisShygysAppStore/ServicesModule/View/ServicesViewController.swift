@@ -76,9 +76,16 @@ final class ServicesViewController: UIViewController {
         }
     }
 
-    private func createTransactionReportModule(_ transactionData: [ValidatedTransactionModel]) -> UIViewController {
-        let presenter = ReportPresenter(transactionsData: transactionData)
+    private func createTransactionReportModule(_ transactionsData: [ValidatedTransactionModel]) -> UIViewController {
+        let presenter = ReportPresenter(transactionsData: transactionsData)
         let view = ReportViewController(presenter: presenter)
+        presenter.view = view
+        return view
+    }
+    
+    private func createStatisticsModule(_ transactionsData: [ValidatedTransactionModel]) -> UIViewController {
+        let presenter = StatisticsPresenter(transactionsData: transactionsData)
+        let view = StatisticsViewController(presenter: presenter)
         presenter.view = view
         return view
     }
@@ -136,17 +143,12 @@ extension ServicesViewController: ServicesViewProtocol {
         AlertManager.showAlert(on: self, title: error.title , message: error.description)
     }
     
-    func showTransactionReportModule(_ transactionData: [ValidatedTransactionModel]) {
-        navigationController?.pushViewController(createTransactionReportModule(transactionData), animated: true)
+    func showTransactionReportModule(_ transactionsData: [ValidatedTransactionModel]) {
+        navigationController?.pushViewController(createTransactionReportModule(transactionsData), animated: true)
     }
     
-    //TODO: - Fix
-    func showStatisticsModule(_ transactionData: [ValidatedTransactionModel]) {
-        let presenter = StatisticsPresenter(transactionsData: transactionData)
-        let view = StatisticsViewController(presenter: presenter)
-        presenter.view = view
-        
-        navigationController?.pushViewController(view, animated: true)
+    func showStatisticsModule(_ transactionsData: [ValidatedTransactionModel]) {
+        navigationController?.pushViewController(createStatisticsModule(transactionsData), animated: true)
     }
     
     //TODO: - Fix

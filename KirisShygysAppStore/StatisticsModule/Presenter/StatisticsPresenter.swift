@@ -26,7 +26,8 @@ final class StatisticsPresenter {
     }
     
     func viewDidLoaded(_ segmentedControlIndex: Int) {
-        configureChartData(segmentedControlIndex)
+        let transactionType: TransactionType = segmentedControlIndex == 0 ? .income : .expense
+        configureChartData(transactionType)
         flowModel = calculateFlowModel()
     }
     
@@ -60,86 +61,44 @@ final class StatisticsPresenter {
     }
     
     func segmentedControlDidChanged(_ segmentedControlIndex: Int) {
-        let type: TransactionType = segmentedControlIndex == 0 ? .income : .expense
+        let transactionType: TransactionType = segmentedControlIndex == 0 ? .income : .expense
         
-        if type == .income {
+        if transactionType == .income {
             guard let safeIncomeChartModel = incomeChartModel else {
-                configureChartData(segmentedControlIndex)
+                configureChartData(transactionType)
                 return
             }
-            view?.setupChart(with: safeIncomeChartModel)
-            view?.updateView(with: .incomeColor)
+            configureChart(with: safeIncomeChartModel, and: .incomeColor)
         } else {
             guard let safeExpenseChartModel = expenseChartModel else {
-                configureChartData(segmentedControlIndex)
+                configureChartData(transactionType)
                 return
             }
-            view?.setupChart(with: safeExpenseChartModel)
-            view?.updateView(with: .expenseColor)
+            configureChart(with: safeExpenseChartModel, and: .expenseColor)
         }
     }
     
-    private func configureChartData(_ segmentedControlIndex: Int) {
-        let type: TransactionType = segmentedControlIndex == 0 ? .income : .expense
+    private func configureChartData(_ transactionType: TransactionType) {
+        let chartColor: UIColor = transactionType == .income ? .incomeColor : .expenseColor
         
-        var groupedTransactions = [String: Int]()
-        var countOfTransactionType = 0
-        
-        //Проходим по массиву и суммируя группируем транзакций по датам
-        transactionsData.forEach { transaction in
-            if type == transaction.transactionType {
-                let transactionDate = String(transaction.transactionDate.prefix(10))
-                
-                groupedTransactions[transactionDate, default: 0] += transaction.transactionAmount
-                
-                countOfTransactionType += 1
+        ChartHandler.configureChart(with: transactionsData, and: transactionType) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let chartModel):
+                if transactionType == .income {
+                    self.incomeChartModel = chartModel
+                } else {
+                    self.expenseChartModel = chartModel
+                }
+                self.configureChart(with: chartModel, and: chartColor)
+            case .failure(_):
+                self.view?.showAbsenceDataView(withColor: chartColor)
             }
         }
-        
-        guard countOfTransactionType != 0 else {
-            let color = type == .income ? UIColor.incomeColor : UIColor.expenseColor
-            view?.showAbsenceDataView(withColor: color)
-            return
-        }
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MM.yyyy"
-        let endDate = Date()
-        let startDate = Calendar.current.date(byAdding: .month, value: -1, to: endDate)!
-        
-        //Высчитываем данные для label оси x
-        var lastMonthDates = [String]()
-        var currentDate = startDate
-        
-        while currentDate <= endDate {
-            lastMonthDates.append(dateFormatter.string(from: currentDate))
-            currentDate = Calendar.current.date(byAdding: .day, value: 1, to: currentDate)!
-        }
-        
-        var entries = [BarChartDataEntry]()
-        for (index, element) in lastMonthDates.enumerated() {
-            if let safeValue = groupedTransactions[element] {
-                entries.append(BarChartDataEntry(x: Double(index), y: Double(safeValue)))
-            } else {
-                entries.append(BarChartDataEntry(x: Double(index), y: 0))
-            }
-        }
-        
-        let dataSet = BarChartDataSet(entries: entries)
-        
-        // Так как даты у нас представлены как 'dd.MM.yyyy', извлекаем только дни месяца для показа
-        let xValues = lastMonthDates.map {"\($0.prefix(2))"}
-        
-        let chartColor = type == .income ? UIColor.incomeColor : UIColor.expenseColor
-        dataSet.setColor(chartColor)
-        
-        if type == .income {
-            incomeChartModel = ChartModel(xAxisTitles: xValues, chartData: dataSet)
-        } else {
-            expenseChartModel = ChartModel(xAxisTitles: xValues, chartData: dataSet)
-        }
-        
-        view?.setupChart(with: ChartModel(xAxisTitles: xValues, chartData: dataSet))
-        view?.updateView(with: chartColor)
+    }
+    
+    private func configureChart(with model: ChartModel, and color: UIColor) {
+        view?.setupChart(with: model)
+        view?.updateView(with: color)
     }
 }

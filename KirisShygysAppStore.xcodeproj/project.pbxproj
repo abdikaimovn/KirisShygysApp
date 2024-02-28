@@ -373,6 +373,7 @@
 				6FA0572C2B8714AA00F36C9A /* ServicesModule */,
 				6FD062382B87A2550061096F /* ReportModule */,
 				6F78ACE22B8C59530096B2CC /* StatisticsModule */,
+				6F71A7872B8E04770099FED9 /* SettingsModule */,
 			);
 			path = KirisShygysAppStore;
 			sourceTree = "<group>";
@@ -562,6 +563,37 @@
 				6F705A332B7B5E800029CB66 /* TransactionPresenter.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		6F71A7872B8E04770099FED9 /* SettingsModule */ = {
+			isa = PBXGroup;
+			children = (
+				6F71A78A2B8E04970099FED9 /* Model */,
+				6F71A7892B8E04930099FED9 /* View */,
+				6F71A7882B8E048D0099FED9 /* Presenter */,
+			);
+			path = SettingsModule;
+			sourceTree = "<group>";
+		};
+		6F71A7882B8E048D0099FED9 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		6F71A7892B8E04930099FED9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6F71A78A2B8E04970099FED9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		6F78ACE22B8C59530096B2CC /* StatisticsModule */ = {
