@@ -114,6 +114,7 @@
 "language_label" = "Язык";
 "currency_label" = "Валюта";
 "personalInfo_label" = "Личная информация";
+"trash_label" = "Очистить историю";
 
 //MARK: - Statistics page
 "statisticsTitle_label" = "Статистика за последний месяц";

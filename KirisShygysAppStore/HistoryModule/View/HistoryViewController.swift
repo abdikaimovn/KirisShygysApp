@@ -93,7 +93,6 @@ final class HistoryViewController: UIViewController {
         let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         backBarButtonItem.tintColor = .brownColor
         navigationController?.navigationBar.topItem?.backBarButtonItem = backBarButtonItem
-        title = "history_label".localized
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
@@ -158,6 +157,7 @@ final class HistoryViewController: UIViewController {
     
     private func setupView() {
         view.backgroundColor = .white
+        title = "history_label".localized
         
         view.addSubview(filterTransactionLabel)
         filterTransactionLabel.snp.makeConstraints { make in

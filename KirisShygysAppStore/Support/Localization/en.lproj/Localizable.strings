@@ -115,6 +115,7 @@
 "language_label" = "Language";
 "currency_label" = "Currency";
 "personalInfo_label" = "Personal information";
+"trash_label" = "Clear history";
 
 //MARK: - Statistics page
 "statisticsTitle_label" = "Statistics for last month";

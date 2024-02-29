@@ -89,40 +89,23 @@ final class ServicesViewController: UIViewController {
         presenter.view = view
         return view
     }
+    
+    private func createSettingsModule() -> UIViewController {
+        let presenter = SettingsPresenter()
+        let view = SettingsViewController(presenter: presenter)
+        presenter.view = view
+        return view
+    }
 }
 
 extension ServicesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        4
+        presenter.numberOfRowsInSection()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: MenuTableViewCell.typeName, for: indexPath) as? MenuTableViewCell {
-            switch indexPath.row {
-            case 0:
-                cell.configure(
-                    with: UIImage(systemName:"doc"),
-                    "transactionReport_label".localized,
-                    .lightGrayColor)
-            case 1:
-                cell.configure(
-                    with: UIImage(systemName: "chart.bar.xaxis"),
-                    "statistics_label".localized,
-                    .lightGrayColor)
-            case 2:
-                cell.configure(
-                    with: UIImage(systemName: "gear"),
-                    "settings_label".localized,
-                    .lightGrayColor)
-            case 3:
-                cell.configure(
-                    with: UIImage(systemName: "rectangle.portrait.and.arrow.right"),
-                    "logout_label".localized,
-                    .lightBrownColor)
-            default:
-                break
-            }
-            
+            cell.servicesConfigure(with: presenter.dataForItemAt(indexPath.row))
             return cell
         }
         
@@ -151,9 +134,8 @@ extension ServicesViewController: ServicesViewProtocol {
         navigationController?.pushViewController(createStatisticsModule(transactionsData), animated: true)
     }
     
-    //TODO: - Fix
     func showSettingsModule() {
-        
+        navigationController?.pushViewController(createSettingsModule(), animated: true)
     }
     
     func logOut() {

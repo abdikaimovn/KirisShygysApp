@@ -115,6 +115,7 @@
 "language_label" = "Тіл";
 "currency_label" = "Валюта";
 "personalInfo_label" = "Жеке ақпарат";
+"trash_label" = "Тарихты жою";
 
 //MARK: - Statistics page
 "statisticsTitle_label" = "Ағымдағы айдың статистикасы";
