@@ -40,9 +40,22 @@ final class SettingsViewController: UIViewController {
         setupView()
     }
     
+    //MARK: - Functions
+    private func setupView() {
+        view.backgroundColor = .white
+        title = "settings_label".localized
+        
+        view.addSubview(menuTableView)
+        menuTableView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
+        }
+        setupMenuTableView()
+    }
+    
     private func setupNavigationBar() {
         let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        backBarButtonItem.tintColor = .brownColor
+        backBarButtonItem.tintColor = .black
         navigationController?.navigationBar.topItem?.backBarButtonItem = backBarButtonItem
     }
     
@@ -56,22 +69,21 @@ final class SettingsViewController: UIViewController {
         menuTableView.register(MenuTableViewCell.self, forCellReuseIdentifier: MenuTableViewCell.typeName)
     }
     
-    private func setupView() {
-        view.backgroundColor = .white
-        title = "settings_label".localized
-        
-        view.addSubview(menuTableView)
-        menuTableView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(20)
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
-        }
-        setupMenuTableView()
+    private func createLanguageModule() -> UIViewController {
+        let presenter = LanguagePresenter()
+        let view = LanguageViewController(presenter: presenter)
+        presenter.view = view
+        return view
     }
 }
 
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         presenter.numberOfRowsInSection()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.didSelectRow(at: indexPath.row)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -85,6 +97,8 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension SettingsViewController: SettingsViewProtocol {
-    
+    func showLanguageModule() {
+        navigationController?.pushViewController(createLanguageModule(), animated: true)
+    }
 }
 

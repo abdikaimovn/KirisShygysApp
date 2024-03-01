@@ -8,7 +8,7 @@
 import UIKit
 
 protocol SettingsViewProtocol: AnyObject {
-    
+    func showLanguageModule()
 }
 
 final class SettingsPresenter {
@@ -45,6 +45,21 @@ final class SettingsPresenter {
                 image: UIImage(systemName:"trash"),
                 title: "trash_label".localized,
                 color: .expenseColor)
+        }
+    }
+    
+    func didSelectRow(at index: Int) {
+        switch index {
+        case 0:
+            view?.showLanguageModule()
+        case 1:
+            break
+        case 2:
+            break
+        case 3:
+            break
+        default:
+            break
         }
     }
 }

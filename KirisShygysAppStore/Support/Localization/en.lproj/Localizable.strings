@@ -115,7 +115,7 @@
 "language_label" = "Language";
 "currency_label" = "Currency";
 "personalInfo_label" = "Personal information";
-"trash_label" = "Clear history";
+"trash_label" = "Clear the history";
 
 //MARK: - Statistics page
 "statisticsTitle_label" = "Statistics for last month";
@@ -155,3 +155,9 @@
 "qazaq_quote2" = "The humor of a rich man is always funny.";
 "qazaq_quote3" = "The goal of the Fool is wealth, the goal of the Smart is morality.";
 "qazaq_quote4" = "Satisfaction is the greatest wealth";
+
+//MARK: - Language Changing
+"languageWarning_title" = "Warning";
+"languageWarning_label" = "To change the language, the application must be restarted";
+"yes_label" = "Yes";
+"no_label" = "No";

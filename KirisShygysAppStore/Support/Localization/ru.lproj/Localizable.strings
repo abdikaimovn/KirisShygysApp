@@ -155,3 +155,8 @@
 "qazaq_quote3" = "Цель глупца - богатство, цель умного - нравственность";
 "qazaq_quote4" = "Удовлетворение - величайшее богатство";
 
+//MARK: - Language Changing
+"languageWarning_title" = "Предупреждение";
+"languageWarning_label" = "Для изменения языка необходимо перезапустить приложение";
+"yes_label" = "Да";
+"no_label" = "Нет";

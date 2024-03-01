@@ -7,11 +7,12 @@
 
 import UIKit
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         setupWindow(with: scene)
+        configureAppLanguage()
         showInitialModule()
     }
     
@@ -21,6 +22,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = window
         self.window?.overrideUserInterfaceStyle = .light
         self.window?.makeKeyAndVisible()
+    }
+    
+    private func configureAppLanguage() {
+        LanguageHandler.configureAppLanguage()
     }
     
     func showInitialModule() {

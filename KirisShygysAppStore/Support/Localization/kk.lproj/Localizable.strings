@@ -155,3 +155,9 @@
 "qazaq_quote2" = "Бай адамның әзілі әрдайым күлкілі.";
 "qazaq_quote3" = "Ақымақтың мақсаты – байлық, ақылдының мақсаты – адамгершілік.";
 "qazaq_quote4" = "Қанағат ету – ең үлкен байлық";
+
+//MARK: - Language Changing
+"languageWarning_title" = "Ескерту";
+"languageWarning_label" = "Тілді өзгерту үшін қолданбаны қайта іске қосу керек";
+"yes_label" = "Иә";
+"no_label" = "Жоқ";

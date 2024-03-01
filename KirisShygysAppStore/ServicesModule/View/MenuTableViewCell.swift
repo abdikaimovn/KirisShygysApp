@@ -62,8 +62,8 @@ final class MenuTableViewCell: UITableViewCell {
         
         guard menuModel.color == .lightGrayColor else {
             title.font = .font(style: .button, withSize: 18)
-            image.tintColor = .white
-            subView.backgroundColor = menuModel.color
+            image.tintColor = menuModel.color
+            subView.backgroundColor = .white
             mainView.backgroundColor = menuModel.color
             title.textColor = .white
             rightArrow.isHidden = true

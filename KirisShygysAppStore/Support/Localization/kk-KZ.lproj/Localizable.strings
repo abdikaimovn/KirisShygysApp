@@ -155,3 +155,9 @@
 "qazaq_quote2" = "Baı adamnyń ázili árdaıym kúlkili.";
 "qazaq_quote3" = "Aqymaqtyń maqsaty – baılyq, aqyldynyń maqsaty – adamgershilik.";
 "qazaq_quote4" = "Qanaǵat etý – eń úlken baılyq";
+
+//MARK: - Language Changing
+"languageWarning_title" = "Eskertý";
+"languageWarning_label" = "Tildi ózgertý úshin qoldanbany qaıta iske qosý kerek";
+"yes_label" = "Iá";
+"no_label" = "Joq";
