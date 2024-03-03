@@ -19,12 +19,3 @@ enum LanguageEnum: String, CaseIterable {
     case english = "en"
     case russian = "ru"
 }
-
-struct LanguageHandler {
-    static func configureAppLanguage() {
-        let language = UserDefaultsManager.fetchSelectedLanguage()
-        
-        UserDefaults.standard.set([language.rawValue], forKey: "AppleLanguages")
-        UserDefaults.standard.synchronize()
-    }
-}

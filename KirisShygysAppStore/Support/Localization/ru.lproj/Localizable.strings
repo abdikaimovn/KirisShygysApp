@@ -120,7 +120,6 @@
 "statisticsTitle_label" = "Статистика за последний месяц";
 
 //MARK: - Currencies
-"currency" = "₸";
 "dollar" = "$";
 "tenge" = "₸";
 "ruble" = "₽";
@@ -160,3 +159,6 @@
 "languageWarning_label" = "Вы действительно хотите изменить язык приложения?";
 "yes_label" = "Да";
 "no_label" = "Нет";
+
+//MARK: - Currency Changing
+"currencyWarning_title" = "Вы действительно хотите изменить валюту в приложении?";

@@ -9,7 +9,7 @@ import Foundation
 
 protocol LanguageViewProtocol: AnyObject {
     func showLanguageChangeAlert()
-    func restartApp()
+    func updateView()
 }
 
 final class LanguagePresenter {
@@ -40,7 +40,7 @@ final class LanguagePresenter {
                 default:
                     return
                 }
-                view?.restartApp()
+                view?.updateView()
             }
         }
     }

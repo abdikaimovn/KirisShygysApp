@@ -97,6 +97,7 @@ final class StatisticsViewController: UIViewController {
         moneyFlowTableView.separatorStyle = .none
         moneyFlowTableView.isUserInteractionEnabled = false
     }
+    
     private func setupNavigationBar() {
         let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         backBarButtonItem.tintColor = .white

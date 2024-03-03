@@ -103,7 +103,7 @@ extension DetailedTransactionInfoView: UITableViewDataSource {
             case 1:
                 cell.configure(transactionKey: "transactionName_label".localized,  transactionValue: safeInfo.transactionName)
             case 2:
-                cell.configure(transactionKey: "transactionAmount_label".localized, transactionValue: "\("currency".localized) \(safeInfo.transactionAmount)")
+                cell.configure(transactionKey: "transactionAmount_label".localized, transactionValue: "\(String.currentCurrency) \(safeInfo.transactionAmount)")
             case 3:
                 cell.configure(transactionKey: "transactionDate_label".localized,  transactionValue: safeInfo.transactionDate)
             case 4:

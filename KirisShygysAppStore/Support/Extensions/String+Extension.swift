@@ -17,4 +17,8 @@ extension String {
             return NSLocalizedString(self, comment: "")
         }
     }
+    
+    static var currentCurrency: String {
+        UserDefaultsManager.fetchSelectedCurrency().rawValue.localized
+    }
 }

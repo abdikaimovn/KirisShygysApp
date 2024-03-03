@@ -191,7 +191,7 @@ final class TransactionViewController: UIViewController {
         let leftView = UIView()
         leftView.backgroundColor = .clear
         let dollarLabel = UILabel()
-        dollarLabel.text = "\("currency".localized) "
+        dollarLabel.text = "\(String.currentCurrency) "
         dollarLabel.font = amountTextField.font
         dollarLabel.textColor = .white
         leftView.addSubview(dollarLabel)

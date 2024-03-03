@@ -1,21 +1,17 @@
 //
-//  LanguageViewController.swift
+//  CurrencyViewController.swift
 //  KirisShygysAppStore
 //
-//  Created by Нурдаулет on 29.02.2024.
+//  Created by Нурдаулет on 03.03.2024.
 //
 
 import UIKit
 import SnapKit
 
-final class LanguageViewController: UIViewController {
-    private let presenter: LanguagePresenter
+final class CurrencyViewController: UIViewController {
+    private let presenter: CurrencyPresenter
     
-    //MARK: UI Elements
-    private let languagesTableView = SelfSizingTableView()
-    
-    //MARK: - Lifecycle
-    init(presenter: LanguagePresenter) {
+    init(presenter: CurrencyPresenter) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
@@ -23,7 +19,11 @@ final class LanguageViewController: UIViewController {
     required init?(coder: NSCoder) {
         nil
     }
-
+    
+    //MARK: UI Elements
+    private let сurrenciesTableView = SelfSizingTableView()
+    
+    //MARK: - LifeCycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupNavigationBar()
@@ -45,21 +45,21 @@ final class LanguageViewController: UIViewController {
     }
     
     private func setupMenuTableView() {
-        languagesTableView.delegate = self
-        languagesTableView.dataSource = self
-        languagesTableView.separatorStyle = .none
-        languagesTableView.showsVerticalScrollIndicator = false
-        languagesTableView.backgroundColor = .clear
-        languagesTableView.isScrollEnabled = false
-        languagesTableView.register(LanguageTableViewCell.self, forCellReuseIdentifier: LanguageTableViewCell.typeName)
+        сurrenciesTableView.delegate = self
+        сurrenciesTableView.dataSource = self
+        сurrenciesTableView.separatorStyle = .none
+        сurrenciesTableView.showsVerticalScrollIndicator = false
+        сurrenciesTableView.backgroundColor = .clear
+        сurrenciesTableView.isScrollEnabled = false
+        сurrenciesTableView.register(CurrencyTableViewCell.self, forCellReuseIdentifier: CurrencyTableViewCell.typeName)
     }
     
     private func setupView() {
         view.backgroundColor = .white
-        title = "language_label".localized
+        title = "currency_label".localized
         
-        view.addSubview(languagesTableView)
-        languagesTableView.snp.makeConstraints { make in
+        view.addSubview(сurrenciesTableView)
+        сurrenciesTableView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(20)
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
         }
@@ -68,7 +68,7 @@ final class LanguageViewController: UIViewController {
     }
 }
 
-extension LanguageViewController: UITableViewDelegate, UITableViewDataSource {
+extension CurrencyViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         presenter.numberOfRowsInSection()
     }
@@ -78,7 +78,7 @@ extension LanguageViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: LanguageTableViewCell.typeName, for: indexPath) as? LanguageTableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: CurrencyTableViewCell.typeName, for: indexPath) as? CurrencyTableViewCell {
             cell.configure(with: presenter.dataForCell(at: indexPath.row))
             return cell
         }
@@ -87,16 +87,16 @@ extension LanguageViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension LanguageViewController: LanguageViewProtocol {
-    func updateView() {
-        sceneDelegate?.updateRootView()
-    }
-    
-    func showLanguageChangeAlert() {
-        AlertManager.showAlertWithChoise(on: self, title: "languageWarning_title".localized, message: "languageWarning_label".localized) { [weak self] needToChange in
+extension CurrencyViewController: CurrencyViewProtocol {
+    func showCurrencyChangeAlert() {
+        AlertManager.showAlertWithChoise(on: self, title: "languageWarning_title".localized, message: "currencyWarning_label".localized) { [weak self] needToChange in
             guard let self else { return }
             
             self.presenter.userReplies(needToChange: needToChange)
         }
+    }
+    
+    func updateView() {
+        sceneDelegate?.updateRootView()
     }
 }

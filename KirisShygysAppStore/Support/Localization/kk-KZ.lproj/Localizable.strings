@@ -121,7 +121,6 @@
 "statisticsTitle_label" = "Aǵymdaǵy aıdyń statısıkasy";
 
 //MARK: - Currencies
-"currency" = "₸";
 "dollar" = "$";
 "tenge" = "₸";
 "ruble" = "₽";
@@ -161,3 +160,6 @@
 "languageWarning_label" = "Siz rasynda da qoldanba tilin ózgertkińiz kele me?";
 "yes_label" = "Iá";
 "no_label" = "Joq";
+
+//MARK: - Currency Changing
+"currencyWarning_label" = "Siz rasynda da qoldanba valútasyn ózgertkińiz kele me?";
