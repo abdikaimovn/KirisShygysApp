@@ -206,13 +206,6 @@
 		6FCE2C102B90A19300D0801D /* LanguagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagePresenter.swift; sourceTree = "<group>"; };
 		6FCE2C122B90B29E00D0801D /* LanguageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageTableViewCell.swift; sourceTree = "<group>"; };
 		6FCE2C142B90BA5F00D0801D /* LanguageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageModel.swift; sourceTree = "<group>"; };
-		6FCE2C222B90DC6E00D0801D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6FCE2C242B90DC6E00D0801D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		6FCE2C262B90DC6E00D0801D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		6FCE2C292B90DC6E00D0801D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		6FCE2C2B2B90DC7000D0801D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		6FCE2C2E2B90DC7000D0801D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		6FCE2C302B90DC7000D0801D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6FCE2C382B910D8100D0801D /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		6FCE2C3E2B911EFB00D0801D /* kk-KZ */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "kk-KZ"; path = "kk-KZ.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		6FD0623C2B87A2C20061096F /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
@@ -376,7 +369,6 @@
 			children = (
 				6F61E49A2B5D8A0B00F8AB20 /* KirisShygysAppStore */,
 				6F4580D62B5EDFB200869FF9 /* KirisShygysAppStore.app */,
-				6FCE2C212B90DC6E00D0801D /* KirisShygysQazaq */,
 			);
 			sourceTree = "<group>";
 		};
@@ -740,20 +732,6 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
-		6FCE2C212B90DC6E00D0801D /* KirisShygysQazaq */ = {
-			isa = PBXGroup;
-			children = (
-				6FCE2C222B90DC6E00D0801D /* AppDelegate.swift */,
-				6FCE2C242B90DC6E00D0801D /* SceneDelegate.swift */,
-				6FCE2C262B90DC6E00D0801D /* ViewController.swift */,
-				6FCE2C282B90DC6E00D0801D /* Main.storyboard */,
-				6FCE2C2B2B90DC7000D0801D /* Assets.xcassets */,
-				6FCE2C2D2B90DC7000D0801D /* LaunchScreen.storyboard */,
-				6FCE2C302B90DC7000D0801D /* Info.plist */,
-			);
-			path = KirisShygysQazaq;
-			sourceTree = "<group>";
-		};
 		6FCE2C362B910C4300D0801D /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1030,22 +1008,6 @@
 				6FB1F1922B8A343B00D72AD9 /* kk */,
 			);
 			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		6FCE2C282B90DC6E00D0801D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6FCE2C292B90DC6E00D0801D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		6FCE2C2D2B90DC7000D0801D /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6FCE2C2E2B90DC7000D0801D /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

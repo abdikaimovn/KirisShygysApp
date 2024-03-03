@@ -53,39 +53,34 @@ final class LanguagePresenter {
     func dataForCell(at index: Int) -> LanguageModel {
         switch index {
         case 0:
-            let language: LanguageEnum = .qazaqshaCyrillic
             return LanguageModel(
                 languageImage: "🇰🇿",
                 languageName: "Qazaqsha",
-                isSelected: language == selectedLanguage ?? .qazaqshaCyrillic
+                isSelected: .qazaqshaCyrillic == selectedLanguage ?? .qazaqshaCyrillic
             )
         case 1:
-            let language: LanguageEnum = .qazaqsha
             return LanguageModel(
                 languageImage: "🇰🇿",
                 languageName: "Қазақша",
-                isSelected: language == selectedLanguage ?? .qazaqshaCyrillic
+                isSelected: LanguageEnum.qazaqsha == selectedLanguage ?? .qazaqshaCyrillic
             )
         case 2:
-            let language: LanguageEnum = .russian
             return LanguageModel(
                 languageImage: "🇷🇺",
                 languageName: "Русский",
-                isSelected: language == selectedLanguage ?? .qazaqshaCyrillic
+                isSelected: LanguageEnum.russian == selectedLanguage ?? .qazaqshaCyrillic
             )
         case 3:
-            let language: LanguageEnum = .english
             return LanguageModel(
                 languageImage: "🇺🇸",
                 languageName: "English",
-                isSelected: language == selectedLanguage ?? .qazaqshaCyrillic
+                isSelected: LanguageEnum.english == selectedLanguage ?? .qazaqshaCyrillic
             )
         default:
-            let language: LanguageEnum = .qazaqsha
             return LanguageModel(
                 languageImage: "🇰🇿",
                 languageName: "Қазақша",
-                isSelected: language == selectedLanguage ?? .qazaqshaCyrillic
+                isSelected: LanguageEnum.qazaqsha == selectedLanguage ?? .qazaqshaCyrillic
             )
         }
     }

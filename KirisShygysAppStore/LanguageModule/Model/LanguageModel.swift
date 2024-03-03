@@ -25,5 +25,6 @@ struct LanguageHandler {
         let language = UserDefaultsManager.fetchSelectedLanguage()
         
         UserDefaults.standard.set([language.rawValue], forKey: "AppleLanguages")
+        UserDefaults.standard.synchronize()
     }
 }

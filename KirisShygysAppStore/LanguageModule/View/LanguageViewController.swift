@@ -89,8 +89,7 @@ extension LanguageViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension LanguageViewController: LanguageViewProtocol {
     func restartApp() {
-        LanguageHandler.configureAppLanguage()
-        exit(0)
+        sceneDelegate?.restartApp()
     }
     
     func showLanguageChangeAlert() {

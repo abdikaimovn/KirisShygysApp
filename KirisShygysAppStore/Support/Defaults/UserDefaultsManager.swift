@@ -14,7 +14,7 @@ struct UserDefaultsManager {
                 return language
             }
         }
-        // Return .qazaqshaCyrillic if no language is selected
+        // Return .qazaqshaCyrillic if no one is selected
         return .qazaqshaCyrillic
     }
     
