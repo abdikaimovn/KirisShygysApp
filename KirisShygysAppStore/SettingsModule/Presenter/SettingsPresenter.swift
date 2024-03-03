@@ -9,6 +9,7 @@ import UIKit
 
 protocol SettingsViewProtocol: AnyObject {
     func showLanguageModule()
+    func showCurrencyModule()
 }
 
 final class SettingsPresenter {
@@ -27,7 +28,7 @@ final class SettingsPresenter {
                 color: .lightGrayColor)
         case 1:
             return MenuTableViewCellModel(
-                image: UIImage(systemName: "tengesign"),
+                image: UIImage(systemName: CurrencyHandler.fetchCurrencyImageName()),
                 title: "currency_label".localized,
                 color: .lightGrayColor)
         case 2:
@@ -37,12 +38,12 @@ final class SettingsPresenter {
                 color: .lightGrayColor)
         case 3:
             return MenuTableViewCellModel(
-                image: UIImage(systemName:"trash"),
+                image: UIImage(systemName: "trash"),
                 title: "trash_label".localized,
                 color: .expenseColor)
         default:
             return MenuTableViewCellModel(
-                image: UIImage(systemName:"trash"),
+                image: UIImage(systemName: "trash"),
                 title: "trash_label".localized,
                 color: .expenseColor)
         }
@@ -53,7 +54,7 @@ final class SettingsPresenter {
         case 0:
             view?.showLanguageModule()
         case 1:
-            break
+            view?.showCurrencyModule()
         case 2:
             break
         case 3:

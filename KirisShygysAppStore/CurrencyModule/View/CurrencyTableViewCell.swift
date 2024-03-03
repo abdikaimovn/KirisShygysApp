@@ -1,14 +1,14 @@
 //
-//  LanguageTableViewCell.swift
+//  CurrencyTableViewCell.swift
 //  KirisShygysAppStore
 //
-//  Created by Нурдаулет on 29.02.2024.
+//  Created by Нурдаулет on 03.03.2024.
 //
 
 import UIKit
 import SnapKit
 
-final class LanguageTableViewCell: UITableViewCell {
+final class CurrencyTableViewCell: UITableViewCell {
     //MARK: - UI Elements
     private let mainView: UIView = {
         let mainView = UIView()
@@ -18,10 +18,12 @@ final class LanguageTableViewCell: UITableViewCell {
         return mainView
     }()
     
-    private let languageImageLabel: UILabel = {
-        let label = UILabel()
-        label.font = .font(style: .label)
-        return label
+    private let languageImage: UIImageView = {
+        let image = UIImageView()
+        image.contentMode = .scaleAspectFit
+        image.backgroundColor = .clear
+        image.tintColor = .brownColor
+        return image
     }()
     
     private let languageNameLabel: UILabel = {
@@ -47,9 +49,9 @@ final class LanguageTableViewCell: UITableViewCell {
         nil
     }
     
-    func configure(with model: LanguageModel) {
-        languageImageLabel.text = model.languageImage
-        languageNameLabel.text = model.languageName
+    func configure(with model: CurrencyModel) {
+        languageImage.image = model.currencyImage
+        languageNameLabel.text = model.currencyName
         doneImageView.isHidden = !model.isSelected
     }
     
@@ -62,22 +64,22 @@ final class LanguageTableViewCell: UITableViewCell {
             make.edges.equalToSuperview().inset(10)
         }
         
-        mainView.addSubview(languageImageLabel)
-        languageImageLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(10)
-            make.centerY.equalToSuperview()
+        mainView.addSubview(languageImage)
+        languageImage.snp.makeConstraints { make in
+            make.size.equalTo(20)
+            make.leading.top.bottom.equalToSuperview().inset(12)
         }
         
         mainView.addSubview(languageNameLabel)
         languageNameLabel.snp.makeConstraints { make in
-            make.leading.equalTo(languageImageLabel.snp.trailing).offset(20)
+            make.leading.equalTo(languageImage.snp.trailing).offset(20)
             make.centerY.equalToSuperview()
         }
         
         mainView.addSubview(doneImageView)
         doneImageView.snp.makeConstraints { make in
             make.trailing.equalToSuperview().inset(10)
-            make.top.bottom.equalToSuperview().inset(10)
+            make.top.bottom.equalToSuperview().inset(12)
             make.size.equalTo(25)
         }
     }

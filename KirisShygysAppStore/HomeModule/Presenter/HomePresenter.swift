@@ -91,9 +91,9 @@ final class HomePresenter {
                 let cardModel = self?.calculateCardValues(data: transactionData)
                 
                 self?.view?.setCardValues(
-                    total: "\("currency".localized) \(cardModel?.total ?? 0)",
-                    expenses: "\("currency".localized) \(cardModel?.expenses ?? 0)",
-                    incomes: "\("currency".localized) \(cardModel?.incomes ?? 0)"
+                    total: "\(String.currentCurrency) \(cardModel?.total ?? 0)",
+                    expenses: "\(String.currentCurrency) \(cardModel?.expenses ?? 0)",
+                    incomes: "\(String.currentCurrency) \(cardModel?.incomes ?? 0)"
                 )
                 
                 self?.view?.reloadTransactionTableView()

@@ -12,7 +12,6 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         setupWindow(with: scene)
-        configureAppLanguage()
         showInitialModule()
     }
     
@@ -24,12 +23,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window?.makeKeyAndVisible()
     }
     
-    private func configureAppLanguage() {
-        LanguageHandler.configureAppLanguage()
-    }
-    
-    func restartApp() {
-        configureAppLanguage()
+    func updateRootView() {
         showInitialModule()
     }
     

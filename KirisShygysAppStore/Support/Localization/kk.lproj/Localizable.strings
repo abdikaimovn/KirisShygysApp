@@ -121,7 +121,6 @@
 "statisticsTitle_label" = "Ағымдағы айдың статистикасы";
 
 //MARK: - Currencies
-"currency" = "₸";
 "dollar" = "$";
 "tenge" = "₸";
 "ruble" = "₽";
@@ -161,3 +160,6 @@
 "languageWarning_label" = "Сіз расында да қолданба тілін өзгерткіңіз келе ме?";
 "yes_label" = "Иә";
 "no_label" = "Жоқ";
+
+//MARK: - Currency Changing
+"currencyWarning_label" = "Сіз расында да қолданба валютасын өзгерткіңіз келе ме?";

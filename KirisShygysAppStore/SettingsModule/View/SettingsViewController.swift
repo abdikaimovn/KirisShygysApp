@@ -55,7 +55,7 @@ final class SettingsViewController: UIViewController {
     
     private func setupNavigationBar() {
         let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        backBarButtonItem.tintColor = .black
+        backBarButtonItem.tintColor = .brownColor
         navigationController?.navigationBar.topItem?.backBarButtonItem = backBarButtonItem
     }
     
@@ -72,6 +72,13 @@ final class SettingsViewController: UIViewController {
     private func createLanguageModule() -> UIViewController {
         let presenter = LanguagePresenter()
         let view = LanguageViewController(presenter: presenter)
+        presenter.view = view
+        return view
+    }
+    
+    private func createSettingsModule() -> UIViewController {
+        let presenter = CurrencyPresenter()
+        let view = CurrencyViewController(presenter: presenter)
         presenter.view = view
         return view
     }
@@ -97,6 +104,10 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension SettingsViewController: SettingsViewProtocol {
+    func showCurrencyModule() {
+        navigationController?.pushViewController(createSettingsModule(), animated: true)
+    }
+    
     func showLanguageModule() {
         navigationController?.pushViewController(createLanguageModule(), animated: true)
     }

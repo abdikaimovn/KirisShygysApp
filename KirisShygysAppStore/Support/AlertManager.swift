@@ -16,7 +16,7 @@ final class AlertManager {
         }
     }
     
-    static func showLanguageChangeAlert(on vc: UIViewController, title: String, message: String?, completionHandler: @escaping (Bool) -> ()) {
+    static func showAlertWithChoise(on vc: UIViewController, title: String, message: String?, completionHandler: @escaping (Bool) -> ()) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         let yesAction = UIAlertAction(title: "yes_label".localized, style: .default) { _ in
