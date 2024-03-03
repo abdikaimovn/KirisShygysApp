@@ -141,6 +141,7 @@ final class RegistrationViewController: UIViewController {
         setupSignUpButton()
         setupHidePasswordButton()
         setupTextFields()
+        setupToHideKeyboardOnTapOnView()
         
         view.addSubview(imageLogo)
         imageLogo.snp.makeConstraints { make in

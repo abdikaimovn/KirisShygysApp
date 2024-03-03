@@ -133,6 +133,7 @@ final class AuthorizationViewController: UIViewController {
         setupSignInButton()
         setupHidePasswordButton()
         setupTextFields()
+        setupToHideKeyboardOnTapOnView()
         
         view.addSubview(imageLogo)
         imageLogo.snp.makeConstraints { make in
