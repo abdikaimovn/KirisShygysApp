@@ -66,10 +66,6 @@ final class ReportViewController: UIViewController {
         let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         backBarButtonItem.tintColor = .white
         navigationController?.navigationBar.topItem?.backBarButtonItem = backBarButtonItem
-
-        if let navigationBar = navigationController?.navigationBar {
-            navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        }
     }
     
     private func setupCollectionView() {

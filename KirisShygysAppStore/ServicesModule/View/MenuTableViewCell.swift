@@ -17,7 +17,6 @@ final class MenuTableViewCell: UITableViewCell {
         return view
     }()
 
-    
     private let subView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
@@ -57,21 +56,38 @@ final class MenuTableViewCell: UITableViewCell {
         nil
     }
     
-    func configure(with itemImage: UIImage?, _ itemTitle: String, _ color: UIColor) {
-        image.image = itemImage
-        title.text = itemTitle
+    func settingsConfigure(with menuModel: MenuTableViewCellModel) {
+        image.image = menuModel.image
+        title.text = menuModel.title
         
-        guard color == .lightGrayColor else {
+        guard menuModel.color == .lightGrayColor else {
             title.font = .font(style: .button, withSize: 18)
-            image.tintColor = .black
-            subView.backgroundColor = color
-            title.alpha = 0.7
-            mainView.backgroundColor = color
+            image.tintColor = menuModel.color
+            subView.backgroundColor = .white
+            mainView.backgroundColor = menuModel.color
+            title.textColor = .white
             rightArrow.isHidden = true
             return
         }
         
-        mainView.backgroundColor = color
+        mainView.backgroundColor = menuModel.color
+    }
+    
+    func servicesConfigure(with menuModel: MenuTableViewCellModel) {
+        image.image = menuModel.image
+        title.text = menuModel.title
+        
+        guard menuModel.color == .lightGrayColor else {
+            title.font = .font(style: .button, withSize: 18)
+            image.tintColor = .black
+            subView.backgroundColor = menuModel.color
+            mainView.backgroundColor = menuModel.color
+            title.alpha = 0.7
+            rightArrow.isHidden = true
+            return
+        }
+        
+        mainView.backgroundColor = menuModel.color
     }
     
     private func setupView() {

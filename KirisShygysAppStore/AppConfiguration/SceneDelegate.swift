@@ -7,11 +7,12 @@
 
 import UIKit
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         setupWindow(with: scene)
+        configureAppLanguage()
         showInitialModule()
     }
     
@@ -21,6 +22,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = window
         self.window?.overrideUserInterfaceStyle = .light
         self.window?.makeKeyAndVisible()
+    }
+    
+    private func configureAppLanguage() {
+        LanguageHandler.configureAppLanguage()
+    }
+    
+    func restartApp() {
+        configureAppLanguage()
+        showInitialModule()
     }
     
     func showInitialModule() {
@@ -38,10 +48,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private func goToController(_ viewController: UIViewController) {
         UIView.animate(withDuration: 0.1) {
             self.window?.layer.opacity = 0
-        } completion: { [weak self] _ in
+        } completion: { _ in
             let view = viewController
             view.modalPresentationStyle = .fullScreen
-            self?.window?.rootViewController = view
+            self.window?.rootViewController = view
             
             UIView.animate(withDuration: 0.1) { [weak self] in
                 self?.window?.layer.opacity = 1

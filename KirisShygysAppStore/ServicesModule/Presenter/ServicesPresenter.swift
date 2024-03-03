@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol ServicesViewProtocol: AnyObject {
     func showTransactionReportModule(_ transactionsData: [ValidatedTransactionModel])
@@ -36,6 +37,40 @@ final class ServicesPresenter {
             case .failure(let failure):
                 self?.view?.showNetworkFailure(failure)
             }
+        }
+    }
+    
+    func numberOfRowsInSection() -> Int {
+        4
+    }
+    
+    func dataForItemAt(_ index: Int) -> MenuTableViewCellModel {
+        switch index {
+        case 0:
+            return MenuTableViewCellModel(
+                image: UIImage(systemName:"doc"),
+                title: "transactionReport_label".localized,
+                color: .lightGrayColor)
+        case 1:
+            return MenuTableViewCellModel(
+                image: UIImage(systemName:"chart.bar.xaxis"),
+                title: "statistics_label".localized,
+                color: .lightGrayColor)
+        case 2:
+            return MenuTableViewCellModel(
+                image: UIImage(systemName:"gear"),
+                title: "settings_label".localized,
+                color: .lightGrayColor)
+        case 3:
+            return MenuTableViewCellModel(
+                image: UIImage(systemName:"rectangle.portrait.and.arrow.right"),
+                title: "logout_label".localized,
+                color: .lightBrownColor)
+        default:
+            return MenuTableViewCellModel(
+                image: UIImage(systemName:"rectangle.portrait.and.arrow.right"),
+                title: "logout_label".localized,
+                color: .lightBrownColor)
         }
     }
     
