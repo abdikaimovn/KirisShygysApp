@@ -158,6 +158,6 @@
 
 //MARK: - Language Changing
 "languageWarning_title" = "Eskertý";
-"languageWarning_label" = "Tildi ózgertý úshin qoldanbany qaıta iske qosý kerek";
+"languageWarning_label" = "Siz rasynda da qoldanba tilin ózgertkińiz kele me?";
 "yes_label" = "Iá";
 "no_label" = "Joq";

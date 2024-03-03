@@ -158,6 +158,6 @@
 
 //MARK: - Language Changing
 "languageWarning_title" = "Warning";
-"languageWarning_label" = "To change the language, the application must be restarted";
+"languageWarning_label" = "Do you really want to change the language of the application?";
 "yes_label" = "Yes";
 "no_label" = "No";

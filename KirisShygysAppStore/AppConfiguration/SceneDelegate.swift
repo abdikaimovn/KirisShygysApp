@@ -30,7 +30,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func restartApp() {
         configureAppLanguage()
-        exit(0)
+        showInitialModule()
     }
     
     func showInitialModule() {

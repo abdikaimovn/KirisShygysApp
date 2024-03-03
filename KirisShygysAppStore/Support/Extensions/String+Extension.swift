@@ -9,6 +9,12 @@ import Foundation
 
 extension String {
     var localized: String {
-        return NSLocalizedString(self, comment: "")
+        let selectedLanguage = UserDefaultsManager.fetchSelectedLanguage()
+        if let path = Bundle.main.path(forResource: selectedLanguage.rawValue, ofType: "lproj"),
+           let bundle = Bundle(path: path) {
+            return NSLocalizedString(self, bundle: bundle, comment: "")
+        } else {
+            return NSLocalizedString(self, comment: "")
+        }
     }
 }
