@@ -53,8 +53,8 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             view.modalPresentationStyle = .fullScreen
             self.window?.rootViewController = view
             
-            UIView.animate(withDuration: 0.1) { [weak self] in
-                self?.window?.layer.opacity = 1
+            UIView.animate(withDuration: 0.1) { 
+                self.window?.layer.opacity = 1
             }
         }
     }

@@ -158,6 +158,6 @@
 
 //MARK: - Language Changing
 "languageWarning_title" = "Ескерту";
-"languageWarning_label" = "Тілді өзгерту үшін қолданбаны қайта іске қосу керек";
+"languageWarning_label" = "Сіз расында да қолданба тілін өзгерткіңіз келе ме?";
 "yes_label" = "Иә";
 "no_label" = "Жоқ";

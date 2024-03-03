@@ -157,6 +157,6 @@
 
 //MARK: - Language Changing
 "languageWarning_title" = "Предупреждение";
-"languageWarning_label" = "Для изменения языка необходимо перезапустить приложение";
+"languageWarning_label" = "Вы действительно хотите изменить язык приложения?";
 "yes_label" = "Да";
 "no_label" = "Нет";

@@ -140,6 +140,7 @@ final class TransactionViewController: UIViewController {
         setupTextFieldDelegates()
         setupSegmentedControl()
         setupSaveButton()
+        setupToHideKeyboardOnTapOnView()
     }
     
     private func setupSaveButton() {

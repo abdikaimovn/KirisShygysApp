@@ -16,6 +16,7 @@ final class ReportViewController: UIViewController {
         let pageControl = UIPageControl()
         pageControl.numberOfPages = 3
         pageControl.currentPage = 0
+        pageControl.isUserInteractionEnabled = false
         pageControl.pageIndicatorTintColor = .gray
         pageControl.currentPageIndicatorTintColor = .white
         return pageControl
