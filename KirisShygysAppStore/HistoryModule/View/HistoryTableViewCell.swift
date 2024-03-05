@@ -60,7 +60,7 @@ final class HistoryTableViewCell: UITableViewCell {
     func configure(transactionData: ValidatedTransactionModel?) {
         if let safeData = transactionData {
             transName.text = safeData.transactionName
-            priceLabel.text = "\("tenge".localized) \(safeData.transactionAmount)"
+            priceLabel.text = "\("tenge".localized) \(safeData.transactionAmount.formattedWithSeparator)"
             priceLabel.textColor = safeData.transactionType == .income ? UIColor.incomeColor : UIColor.expenseColor
             viewImage.backgroundColor = priceLabel.textColor
             image.image = safeData.transactionType == .income ? UIImage(systemName: "square.and.arrow.down") : UIImage(systemName: "square.and.arrow.up")

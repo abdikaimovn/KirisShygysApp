@@ -52,17 +52,17 @@ final class MoneyFlowTableViewCell: UITableViewCell {
         case .income:
             flowImage.image = UIImage(systemName: model.flowImage.rawValue)
             flowLabel.text = "incomes_label".localized
-            flowValue.text = "\("tenge".localized) \(model.value)"
+            flowValue.text = "\("tenge".localized) \(model.value.formattedWithSeparator)"
             flowValue.textColor = .incomeColor
         case .expense:
             flowImage.image = UIImage(systemName: model.flowImage.rawValue)
             flowLabel.text = "expenses_label".localized
-            flowValue.text = "\("tenge".localized) \(model.value)"
+            flowValue.text = "\("tenge".localized) \(model.value.formattedWithSeparator)"
             flowValue.textColor = .expenseColor
         case .total:
             flowImage.image = UIImage(systemName: model.flowImage.rawValue)
             flowLabel.text = "total_label".localized
-            flowValue.text = "\("tenge".localized) \(model.value)"
+            flowValue.text = "\("tenge".localized) \(model.value.formattedWithSeparator)"
         }
     }
     

@@ -49,17 +49,17 @@ final class ReportPresenter {
         let reportModel = [
             ReportModel(
                 transactionType: "spend_label".localized,
-                amount: "\("tenge".localized) \(expenseSum)",
+                amount: "\("tenge".localized) \(expenseSum.formattedWithSeparator)",
                 biggestTransactionLabel: "biggestSpending_label".localized,
                 biggestTransactionName: maxExpenseTitle,
-                biggestTransactionAmount: "\("tenge".localized) \(maxExpense)",
+                biggestTransactionAmount: "\("tenge".localized) \(maxExpense.formattedWithSeparator)",
                 isEmptyAmount: isEmptyExpenseAmount),
             ReportModel(
                 transactionType: "earn_label".localized,
-                amount: "\("tenge".localized) \(incomeSum)",
+                amount: "\("tenge".localized) \(incomeSum.formattedWithSeparator)",
                 biggestTransactionLabel: "biggentEarning_label".localized,
                 biggestTransactionName: maxIncomeTitle,
-                biggestTransactionAmount: "\("tenge".localized) \(maxIncome)",
+                biggestTransactionAmount: "\("tenge".localized) \(maxIncome.formattedWithSeparator)",
                 isEmptyAmount: isEmptyIncomeAmount)
         ]
         

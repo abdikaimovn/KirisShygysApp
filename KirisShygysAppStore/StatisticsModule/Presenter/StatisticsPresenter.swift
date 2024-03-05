@@ -48,9 +48,7 @@ final class StatisticsPresenter {
             return partialResult + transaction.transactionAmount
         }
         
-        let total = transactionsData.reduce(0) { partialResult, transaction in
-            return partialResult + transaction.transactionAmount
-        }
+        let total = incomes - expenses
         
         var flowModel = [FlowModel]()
         flowModel.append(FlowModel(value: incomes, flowImage: .income))
