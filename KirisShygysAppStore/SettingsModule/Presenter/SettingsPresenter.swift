@@ -9,14 +9,13 @@ import UIKit
 
 protocol SettingsViewProtocol: AnyObject {
     func showLanguageModule()
-    func showCurrencyModule()
 }
 
 final class SettingsPresenter {
     weak var view: SettingsViewProtocol?
     
     func numberOfRowsInSection() -> Int {
-        4
+        3
     }
     
     func dataForItemAt(_ index: Int) -> MenuTableViewCellModel {
@@ -28,15 +27,10 @@ final class SettingsPresenter {
                 color: .lightGrayColor)
         case 1:
             return MenuTableViewCellModel(
-                image: UIImage(systemName: CurrencyHandler.fetchCurrencyImageName()),
-                title: "currency_label".localized,
-                color: .lightGrayColor)
-        case 2:
-            return MenuTableViewCellModel(
                 image: UIImage(systemName: "person.text.rectangle"),
                 title: "personalInfo_label".localized,
                 color: .lightGrayColor)
-        case 3:
+        case 2:
             return MenuTableViewCellModel(
                 image: UIImage(systemName: "trash"),
                 title: "trash_label".localized,
@@ -54,10 +48,8 @@ final class SettingsPresenter {
         case 0:
             view?.showLanguageModule()
         case 1:
-            view?.showCurrencyModule()
-        case 2:
             break
-        case 3:
+        case 2:
             break
         default:
             break

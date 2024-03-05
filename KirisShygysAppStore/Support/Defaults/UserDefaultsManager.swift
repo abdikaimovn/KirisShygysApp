@@ -24,21 +24,4 @@ struct UserDefaultsManager {
         //Set true for selected language's value
         UserDefaults.standard.setValue(true, forKey: language.rawValue)
     }
-    
-    static func fetchSelectedCurrency() -> CurrencyEnum {
-        for currency in CurrencyEnum.allCases {
-            if let selected = UserDefaults.standard.value(forKey: currency.rawValue) as? Bool, selected == true {
-                return currency
-            }
-        }
-        // Return .tenge if no one is selected
-        return .tenge
-    }
-    
-    static func setSelectedCurrency(_ currency: CurrencyEnum) {
-        //Unselect all other languages
-        CurrencyEnum.allCases.forEach { UserDefaults.standard.set(false, forKey: $0.rawValue) }
-        //Set true for selected currency's value
-        UserDefaults.standard.setValue(true, forKey: currency.rawValue)
-    }
 }

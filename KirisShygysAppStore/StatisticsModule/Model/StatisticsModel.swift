@@ -50,7 +50,6 @@ struct ChartHandler {
         }
         
         guard countOfTransactionType != 0 else {
-            let color = type == .income ? UIColor.incomeColor : UIColor.expenseColor
             completion(.failure(.noTransactions))
             return
         }

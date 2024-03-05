@@ -98,7 +98,7 @@ extension UserDataService: HomeServiceProtocol {
         let ref = Firestore.firestore().collection(FirebaseDocumentName.users.rawValue).document(currentUserUID)
         
         ref.getDocument { snapshot, error in
-            if let error = error {
+            if error != nil {
                 completion(.failure(NetworkErrorHandler.shared.usernameFetchingError))
                 return
             }
@@ -121,7 +121,7 @@ extension UserDataService: HomeServiceProtocol {
             .document(currentUserUID)
             .collection(FirebaseDocumentName.transactions.rawValue)
             .getDocuments { (querySnapshot, error) in
-                if let error = error {
+                if error != nil {
                     completion(.failure(NetworkErrorHandler.shared.documentFetchingError))
                     return
                 }
@@ -172,7 +172,7 @@ extension UserDataService: HistoryServiceProtocol {
             .collection(collectionName)
             .document(transactionId)
             .delete { error in
-                if let error = error {
+                if error != nil {
                     completion(.failure(NetworkErrorHandler.shared.transactionDeletingError))
                     return
                 }
@@ -184,7 +184,7 @@ extension UserDataService: HistoryServiceProtocol {
             .collection(FirebaseDocumentName.transactions.rawValue)
             .document(transactionId)
             .delete { error in
-                if let error = error {
+                if error != nil {
                     completion(.failure(NetworkErrorHandler.shared.transactionDeletingError))
                     return
                 }
@@ -214,7 +214,7 @@ extension UserDataService: ServicesDataManagerProtocol {
         
         db.collection(FirebaseDocumentName.users.rawValue).document(currentUserUID).collection(FirebaseDocumentName.transactions.rawValue)
             .getDocuments { (querySnapshot, error) in
-                if let error = error {
+                if error != nil {
                     completion(.failure(NetworkErrorHandler.shared.documentFetchingError))
                     return
                 } else {
@@ -231,7 +231,7 @@ extension UserDataService: ServicesDataManagerProtocol {
                         return false
                     }
                     
-                    let lastMonthTransactions = transactions.filter { transaction in
+                    let lastMonthTransactions = transactionData.filter { transaction in
                         if let date = dateFormatter.date(from: transaction.transactionDate) {
                             return date >= lastMonthStartDate && date <= lastMonthEndDate
                         }

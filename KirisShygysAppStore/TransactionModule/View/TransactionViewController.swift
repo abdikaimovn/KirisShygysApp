@@ -44,7 +44,6 @@ final class TransactionViewController: UIViewController {
         field.layer.cornerRadius = 10
         field.layer.cornerCurve = .continuous
         field.textColor = .black
-        field.returnKeyType = .done
         return field
     }()
     
@@ -63,7 +62,6 @@ final class TransactionViewController: UIViewController {
         description.layer.cornerRadius = 10
         description.layer.cornerCurve = .continuous
         description.font = .font(style: .label)
-        description.returnKeyType = .done
         return description
     }()
     
@@ -115,7 +113,7 @@ final class TransactionViewController: UIViewController {
     
     private let datePicker: UIDatePicker = {
         let calendar = UIDatePicker()
-        calendar.locale = .current
+        calendar.locale = Locale(identifier: UserDefaultsManager.fetchSelectedLanguage().rawValue)
         calendar.datePickerMode = .dateAndTime
         calendar.timeZone = .current
         calendar.backgroundColor = .white
@@ -123,7 +121,7 @@ final class TransactionViewController: UIViewController {
         calendar.tintColor = .incomeColor
         return calendar
     }()
-    
+
     init(presenter: TransactionPresenter) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
@@ -191,7 +189,7 @@ final class TransactionViewController: UIViewController {
         let leftView = UIView()
         leftView.backgroundColor = .clear
         let dollarLabel = UILabel()
-        dollarLabel.text = "\(String.currentCurrency) "
+        dollarLabel.text = "\("tenge".localized) "
         dollarLabel.font = amountTextField.font
         dollarLabel.textColor = .white
         leftView.addSubview(dollarLabel)

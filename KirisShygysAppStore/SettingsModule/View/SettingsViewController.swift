@@ -75,13 +75,6 @@ final class SettingsViewController: UIViewController {
         presenter.view = view
         return view
     }
-    
-    private func createSettingsModule() -> UIViewController {
-        let presenter = CurrencyPresenter()
-        let view = CurrencyViewController(presenter: presenter)
-        presenter.view = view
-        return view
-    }
 }
 
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -104,10 +97,6 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension SettingsViewController: SettingsViewProtocol {
-    func showCurrencyModule() {
-        navigationController?.pushViewController(createSettingsModule(), animated: true)
-    }
-    
     func showLanguageModule() {
         navigationController?.pushViewController(createLanguageModule(), animated: true)
     }

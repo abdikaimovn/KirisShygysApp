@@ -69,7 +69,7 @@ final class TransactionTableViewCell: UITableViewCell {
         
         if let safeData = transactionData {
             transName.text = safeData.transactionName
-            priceLabel.text = "\(String.currentCurrency) \(safeData.transactionAmount)"
+            priceLabel.text = "\("tenge".localized) \(safeData.transactionAmount)"
             priceLabel.textColor = safeData.transactionType == .income ? UIColor.incomeColor : UIColor.expenseColor
             purchasedData.text = safeData.transactionDate.prefix(10) == currentData ? "today_label".localized : String(safeData.transactionDate.prefix(10))
             viewImage.backgroundColor = priceLabel.textColor
