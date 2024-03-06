@@ -353,6 +353,7 @@ final class HomeViewController: UIViewController {
         loaderView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        loaderView.backgroundColor = .white
     }
 }
 

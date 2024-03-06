@@ -393,6 +393,7 @@
 				6F78ACE22B8C59530096B2CC /* StatisticsModule */,
 				6F71A7872B8E04770099FED9 /* SettingsModule */,
 				6FCE2C0B2B90963E00D0801D /* LanguageModule */,
+				6FFB7F1F2B975F1A000CD639 /* PersonalInfoModule */,
 			);
 			path = KirisShygysAppStore;
 			sourceTree = "<group>";
@@ -790,6 +791,37 @@
 				6FFB7F1D2B975AD1000CD639 /* Formatter+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		6FFB7F1F2B975F1A000CD639 /* PersonalInfoModule */ = {
+			isa = PBXGroup;
+			children = (
+				6FFB7F222B975F3A000CD639 /* Model */,
+				6FFB7F212B975F35000CD639 /* View */,
+				6FFB7F202B975F30000CD639 /* Presenter */,
+			);
+			path = PersonalInfoModule;
+			sourceTree = "<group>";
+		};
+		6FFB7F202B975F30000CD639 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		6FFB7F212B975F35000CD639 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6FFB7F222B975F3A000CD639 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -4,8 +4,10 @@
 //
 //  Created by Нурдаулет on 28.01.2024.
 //
-import FirebaseAuth
+
 import FirebaseFirestore
+import FirebaseAuth
+import Firebase
 
 protocol RegistrationNetworkService {
     func registerUser(with userData: RegistrationModel,
@@ -24,6 +26,10 @@ protocol ServicesAuthenticationProtocol {
 struct AuthenticationService {
     static var user: User? {
         Auth.auth().currentUser
+    }
+    
+    private func isVerifiedEmail(_ email: String) -> Bool {
+        true
     }
 }
 

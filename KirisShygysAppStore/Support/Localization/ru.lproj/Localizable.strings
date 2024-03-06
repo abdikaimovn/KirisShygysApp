@@ -153,7 +153,10 @@
 "qazaq_quote4" = "Удовлетворение - величайшее богатство";
 
 //MARK: - Language Changing
-"languageWarning_title" = "Предупреждение";
+"warning_title" = "Предупреждение";
 "languageWarning_label" = "Вы действительно хотите изменить язык приложения?";
 "yes_label" = "Да";
 "no_label" = "Нет";
+
+//MARK: - Deleting History
+"clearHistory_message" = "Вы уверены, что хотите очистить историю? Данные не могут быть возвращены";

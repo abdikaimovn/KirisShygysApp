@@ -5,7 +5,6 @@
 //  Created by Нурдаулет on 13.02.2024.
 //
 
-import Foundation
 import Firebase
 import FirebaseFirestore
 
@@ -24,16 +23,46 @@ protocol HistoryServiceProtocol {
 
 protocol ServicesDataManagerProtocol {
     func fetchLastMonthTransactionData(completion: @escaping (Result<[ValidatedTransactionModel], NetworkErrorModel>) -> ())
+    func removeAllHistoryData(completion: @escaping (Result<(), NetworkErrorModel>) -> ())
 }
 
 struct UserDataService {
+    private let database = Firestore.firestore()
     
+    private var userUID: String? {
+        Auth.auth().currentUser?.uid
+    }
+    
+    private func deleteCollection(_ collectionRef: CollectionReference, completion: @escaping (Result<(), NetworkErrorModel>) -> ()) {
+        collectionRef.getDocuments { (snapshot, error) in
+            if let error = error {
+                completion(.failure(NetworkErrorHandler.shared.handleError(error: error)))
+                return
+            }
+            
+            guard let snapshot = snapshot else {
+                return
+            }
+            
+            let dispatchGroup = DispatchGroup()
+            
+            for document in snapshot.documents {
+                dispatchGroup.enter()
+                collectionRef.document(document.documentID).delete { error in
+                    if let error = error {
+                        completion(.failure(NetworkErrorHandler.shared.handleError(error: error)))
+                    }
+                    dispatchGroup.leave()
+                }
+            }
+            
+            completion(.success(()))
+        }
+    }
 }
 
 extension UserDataService: TransactionServiceProtocol {
     func insertNewTransaction(transaction: ValidatedTransactionModel, completion: @escaping (Result<(), NetworkErrorModel>) -> ()) {
-        let db = Firestore.firestore()
-        
         let collectionName: String
         switch transaction.transactionType {
         case .income:
@@ -55,13 +84,13 @@ extension UserDataService: TransactionServiceProtocol {
             "date": transaction.transactionDate
         ]
         
-        guard let currentUserUID = Auth.auth().currentUser?.uid else {
+        guard let currentUserUID = userUID else {
             completion(.failure(NetworkErrorHandler.shared.unknownError))
             return
         }
         
         // Добаление транзакции в коллекцию "Incomes" или "Expenses"
-        db.collection(FirebaseDocumentName.users.rawValue)
+        database.collection(FirebaseDocumentName.users.rawValue)
             .document(currentUserUID)
             .collection(collectionName)
             .document(transactionId)
@@ -73,8 +102,8 @@ extension UserDataService: TransactionServiceProtocol {
             }
         
         // Добавления транзакции в коллекцию "Transactions"
-        db.collection(FirebaseDocumentName.users.rawValue)
-            .document(Auth.auth().currentUser!.uid)
+        database.collection(FirebaseDocumentName.users.rawValue)
+            .document(currentUserUID)
             .collection(FirebaseDocumentName.transactions.rawValue)
             .document(transactionId)
             .setData(transactionDataDict) { error in
@@ -90,14 +119,14 @@ extension UserDataService: TransactionServiceProtocol {
 
 extension UserDataService: HomeServiceProtocol {
     func fetchUsername(completion: @escaping (Result<String, NetworkErrorModel>) -> ()) {
-        guard let currentUserUID = Auth.auth().currentUser?.uid else {
+        guard let currentUserUID = userUID else {
             completion(.failure(NetworkErrorHandler.shared.unknownError))
             return
         }
         
-        let ref = Firestore.firestore().collection(FirebaseDocumentName.users.rawValue).document(currentUserUID)
+        let reference = Firestore.firestore().collection(FirebaseDocumentName.users.rawValue).document(currentUserUID)
         
-        ref.getDocument { snapshot, error in
+        reference.getDocument { snapshot, error in
             if error != nil {
                 completion(.failure(NetworkErrorHandler.shared.usernameFetchingError))
                 return
@@ -111,13 +140,12 @@ extension UserDataService: HomeServiceProtocol {
     }
     
     func fetchTransactionsData(completion: @escaping (Result<[ValidatedTransactionModel], NetworkErrorModel>) -> ()) {
-        let db = Firestore.firestore()
-        guard let currentUserUID = Auth.auth().currentUser?.uid else {
+        guard let currentUserUID = userUID else {
             completion(.failure(NetworkErrorHandler.shared.unknownError))
             return
         }
         
-        db.collection(FirebaseDocumentName.users.rawValue)
+        database.collection(FirebaseDocumentName.users.rawValue)
             .document(currentUserUID)
             .collection(FirebaseDocumentName.transactions.rawValue)
             .getDocuments { (querySnapshot, error) in
@@ -147,8 +175,6 @@ extension UserDataService: HomeServiceProtocol {
 
 extension UserDataService: HistoryServiceProtocol {
     func deleteTransaction(transactionData: ValidatedTransactionModel, completion: @escaping (Result<(), NetworkErrorModel>) -> ()) {
-        let db = Firestore.firestore()
-        
         let collectionName: String
         switch transactionData.transactionType {
         case .income:
@@ -167,7 +193,7 @@ extension UserDataService: HistoryServiceProtocol {
         }
         
         // Удаление транзакции из коллекции "Incomes" или "Expenses"
-        db.collection(FirebaseDocumentName.users.rawValue)
+        database.collection(FirebaseDocumentName.users.rawValue)
             .document(currentUserUID)
             .collection(collectionName)
             .document(transactionId)
@@ -179,7 +205,7 @@ extension UserDataService: HistoryServiceProtocol {
             }
         
         // Удаление транзакции из коллекции "Transactions"
-        db.collection(FirebaseDocumentName.users.rawValue)
+        database.collection(FirebaseDocumentName.users.rawValue)
             .document(currentUserUID)
             .collection(FirebaseDocumentName.transactions.rawValue)
             .document(transactionId)
@@ -195,11 +221,60 @@ extension UserDataService: HistoryServiceProtocol {
 }
 
 extension UserDataService: ServicesDataManagerProtocol {
+    func removeAllHistoryData(completion: @escaping (Result<(), NetworkErrorModel>) -> ()) {
+        guard let currentUserUID = userUID else {
+            completion(.failure(NetworkErrorHandler.shared.unknownError))
+            return
+        }
+        
+        let incomesCollectionRef = database.collection(FirebaseDocumentName.users.rawValue).document(currentUserUID).collection(FirebaseDocumentName.incomes.rawValue)
+        let expensesCollectionRef = database.collection(FirebaseDocumentName.users.rawValue).document(currentUserUID).collection(FirebaseDocumentName.expenses.rawValue)
+        let transactionsCollectionRef = database.collection(FirebaseDocumentName.users.rawValue).document(currentUserUID).collection(FirebaseDocumentName.transactions.rawValue)
+        
+        // Use DispatchGroup to wait for all deletions to complete
+        let dispatchGroup = DispatchGroup()
+        
+        dispatchGroup.enter()
+        deleteCollection(incomesCollectionRef) { result in
+            switch result {
+            case .success(_):
+                dispatchGroup.leave()
+            case .failure(let failure):
+                completion(.failure(failure))
+                return
+            }
+        }
+        
+        dispatchGroup.enter()
+        deleteCollection(expensesCollectionRef) { result in
+            switch result {
+            case .success(_):
+                dispatchGroup.leave()
+            case .failure(let failure):
+                completion(.failure(failure))
+                return
+            }
+        }
+        
+        dispatchGroup.enter()
+        deleteCollection(transactionsCollectionRef) { result in
+            switch result {
+            case .success(_):
+                dispatchGroup.leave()
+            case .failure(let failure):
+                completion(.failure(failure))
+                return
+            }
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+            completion(.success(()))
+        }
+    }
+    
     func fetchLastMonthTransactionData(completion: @escaping (Result<[ValidatedTransactionModel], NetworkErrorModel>) -> ()) {
         //Check if user is registered
-        let db = Firestore.firestore()
-        
-        guard let currentUserUID = Auth.auth().currentUser?.uid else {
+        guard let currentUserUID = userUID else {
             completion(.failure(NetworkErrorHandler.shared.unknownError))
             return
         }
@@ -212,7 +287,7 @@ extension UserDataService: ServicesDataManagerProtocol {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyyy, HH:mm"
         
-        db.collection(FirebaseDocumentName.users.rawValue).document(currentUserUID).collection(FirebaseDocumentName.transactions.rawValue)
+        database.collection(FirebaseDocumentName.users.rawValue).document(currentUserUID).collection(FirebaseDocumentName.transactions.rawValue)
             .getDocuments { (querySnapshot, error) in
                 if error != nil {
                     completion(.failure(NetworkErrorHandler.shared.documentFetchingError))

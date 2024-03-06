@@ -13,6 +13,8 @@ final class SettingsViewController: UIViewController {
     //MARK: UI Elements
     private let menuTableView = SelfSizingTableView()
     
+    private let loaderView = LoaderView(with: .large)
+    
     //MARK: - Lifecycle
     init(presenter: SettingsPresenter) {
         self.presenter = presenter
@@ -51,6 +53,12 @@ final class SettingsViewController: UIViewController {
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
         }
         setupMenuTableView()
+        
+        view.addSubview(loaderView)
+        loaderView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.size.equalTo(70)
+        }
     }
     
     private func setupNavigationBar() {
@@ -97,8 +105,32 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension SettingsViewController: SettingsViewProtocol {
+    func updateView() {
+        sceneDelegate?.updateRootView()
+    }
+    
+    func showAlertWithChoise(_ title: String, _ message: String) {
+        AlertManager.showAlertWithChoise(on: self, title: title, message: message) { [weak self] needToDelete in
+            guard let self else { return }
+            
+            self.presenter.userReplies(needToDelete)
+        }
+    }
+    
     func showLanguageModule() {
         navigationController?.pushViewController(createLanguageModule(), animated: true)
+    }
+    
+    func showFailure(_ failure: NetworkErrorModel) {
+        AlertManager.showAlert(on: self, title: failure.title, message: failure.description)
+    }
+    
+    func showLoader() {
+        loaderView.showLoader()
+    }
+    
+    func hideLoader() {
+        loaderView.hideLoader()
     }
 }
 

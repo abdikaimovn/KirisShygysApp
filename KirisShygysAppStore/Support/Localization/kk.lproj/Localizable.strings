@@ -154,7 +154,10 @@
 "qazaq_quote4" = "Қанағат ету – ең үлкен байлық";
 
 //MARK: - Language Changing
-"languageWarning_title" = "Ескерту";
+"warning_title" = "Ескерту";
 "languageWarning_label" = "Сіз расында да қолданба тілін өзгерткіңіз келе ме?";
 "yes_label" = "Иә";
 "no_label" = "Жоқ";
+
+//MARK: - Deleting History
+"clearHistory_message" = "Сіз тарихты тазартқыңыз келетініне сенімдісіз бе? Деректерді қайтару мүмкін емес";

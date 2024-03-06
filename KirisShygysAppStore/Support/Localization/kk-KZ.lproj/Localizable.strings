@@ -154,7 +154,10 @@
 "qazaq_quote4" = "Qanaǵat etý – eń úlken baılyq";
 
 //MARK: - Language Changing
-"languageWarning_title" = "Eskertý";
+"warning_title" = "Eskertý";
 "languageWarning_label" = "Siz rasynda da qoldanba tilin ózgertkińiz kele me?";
 "yes_label" = "Iá";
 "no_label" = "Joq";
+
+//MARK: - Deleting History
+"clearHistory_message" = "Siz tarıhty tazartqyńyz keletinine senimdisiz be? Derekterdi qaıtarý múmkin emes";

@@ -74,6 +74,7 @@ final class ServicesViewController: UIViewController {
         loaderView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        loaderView.backgroundColor = .white
     }
 
     private func createTransactionReportModule(_ transactionsData: [ValidatedTransactionModel]) -> UIViewController {
@@ -91,7 +92,8 @@ final class ServicesViewController: UIViewController {
     }
     
     private func createSettingsModule() -> UIViewController {
-        let presenter = SettingsPresenter()
+        let service = UserDataService()
+        let presenter = SettingsPresenter(userDataService: service)
         let view = SettingsViewController(presenter: presenter)
         presenter.view = view
         return view

@@ -154,7 +154,10 @@
 "qazaq_quote4" = "Satisfaction is the greatest wealth";
 
 //MARK: - Language Changing
-"languageWarning_title" = "Warning";
+"warning_title" = "Warning";
 "languageWarning_label" = "Do you really want to change the language of the application?";
 "yes_label" = "Yes";
 "no_label" = "No";
+
+//MARK: - Deleting History
+"clearHistory_message" = "Are you sure you want to clear the history? The data cannot be returned";

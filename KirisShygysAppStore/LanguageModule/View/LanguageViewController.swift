@@ -93,7 +93,7 @@ extension LanguageViewController: LanguageViewProtocol {
     }
     
     func showLanguageChangeAlert() {
-        AlertManager.showAlertWithChoise(on: self, title: "languageWarning_title".localized, message: "languageWarning_label".localized) { [weak self] needToChange in
+        AlertManager.showAlertWithChoise(on: self, title: "warning_title".localized, message: "languageWarning_label".localized) { [weak self] needToChange in
             guard let self else { return }
             
             self.presenter.userReplies(needToChange: needToChange)
