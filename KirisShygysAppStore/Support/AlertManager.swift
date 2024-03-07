@@ -34,3 +34,9 @@ final class AlertManager {
         vc.present(alertController, animated: true, completion: nil)
     }
 }
+
+extension AlertManager {
+    static func showVerifyEmailAlert(on: UIViewController) {
+        showAlert(on: on, title: "warning_title".localized, message: "emailVerificationAlert".localized)
+    }
+}

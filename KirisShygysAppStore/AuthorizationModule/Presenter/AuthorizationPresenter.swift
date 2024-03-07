@@ -8,7 +8,7 @@
 protocol AuthorizationViewProtocol: AnyObject{
     func showInvalidEmailError()
     func showInvalidPasswordError()
-    func showHomeView()
+    func showInitialModule()
     func showAuthorizationError(with error: NetworkErrorModel)
     func showLoader()
     func hideLoader()
@@ -38,7 +38,7 @@ final class AuthorizationPresenter {
             self?.view?.hideLoader()
             switch authorizationResult {
             case .success():
-                self?.view?.showHomeView()
+                self?.view?.showInitialModule()
             case .failure(let error):
                 self?.view?.showAuthorizationError(with: error)
             }

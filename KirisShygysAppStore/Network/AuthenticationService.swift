@@ -12,6 +12,7 @@ import Firebase
 protocol RegistrationNetworkService {
     func registerUser(with userData: RegistrationModel,
                       completion: @escaping (Result<(), NetworkErrorModel>) -> Void)
+    func logOut()
 }
 
 protocol AuthorizationNetworkService {
@@ -28,12 +29,24 @@ struct AuthenticationService {
         Auth.auth().currentUser
     }
     
-    private func isVerifiedEmail(_ email: String) -> Bool {
-        true
+    static func sendEmailVerificationLink() {
+        AuthenticationService.user?.sendEmailVerification()
+    }
+    
+    static func checkEmailVerification() -> Bool {
+        AuthenticationService.user?.isEmailVerified ?? false
     }
 }
 
 extension AuthenticationService: RegistrationNetworkService {
+    func logOut() {
+        do {
+            try Auth.auth().signOut()
+        } catch _ {
+            return
+        }
+    }
+    
     private func setUserToDB(
         with uid: String,
         username: String,
@@ -78,6 +91,7 @@ extension AuthenticationService: RegistrationNetworkService {
 }
 
 extension AuthenticationService: AuthorizationNetworkService {
+    
     func authorizeUser(with userData: AuthorizationModel,
                        completion: @escaping (Result<(), NetworkErrorModel>) -> Void) {
         let email = userData.email ?? ""
@@ -89,7 +103,12 @@ extension AuthenticationService: AuthorizationNetworkService {
                 return
             }
             
-            completion(.success(()))
+            if AuthenticationService.checkEmailVerification() {
+                completion(.success(()))
+            } else {
+                completion(.failure(NetworkErrorHandler.shared.notVerifiedEmail))
+                logOut()
+            }
         }
     }
 }

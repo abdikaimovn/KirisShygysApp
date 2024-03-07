@@ -135,6 +135,11 @@
 //Statistics page alerts
 "statisticsLackDataAlert_message" = "Statısıkańyzdy kórsetý úshin derekter joq. Kórý úshin kez kelgen aýdarym qosyńyz";
 
+//Verification alerts
+"emailVerificationAlert" = "Akkaýntty iske qosý úshin elektrondyq poshtańyzǵa silteme jiberildi! (Spam qaltasyn tekserińiz)";
+"verificationError_title" = "Verıfıkasıa qatesi";
+"notVerifiedEmail_error" = "Kórsetilgen elektrondyq poshta rastalmaǵan";
+
 //MARK: - Quotes
 "aiyaz_uddin_quote" = "Aqshany kóp adamdar túsinbeıdi, biraq kóbisi ony tabady, jáne keıbireýleri ǵana ıgeredi";
 "linsey_mill_quote" = "Jaqsy kútilgen aǵza sıaqty, kútilgen aqsha aǵyny sizdiń qarjylyq bolashaǵyńyz úshin óte mańyzdy.";

@@ -135,6 +135,11 @@
 //Statistics page alerts
 "statisticsLackDataAlert_message" = "Lack of data to display your statistics. Add any transaction for access";
 
+//Verification alerts
+"emailVerificationAlert" = "A link has been sent to the email address you specified to activate your account! (Check the spam folder)";
+"verificationError_title" = "Verification Error";
+"notVerifiedEmail_error" = "Provided email is not verified";
+
 //MARK: - Quotes
 "aiyaz_uddin_quote" = "Money is not understood by many, even though many earn it and only a few master it.";
 "linsey_mill_quote" = "Like a well-nourished body, a healthy cash flow is essential for the vitality of your financial future.";

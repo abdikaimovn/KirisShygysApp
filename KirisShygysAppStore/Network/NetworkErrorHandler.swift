@@ -84,4 +84,12 @@ final class NetworkErrorHandler {
             text: nil,
             description: "transactionDeleting_error".localized)
     }
+    
+    var notVerifiedEmail: NetworkErrorModel {
+        NetworkErrorModel(
+            title: "verificationError_title".localized,
+            error: nil,
+            text: nil,
+            description: "notVerifiedEmail_error".localized)
+    }
 }

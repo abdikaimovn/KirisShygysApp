@@ -30,9 +30,9 @@ final class LanguagePresenter {
             if let language = languageIndex {
                 switch language {
                 case 0:
-                    UserDefaultsManager.setSelectedLanguage(.qazaqshaCyrillic)
-                case 1:
                     UserDefaultsManager.setSelectedLanguage(.qazaqsha)
+                case 1:
+                    UserDefaultsManager.setSelectedLanguage(.qazaqshaCyrillic)
                 case 2:
                     UserDefaultsManager.setSelectedLanguage(.russian)
                 case 3:
@@ -56,31 +56,31 @@ final class LanguagePresenter {
             return LanguageModel(
                 languageImage: "🇰🇿",
                 languageName: "Qazaqsha",
-                isSelected: .qazaqshaCyrillic == selectedLanguage ?? .qazaqshaCyrillic
+                isSelected: LanguageEnum.qazaqsha == selectedLanguage ?? .qazaqsha
             )
         case 1:
             return LanguageModel(
                 languageImage: "🇰🇿",
                 languageName: "Қазақша",
-                isSelected: LanguageEnum.qazaqsha == selectedLanguage ?? .qazaqshaCyrillic
+                isSelected: LanguageEnum.qazaqshaCyrillic == selectedLanguage ?? .qazaqsha
             )
         case 2:
             return LanguageModel(
                 languageImage: "🇷🇺",
                 languageName: "Русский",
-                isSelected: LanguageEnum.russian == selectedLanguage ?? .qazaqshaCyrillic
+                isSelected: LanguageEnum.russian == selectedLanguage ?? .qazaqsha
             )
         case 3:
             return LanguageModel(
                 languageImage: "🇺🇸",
                 languageName: "English",
-                isSelected: LanguageEnum.english == selectedLanguage ?? .qazaqshaCyrillic
+                isSelected: LanguageEnum.english == selectedLanguage ?? .qazaqsha
             )
         default:
             return LanguageModel(
                 languageImage: "🇰🇿",
                 languageName: "Қазақша",
-                isSelected: LanguageEnum.qazaqsha == selectedLanguage ?? .qazaqshaCyrillic
+                isSelected: LanguageEnum.qazaqsha == selectedLanguage ?? .qazaqsha
             )
         }
     }
