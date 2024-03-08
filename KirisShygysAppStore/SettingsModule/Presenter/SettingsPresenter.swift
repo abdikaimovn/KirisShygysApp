@@ -14,6 +14,7 @@ protocol SettingsViewProtocol: AnyObject {
     func showFailure(_ failure: NetworkErrorModel)
     func showLoader()
     func hideLoader()
+    func showPersonalInfoModule()
 }
 
 final class SettingsPresenter {
@@ -73,7 +74,7 @@ final class SettingsPresenter {
         case 0:
             view?.showLanguageModule()
         case 1:
-            break
+            view?.showPersonalInfoModule()
         case 2:
             view?.showAlertWithChoise("warning_title".localized, "clearHistory_message".localized)
         default:

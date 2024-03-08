@@ -40,14 +40,14 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     private func goToController(_ viewController: UIViewController) {
-        UIView.animate(withDuration: 0.1) {
+        UIView.animate(withDuration: 0.2) {
             self.window?.layer.opacity = 0
         } completion: { _ in
             let view = viewController
             view.modalPresentationStyle = .fullScreen
             self.window?.rootViewController = view
             
-            UIView.animate(withDuration: 0.1) { 
+            UIView.animate(withDuration: 0.3) {
                 self.window?.layer.opacity = 1
             }
         }

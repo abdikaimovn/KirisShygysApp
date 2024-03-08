@@ -83,6 +83,11 @@ final class SettingsViewController: UIViewController {
         presenter.view = view
         return view
     }
+    
+    private func createPersonalInfoModule() -> UIViewController {
+        let view = PersonalInfoViewController()
+        return view
+    }
 }
 
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -105,6 +110,10 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension SettingsViewController: SettingsViewProtocol {
+    func showPersonalInfoModule() {
+        navigationController?.pushViewController(createPersonalInfoModule(), animated: true)
+    }
+    
     func updateView() {
         sceneDelegate?.updateRootView()
     }
