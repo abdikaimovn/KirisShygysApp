@@ -166,3 +166,8 @@
 
 //MARK: - Deleting History
 "clearHistory_message" = "Siz tarıhty tazartqyńyz keletinine senimdisiz be? Derekterdi qaıtarý múmkin emes";
+
+//MARK: - Password placeholders
+"oldPassword_placeholder" = "Eski qupıa sóz";
+"newPassword_placeholder" = "Jańa qupıa sóz";
+"passwordChange_title" = "Qupıa sózdi ózgertý";

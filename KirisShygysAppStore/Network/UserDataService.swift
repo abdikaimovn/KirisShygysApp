@@ -8,6 +8,7 @@
 import Firebase
 import FirebaseFirestore
 
+//MARK: - SERVICE PROTOCOLS
 protocol TransactionServiceProtocol {
     func insertNewTransaction(transaction: ValidatedTransactionModel, completion: @escaping (Result<(), NetworkErrorModel>) -> ())
 }
@@ -26,6 +27,13 @@ protocol ServicesDataManagerProtocol {
     func removeAllHistoryData(completion: @escaping (Result<(), NetworkErrorModel>) -> ())
 }
 
+protocol PersonalInfoService {
+    func fetchUsername(completion: @escaping (Result<String, NetworkErrorModel>) -> ())
+    func fetchUserEmail(completion: @escaping (Result<String, NetworkErrorModel>) -> ())
+    func changeUserPassword(completion: @escaping(Result<(), NetworkErrorModel>) -> ())
+}
+
+//MARK: - SERVICE
 struct UserDataService {
     private let database = Firestore.firestore()
     
@@ -61,6 +69,7 @@ struct UserDataService {
     }
 }
 
+//MARK: - EXTENSIONS
 extension UserDataService: TransactionServiceProtocol {
     func insertNewTransaction(transaction: ValidatedTransactionModel, completion: @escaping (Result<(), NetworkErrorModel>) -> ()) {
         let collectionName: String

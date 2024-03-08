@@ -166,3 +166,8 @@
 
 //MARK: - Deleting History
 "clearHistory_message" = "Are you sure you want to clear the history? The data cannot be returned";
+
+//MARK: - Password placeholders
+"oldPassword_placeholder" = "Old password";
+"newPassword_placeholder" = "New password";
+"passwordChange_title" = "Change the password";

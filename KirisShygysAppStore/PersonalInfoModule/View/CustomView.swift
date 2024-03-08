@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class BackgroundView: UIView {
+final class CustomView: UIView {
     private let itemImage: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
@@ -27,7 +27,13 @@ final class BackgroundView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        
+        setupView()
+        setupSubviews()
+    }
+    
+    func configure(imageName: String, title: String) {
+        itemImage.image = UIImage(systemName: imageName)
+        itemTitle.text = title
     }
     
     private func setupView() {
@@ -43,9 +49,15 @@ final class BackgroundView: UIView {
     private func setupSubviews() {
         addSubview(itemImage)
         itemImage.snp.makeConstraints { make in
-            make.leading.top.equalToSuperview().inset(10)
+            make.leading.top.bottom.equalToSuperview().inset(10)
             make.size.equalTo(25)
-            
+        }
+        
+        addSubview(itemTitle)
+        itemTitle.snp.makeConstraints { make in
+            make.leading.equalTo(itemImage.snp.trailing).offset(10)
+            make.trailing.equalToSuperview().inset(20)
+            make.centerY.equalTo(itemImage.snp.centerY)
         }
     }
 }

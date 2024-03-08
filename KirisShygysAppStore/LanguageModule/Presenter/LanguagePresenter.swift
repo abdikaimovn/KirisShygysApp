@@ -56,31 +56,31 @@ final class LanguagePresenter {
             return LanguageModel(
                 languageImage: "🇰🇿",
                 languageName: "Qazaqsha",
-                isSelected: LanguageEnum.qazaqsha == selectedLanguage ?? .qazaqsha
+                isSelected: LanguageEnum.qazaqsha == selectedLanguage ?? .qazaqshaCyrillic
             )
         case 1:
             return LanguageModel(
                 languageImage: "🇰🇿",
                 languageName: "Қазақша",
-                isSelected: LanguageEnum.qazaqshaCyrillic == selectedLanguage ?? .qazaqsha
+                isSelected: LanguageEnum.qazaqshaCyrillic == selectedLanguage ?? .qazaqshaCyrillic
             )
         case 2:
             return LanguageModel(
                 languageImage: "🇷🇺",
                 languageName: "Русский",
-                isSelected: LanguageEnum.russian == selectedLanguage ?? .qazaqsha
+                isSelected: LanguageEnum.russian == selectedLanguage ?? .qazaqshaCyrillic
             )
         case 3:
             return LanguageModel(
                 languageImage: "🇺🇸",
                 languageName: "English",
-                isSelected: LanguageEnum.english == selectedLanguage ?? .qazaqsha
+                isSelected: LanguageEnum.english == selectedLanguage ?? .qazaqshaCyrillic
             )
         default:
             return LanguageModel(
                 languageImage: "🇰🇿",
                 languageName: "Қазақша",
-                isSelected: LanguageEnum.qazaqsha == selectedLanguage ?? .qazaqsha
+                isSelected: LanguageEnum.qazaqsha == selectedLanguage ?? .qazaqshaCyrillic
             )
         }
     }

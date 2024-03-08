@@ -166,3 +166,8 @@
 
 //MARK: - Deleting History
 "clearHistory_message" = "Сіз тарихты тазартқыңыз келетініне сенімдісіз бе? Деректерді қайтару мүмкін емес";
+
+//MARK: - Password placeholders
+"oldPassword_placeholder" = "Ескі құпия сөз";
+"newPassword_placeholder" = "Жаңа құпия сөз";
+"passwordChange_title" = "Құпия сөзді өзгерту";

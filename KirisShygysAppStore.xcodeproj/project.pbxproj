@@ -97,6 +97,7 @@
 		6FA057372B875CE400F36C9A /* ServicesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA057362B875CE400F36C9A /* ServicesPresenter.swift */; };
 		6FA432322B62946E00F79721 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA432312B62946E00F79721 /* RegistrationViewController.swift */; };
 		6FB1F18E2B89FFD000D72AD9 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6FB1F18D2B89FFD000D72AD9 /* Roboto-Italic.ttf */; };
+		6FBD1FB42B9B9D5700B16B6F /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBD1FB32B9B9D5700B16B6F /* CustomTextField.swift */; };
 		6FC613F32B84D2E80088CFD1 /* DetailedTransactionInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC613F22B84D2E80088CFD1 /* DetailedTransactionInfoView.swift */; };
 		6FC613F52B84D30E0088CFD1 /* DetailedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC613F42B84D30E0088CFD1 /* DetailedTableViewCell.swift */; };
 		6FCE2C052B9085A600D0801D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCE2C042B9085A600D0801D /* SettingsViewController.swift */; };
@@ -110,7 +111,8 @@
 		6FD0623D2B87A2C20061096F /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD0623C2B87A2C20061096F /* ReportViewController.swift */; };
 		6FD2B96F2B8A7D39005A48CA /* NetworkErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD2B96E2B8A7D39005A48CA /* NetworkErrorHandler.swift */; };
 		6FEF54AA2B99BD5300FC08AA /* PersonalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FEF54A92B99BD5300FC08AA /* PersonalInfoViewController.swift */; };
-		6FEF54AC2B9B920E00FC08AA /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FEF54AB2B9B920E00FC08AA /* BackgroundView.swift */; };
+		6FEF54AC2B9B920E00FC08AA /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FEF54AB2B9B920E00FC08AA /* CustomView.swift */; };
+		6FEF54AE2B9B991600FC08AA /* PersonalInfoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FEF54AD2B9B991600FC08AA /* PersonalInfoPresenter.swift */; };
 		6FF0DE442B6E2699007C51F8 /* TabBarContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF0DE432B6E2699007C51F8 /* TabBarContoller.swift */; };
 		6FF0DE462B6E26C3007C51F8 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF0DE452B6E26C3007C51F8 /* CustomTabBar.swift */; };
 		6FF0DE4B2B6E4B9B007C51F8 /* ExtendedTapAreaButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF0DE4A2B6E4B9B007C51F8 /* ExtendedTapAreaButton.swift */; };
@@ -200,6 +202,7 @@
 		6FB1F1902B8A30BF00D72AD9 /* kk-KZ */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "kk-KZ"; path = "kk-KZ.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		6FB1F1912B8A343B00D72AD9 /* kk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = kk; path = kk.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		6FB1F1922B8A343B00D72AD9 /* kk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = kk; path = kk.lproj/Localizable.strings; sourceTree = "<group>"; };
+		6FBD1FB32B9B9D5700B16B6F /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		6FC613F22B84D2E80088CFD1 /* DetailedTransactionInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedTransactionInfoView.swift; sourceTree = "<group>"; };
 		6FC613F42B84D30E0088CFD1 /* DetailedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedTableViewCell.swift; sourceTree = "<group>"; };
 		6FCE2C042B9085A600D0801D /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -214,7 +217,8 @@
 		6FD0623C2B87A2C20061096F /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
 		6FD2B96E2B8A7D39005A48CA /* NetworkErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorHandler.swift; sourceTree = "<group>"; };
 		6FEF54A92B99BD5300FC08AA /* PersonalInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoViewController.swift; sourceTree = "<group>"; };
-		6FEF54AB2B9B920E00FC08AA /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
+		6FEF54AB2B9B920E00FC08AA /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		6FEF54AD2B9B991600FC08AA /* PersonalInfoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoPresenter.swift; sourceTree = "<group>"; };
 		6FF0DE432B6E2699007C51F8 /* TabBarContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarContoller.swift; sourceTree = "<group>"; };
 		6FF0DE452B6E26C3007C51F8 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		6FF0DE4A2B6E4B9B007C51F8 /* ExtendedTapAreaButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendedTapAreaButton.swift; sourceTree = "<group>"; };
@@ -810,6 +814,7 @@
 		6FFB7F202B975F30000CD639 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				6FEF54AD2B9B991600FC08AA /* PersonalInfoPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -818,7 +823,8 @@
 			isa = PBXGroup;
 			children = (
 				6FEF54A92B99BD5300FC08AA /* PersonalInfoViewController.swift */,
-				6FEF54AB2B9B920E00FC08AA /* BackgroundView.swift */,
+				6FEF54AB2B9B920E00FC08AA /* CustomView.swift */,
+				6FBD1FB32B9B9D5700B16B6F /* CustomTextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -977,10 +983,11 @@
 				6FCE2C0F2B90969400D0801D /* LanguageViewController.swift in Sources */,
 				6FA432322B62946E00F79721 /* RegistrationViewController.swift in Sources */,
 				6F40C96E2B890DDB00CB3226 /* ReportModel.swift in Sources */,
+				6FEF54AE2B9B991600FC08AA /* PersonalInfoPresenter.swift in Sources */,
 				6FCE2C052B9085A600D0801D /* SettingsViewController.swift in Sources */,
 				6F61E49E2B5D8A0B00F8AB20 /* SceneDelegate.swift in Sources */,
 				6FEF54AA2B99BD5300FC08AA /* PersonalInfoViewController.swift in Sources */,
-				6FEF54AC2B9B920E00FC08AA /* BackgroundView.swift in Sources */,
+				6FEF54AC2B9B920E00FC08AA /* CustomView.swift in Sources */,
 				6F64447E2B65813D0018238D /* NetworkModel.swift in Sources */,
 				6FF0DE442B6E2699007C51F8 /* TabBarContoller.swift in Sources */,
 				6FFB7F1E2B975AD1000CD639 /* Formatter+Extension.swift in Sources */,
@@ -1005,6 +1012,7 @@
 				6FCE2C392B910D8100D0801D /* UserDefaultsManager.swift in Sources */,
 				6FCE2C132B90B29E00D0801D /* LanguageTableViewCell.swift in Sources */,
 				6F74A7132B80AF80009433EF /* HomeModel.swift in Sources */,
+				6FBD1FB42B9B9D5700B16B6F /* CustomTextField.swift in Sources */,
 				6F4580E52B601A0E00869FF9 /* NSObject+Extension.swift in Sources */,
 				6F6444792B6580ED0018238D /* AuthorizationModel.swift in Sources */,
 				6F0E031C2B78EE5F00B9FF21 /* HomePresenter.swift in Sources */,

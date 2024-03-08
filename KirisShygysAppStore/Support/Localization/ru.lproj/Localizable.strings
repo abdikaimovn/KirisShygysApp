@@ -165,3 +165,8 @@
 
 //MARK: - Deleting History
 "clearHistory_message" = "Вы уверены, что хотите очистить историю? Данные не могут быть возвращены";
+
+//MARK: - Password placeholders
+"oldPassword_placeholder" = "Старый пароль";
+"newPassword_placeholder" = "Новый пароль";
+"passwordChange_title" = "Изменить пароль";
