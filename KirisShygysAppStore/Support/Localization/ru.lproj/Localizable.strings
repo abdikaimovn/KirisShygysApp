@@ -26,6 +26,7 @@
 "save_button_title" = "Сохранить";
 "reset_button_title" = "Сброс";
 "retry_button_title" = "Повторить";
+"restart_button_title" = "Перезапустить";
 
 //MARK: - Authorization Validator errors
 "invalidEmail_error" = "• Email должен быть валидным согласно стандартам адресов электронной почты.";
@@ -134,6 +135,11 @@
 //Statistics page alerts
 "statisticsLackDataAlert_message" = "Недостаточно данных для отображения вашей статистики. Добавьте любую транзакцию для доступа";
 
+//Verification alerts
+"emailVerificationAlert" = "Для активации аккаунта на указанную вами почту была выслана ссылка! (Проверьте папку спам)";
+"verificationError_title" = "Ошибка Верификации";
+"notVerifiedEmail_error" = "Указанный адрес электронной почты не подтвержден";
+
 //MARK: - Quotes
 "aiyaz_uddin_quote" = "Многие не понимают, что такое деньги, хотя многие их зарабатывают и лишь немногие осваивают их";
 "linsey_mill_quote" = "Подобно хорошо питаемому телу, здоровый денежный поток необходим для жизнеспособности вашего финансового будущего";
@@ -153,7 +159,15 @@
 "qazaq_quote4" = "Удовлетворение - величайшее богатство";
 
 //MARK: - Language Changing
-"languageWarning_title" = "Предупреждение";
+"warning_title" = "Предупреждение";
 "languageWarning_label" = "Вы действительно хотите изменить язык приложения?";
 "yes_label" = "Да";
 "no_label" = "Нет";
+
+//MARK: - Deleting History
+"clearHistory_message" = "Вы уверены, что хотите очистить историю? Данные не могут быть возвращены";
+
+//MARK: - Password placeholders
+"oldPassword_placeholder" = "Старый пароль";
+"newPassword_placeholder" = "Новый пароль";
+"passwordChange_title" = "Изменить пароль";

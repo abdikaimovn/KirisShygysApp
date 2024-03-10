@@ -14,8 +14,8 @@ struct LanguageModel {
 }
 
 enum LanguageEnum: String, CaseIterable {
-    case qazaqshaCyrillic = "kk-KZ"
-    case qazaqsha = "kk"
+    case qazaqshaCyrillic = "kk"
+    case qazaqsha = "kk-KZ"
     case english = "en"
     case russian = "ru"
 }

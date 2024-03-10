@@ -26,6 +26,7 @@
 "save_button_title" = "Saqtaý";
 "reset_button_title" = "Joıý";
 "retry_button_title" = "Qaıtalaý";
+"restart_button_title" = "Qaıta iske qosý";
 
 //MARK: - Authorization Validator errors
 "invalidEmail_error" = "• Elektrondyq poshta elektrondyq poshta standarttaryna sáıkes jaramdy bolýy kerek.";
@@ -135,6 +136,11 @@
 //Statistics page alerts
 "statisticsLackDataAlert_message" = "Statısıkańyzdy kórsetý úshin derekter joq. Kórý úshin kez kelgen aýdarym qosyńyz";
 
+//Verification alerts
+"emailVerificationAlert" = "Akkaýntty iske qosý úshin elektrondyq poshtańyzǵa silteme jiberildi! (Spam qaltasyn tekserińiz)";
+"verificationError_title" = "Verıfıkasıa qatesi";
+"notVerifiedEmail_error" = "Kórsetilgen elektrondyq poshta rastalmaǵan";
+
 //MARK: - Quotes
 "aiyaz_uddin_quote" = "Aqshany kóp adamdar túsinbeıdi, biraq kóbisi ony tabady, jáne keıbireýleri ǵana ıgeredi";
 "linsey_mill_quote" = "Jaqsy kútilgen aǵza sıaqty, kútilgen aqsha aǵyny sizdiń qarjylyq bolashaǵyńyz úshin óte mańyzdy.";
@@ -154,7 +160,15 @@
 "qazaq_quote4" = "Qanaǵat etý – eń úlken baılyq";
 
 //MARK: - Language Changing
-"languageWarning_title" = "Eskertý";
+"warning_title" = "Eskertý";
 "languageWarning_label" = "Siz rasynda da qoldanba tilin ózgertkińiz kele me?";
 "yes_label" = "Iá";
 "no_label" = "Joq";
+
+//MARK: - Deleting History
+"clearHistory_message" = "Siz tarıhty tazartqyńyz keletinine senimdisiz be? Derekterdi qaıtarý múmkin emes";
+
+//MARK: - Password placeholders
+"oldPassword_placeholder" = "Eski qupıa sóz";
+"newPassword_placeholder" = "Jańa qupıa sóz";
+"passwordChange_title" = "Qupıa sózdi ózgertý";

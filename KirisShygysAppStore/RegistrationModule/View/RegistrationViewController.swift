@@ -202,6 +202,15 @@ extension RegistrationViewController: UITextFieldDelegate {
 }
 
 extension RegistrationViewController: RegistrationViewProtocol {
+    func showInitialView() {
+        sceneDelegate?.showInitialModule()
+    }
+    
+    func showVerifyEmailAlert() {
+        navigationController?.popViewController(animated: true)
+        AlertManager.showAlert(on: self, title: "warning_title".localized, message: "emailVerificationAlert".localized)
+    }
+    
     func showInvalidEmailError() {
         errorLabel.text = "invalidEmail_error".localized
         errorLabel.isHidden = false
@@ -227,9 +236,5 @@ extension RegistrationViewController: RegistrationViewProtocol {
     
     func showRegistrationError(with model: NetworkErrorModel) {
         AlertManager.showAlert(on: self, title: model.title, message: model.description)
-    }
-    
-    func showHomeView() {
-        sceneDelegate?.showInitialModule()
     }
 }

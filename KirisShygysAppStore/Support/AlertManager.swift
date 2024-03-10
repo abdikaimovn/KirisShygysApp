@@ -19,18 +19,24 @@ final class AlertManager {
     static func showAlertWithChoise(on vc: UIViewController, title: String, message: String?, completionHandler: @escaping (Bool) -> ()) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
+        let noAction = UIAlertAction(title: "no_label".localized, style: .default) { _ in
+            completionHandler(false)
+            alertController.dismiss(animated: true, completion: nil)
+        }
+        alertController.addAction(noAction)
+        
         let yesAction = UIAlertAction(title: "yes_label".localized, style: .default) { _ in
             completionHandler(true)
             alertController.dismiss(animated: true, completion: nil)
         }
         alertController.addAction(yesAction)
 
-        let noAction = UIAlertAction(title: "no_label".localized, style: .cancel) { _ in
-            completionHandler(false)
-            alertController.dismiss(animated: true, completion: nil)
-        }
-        alertController.addAction(noAction)
-
         vc.present(alertController, animated: true, completion: nil)
+    }
+}
+
+extension AlertManager {
+    static func showVerifyEmailAlert(on: UIViewController) {
+        showAlert(on: on, title: "warning_title".localized, message: "emailVerificationAlert".localized)
     }
 }

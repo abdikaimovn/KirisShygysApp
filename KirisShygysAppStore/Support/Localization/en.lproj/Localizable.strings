@@ -26,6 +26,7 @@
 "save_button_title" = "Save";
 "reset_button_title" = "Reset";
 "retry_button_title" = "Retry";
+"restart_button_title" = "Restart";
 
 //MARK: - Authorization Validator errors
 "invalidEmail_error" = "• Email must be valid according to email address standards.";
@@ -135,6 +136,11 @@
 //Statistics page alerts
 "statisticsLackDataAlert_message" = "Lack of data to display your statistics. Add any transaction for access";
 
+//Verification alerts
+"emailVerificationAlert" = "A link has been sent to the email address you specified to activate your account! (Check the spam folder)";
+"verificationError_title" = "Verification Error";
+"notVerifiedEmail_error" = "Provided email is not verified";
+
 //MARK: - Quotes
 "aiyaz_uddin_quote" = "Money is not understood by many, even though many earn it and only a few master it.";
 "linsey_mill_quote" = "Like a well-nourished body, a healthy cash flow is essential for the vitality of your financial future.";
@@ -154,7 +160,15 @@
 "qazaq_quote4" = "Satisfaction is the greatest wealth";
 
 //MARK: - Language Changing
-"languageWarning_title" = "Warning";
+"warning_title" = "Warning";
 "languageWarning_label" = "Do you really want to change the language of the application?";
 "yes_label" = "Yes";
 "no_label" = "No";
+
+//MARK: - Deleting History
+"clearHistory_message" = "Are you sure you want to clear the history? The data cannot be returned";
+
+//MARK: - Password placeholders
+"oldPassword_placeholder" = "Old password";
+"newPassword_placeholder" = "New password";
+"passwordChange_title" = "Change the password";

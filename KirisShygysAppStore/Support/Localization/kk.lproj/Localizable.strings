@@ -26,6 +26,7 @@
 "save_button_title" = "Сақтау";
 "reset_button_title" = "Жою";
 "retry_button_title" = "Қайталау";
+"restart_button_title" = "Қайта іске қосу";
 
 //MARK: - Authorization Validator errors
 "invalidEmail_error" = "• Электрондық пошта электрондық пошта стандарттарына сәйкес жарамды болуы керек.";
@@ -135,6 +136,11 @@
 //Statistics page alerts
 "statisticsLackDataAlert_message" = "Статистикаңызды көрсету үшін деректер жоқ. Көру үшін кез келген аударым қосыңыз";
 
+//Verification alerts
+"emailVerificationAlert" = "Аккаунтты іске қосу үшін электрондық поштаңызға сілтеме жіберілді! (Спам қалтасын тексеріңіз)";
+"verificationError_title" = "Верификация қатесі";
+"notVerifiedEmail_error" = "Көрсетілген электрондық пошта расталмаған";
+
 //MARK: - Quotes
 "aiyaz_uddin_quote" = "Ақшаны көп адамдар түсінбейді, бірақ көбісі оны табады, және кейбіреулері ғана игереді";
 "linsey_mill_quote" = "Жақсы күтілген ағза сияқты, күтілген ақша ағыны сіздің қаржылық болашағыңыз үшін өте маңызды.";
@@ -154,7 +160,15 @@
 "qazaq_quote4" = "Қанағат ету – ең үлкен байлық";
 
 //MARK: - Language Changing
-"languageWarning_title" = "Ескерту";
+"warning_title" = "Ескерту";
 "languageWarning_label" = "Сіз расында да қолданба тілін өзгерткіңіз келе ме?";
 "yes_label" = "Иә";
 "no_label" = "Жоқ";
+
+//MARK: - Deleting History
+"clearHistory_message" = "Сіз тарихты тазартқыңыз келетініне сенімдісіз бе? Деректерді қайтару мүмкін емес";
+
+//MARK: - Password placeholders
+"oldPassword_placeholder" = "Ескі құпия сөз";
+"newPassword_placeholder" = "Жаңа құпия сөз";
+"passwordChange_title" = "Құпия сөзді өзгерту";

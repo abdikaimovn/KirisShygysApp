@@ -10,6 +10,7 @@ import SnapKit
 
 final class LanguageViewController: UIViewController {
     private let presenter: LanguagePresenter
+    private var successAnimationView: SuccessAnimationView?
     
     //MARK: UI Elements
     private let languagesTableView = SelfSizingTableView()
@@ -42,6 +43,25 @@ final class LanguageViewController: UIViewController {
         let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         backBarButtonItem.tintColor = .brownColor
         navigationController?.navigationBar.topItem?.backBarButtonItem = backBarButtonItem
+    }
+    
+    private func setupAnimationView() {
+        view.backgroundColor = .white
+        navigationController?.setNavigationBarHidden(true, animated: false)
+
+        successAnimationView = SuccessAnimationView(frame: view.frame)
+        
+        guard let safeAnimationView = successAnimationView else {
+            return
+        }
+        
+        safeAnimationView.parent = self
+        
+        view.addSubview(safeAnimationView)
+        safeAnimationView.snp.makeConstraints({ make in
+            make.top.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+        })
     }
     
     private func setupMenuTableView() {
@@ -89,14 +109,22 @@ extension LanguageViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension LanguageViewController: LanguageViewProtocol {
     func updateView() {
-        sceneDelegate?.updateRootView()
+        setupAnimationView()
+        
+        successAnimationView?.playAnimation()
     }
     
     func showLanguageChangeAlert() {
-        AlertManager.showAlertWithChoise(on: self, title: "languageWarning_title".localized, message: "languageWarning_label".localized) { [weak self] needToChange in
+        AlertManager.showAlertWithChoise(on: self, title: "warning_title".localized, message: "languageWarning_label".localized) { [weak self] needToChange in
             guard let self else { return }
             
             self.presenter.userReplies(needToChange: needToChange)
         }
+    }
+}
+
+extension LanguageViewController: SuccessAnimationDelegate {
+    func restartDidTapped() {
+        sceneDelegate?.showInitialModule()
     }
 }

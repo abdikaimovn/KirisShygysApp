@@ -4,12 +4,15 @@
 //
 //  Created by Нурдаулет on 28.01.2024.
 //
-import FirebaseAuth
+
 import FirebaseFirestore
+import FirebaseAuth
+import Firebase
 
 protocol RegistrationNetworkService {
     func registerUser(with userData: RegistrationModel,
                       completion: @escaping (Result<(), NetworkErrorModel>) -> Void)
+    func logOut()
 }
 
 protocol AuthorizationNetworkService {
@@ -19,15 +22,33 @@ protocol AuthorizationNetworkService {
 
 protocol ServicesAuthenticationProtocol {
     func logOut(completion: @escaping (Result<(), NetworkErrorModel>) -> ())
+    func changeUserPassword(with password: PasswordModel, completion: @escaping (Result<(), NetworkErrorModel>) -> ())
+    func passwordDidChange()
 }
 
 struct AuthenticationService {
     static var user: User? {
         Auth.auth().currentUser
     }
+    
+    static func sendEmailVerificationLink() {
+        AuthenticationService.user?.sendEmailVerification()
+    }
+    
+    static func checkEmailVerification() -> Bool {
+        AuthenticationService.user?.isEmailVerified ?? false
+    }
 }
 
 extension AuthenticationService: RegistrationNetworkService {
+    func logOut() {
+        do {
+            try Auth.auth().signOut()
+        } catch _ {
+            return
+        }
+    }
+    
     private func setUserToDB(
         with uid: String,
         username: String,
@@ -83,12 +104,52 @@ extension AuthenticationService: AuthorizationNetworkService {
                 return
             }
             
-            completion(.success(()))
+            if AuthenticationService.checkEmailVerification() {
+                completion(.success(()))
+            } else {
+                completion(.failure(NetworkErrorHandler.shared.notVerifiedEmail))
+                logOut()
+            }
         }
     }
 }
 
 extension AuthenticationService: ServicesAuthenticationProtocol {
+    func passwordDidChange() {
+        logOut()
+    }
+    
+    func changeUserPassword(with password: PasswordModel, completion: @escaping (Result<(), NetworkErrorModel>) -> ()) {
+        guard let currentEmail = AuthenticationService.user?.email else {
+            return
+        }
+        
+        guard let oldPassword = password.oldPassword else {
+            return
+        }
+        
+        guard let newPassword = password.newPassword else {
+            return
+        }
+        
+        let credential = EmailAuthProvider.credential(withEmail: currentEmail, password: oldPassword)
+        
+        AuthenticationService.user?.reauthenticate(with: credential, completion: { _, error in
+            if let error {
+                completion(.failure(NetworkErrorHandler.shared.handleError(error: error)))
+                return
+            }
+            
+            AuthenticationService.user?.updatePassword(to: newPassword, completion: { error in
+                if let error {
+                    completion(.failure(NetworkErrorHandler.shared.handleError(error: error)))
+                }
+                
+                completion(.success(()))
+            })
+        })
+    }
+    
     func logOut(completion: @escaping (Result<(), NetworkErrorModel>) -> ()) {
         do {
             try Auth.auth().signOut()

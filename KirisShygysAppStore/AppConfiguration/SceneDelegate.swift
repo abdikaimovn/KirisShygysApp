@@ -13,7 +13,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         setupWindow(with: scene)
         showInitialModule()
-    }
+     }
     
     private func setupWindow(with scene: UIScene) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
@@ -28,26 +28,26 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func showInitialModule() {
-        if AuthenticationService.user == nil {
+        if AuthenticationService.user != nil {
+            goToController(UINavigationController(rootViewController: TabBarContoller()))
+        } else {
             let presenter = OnboardingPresenter()
             let view = OnboardingViewController(presenter: presenter)
             presenter.view = view
             let navController = UINavigationController(rootViewController: view)
             goToController(navController)
-        } else {
-            goToController(UINavigationController(rootViewController: TabBarContoller()))
         }
     }
     
     private func goToController(_ viewController: UIViewController) {
-        UIView.animate(withDuration: 0.1) {
+        UIView.animate(withDuration: 0.2) {
             self.window?.layer.opacity = 0
         } completion: { _ in
             let view = viewController
             view.modalPresentationStyle = .fullScreen
             self.window?.rootViewController = view
             
-            UIView.animate(withDuration: 0.1) { 
+            UIView.animate(withDuration: 0.3) {
                 self.window?.layer.opacity = 1
             }
         }

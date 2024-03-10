@@ -205,7 +205,7 @@ extension AuthorizationViewController: AuthorizationViewProtocol {
         loaderView.hideLoader()
     }
     
-    func showHomeView() {
+    func showInitialModule() {
         sceneDelegate?.showInitialModule()
     }
     

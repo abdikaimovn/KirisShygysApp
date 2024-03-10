@@ -30,9 +30,9 @@ final class LanguagePresenter {
             if let language = languageIndex {
                 switch language {
                 case 0:
-                    UserDefaultsManager.setSelectedLanguage(.qazaqshaCyrillic)
-                case 1:
                     UserDefaultsManager.setSelectedLanguage(.qazaqsha)
+                case 1:
+                    UserDefaultsManager.setSelectedLanguage(.qazaqshaCyrillic)
                 case 2:
                     UserDefaultsManager.setSelectedLanguage(.russian)
                 case 3:
@@ -56,13 +56,13 @@ final class LanguagePresenter {
             return LanguageModel(
                 languageImage: "🇰🇿",
                 languageName: "Qazaqsha",
-                isSelected: .qazaqshaCyrillic == selectedLanguage ?? .qazaqshaCyrillic
+                isSelected: LanguageEnum.qazaqsha == selectedLanguage ?? .qazaqshaCyrillic
             )
         case 1:
             return LanguageModel(
                 languageImage: "🇰🇿",
                 languageName: "Қазақша",
-                isSelected: LanguageEnum.qazaqsha == selectedLanguage ?? .qazaqshaCyrillic
+                isSelected: LanguageEnum.qazaqshaCyrillic == selectedLanguage ?? .qazaqshaCyrillic
             )
         case 2:
             return LanguageModel(

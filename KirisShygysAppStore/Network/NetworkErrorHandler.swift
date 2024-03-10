@@ -14,6 +14,12 @@ final class NetworkErrorHandler {
     func handleError(error: Error) -> NetworkErrorModel {
         let errorCode = AuthErrorCode(_nsError: error as NSError)
         switch errorCode.code {
+        case .unverifiedEmail:
+            return NetworkErrorModel(
+                title: "registration_error_title".localized,
+                error: error,
+                text: error.localizedDescription,
+                description: "credentialAlreadyInUse_error".localized)
         case .emailAlreadyInUse:
             return NetworkErrorModel(
                 title: "registration_error_title".localized,
@@ -77,5 +83,13 @@ final class NetworkErrorHandler {
             error: nil,
             text: nil,
             description: "transactionDeleting_error".localized)
+    }
+    
+    var notVerifiedEmail: NetworkErrorModel {
+        NetworkErrorModel(
+            title: "verificationError_title".localized,
+            error: nil,
+            text: nil,
+            description: "notVerifiedEmail_error".localized)
     }
 }

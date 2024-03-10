@@ -7,12 +7,13 @@
 
 protocol RegistrationViewProtocol: AnyObject {
     func showRegistrationError(with model: NetworkErrorModel)
-    func showHomeView()
+    func showInitialView()
     func showInvalidEmailError()
     func showInvalidUsernameError()
     func showInvalidPasswordError()
     func showLoader()
     func hideLoader()
+    func showVerifyEmailAlert()
 }
 
 final class RegistrationPresenter {
@@ -44,7 +45,9 @@ final class RegistrationPresenter {
             self?.view?.hideLoader()
             switch registrationResult {
             case .success():
-                self?.view?.showHomeView()
+                AuthenticationService.sendEmailVerificationLink()
+                self?.networkService.logOut()
+                self?.view?.showVerifyEmailAlert()
             case .failure(let error):
                 self?.view?.showRegistrationError(with: error)
             }
