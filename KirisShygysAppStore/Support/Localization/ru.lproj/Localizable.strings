@@ -26,6 +26,7 @@
 "save_button_title" = "Сохранить";
 "reset_button_title" = "Сброс";
 "retry_button_title" = "Повторить";
+"restart_button_title" = "Перезапустить";
 
 //MARK: - Authorization Validator errors
 "invalidEmail_error" = "• Email должен быть валидным согласно стандартам адресов электронной почты.";

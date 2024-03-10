@@ -29,8 +29,7 @@ protocol ServicesDataManagerProtocol {
 
 protocol PersonalInfoService {
     func fetchUsername(completion: @escaping (Result<String, NetworkErrorModel>) -> ())
-    func fetchUserEmail(completion: @escaping (Result<String, NetworkErrorModel>) -> ())
-    func changeUserPassword(completion: @escaping(Result<(), NetworkErrorModel>) -> ())
+    func fetchUserEmail(completion: (Result<String, NetworkErrorModel>) -> ())
 }
 
 //MARK: - SERVICE
@@ -66,6 +65,27 @@ struct UserDataService {
             
             completion(.success(()))
         }
+    }
+    
+    func fetchUsername(completion: @escaping (Result<String, NetworkErrorModel>) -> ()) {
+        guard let currentUserUID = userUID else {
+            completion(.failure(NetworkErrorHandler.shared.unknownError))
+            return
+        }
+        
+        let reference = Firestore.firestore().collection(FirebaseDocumentName.users.rawValue).document(currentUserUID)
+        
+        reference.getDocument { snapshot, error in
+            if error != nil {
+                completion(.failure(NetworkErrorHandler.shared.usernameFetchingError))
+                return
+            }
+            
+            if let snapshot = snapshot, let userData = snapshot.data(), let name = userData[FirebaseDocumentName.username.rawValue] as? String {
+                completion(.success(name))
+            }
+        }
+        
     }
 }
 
@@ -127,27 +147,6 @@ extension UserDataService: TransactionServiceProtocol {
 }
 
 extension UserDataService: HomeServiceProtocol {
-    func fetchUsername(completion: @escaping (Result<String, NetworkErrorModel>) -> ()) {
-        guard let currentUserUID = userUID else {
-            completion(.failure(NetworkErrorHandler.shared.unknownError))
-            return
-        }
-        
-        let reference = Firestore.firestore().collection(FirebaseDocumentName.users.rawValue).document(currentUserUID)
-        
-        reference.getDocument { snapshot, error in
-            if error != nil {
-                completion(.failure(NetworkErrorHandler.shared.usernameFetchingError))
-                return
-            }
-            
-            if let snapshot = snapshot, let userData = snapshot.data(), let name = userData[FirebaseDocumentName.username.rawValue] as? String {
-                completion(.success(name))
-            }
-        }
-        
-    }
-    
     func fetchTransactionsData(completion: @escaping (Result<[ValidatedTransactionModel], NetworkErrorModel>) -> ()) {
         guard let currentUserUID = userUID else {
             completion(.failure(NetworkErrorHandler.shared.unknownError))
@@ -325,5 +324,15 @@ extension UserDataService: ServicesDataManagerProtocol {
                     completion(.success(lastMonthTransactions))
                 }
             }
+    }
+}
+
+extension UserDataService: PersonalInfoService {
+    func fetchUserEmail(completion: (Result<String, NetworkErrorModel>) -> ()) {
+        if let email = AuthenticationService.user?.email {
+            completion(.success(email))
+        } else {
+            completion(.failure(NetworkErrorHandler.shared.unknownError))
+        }
     }
 }

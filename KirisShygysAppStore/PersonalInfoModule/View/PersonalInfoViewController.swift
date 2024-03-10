@@ -9,9 +9,12 @@ import UIKit
 import SnapKit
 
 final class PersonalInfoViewController: UIViewController {
+    private let presenter: PersonalInfoPresenter
+    
     //MARK: - UI Elements
     private let emailView = CustomView()
     private let nameView = CustomView()
+    private var animationView: AnimatingSuccessView?
     
     private let separatorView: UIView = {
         let view = UIView()
@@ -49,12 +52,33 @@ final class PersonalInfoViewController: UIViewController {
     private let changePasswordLabel: UILabel = {
         let label = UILabel()
         label.textColor = .gray
-        label.font = .font(style: .title, withSize: 12)
+        label.font = .font(style: .title, withSize: 16)
         label.text = "passwordChange_title".localized
+        label.textAlignment = .center
+        return label
+    }()
+    
+    private let loaderView = LoaderView(with: .large)
+    
+    private let errorLabel: UILabel = {
+        let label = UILabel()
+        label.font = .font(style: .body, withSize: 14)
+        label.textColor = .red
+        label.numberOfLines = 0
+        label.isHidden = true
         return label
     }()
     
     //MARK: - Lifecycle
+    init(presenter: PersonalInfoPresenter) {
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        nil
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupNavigationBar()
@@ -70,6 +94,7 @@ final class PersonalInfoViewController: UIViewController {
         super.viewDidLoad()
 
         setupView()
+        presenter.viewDidLoad()
     }
     
     //MARK: - Functions
@@ -79,9 +104,27 @@ final class PersonalInfoViewController: UIViewController {
         navigationController?.navigationBar.topItem?.backBarButtonItem = backBarButtonItem
     }
     
+    private func setupTextFieldsDelegates() {
+        oldPasswordTextField.delegate = self
+        newPasswordTextField.delegate = self
+    }
+    
+    private func setupAnimationView() {
+        view.backgroundColor = .white
+        navigationController?.setNavigationBarHidden(true, animated: false)
+
+        animationView = AnimatingSuccessView(frame: view.frame)
+        
+        view.addSubview(animationView!)
+        animationView!.snp.makeConstraints({ make in
+            make.top.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+        })
+    }
+    
     private func setupView() {
         view.backgroundColor = .lightGrayColor
-        title = "personalInfo_label".localized.uppercased()
+        title = "personalInfo_label".localized
         
         view.addSubview(emailView)
         emailView.snp.makeConstraints { make in
@@ -134,11 +177,20 @@ final class PersonalInfoViewController: UIViewController {
             make.height.equalTo(50)
         }
         
+        view.addSubview(errorLabel)
+        errorLabel.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(25)
+            make.top.equalTo(passwordView.snp.bottom).offset(20)
+        }
+        
+        view.addSubview(loaderView)
+        loaderView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
         setupSaveButtonTarget()
         setupToHideKeyboardOnTapOnView()
-        
-        oldPasswordTextField.delegate = self
-        newPasswordTextField.delegate = self
+        setupTextFieldsDelegates()
     }
     
     private func setupSaveButtonTarget() {
@@ -146,7 +198,8 @@ final class PersonalInfoViewController: UIViewController {
     }
     
     @objc private func saveButtonTapped() {
-        
+        presenter.saveDidTapped(PasswordModel(oldPassword: oldPasswordTextField.text,
+                                              newPassword: newPasswordTextField.text))
     }
 }
 
@@ -155,5 +208,42 @@ extension PersonalInfoViewController: UITextFieldDelegate {
         // Скрытие клавиатуры при нажатий кнопки Done(return)
         textField.resignFirstResponder()
         return true
+    }
+}
+
+extension PersonalInfoViewController: PersonalInfoViewProtocol {
+    func hideInvalidPasswordError() {
+        errorLabel.isHidden = true
+    }
+    
+    func showSuccess() {
+        setupAnimationView()
+        
+        animationView?.playAnimation()
+    }
+    
+    func showInvalidPasswordError() {
+        errorLabel.text = "invalidPassword_error".localized
+        errorLabel.isHidden = false
+    }
+    
+    func configureUsername(_ username: String) {
+        nameView.configure(imageName: "person", title: username)
+    }
+    
+    func configureEmailLabel(_ email: String) {
+        emailView.configure(imageName: "envelope", title: email)
+    }
+    
+    func showFailure(_ failure: NetworkErrorModel) {
+        AlertManager.showAlert(on: self, title: failure.title, message: failure.description)
+    }
+    
+    func showLoader() {
+        loaderView.showLoader()
+    }
+    
+    func hideLoader() {
+        loaderView.hideLoader()
     }
 }

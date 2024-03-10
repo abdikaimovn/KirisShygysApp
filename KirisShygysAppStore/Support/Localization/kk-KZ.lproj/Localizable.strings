@@ -26,6 +26,7 @@
 "save_button_title" = "Saqtaý";
 "reset_button_title" = "Joıý";
 "retry_button_title" = "Qaıtalaý";
+"restart_button_title" = "Qaıta iske qosý";
 
 //MARK: - Authorization Validator errors
 "invalidEmail_error" = "• Elektrondyq poshta elektrondyq poshta standarttaryna sáıkes jaramdy bolýy kerek.";

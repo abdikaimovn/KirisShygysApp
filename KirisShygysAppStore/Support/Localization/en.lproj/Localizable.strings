@@ -26,6 +26,7 @@
 "save_button_title" = "Save";
 "reset_button_title" = "Reset";
 "retry_button_title" = "Retry";
+"restart_button_title" = "Restart";
 
 //MARK: - Authorization Validator errors
 "invalidEmail_error" = "• Email must be valid according to email address standards.";

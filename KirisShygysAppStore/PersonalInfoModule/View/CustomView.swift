@@ -19,7 +19,7 @@ final class CustomView: UIView {
     
     private let itemTitle: UILabel = {
         let label = UILabel()
-        label.font = .font(style: .label)
+        label.font = .font(style: .label, withSize: 16)
         label.textColor = .black
         return label
     }()
@@ -55,7 +55,7 @@ final class CustomView: UIView {
         
         addSubview(itemTitle)
         itemTitle.snp.makeConstraints { make in
-            make.leading.equalTo(itemImage.snp.trailing).offset(10)
+            make.leading.equalTo(itemImage.snp.trailing).offset(20)
             make.trailing.equalToSuperview().inset(20)
             make.centerY.equalTo(itemImage.snp.centerY)
         }

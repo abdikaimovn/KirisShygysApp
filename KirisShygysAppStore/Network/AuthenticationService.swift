@@ -22,6 +22,7 @@ protocol AuthorizationNetworkService {
 
 protocol ServicesAuthenticationProtocol {
     func logOut(completion: @escaping (Result<(), NetworkErrorModel>) -> ())
+    func changeUserPassword(with password: PasswordModel, completion: @escaping (Result<(), NetworkErrorModel>) -> ())
 }
 
 struct AuthenticationService {
@@ -91,7 +92,6 @@ extension AuthenticationService: RegistrationNetworkService {
 }
 
 extension AuthenticationService: AuthorizationNetworkService {
-    
     func authorizeUser(with userData: AuthorizationModel,
                        completion: @escaping (Result<(), NetworkErrorModel>) -> Void) {
         let email = userData.email ?? ""
@@ -114,6 +114,37 @@ extension AuthenticationService: AuthorizationNetworkService {
 }
 
 extension AuthenticationService: ServicesAuthenticationProtocol {
+    func changeUserPassword(with password: PasswordModel, completion: @escaping (Result<(), NetworkErrorModel>) -> ()) {
+        guard let currentEmail = AuthenticationService.user?.email else {
+            return
+        }
+        
+        guard let oldPassword = password.oldPassword else {
+            return
+        }
+        
+        guard let newPassword = password.newPassword else {
+            return
+        }
+        
+        let credential = EmailAuthProvider.credential(withEmail: currentEmail, password: oldPassword)
+        
+        AuthenticationService.user?.reauthenticate(with: credential, completion: { _, error in
+            if let error {
+                completion(.failure(NetworkErrorHandler.shared.handleError(error: error)))
+                return
+            }
+            
+            AuthenticationService.user?.updatePassword(to: newPassword, completion: { error in
+                if let error {
+                    completion(.failure(NetworkErrorHandler.shared.handleError(error: error)))
+                }
+                
+                completion(.success(()))
+            })
+        })
+    }
+    
     func logOut(completion: @escaping (Result<(), NetworkErrorModel>) -> ()) {
         do {
             try Auth.auth().signOut()

@@ -85,7 +85,11 @@ final class SettingsViewController: UIViewController {
     }
     
     private func createPersonalInfoModule() -> UIViewController {
-        let view = PersonalInfoViewController()
+        let userDataservice = UserDataService()
+        let authService = AuthenticationService()
+        let presenter = PersonalInfoPresenter(userDataService: userDataservice, authenticationService: authService)
+        let view = PersonalInfoViewController(presenter: presenter)
+        presenter.view = view
         return view
     }
 }

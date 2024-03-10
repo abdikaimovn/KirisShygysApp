@@ -26,6 +26,7 @@
 "save_button_title" = "Сақтау";
 "reset_button_title" = "Жою";
 "retry_button_title" = "Қайталау";
+"restart_button_title" = "Қайта іске қосу";
 
 //MARK: - Authorization Validator errors
 "invalidEmail_error" = "• Электрондық пошта электрондық пошта стандарттарына сәйкес жарамды болуы керек.";
