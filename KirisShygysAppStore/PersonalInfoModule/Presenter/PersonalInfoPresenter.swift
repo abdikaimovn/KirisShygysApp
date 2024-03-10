@@ -47,9 +47,7 @@ final class PersonalInfoPresenter {
     }
     
     private func retrieveEmail() {
-        view?.showLoader()
         userDataService.fetchUserEmail { [weak self] result in
-            self?.view?.hideLoader()
             switch result {
             case .success(let email):
                 self?.view?.configureEmailLabel(email)
@@ -73,10 +71,13 @@ final class PersonalInfoPresenter {
         
         let credential = PasswordModel(oldPassword: oldPassword, newPassword: newPassword)
     
+        view?.showLoader()
         authenticationService.changeUserPassword(with: credential) { [weak self] result in
+            self?.view?.hideLoader()
             switch result {
             case .success(_):
                 self?.view?.hideInvalidPasswordError()
+                self?.authenticationService.passwordDidChange()
                 self?.view?.showSuccess()
             case .failure(let failure):
                 self?.view?.showFailure(failure)

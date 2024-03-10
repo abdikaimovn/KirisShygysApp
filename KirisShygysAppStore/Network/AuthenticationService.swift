@@ -23,6 +23,7 @@ protocol AuthorizationNetworkService {
 protocol ServicesAuthenticationProtocol {
     func logOut(completion: @escaping (Result<(), NetworkErrorModel>) -> ())
     func changeUserPassword(with password: PasswordModel, completion: @escaping (Result<(), NetworkErrorModel>) -> ())
+    func passwordDidChange()
 }
 
 struct AuthenticationService {
@@ -114,6 +115,10 @@ extension AuthenticationService: AuthorizationNetworkService {
 }
 
 extension AuthenticationService: ServicesAuthenticationProtocol {
+    func passwordDidChange() {
+        logOut()
+    }
+    
     func changeUserPassword(with password: PasswordModel, completion: @escaping (Result<(), NetworkErrorModel>) -> ()) {
         guard let currentEmail = AuthenticationService.user?.email else {
             return

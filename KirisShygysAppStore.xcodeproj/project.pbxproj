@@ -100,7 +100,7 @@
 		6FBD1FB42B9B9D5700B16B6F /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBD1FB32B9B9D5700B16B6F /* CustomTextField.swift */; };
 		6FBD1FB62B9CABA800B16B6F /* PersonalInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBD1FB52B9CABA800B16B6F /* PersonalInfoModel.swift */; };
 		6FBD1FB92B9D8FD300B16B6F /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 6FBD1FB82B9D8FD300B16B6F /* Lottie */; };
-		6FBD1FBB2B9D95A200B16B6F /* AnimatingSuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBD1FBA2B9D95A200B16B6F /* AnimatingSuccessView.swift */; };
+		6FBD1FBB2B9D95A200B16B6F /* SuccessAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBD1FBA2B9D95A200B16B6F /* SuccessAnimationView.swift */; };
 		6FBD1FC12B9DA60200B16B6F /* Animation 1710059075673.json in Resources */ = {isa = PBXBuildFile; fileRef = 6FBD1FC02B9DA60200B16B6F /* Animation 1710059075673.json */; };
 		6FC613F32B84D2E80088CFD1 /* DetailedTransactionInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC613F22B84D2E80088CFD1 /* DetailedTransactionInfoView.swift */; };
 		6FC613F52B84D30E0088CFD1 /* DetailedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC613F42B84D30E0088CFD1 /* DetailedTableViewCell.swift */; };
@@ -208,7 +208,7 @@
 		6FB1F1922B8A343B00D72AD9 /* kk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = kk; path = kk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6FBD1FB32B9B9D5700B16B6F /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		6FBD1FB52B9CABA800B16B6F /* PersonalInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoModel.swift; sourceTree = "<group>"; };
-		6FBD1FBA2B9D95A200B16B6F /* AnimatingSuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatingSuccessView.swift; sourceTree = "<group>"; };
+		6FBD1FBA2B9D95A200B16B6F /* SuccessAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessAnimationView.swift; sourceTree = "<group>"; };
 		6FBD1FC02B9DA60200B16B6F /* Animation 1710059075673.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Animation 1710059075673.json"; sourceTree = "<group>"; };
 		6FC613F22B84D2E80088CFD1 /* DetailedTransactionInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedTransactionInfoView.swift; sourceTree = "<group>"; };
 		6FC613F42B84D30E0088CFD1 /* DetailedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedTableViewCell.swift; sourceTree = "<group>"; };
@@ -842,7 +842,7 @@
 				6FEF54A92B99BD5300FC08AA /* PersonalInfoViewController.swift */,
 				6FEF54AB2B9B920E00FC08AA /* CustomView.swift */,
 				6FBD1FB32B9B9D5700B16B6F /* CustomTextField.swift */,
-				6FBD1FBA2B9D95A200B16B6F /* AnimatingSuccessView.swift */,
+				6FBD1FBA2B9D95A200B16B6F /* SuccessAnimationView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -978,7 +978,7 @@
 				6F61E4DF2B5EA8F100F8AB20 /* OnboardingCollectionCell.swift in Sources */,
 				6F61E4A02B5D8A0B00F8AB20 /* OnboardingViewController.swift in Sources */,
 				6F06686C2B838987003D8925 /* Date+Extension.swift in Sources */,
-				6FBD1FBB2B9D95A200B16B6F /* AnimatingSuccessView.swift in Sources */,
+				6FBD1FBB2B9D95A200B16B6F /* SuccessAnimationView.swift in Sources */,
 				6FBD1FB62B9CABA800B16B6F /* PersonalInfoModel.swift in Sources */,
 				6F0668742B839F15003D8925 /* FilterModel.swift in Sources */,
 				6F61E49C2B5D8A0B00F8AB20 /* AppDelegate.swift in Sources */,

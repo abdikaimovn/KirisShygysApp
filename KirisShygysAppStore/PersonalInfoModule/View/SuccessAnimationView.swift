@@ -9,7 +9,12 @@ import UIKit
 import Lottie
 import SnapKit
 
-final class AnimatingSuccessView: UIView {
+protocol SuccessAnimationDelegate: AnyObject {
+    func restartDidTapped()
+}
+
+final class SuccessAnimationView: UIView {
+    weak var parent: SuccessAnimationDelegate?
     private let animationView = LottieAnimationView(name: "Animation 1710059075673.json")
     
     private let restartButton: UIButton = {
@@ -29,6 +34,10 @@ final class AnimatingSuccessView: UIView {
     
     required init?(coder: NSCoder) {
         nil
+    }
+    
+    @objc private func restartDidTapped() {
+        parent?.restartDidTapped()
     }
     
     private func setupView() {
@@ -52,6 +61,7 @@ final class AnimatingSuccessView: UIView {
             make.bottom.equalToSuperview().inset(20)
             make.height.equalTo(50)
         }
+        restartButton.addTarget(self, action: #selector(restartDidTapped), for: .touchUpInside)
     }
     
     private func setupAnimation() {

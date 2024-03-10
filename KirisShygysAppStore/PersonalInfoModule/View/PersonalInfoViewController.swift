@@ -14,7 +14,7 @@ final class PersonalInfoViewController: UIViewController {
     //MARK: - UI Elements
     private let emailView = CustomView()
     private let nameView = CustomView()
-    private var animationView: AnimatingSuccessView?
+    private var animationView: SuccessAnimationView?
     
     private let separatorView: UIView = {
         let view = UIView()
@@ -113,10 +113,16 @@ final class PersonalInfoViewController: UIViewController {
         view.backgroundColor = .white
         navigationController?.setNavigationBarHidden(true, animated: false)
 
-        animationView = AnimatingSuccessView(frame: view.frame)
+        animationView = SuccessAnimationView(frame: view.frame)
         
-        view.addSubview(animationView!)
-        animationView!.snp.makeConstraints({ make in
+        guard let safeAnimationView = animationView else {
+            return
+        }
+        
+        safeAnimationView.parent = self
+        
+        view.addSubview(safeAnimationView)
+        safeAnimationView.snp.makeConstraints({ make in
             make.top.leading.trailing.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         })
@@ -245,5 +251,11 @@ extension PersonalInfoViewController: PersonalInfoViewProtocol {
     
     func hideLoader() {
         loaderView.hideLoader()
+    }
+}
+
+extension PersonalInfoViewController: SuccessAnimationDelegate {
+    func restartDidTapped() {
+        sceneDelegate?.showInitialModule()
     }
 }
