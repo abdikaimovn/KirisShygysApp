@@ -8,6 +8,7 @@
 import UIKit
 import Lottie
 import SnapKit
+import AudioToolbox
 
 protocol SuccessAnimationDelegate: AnyObject {
     func restartDidTapped()
@@ -15,7 +16,7 @@ protocol SuccessAnimationDelegate: AnyObject {
 
 final class SuccessAnimationView: UIView {
     weak var parent: SuccessAnimationDelegate?
-    private let animationView = LottieAnimationView(name: "Animation 1710059075673.json")
+    private let animationView = LottieAnimationView(name: "successAnimation.json")
     
     private let restartButton: UIButton = {
         let button = UIButton()
@@ -42,7 +43,6 @@ final class SuccessAnimationView: UIView {
     
     private func setupView() {
         backgroundColor = .white
-    
         animationView.layer.cornerRadius = 15
         animationView.layer.cornerCurve = .continuous
         
@@ -70,8 +70,10 @@ final class SuccessAnimationView: UIView {
     }
     
     func playAnimation() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             self.animationView.play()
+            let generator = UIImpactFeedbackGenerator(style: .heavy)
+            generator.impactOccurred()
         }
     }
 }

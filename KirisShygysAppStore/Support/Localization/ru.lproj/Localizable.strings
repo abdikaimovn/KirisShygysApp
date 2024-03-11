@@ -27,6 +27,10 @@
 "reset_button_title" = "Сброс";
 "retry_button_title" = "Повторить";
 "restart_button_title" = "Перезапустить";
+"resetPassword_title" = "Сбросить пароль";
+
+//MARK: - Authorization Page
+"forgetPassword_label" = "Забыли пароль?";
 
 //MARK: - Authorization Validator errors
 "invalidEmail_error" = "• Email должен быть валидным согласно стандартам адресов электронной почты.";
@@ -49,6 +53,7 @@
 "documentFetching_error" = "Ошибка при извлечении транзакций пользователя";
 "transactionDeleting_error" = "Ошибка при удалении транзакции";
 "logOut_error" = "Ошибка при выходе из системы";
+"emailNotFound_error" = "Указанная электронная почта не найдена";
 
 //MARK: - Home page
 "welcome_label" = "С Возвращением";
@@ -171,3 +176,6 @@
 "oldPassword_placeholder" = "Старый пароль";
 "newPassword_placeholder" = "Новый пароль";
 "passwordChange_title" = "Изменить пароль";
+
+//MARK: - Reset password page
+"resetPassword_message" = "На указанный вами адрес электронной почты отправлена ссылка для сброса пароля (Проверьте папку со спамом)";

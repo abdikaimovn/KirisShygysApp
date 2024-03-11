@@ -18,6 +18,7 @@ protocol RegistrationNetworkService {
 protocol AuthorizationNetworkService {
     func authorizeUser(with userData: AuthorizationModel,
                        completion: @escaping (Result<(), NetworkErrorModel>) -> Void)
+    func resetPassword(with email: String, completion: @escaping (Result<(), NetworkErrorModel>) -> ())
 }
 
 protocol ServicesAuthenticationProtocol {
@@ -68,7 +69,7 @@ extension AuthenticationService: RegistrationNetworkService {
                     
                     completion(.success(()))
                 }
-    }
+        }
     
     func registerUser(with userData: RegistrationModel,
                       completion: @escaping (Result<(), NetworkErrorModel>) -> Void) {
@@ -85,7 +86,7 @@ extension AuthenticationService: RegistrationNetworkService {
             guard let userResult = result?.user else {
                 completion(.failure(NetworkErrorHandler.shared.unknownError))
                 return
-            } 
+            }
             
             setUserToDB(with: userResult.uid, username: username, email: email, completion: completion)
         }
@@ -93,11 +94,43 @@ extension AuthenticationService: RegistrationNetworkService {
 }
 
 extension AuthenticationService: AuthorizationNetworkService {
+    func resetPassword(with email: String, completion: @escaping (Result<(), NetworkErrorModel>) -> ()) {
+        let db = Firestore.firestore()
+        let usersRef = db.collection(FirebaseDocumentName.users.rawValue)
+        
+        usersRef.getDocuments { snapshot, error in
+            if let error {
+                completion(.failure(NetworkErrorHandler.shared.handleError(error: error)))
+                return
+            }
+            
+            if let snapshot = snapshot {
+                //поиск нужной электронной почты из коллекций users
+                for document in snapshot.documents {
+                    let data = document.data()
+                    if let foundEmail = data[FirebaseDocumentName.email.rawValue] as? String, foundEmail == email {
+                        Auth.auth().sendPasswordReset(withEmail: email) { error in
+                            if let error {
+                                completion(.failure(NetworkErrorHandler.shared.handleError(error: error)))
+                                return
+                            }
+                            
+                            completion(.success(()))
+                        }
+                        return
+                    }
+                }
+                completion(.failure(NetworkErrorHandler.shared.notExistedEmail))
+                return
+            }
+        }
+    }
+    
     func authorizeUser(with userData: AuthorizationModel,
                        completion: @escaping (Result<(), NetworkErrorModel>) -> Void) {
         let email = userData.email ?? ""
         let password = userData.password ?? ""
-
+        
         Auth.auth().signIn(withEmail: email, password: password) { result, error in
             if let error = error {
                 completion(.failure(NetworkErrorHandler.shared.handleError(error: error)))

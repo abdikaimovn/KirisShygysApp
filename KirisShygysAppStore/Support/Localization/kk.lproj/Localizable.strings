@@ -27,6 +27,10 @@
 "reset_button_title" = "Жою";
 "retry_button_title" = "Қайталау";
 "restart_button_title" = "Қайта іске қосу";
+"resetPassword_title" = "Құпия сөзді қалпына келтіру";
+
+//MARK: - Authorization Page
+"forgetPassword_label" = "Құпия сөзді ұмыттыңыз ба?";
 
 //MARK: - Authorization Validator errors
 "invalidEmail_error" = "• Электрондық пошта электрондық пошта стандарттарына сәйкес жарамды болуы керек.";
@@ -49,6 +53,7 @@
 "documentFetching_error" = "Пайдаланушының аударымдарын шығарудағы қате";
 "transactionDeleting_error" = "Аударымды жою қатесі";
 "logOut_error" = "Жүйеден шығу қатесі";
+"emailNotFound_error" = "Көрсетілген электрондық пошта табылмады";
 
 //MARK: - Home page
 "welcome_label" = "Қош келдіңіз";
@@ -172,3 +177,6 @@
 "oldPassword_placeholder" = "Ескі құпия сөз";
 "newPassword_placeholder" = "Жаңа құпия сөз";
 "passwordChange_title" = "Құпия сөзді өзгерту";
+
+//MARK: - Reset password page
+"resetPassword_message" = "Сіз көрсеткен электрондық пошта мекенжайына құпия сөзді қалпына келтіру сілтемесі жіберілді (спам қалтасын тексеріңіз)";

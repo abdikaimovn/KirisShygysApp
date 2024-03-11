@@ -40,6 +40,23 @@ final class AuthorizationViewController: UIViewController {
     
     private let loaderView = LoaderView(frame: .zero)
     
+    private let separatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .lightGray
+        return view
+    }()
+    
+    private lazy var forgetPasswordLabel: UILabel = {
+        let label = UILabel()
+        label.font = .font(style: .body)
+        label.textColor = .brownColor
+        label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(forgetPasswordDidTapped)))
+        label.textAlignment = .center
+        label.isUserInteractionEnabled = true
+        label.attributedText = NSAttributedString(string: "forgetPassword_label".localized, attributes: [NSAttributedString.Key.underlineStyle: true])
+        return label
+    }()
+    
     //MARK: - Lifecycle
     init(presenter: AuthorizationPresenter) {
         self.presenter = presenter
@@ -56,6 +73,26 @@ final class AuthorizationViewController: UIViewController {
         setupView()
     }
     
+    //MARK: - Objc Functions
+    @objc private func signInPressed() {
+        errorLabel.isHidden = true
+        presenter.signInDidTapped(with: AuthorizationModel(
+            email: emailTextField.text,
+            password: passwordTextField.text)
+        )
+    }
+    
+    @objc private func hideTextField(_ sender: UIButton) {
+        passwordTextField.isSecureTextEntry.toggle()
+        let imageName = passwordTextField.isSecureTextEntry ? "eye.slash" : "eye"
+        hidePasswordFieldButton.setImage(UIImage(systemName: imageName), for: .normal)
+    }
+    
+    @objc private func forgetPasswordDidTapped() {
+        presenter.forgetPasswordDidTapped()
+    }
+    
+    //MARK: - Functions
     private func setupTextFields() {
         [emailTextField, passwordTextField].forEach { textField in
             textField.borderStyle = .line
@@ -95,14 +132,6 @@ final class AuthorizationViewController: UIViewController {
         passwordTextField.rightViewMode = .always
     }
     
-    @objc func signInPressed() {
-        errorLabel.isHidden = true
-        presenter.signInDidTapped(with: AuthorizationModel(
-            email: emailTextField.text,
-            password: passwordTextField.text)
-        )
-    }
-    
     private func setupHidePasswordButton() {
         hidePasswordFieldButton.tintColor = .black
         hidePasswordFieldButton.setImage(UIImage(systemName:"eye.slash"), for: .normal)
@@ -117,14 +146,15 @@ final class AuthorizationViewController: UIViewController {
         signInButton.titleLabel?.font = UIFont.font(style: .button)
         signInButton.clipsToBounds = true
         signInButton.tintColor = .black
-        signInButton.addTarget(self, action: #selector(signInPressed), for: .touchUpInside)
-        signInButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        signInButton.addTarget(self, action: #selector(signInPressed), for: .touchUpInside) 
     }
-
-    @objc func hideTextField(_ sender: UIButton) {
-        passwordTextField.isSecureTextEntry.toggle()
-        let imageName = passwordTextField.isSecureTextEntry ? "eye.slash" : "eye"
-        hidePasswordFieldButton.setImage(UIImage(systemName: imageName), for: .normal)
+    
+    private func createResetPasswordModule() -> UIViewController {
+        let service = AuthenticationService()
+        let presenter = ResetPresenter(authService: service)
+        let view = ResetViewController(presenter: presenter)
+        presenter.view = view
+        return view
     }
     
     private func setupView() {
@@ -163,10 +193,23 @@ final class AuthorizationViewController: UIViewController {
             make.height.equalTo(55)
         }
         
+        view.addSubview(separatorView)
+        separatorView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.top.equalTo(signInButton.snp.bottom).offset(20)
+            make.height.equalTo(1)
+        }
+        
+        view.addSubview(forgetPasswordLabel)
+        forgetPasswordLabel.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.top.equalTo(separatorView.snp.bottom).offset(15)
+        }
+        
         view.addSubview(errorLabel)
         errorLabel.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(20)
-            make.top.equalTo(signInButton.snp.bottom).offset(20)
+            make.top.equalTo(forgetPasswordLabel.snp.bottom).offset(20)
             make.bottom.lessThanOrEqualTo(view.safeAreaLayoutGuide.snp.bottom).offset(-20)
         }
         
@@ -211,5 +254,12 @@ extension AuthorizationViewController: AuthorizationViewProtocol {
     
     func showAuthorizationError(with error: NetworkErrorModel) {
         AlertManager.showAlert(on: self, title: error.title, message: error.description)
+    }
+    
+    func showResetPasswordModule() {
+        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        backBarButtonItem.tintColor = .brownColor
+        navigationItem.backBarButtonItem = backBarButtonItem
+        navigationController?.pushViewController(createResetPasswordModule(), animated: true)
     }
 }
