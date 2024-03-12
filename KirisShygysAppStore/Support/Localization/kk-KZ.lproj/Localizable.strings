@@ -107,6 +107,7 @@
 "settings_label" = "Parametrler";
 "statistics_label" = "Statıstıka";
 "logout_label" = "Shyǵý";
+"logOutWarning_message" = "Siz júıeden shyqqyńyz keletinine senimdisiz be?";
 
 //MARK: - Transaction Report page
 "transactionReportTitle_label" = "Aýdarymdar esebi";

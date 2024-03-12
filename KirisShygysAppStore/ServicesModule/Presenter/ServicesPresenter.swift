@@ -12,7 +12,8 @@ protocol ServicesViewProtocol: AnyObject {
     func showTransactionReportModule(_ transactionsData: [ValidatedTransactionModel])
     func showStatisticsModule(_ transactionsData: [ValidatedTransactionModel])
     func showSettingsModule()
-    func logOut()
+    func showInitialModule()
+    func showAlertWithChoise(_ title: String, _ message: String)
     func showLoader()
     func hideLoader()
     func showNetworkFailure(_ failure: NetworkErrorModel)
@@ -33,7 +34,7 @@ final class ServicesPresenter {
         authService.logOut { [weak self] result in
             switch result {
             case .success():
-                self?.view?.logOut()
+                self?.view?.showInitialModule()
             case .failure(let failure):
                 self?.view?.showNetworkFailure(failure)
             }
@@ -42,6 +43,14 @@ final class ServicesPresenter {
     
     func numberOfRowsInSection() -> Int {
         4
+    }
+    
+    func userReplies(_ needToLogOut: Bool) {
+        if needToLogOut {
+            logOut()
+        } else {
+            return
+        }
     }
     
     func dataForItemAt(_ index: Int) -> MenuTableViewCellModel {
@@ -109,7 +118,7 @@ final class ServicesPresenter {
         case 2:
             view?.showSettingsModule()
         case 3:
-            logOut()
+            view?.showAlertWithChoise("warning_title".localized, "logOutWarning_message".localized)
         default:
             return
         }

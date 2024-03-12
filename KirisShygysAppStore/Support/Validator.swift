@@ -23,6 +23,6 @@ final class Validator {
     
     static func isValidPassword(for password: String) -> Bool {
         let password = password.trimmingCharacters(in: .whitespacesAndNewlines)
-        return password.count > 6
+        return password.count >= 6
     }
 }

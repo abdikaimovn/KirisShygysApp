@@ -107,6 +107,7 @@
 "settings_label" = "Параметрлер";
 "statistics_label" = "Статистика";
 "logout_label" = "Шығу";
+"logOutWarning_message" = "Сіз жүйеден шыққыңыз келетініне сенімдісіз бе?";
 
 //MARK: - Transaction Report page
 "transactionReportTitle_label" = "Аударымдар есебі";

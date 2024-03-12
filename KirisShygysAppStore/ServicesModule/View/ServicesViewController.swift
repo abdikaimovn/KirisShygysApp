@@ -120,6 +120,14 @@ extension ServicesViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension ServicesViewController: ServicesViewProtocol {
+    func showAlertWithChoise(_ title: String, _ message: String) {
+        AlertManager.showAlertWithChoise(on: self, title: title, message: message) { [weak self] needToDelete in
+            guard let self else { return }
+            
+            self.presenter.userReplies(needToDelete)
+        }
+    }
+    
     func showNetworkFailure(_ failure: NetworkErrorModel) {
         AlertManager.showAlert(on: self, title: failure.title , message: failure.description)
     }
@@ -140,7 +148,7 @@ extension ServicesViewController: ServicesViewProtocol {
         navigationController?.pushViewController(createSettingsModule(), animated: true)
     }
     
-    func logOut() {
+    func showInitialModule() {
         sceneDelegate?.showInitialModule()
     }
     

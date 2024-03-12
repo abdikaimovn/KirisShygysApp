@@ -106,6 +106,7 @@
 "settings_label" = "Настройки";
 "statistics_label" = "Статистика";
 "logout_label" = "Выйти";
+"logOutWarning_message" = "Вы уверены что хотите выйти из системы?";
 
 //MARK: - Transaction Report page
 "transactionReportTitle_label" = "Отчет";

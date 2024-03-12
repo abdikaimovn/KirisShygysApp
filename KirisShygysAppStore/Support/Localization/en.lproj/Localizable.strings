@@ -107,6 +107,7 @@
 "settings_label" = "Settings";
 "statistics_label" = "Statistics";
 "logout_label" = "Logout";
+"logOutWarning_message" = "Are you sure you want to log out?";
 
 //MARK: - Transaction Report page
 "transactionReportTitle_label" = "Report";
