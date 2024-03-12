@@ -98,6 +98,7 @@
 		6FA057352B8723CC00F36C9A /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA057342B8723CC00F36C9A /* MenuTableViewCell.swift */; };
 		6FA057372B875CE400F36C9A /* ServicesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA057362B875CE400F36C9A /* ServicesPresenter.swift */; };
 		6FA432322B62946E00F79721 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA432312B62946E00F79721 /* RegistrationViewController.swift */; };
+		6FA685A72BA083C300E7B3DC /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA685A62BA083C300E7B3DC /* LaunchScreenViewController.swift */; };
 		6FB1F18E2B89FFD000D72AD9 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6FB1F18D2B89FFD000D72AD9 /* Roboto-Italic.ttf */; };
 		6FBD1FB42B9B9D5700B16B6F /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBD1FB32B9B9D5700B16B6F /* CustomTextField.swift */; };
 		6FBD1FB62B9CABA800B16B6F /* PersonalInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBD1FB52B9CABA800B16B6F /* PersonalInfoModel.swift */; };
@@ -208,6 +209,7 @@
 		6FA057342B8723CC00F36C9A /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		6FA057362B875CE400F36C9A /* ServicesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesPresenter.swift; sourceTree = "<group>"; };
 		6FA432312B62946E00F79721 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		6FA685A62BA083C300E7B3DC /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		6FB1F18D2B89FFD000D72AD9 /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Italic.ttf"; sourceTree = "<group>"; };
 		6FB1F1902B8A30BF00D72AD9 /* kk-KZ */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "kk-KZ"; path = "kk-KZ.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		6FB1F1912B8A343B00D72AD9 /* kk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = kk; path = kk.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -414,6 +416,7 @@
 				6F61E4B02B5E694100F8AB20 /* AppConfiguration */,
 				6F61E4C72B5E996300F8AB20 /* Support */,
 				6F6444282B657E920018238D /* Network */,
+				6FA685A52BA0820D00E7B3DC /* LaunchScreen */,
 				6F61E4AF2B5E691D00F8AB20 /* OnboardingModule */,
 				6F0B87412B6130E500434150 /* AuthorizationModule */,
 				6FA4322D2B62941600F79721 /* RegistrationModule */,
@@ -727,6 +730,14 @@
 				6FA432312B62946E00F79721 /* RegistrationViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		6FA685A52BA0820D00E7B3DC /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				6FA685A62BA083C300E7B3DC /* LaunchScreenViewController.swift */,
+			);
+			path = LaunchScreen;
 			sourceTree = "<group>";
 		};
 		6FBD1FBC2B9D964700B16B6F /* LottieFiles */ = {
@@ -1056,6 +1067,7 @@
 				6FCE2C112B90A19300D0801D /* LanguagePresenter.swift in Sources */,
 				6FCE2C092B90893D00D0801D /* ServicesModel.swift in Sources */,
 				6F705A3A2B7BA0420029CB66 /* NotificationCenterEnum.swift in Sources */,
+				6FA685A72BA083C300E7B3DC /* LaunchScreenViewController.swift in Sources */,
 				6F0E031E2B7921C200B9FF21 /* TransactionTableViewCell.swift in Sources */,
 				6FCE2C392B910D8100D0801D /* UserDefaultsManager.swift in Sources */,
 				6FCE2C132B90B29E00D0801D /* LanguageTableViewCell.swift in Sources */,
