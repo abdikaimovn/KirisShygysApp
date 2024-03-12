@@ -12,6 +12,7 @@ protocol AuthorizationViewProtocol: AnyObject{
     func showAuthorizationError(with error: NetworkErrorModel)
     func showLoader()
     func hideLoader()
+    func showResetPasswordModule()
 }
 
 final class AuthorizationPresenter {
@@ -20,6 +21,10 @@ final class AuthorizationPresenter {
     
     init(authorizationService: AuthorizationNetworkService) {
         self.authorizationService = authorizationService
+    }
+    
+    func forgetPasswordDidTapped() {
+        view?.showResetPasswordModule()
     }
     
     func signInDidTapped(with userData: AuthorizationModel) {

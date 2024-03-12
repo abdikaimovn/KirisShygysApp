@@ -27,11 +27,15 @@
 "reset_button_title" = "Reset";
 "retry_button_title" = "Retry";
 "restart_button_title" = "Restart";
+"resetPassword_title" = "Reset Password";
+
+//MARK: - Authorization Page
+"forgetPassword_label" = "Forgot password?";
 
 //MARK: - Authorization Validator errors
 "invalidEmail_error" = "• Email must be valid according to email address standards.";
 "invalidUsername_error" = "• Username must consist of 2 to 24 characters and can contain letters, digits";
-"invalidPassword_error" = "• Password must be 6 to 32 characters long and contain at least one lowercase letter, one uppercase letter, one digit, and one special character from the following set: $, @, #, !, _, ., %, *, ?, &.";
+"invalidPassword_error"= "• Password must be more than 6 characters";
 
 //MARK: - ERRORS
 "authorization_error_title" = "Authorization Error";
@@ -49,6 +53,7 @@
 "documentFetching_error" = "Error with extracting the user's transactions";
 "transactionDeleting_error" = "Error with deleting the transaction";
 "logOut_error" = "Error with logging out";
+"emailNotFound_error" = "The specified email was not found";
 
 //MARK: - Home page
 "welcome_label" = "Welcome back";
@@ -102,6 +107,7 @@
 "settings_label" = "Settings";
 "statistics_label" = "Statistics";
 "logout_label" = "Logout";
+"logOutWarning_message" = "Are you sure you want to log out?";
 
 //MARK: - Transaction Report page
 "transactionReportTitle_label" = "Report";
@@ -172,3 +178,6 @@
 "oldPassword_placeholder" = "Old password";
 "newPassword_placeholder" = "New password";
 "passwordChange_title" = "Change the password";
+
+//MARK: - Reset password page
+"resetPassword_message" = "A link to reset your password has been sent to the email address you provided (Check the spam folder)";

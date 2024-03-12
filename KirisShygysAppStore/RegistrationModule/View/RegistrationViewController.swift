@@ -10,6 +10,7 @@ import SnapKit
 
 final class RegistrationViewController: UIViewController {
     private let presenter: RegistrationPresenter
+    private var verifyEmailAnimatedView: SentEmailAnimatedView?
     
     //MARK: - UI Elements
     private let imageLogo: UIImageView = {
@@ -118,6 +119,29 @@ final class RegistrationViewController: UIViewController {
         hidePasswordFieldButton.addTarget(self, action: #selector(hideTextField(_:)), for: .touchUpInside)
     }
     
+    private func setupVerifyEmailAnimatedView() {
+        verifyEmailAnimatedView = SentEmailAnimatedView(frame: view.frame)
+        
+        guard let verifyEmailAnimatedView else {
+            return
+        }
+        
+        view.addSubview(verifyEmailAnimatedView)
+        
+        verifyEmailAnimatedView.parent = self
+        
+        verifyEmailAnimatedView.configure(with: "emailVerificationAlert".localized)
+        verifyEmailAnimatedView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.width.equalToSuperview().dividedBy(1.5)
+        }
+        
+        verifyEmailAnimatedView.alpha = 0
+        UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseInOut], animations: {
+            self.verifyEmailAnimatedView?.alpha = 1
+        })
+    }
+    
     private func setupSignUpButton() {
         signUpButton.backgroundColor = UIColor.brownColor
         signUpButton.setTitle("signUp_button_title".localized, for: .normal)
@@ -202,13 +226,10 @@ extension RegistrationViewController: UITextFieldDelegate {
 }
 
 extension RegistrationViewController: RegistrationViewProtocol {
-    func showInitialView() {
-        sceneDelegate?.showInitialModule()
-    }
-    
     func showVerifyEmailAlert() {
-        navigationController?.popViewController(animated: true)
-        AlertManager.showAlert(on: self, title: "warning_title".localized, message: "emailVerificationAlert".localized)
+        errorLabel.isHidden = true
+        setupVerifyEmailAnimatedView()
+        verifyEmailAnimatedView?.playAnimation()
     }
     
     func showInvalidEmailError() {
@@ -236,5 +257,12 @@ extension RegistrationViewController: RegistrationViewProtocol {
     
     func showRegistrationError(with model: NetworkErrorModel) {
         AlertManager.showAlert(on: self, title: model.title, message: model.description)
+    }
+}
+
+extension RegistrationViewController: SendEmailAnimationDelegate {
+    func okDidTapped() {
+        verifyEmailAnimatedView?.removeFromSuperview()
+        navigationController?.popViewController(animated: true)
     }
 }

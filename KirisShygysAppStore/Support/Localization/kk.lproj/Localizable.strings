@@ -27,11 +27,15 @@
 "reset_button_title" = "Жою";
 "retry_button_title" = "Қайталау";
 "restart_button_title" = "Қайта іске қосу";
+"resetPassword_title" = "Құпия сөзді қалпына келтіру";
+
+//MARK: - Authorization Page
+"forgetPassword_label" = "Құпия сөзді ұмыттыңыз ба?";
 
 //MARK: - Authorization Validator errors
 "invalidEmail_error" = "• Электрондық пошта электрондық пошта стандарттарына сәйкес жарамды болуы керек.";
 "invalidUsername_error" = "• Пайдаланушы аты 2-ден 24 таңбаға дейін болуы керек және әріптер, сандар қабылдай алады";
-"invalidPassword_error" = "• Құпия сөздің ұзындығы 6-дан 32 таңбаға дейін болуы керек және келесі жиыннан кемінде бір кіші әріп, бір бас әріп, бір сан және бір арнайы таңбадан тұруы керек:$,@,#,!, _, ., %, *, ?, &.";
+"invalidPassword_error" = "• Құпия сөзде 6-дан астам таңба болуы керек";
 
 //MARK: - ERRORS
 "authorization_error_title" = "Авторизация катесі";
@@ -49,6 +53,7 @@
 "documentFetching_error" = "Пайдаланушының аударымдарын шығарудағы қате";
 "transactionDeleting_error" = "Аударымды жою қатесі";
 "logOut_error" = "Жүйеден шығу қатесі";
+"emailNotFound_error" = "Көрсетілген электрондық пошта табылмады";
 
 //MARK: - Home page
 "welcome_label" = "Қош келдіңіз";
@@ -102,6 +107,7 @@
 "settings_label" = "Параметрлер";
 "statistics_label" = "Статистика";
 "logout_label" = "Шығу";
+"logOutWarning_message" = "Сіз жүйеден шыққыңыз келетініне сенімдісіз бе?";
 
 //MARK: - Transaction Report page
 "transactionReportTitle_label" = "Аударымдар есебі";
@@ -172,3 +178,6 @@
 "oldPassword_placeholder" = "Ескі құпия сөз";
 "newPassword_placeholder" = "Жаңа құпия сөз";
 "passwordChange_title" = "Құпия сөзді өзгерту";
+
+//MARK: - Reset password page
+"resetPassword_message" = "Сіз көрсеткен электрондық пошта мекенжайына құпия сөзді қалпына келтіру сілтемесі жіберілді (спам қалтасын тексеріңіз)";

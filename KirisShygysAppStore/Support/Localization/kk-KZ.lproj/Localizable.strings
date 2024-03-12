@@ -27,11 +27,15 @@
 "reset_button_title" = "Joıý";
 "retry_button_title" = "Qaıtalaý";
 "restart_button_title" = "Qaıta iske qosý";
+"resetPassword_title" = "Qupıa sózdi qalpyna keltirý";
+
+//MARK: - Authorization Page
+"forgetPassword_label" = "Qupıa sózdi umyttyńyz ba?";
 
 //MARK: - Authorization Validator errors
 "invalidEmail_error" = "• Elektrondyq poshta elektrondyq poshta standarttaryna sáıkes jaramdy bolýy kerek.";
 "invalidUsername_error" = "• Paıdalanýshy aty 2-den 24 tańbaǵa deıin bolýy kerek jáne áripter, sandar qabyldaı alady";
-"invalidPassword_error" = "• Qupıa sózdiń uzyndyǵy 6-dan 32 tańbaǵa deıin bolýy kerek jáne kelesi jıynnan keminde bir kishi árip, bir bas árip, bir san jáne bir arnaıy tańbadan turýy kerek:$,@,#,!, _, ., %, *, ?, &.";
+"invalidPassword_error" = "• Qupıa sózde 6-dan astam tańba bolýy kerek";
 
 //MARK: - ERRORS
 "authorization_error_title" = "Avtorızasıa katesi";
@@ -49,6 +53,7 @@
 "documentFetching_error" = "Paıdalanýshynyń aýdarymdaryn shyǵarýdaǵy qate";
 "transactionDeleting_error" = "Aýdarymdy joıý qatesi";
 "logOut_error" = "Júıeden shyǵý qatesi";
+"emailNotFound_error" = "Kórsetilgen elektrondyq poshta tabylmady";
 
 //MARK: - Home page
 "welcome_label" = "Qosh keldińiz";
@@ -102,6 +107,7 @@
 "settings_label" = "Parametrler";
 "statistics_label" = "Statıstıka";
 "logout_label" = "Shyǵý";
+"logOutWarning_message" = "Siz júıeden shyqqyńyz keletinine senimdisiz be?";
 
 //MARK: - Transaction Report page
 "transactionReportTitle_label" = "Aýdarymdar esebi";
@@ -172,3 +178,6 @@
 "oldPassword_placeholder" = "Eski qupıa sóz";
 "newPassword_placeholder" = "Jańa qupıa sóz";
 "passwordChange_title" = "Qupıa sózdi ózgertý";
+
+//MARK: - Reset password page
+"resetPassword_message" = "Siz kórsetken elektrondyq poshta mekenjaıyna qupıa sózdi qalpyna keltirý siltemesi jiberildi (spam qaltasyn tekserińiz)";

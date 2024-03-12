@@ -18,4 +18,5 @@ enum FirebaseDocumentName: String {
     case incomes = "Incomes"
     case expenses = "Expenses"
     case username = "username"
+    case email = "email"
 }

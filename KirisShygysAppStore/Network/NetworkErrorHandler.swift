@@ -46,7 +46,7 @@ final class NetworkErrorHandler {
                 description: "userNotFound_error".localized)
         default:
             return NetworkErrorModel(
-                title: "unknown_error_title",
+                title: "unknown_error_title".localized,
                 error: error,
                 text: error.localizedDescription,
                 description: "unknown_error".localized)
@@ -91,5 +91,13 @@ final class NetworkErrorHandler {
             error: nil,
             text: nil,
             description: "notVerifiedEmail_error".localized)
+    }
+    
+    var notExistedEmail: NetworkErrorModel {
+        NetworkErrorModel(
+            title: "error_title".localized,
+            error: nil,
+            text: nil,
+            description: "emailNotFound_error".localized)
     }
 }

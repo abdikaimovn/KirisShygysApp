@@ -242,7 +242,7 @@ extension PersonalInfoViewController: PersonalInfoViewProtocol {
     }
     
     func showFailure(_ failure: NetworkErrorModel) {
-        AlertManager.showAlert(on: self, title: failure.title, message: failure.description)
+        AlertManager.showAlert(on: self, title: "error_title".localized, message: failure.description)
     }
     
     func showLoader() {
