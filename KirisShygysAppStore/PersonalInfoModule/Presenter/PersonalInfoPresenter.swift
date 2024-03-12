@@ -5,6 +5,7 @@
 //  Created by Нурдаулет on 09.03.2024.
 //
 import Foundation
+import AudioToolbox
 
 protocol PersonalInfoViewProtocol: AnyObject {
     func configureUsername(_ username: String)
@@ -60,11 +61,13 @@ final class PersonalInfoPresenter {
     
     func saveDidTapped(_ password: PasswordModel) {
         guard let oldPassword = password.oldPassword, Validator.isValidPassword(for: oldPassword) else {
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
             view?.showInvalidPasswordError()
             return
         }
         
         guard let newPassword = password.newPassword, Validator.isValidPassword(for: newPassword) else {
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
             view?.showInvalidPasswordError()
             return
         }
@@ -80,6 +83,7 @@ final class PersonalInfoPresenter {
                 self?.authenticationService.passwordDidChange()
                 self?.view?.showSuccess()
             case .failure(let failure):
+                AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
                 self?.view?.showFailure(failure)
             }
         }

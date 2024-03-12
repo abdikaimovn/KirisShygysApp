@@ -120,7 +120,7 @@ final class LaunchScreenViewController: UIViewController {
             } else {
                 timer.invalidate()
                 self.animateBlurCircles()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                     self.sceneDelegate?.showInitialModule()
                 }
             }

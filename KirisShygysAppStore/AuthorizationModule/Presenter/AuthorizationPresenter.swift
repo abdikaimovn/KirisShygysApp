@@ -5,6 +5,8 @@
 //  Created by Нурдаулет on 28.01.2024.
 //
 
+import AudioToolbox
+
 protocol AuthorizationViewProtocol: AnyObject{
     func showInvalidEmailError()
     func showInvalidPasswordError()
@@ -29,11 +31,13 @@ final class AuthorizationPresenter {
     
     func signInDidTapped(with userData: AuthorizationModel) {
         guard let email = userData.email, Validator.isValidEmail(for: email) else {
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
             view?.showInvalidEmailError()
             return
         }
         
         guard let password = userData.password, Validator.isValidPassword(for: password) else {
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
             view?.showInvalidPasswordError()
             return
         }
@@ -45,6 +49,7 @@ final class AuthorizationPresenter {
             case .success():
                 self?.view?.showInitialModule()
             case .failure(let error):
+                AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
                 self?.view?.showAuthorizationError(with: error)
             }
         }
