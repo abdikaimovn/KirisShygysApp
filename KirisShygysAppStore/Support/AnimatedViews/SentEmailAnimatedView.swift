@@ -13,7 +13,7 @@ protocol SendEmailAnimationDelegate: AnyObject {
     func okDidTapped()
 }
 
-final class SendEmailAnimationView: UIView {
+final class SentEmailAnimatedView: UIView {
     weak var parent: SendEmailAnimationDelegate?
     private let animationView = LottieAnimationView(name: "emailAnimation.json")
     

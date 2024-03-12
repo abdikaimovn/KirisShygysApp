@@ -7,7 +7,6 @@
 
 protocol RegistrationViewProtocol: AnyObject {
     func showRegistrationError(with model: NetworkErrorModel)
-    func showInitialView()
     func showInvalidEmailError()
     func showInvalidUsernameError()
     func showInvalidPasswordError()

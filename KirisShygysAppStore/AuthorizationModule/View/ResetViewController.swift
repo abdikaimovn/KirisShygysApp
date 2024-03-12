@@ -10,7 +10,7 @@ import SnapKit
 
 final class ResetViewController: UIViewController {
     private let presenter: ResetPresenter
-    private var sendEmailView: SendEmailAnimationView?
+    private var sendEmailView: SentEmailAnimatedView?
     
     //MARK: - UI Elements
     private let imageLogo: UIImageView = {
@@ -71,7 +71,7 @@ final class ResetViewController: UIViewController {
     }
     
     private func setupSendEmailView() {
-        sendEmailView = SendEmailAnimationView(frame: view.frame)
+        sendEmailView = SentEmailAnimatedView(frame: view.frame)
         
         guard let sendEmailView else {
             return
@@ -136,7 +136,7 @@ final class ResetViewController: UIViewController {
         resetButton.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(15)
             make.top.equalTo(emailTextField.snp.bottom).offset(20)
-            make.height.equalTo(55)
+            make.height.equalTo(50)
         }
         
         view.addSubview(errorLabel)
@@ -180,8 +180,8 @@ extension ResetViewController: ResetViewProtocol {
     }
     
     func showEmailSentView() {
+        errorLabel.isHidden = true
         setupSendEmailView()
-        navigationItem.backBarButtonItem?.isEnabled = false
         sendEmailView?.playAnimation()
     }
 }

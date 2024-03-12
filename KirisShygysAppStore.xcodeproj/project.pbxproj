@@ -17,7 +17,7 @@
 		6F075C9A2B907942003557F6 /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = 6F075C992B907942003557F6 /* DGCharts */; };
 		6F0B87462B6141F200434150 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0B87452B6141F200434150 /* AuthorizationViewController.swift */; };
 		6F0B87482B618DD000434150 /* OnboardingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0B87472B618DD000434150 /* OnboardingPresenter.swift */; };
-		6F0C80342B9F519800A82CF7 /* SendEmailAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0C80332B9F519800A82CF7 /* SendEmailAnimationView.swift */; };
+		6F0C80342B9F519800A82CF7 /* SentEmailAnimatedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0C80332B9F519800A82CF7 /* SentEmailAnimatedView.swift */; };
 		6F0C803E2B9F7D9200A82CF7 /* emailAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 6F0C803D2B9F7D9200A82CF7 /* emailAnimation.json */; };
 		6F0E031C2B78EE5F00B9FF21 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0E031B2B78EE5F00B9FF21 /* HomePresenter.swift */; };
 		6F0E031E2B7921C200B9FF21 /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0E031D2B7921C200B9FF21 /* TransactionTableViewCell.swift */; };
@@ -151,7 +151,7 @@
 		6F0668732B839F15003D8925 /* FilterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterModel.swift; sourceTree = "<group>"; };
 		6F0B87452B6141F200434150 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
 		6F0B87472B618DD000434150 /* OnboardingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPresenter.swift; sourceTree = "<group>"; };
-		6F0C80332B9F519800A82CF7 /* SendEmailAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendEmailAnimationView.swift; sourceTree = "<group>"; };
+		6F0C80332B9F519800A82CF7 /* SentEmailAnimatedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentEmailAnimatedView.swift; sourceTree = "<group>"; };
 		6F0C803D2B9F7D9200A82CF7 /* emailAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = emailAnimation.json; sourceTree = "<group>"; };
 		6F0E031B2B78EE5F00B9FF21 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		6F0E031D2B7921C200B9FF21 /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
@@ -368,7 +368,7 @@
 			isa = PBXGroup;
 			children = (
 				6FBD1FBA2B9D95A200B16B6F /* SuccessAnimationView.swift */,
-				6F0C80332B9F519800A82CF7 /* SendEmailAnimationView.swift */,
+				6F0C80332B9F519800A82CF7 /* SentEmailAnimatedView.swift */,
 			);
 			path = AnimatedViews;
 			sourceTree = "<group>";
@@ -1033,7 +1033,7 @@
 				6FEF54AE2B9B991600FC08AA /* PersonalInfoPresenter.swift in Sources */,
 				6FCE2C052B9085A600D0801D /* SettingsViewController.swift in Sources */,
 				6F61E49E2B5D8A0B00F8AB20 /* SceneDelegate.swift in Sources */,
-				6F0C80342B9F519800A82CF7 /* SendEmailAnimationView.swift in Sources */,
+				6F0C80342B9F519800A82CF7 /* SentEmailAnimatedView.swift in Sources */,
 				6FEF54AA2B99BD5300FC08AA /* PersonalInfoViewController.swift in Sources */,
 				6FEF54AC2B9B920E00FC08AA /* CustomView.swift in Sources */,
 				6F64447E2B65813D0018238D /* NetworkModel.swift in Sources */,

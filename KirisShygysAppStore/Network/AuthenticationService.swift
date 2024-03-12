@@ -95,33 +95,26 @@ extension AuthenticationService: RegistrationNetworkService {
 
 extension AuthenticationService: AuthorizationNetworkService {
     func resetPassword(with email: String, completion: @escaping (Result<(), NetworkErrorModel>) -> ()) {
-        let db = Firestore.firestore()
-        let usersRef = db.collection(FirebaseDocumentName.users.rawValue)
+        let usersRef = Firestore.firestore().collection(FirebaseDocumentName.users.rawValue)
         
-        usersRef.getDocuments { snapshot, error in
-            if let error {
-                completion(.failure(NetworkErrorHandler.shared.handleError(error: error)))
+        usersRef.whereField(FirebaseDocumentName.email.rawValue, isEqualTo: email).getDocuments { snapshot, error in
+            guard let snapshot = snapshot else {
+                completion(.failure(NetworkErrorHandler.shared.handleError(error: error ?? NSError())))
                 return
             }
             
-            if let snapshot = snapshot {
-                //поиск нужной электронной почты из коллекций users
-                for document in snapshot.documents {
-                    let data = document.data()
-                    if let foundEmail = data[FirebaseDocumentName.email.rawValue] as? String, foundEmail == email {
-                        Auth.auth().sendPasswordReset(withEmail: email) { error in
-                            if let error {
-                                completion(.failure(NetworkErrorHandler.shared.handleError(error: error)))
-                                return
-                            }
-                            
-                            completion(.success(()))
-                        }
-                        return
-                    }
-                }
+            if snapshot.isEmpty {
                 completion(.failure(NetworkErrorHandler.shared.notExistedEmail))
                 return
+            }
+            
+            Auth.auth().sendPasswordReset(withEmail: email) { error in
+                if let error = error {
+                    completion(.failure(NetworkErrorHandler.shared.handleError(error: error)))
+                    return
+                }
+                
+                completion(.success(()))
             }
         }
     }
