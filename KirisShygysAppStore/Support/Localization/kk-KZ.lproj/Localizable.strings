@@ -35,7 +35,7 @@
 //MARK: - Authorization Validator errors
 "invalidEmail_error" = "• Elektrondyq poshta elektrondyq poshta standarttaryna sáıkes jaramdy bolýy kerek.";
 "invalidUsername_error" = "• Paıdalanýshy aty 2-den 24 tańbaǵa deıin bolýy kerek jáne áripter, sandar qabyldaı alady";
-"invalidPassword_error" = "• Qupıa sózdiń uzyndyǵy 6-dan 32 tańbaǵa deıin bolýy kerek jáne kelesi jıynnan keminde bir kishi árip, bir bas árip, bir san jáne bir arnaıy tańbadan turýy kerek:$,@,#,!, _, ., %, *, ?, &.";
+"invalidPassword_error" = "• Qupıa sózde 6-dan astam tańba bolýy kerek";
 
 //MARK: - ERRORS
 "authorization_error_title" = "Avtorızasıa katesi";

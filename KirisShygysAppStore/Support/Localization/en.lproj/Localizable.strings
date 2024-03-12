@@ -35,7 +35,7 @@
 //MARK: - Authorization Validator errors
 "invalidEmail_error" = "• Email must be valid according to email address standards.";
 "invalidUsername_error" = "• Username must consist of 2 to 24 characters and can contain letters, digits";
-"invalidPassword_error" = "• Password must be 6 to 32 characters long and contain at least one lowercase letter, one uppercase letter, one digit, and one special character from the following set: $, @, #, !, _, ., %, *, ?, &.";
+"invalidPassword_error"= "• Password must be more than 6 characters";
 
 //MARK: - ERRORS
 "authorization_error_title" = "Authorization Error";
