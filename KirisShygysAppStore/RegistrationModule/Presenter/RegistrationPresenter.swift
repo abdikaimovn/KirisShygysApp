@@ -5,6 +5,8 @@
 //  Created by Нурдаулет on 28.01.2024.
 //
 
+import AudioToolbox
+
 protocol RegistrationViewProtocol: AnyObject {
     func showRegistrationError(with model: NetworkErrorModel)
     func showInvalidEmailError()
@@ -25,16 +27,19 @@ final class RegistrationPresenter {
     
     func signUpDidTapped(with userData: RegistrationModel) {
         guard let username = userData.name, Validator.isValidUsername(for: username) else {
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
             view?.showInvalidUsernameError()
             return
         }
         
         guard let email = userData.email, Validator.isValidEmail(for: email) else {
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
             view?.showInvalidEmailError()
             return
         }
         
         guard let password = userData.password, Validator.isValidPassword(for: password) else {
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
             view?.showInvalidPasswordError()
             return
         }
@@ -48,6 +53,7 @@ final class RegistrationPresenter {
                 self?.networkService.logOut()
                 self?.view?.showVerifyEmailAlert()
             case .failure(let error):
+                AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
                 self?.view?.showRegistrationError(with: error)
             }
         }

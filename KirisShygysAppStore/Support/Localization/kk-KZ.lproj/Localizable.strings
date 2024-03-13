@@ -123,6 +123,7 @@
 "currency_label" = "Valúta";
 "personalInfo_label" = "Jeke aqparat";
 "trash_label" = "Tarıhty joıý";
+"deleteAccount_label" = "Akkaýntty joıý";
 
 //MARK: - Statistics page
 "statisticsTitle_label" = "Aǵymdaǵy aıdyń statısıkasy";
@@ -173,6 +174,9 @@
 
 //MARK: - Deleting History
 "clearHistory_message" = "Siz tarıhty tazartqyńyz keletinine senimdisiz be? Derekterdi qaıtarý múmkin emes";
+
+//MARK: - Deleteing Account
+"deleteAccount_message" = "Akkaýntty joıǵyńyz keletinine senimdisiz be? Derekterdi qaıtarý múmkin emes";
 
 //MARK: - Password placeholders
 "oldPassword_placeholder" = "Eski qupıa sóz";

@@ -16,6 +16,24 @@ final class AlertManager {
         }
     }
     
+    static func showAlertWithChoise(on vc: UIViewController, message: String, completionHandler: @escaping (Bool) -> ()) {
+        let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        
+        let noAction = UIAlertAction(title: "no_label".localized, style: .default) { _ in
+            completionHandler(false)
+            alertController.dismiss(animated: true, completion: nil)
+        }
+        alertController.addAction(noAction)
+        
+        let yesAction = UIAlertAction(title: "yes_label".localized, style: .default) { _ in
+            completionHandler(true)
+            alertController.dismiss(animated: true, completion: nil)
+        }
+        alertController.addAction(yesAction)
+
+        vc.present(alertController, animated: true, completion: nil)
+    }
+
     static func showAlertWithChoise(on vc: UIViewController, title: String, message: String?, completionHandler: @escaping (Bool) -> ()) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
@@ -25,7 +43,7 @@ final class AlertManager {
         }
         alertController.addAction(noAction)
         
-        let yesAction = UIAlertAction(title: "yes_label".localized, style: .default) { _ in
+        let yesAction = UIAlertAction(title: "yes_label".localized, style: .destructive) { _ in
             completionHandler(true)
             alertController.dismiss(animated: true, completion: nil)
         }

@@ -122,6 +122,7 @@
 "currency_label" = "Валюта";
 "personalInfo_label" = "Личная информация";
 "trash_label" = "Очистить историю";
+"deleteAccount_label" = "Удалить аккаунт";
 
 //MARK: - Statistics page
 "statisticsTitle_label" = "Статистика за последний месяц";
@@ -172,6 +173,9 @@
 
 //MARK: - Deleting History
 "clearHistory_message" = "Вы уверены, что хотите очистить историю? Данные не могут быть возвращены";
+
+//MARK: - Deleteing Account
+"deleteAccount_message" = "Вы уверены, что хотите удалить аккаунт? Данные не могут быть возвращены";
 
 //MARK: - Password placeholders
 "oldPassword_placeholder" = "Старый пароль";

@@ -5,6 +5,8 @@
 //  Created by Нурдаулет on 10.03.2024.
 //
 
+import AudioToolbox
+
 protocol ResetViewProtocol: AnyObject {
     func showLoader()
     func hideLoader()
@@ -23,6 +25,7 @@ final class ResetPresenter {
     
     func resetButtonTapped(_ email: String?) {
         guard let email, Validator.isValidEmail(for: email) else {
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
             view?.showInvalidEmailError()
             return
         }
@@ -34,6 +37,7 @@ final class ResetPresenter {
             case .success(_):
                 self?.view?.showEmailSentView()
             case .failure(let failure):
+                AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
                 self?.view?.showFailure(failure: failure)
             }
         }

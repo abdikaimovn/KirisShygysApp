@@ -22,7 +22,7 @@ final class HistoryViewController: UIViewController {
         return label
     }()
     
-    private let filterButton = UIButton()
+    private let filterButton = ExtendedTapAreaButton()
     
     private let transactionsTableView = UITableView()
     
