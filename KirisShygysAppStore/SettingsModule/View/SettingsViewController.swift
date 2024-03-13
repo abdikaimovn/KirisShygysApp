@@ -114,6 +114,18 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension SettingsViewController: SettingsViewProtocol {
+    func showInitialModule() {
+        sceneDelegate?.showInitialModule()
+    }
+    
+    func showDeleteAccountAlert(_ title: String, _ message: String) {
+        AlertManager.showAlertWithChoise(on: self, title: title, message: message) { [weak self] needToDelete in
+            guard let self else { return }
+            
+            self.presenter.userDeleteAccountReply(needToDelete)
+        }
+    }
+    
     func showPersonalInfoModule() {
         navigationController?.pushViewController(createPersonalInfoModule(), animated: true)
     }
@@ -122,11 +134,11 @@ extension SettingsViewController: SettingsViewProtocol {
         sceneDelegate?.updateRootView()
     }
     
-    func showAlertWithChoise(_ title: String, _ message: String) {
+    func showClearHistoryAlert(_ title: String, _ message: String) {
         AlertManager.showAlertWithChoise(on: self, title: title, message: message) { [weak self] needToDelete in
             guard let self else { return }
             
-            self.presenter.userReplies(needToDelete)
+            self.presenter.userClearHistoryReply(needToDelete)
         }
     }
     

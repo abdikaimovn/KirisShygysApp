@@ -25,9 +25,12 @@ protocol ServicesAuthenticationProtocol {
     func logOut(completion: @escaping (Result<(), NetworkErrorModel>) -> ())
     func changeUserPassword(with password: PasswordModel, completion: @escaping (Result<(), NetworkErrorModel>) -> ())
     func passwordDidChange()
+    func deleteUser(completion: @escaping (Result<(), NetworkErrorModel>) -> ())
 }
 
 struct AuthenticationService {
+    private let dataBase = Firestore.firestore()
+    
     static var user: User? {
         Auth.auth().currentUser
     }
@@ -141,6 +144,43 @@ extension AuthenticationService: AuthorizationNetworkService {
 }
 
 extension AuthenticationService: ServicesAuthenticationProtocol {
+    func deleteUser(completion: @escaping (Result<(), NetworkErrorModel>) -> ()) {
+        guard let email = AuthenticationService.user?.email else {
+            return
+        }
+        
+        let query = dataBase.collection(FirebaseDocumentName.users.rawValue).whereField(FirebaseDocumentName.email.rawValue, isEqualTo: email)
+        
+        query.getDocuments { snapshot, error in
+            if let error {
+                completion(.failure(NetworkErrorHandler.shared.handleError(error: error)))
+                return
+            }
+            
+            guard let snapshot, !snapshot.isEmpty else {
+                completion(.failure(NetworkErrorHandler.shared.notExistedEmail))
+                return
+            }
+            
+            let document = snapshot.documents.first!
+            
+            document.reference.delete { error in
+                if let error = error {
+                    completion(.failure(NetworkErrorHandler.shared.handleError(error: error)))
+                    return
+                }
+                
+                AuthenticationService.user?.delete(completion: { error in
+                    if let error {
+                        completion(.failure(NetworkErrorHandler.shared.handleError(error: error)))
+                    }
+                    
+                    completion(.success(()))
+                })
+            }
+        }
+    }
+    
     func passwordDidChange() {
         logOut()
     }

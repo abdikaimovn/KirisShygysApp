@@ -92,8 +92,9 @@ final class ServicesViewController: UIViewController {
     }
     
     private func createSettingsModule() -> UIViewController {
-        let service = UserDataService()
-        let presenter = SettingsPresenter(userDataService: service)
+        let userDataService = UserDataService()
+        let authService = AuthenticationService()
+        let presenter = SettingsPresenter(userDataService: userDataService, authService: authService)
         let view = SettingsViewController(presenter: presenter)
         presenter.view = view
         return view

@@ -123,6 +123,7 @@
 "currency_label" = "Currency";
 "personalInfo_label" = "Personal information";
 "trash_label" = "Clear the history";
+"deleteAccount_label" = "Delete account";
 
 //MARK: - Statistics page
 "statisticsTitle_label" = "Statistics for last month";
@@ -173,6 +174,9 @@
 
 //MARK: - Deleting History
 "clearHistory_message" = "Are you sure you want to clear the history? The data cannot be returned";
+
+//MARK: - Deleteing Account
+"deleteAccount_message" = "Are you sure you want to delete the account? The data cannot be returned";
 
 //MARK: - Password placeholders
 "oldPassword_placeholder" = "Old password";

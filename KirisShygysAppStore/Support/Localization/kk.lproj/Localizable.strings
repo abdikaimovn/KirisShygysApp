@@ -123,6 +123,7 @@
 "currency_label" = "Валюта";
 "personalInfo_label" = "Жеке ақпарат";
 "trash_label" = "Тарихты жою";
+"deleteAccount_label" = "Аккаунтты жою";
 
 //MARK: - Statistics page
 "statisticsTitle_label" = "Ағымдағы айдың статистикасы";
@@ -173,6 +174,9 @@
 
 //MARK: - Deleting History
 "clearHistory_message" = "Сіз тарихты тазартқыңыз келетініне сенімдісіз бе? Деректерді қайтару мүмкін емес";
+
+//MARK: - Deleteing Account
+"deleteAccount_message" = "Аккаунтты жойғыңыз келетініне сенімдісіз бе? Деректерді қайтару мүмкін емес ";
 
 //MARK: - Password placeholders
 "oldPassword_placeholder" = "Ескі құпия сөз";
