@@ -74,7 +74,7 @@ extension AuthenticationService: RegistrationNetworkService {
     func registerUser(with userData: RegistrationModel,
                       completion: @escaping (Result<(), NetworkErrorModel>) -> Void) {
         let username = userData.name ?? ""
-        let email = userData.email ?? ""
+        let email = userData.email?.lowercased() ?? ""
         let password = userData.password ?? ""
         
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
