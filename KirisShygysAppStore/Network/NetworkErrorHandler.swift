@@ -100,4 +100,12 @@ final class NetworkErrorHandler {
             text: nil,
             description: "emailNotFound_error".localized)
     }
+    
+    var networkError: NetworkErrorModel {
+        NetworkErrorModel(
+                title: "network_error_title".localized,
+                error: nil,
+                text: nil,
+                description: "network_error".localized)
+    }
 }

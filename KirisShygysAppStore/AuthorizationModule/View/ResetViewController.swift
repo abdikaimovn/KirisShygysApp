@@ -141,7 +141,7 @@ final class ResetViewController: UIViewController {
         
         view.addSubview(errorLabel)
         errorLabel.snp.makeConstraints { make in
-            make.leading.trailing.equalTo(20)
+            make.leading.trailing.equalToSuperview().inset(20)
             make.top.equalTo(resetButton.snp.bottom).offset(20)
             make.bottom.lessThanOrEqualToSuperview().inset(20)
         }

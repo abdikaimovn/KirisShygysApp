@@ -48,6 +48,7 @@ struct UserDataService {
             }
             
             guard let snapshot = snapshot else {
+                completion(.failure(NetworkErrorHandler.shared.unknownError))
                 return
             }
             
@@ -192,6 +193,7 @@ extension UserDataService: HistoryServiceProtocol {
         }
         
         guard let transactionId = transactionData.id else {
+            completion(.failure(NetworkErrorHandler.shared.unknownError))
             return
         }
         

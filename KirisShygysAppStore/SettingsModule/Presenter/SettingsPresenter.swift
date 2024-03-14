@@ -85,7 +85,7 @@ final class SettingsPresenter {
                 self?.view?.hideLoader()
                 switch result {
                 case .success(_):
-                    self?.view?.showInitialModule()
+                    self?.view?.updateView()
                 case .failure(let failure):
                     self?.view?.showFailure(failure)
                 }
