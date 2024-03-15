@@ -65,15 +65,27 @@ final class TransactionTableViewCell: UITableViewCell {
     }
     
     func configure(transactionData: ValidatedTransactionModel?) {
-        let currentData = Date.now.formatted().prefix(10)
+        let todayDate = Date.now.formatted().prefix(10)
+        let yesterdayDate = Date().yesterday.formatted().prefix(10)
         
         if let safeData = transactionData {
             transName.text = safeData.transactionName
             priceLabel.text = "\("tenge".localized) \(safeData.transactionAmount.formattedWithSeparator)"
             priceLabel.textColor = safeData.transactionType == .income ? UIColor.incomeColor : UIColor.expenseColor
-            purchasedData.text = safeData.transactionDate.prefix(10) == currentData ? "today_label".localized : String(safeData.transactionDate.prefix(10))
+            purchasedData.text = configureTransactionDate(safeData.transactionDate)
             viewImage.backgroundColor = priceLabel.textColor
             image.image = safeData.transactionType == .income ? UIImage(systemName: "square.and.arrow.down") : UIImage(systemName: "square.and.arrow.up")
+        }
+    }
+    
+    private func configureTransactionDate(_ date: String) -> String {
+        switch date.prefix(10) {
+        case Date.now.formatted().prefix(10):
+            return "today_label".localized
+        case Date().yesterday.formatted().prefix(10):
+            return "yesterday_label".localized
+        default:
+            return date
         }
     }
     

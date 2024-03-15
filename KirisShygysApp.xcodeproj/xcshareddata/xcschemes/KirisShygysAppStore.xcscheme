@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6F61E4972B5D8A0B00F8AB20"
-               BuildableName = "KirisShygysAppStore.app"
-               BlueprintName = "KirisShygysAppStore"
-               ReferencedContainer = "container:KirisShygysAppStore.xcodeproj">
+               BuildableName = "KirisShygysApp.app"
+               BlueprintName = "KirisShygysApp"
+               ReferencedContainer = "container:KirisShygysApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -44,9 +44,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6F61E4972B5D8A0B00F8AB20"
-            BuildableName = "KirisShygysAppStore.app"
-            BlueprintName = "KirisShygysAppStore"
-            ReferencedContainer = "container:KirisShygysAppStore.xcodeproj">
+            BuildableName = "KirisShygysApp.app"
+            BlueprintName = "KirisShygysApp"
+            ReferencedContainer = "container:KirisShygysApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -61,9 +61,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6F61E4972B5D8A0B00F8AB20"
-            BuildableName = "KirisShygysAppStore.app"
-            BlueprintName = "KirisShygysAppStore"
-            ReferencedContainer = "container:KirisShygysAppStore.xcodeproj">
+            BuildableName = "KirisShygysApp.app"
+            BlueprintName = "KirisShygysApp"
+            ReferencedContainer = "container:KirisShygysApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

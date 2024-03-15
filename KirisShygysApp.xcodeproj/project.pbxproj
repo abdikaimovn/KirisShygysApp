@@ -162,7 +162,7 @@
 		6F40C9692B88FFA000CB3226 /* StoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		6F40C96B2B88FFAC00CB3226 /* QuoteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteCollectionViewCell.swift; sourceTree = "<group>"; };
 		6F40C96D2B890DDB00CB3226 /* ReportModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportModel.swift; sourceTree = "<group>"; };
-		6F4580D62B5EDFB200869FF9 /* KirisShygysAppStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KirisShygysAppStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F4580D62B5EDFB200869FF9 /* KirisShygysApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KirisShygysApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F4580E42B601A0E00869FF9 /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
 		6F4580E62B60FB0400869FF9 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		6F61E49B2B5D8A0B00F8AB20 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -405,12 +405,12 @@
 		6F61E48F2B5D8A0B00F8AB20 = {
 			isa = PBXGroup;
 			children = (
-				6F61E49A2B5D8A0B00F8AB20 /* KirisShygysAppStore */,
-				6F4580D62B5EDFB200869FF9 /* KirisShygysAppStore.app */,
+				6F61E49A2B5D8A0B00F8AB20 /* KirisShygysApp */,
+				6F4580D62B5EDFB200869FF9 /* KirisShygysApp.app */,
 			);
 			sourceTree = "<group>";
 		};
-		6F61E49A2B5D8A0B00F8AB20 /* KirisShygysAppStore */ = {
+		6F61E49A2B5D8A0B00F8AB20 /* KirisShygysApp */ = {
 			isa = PBXGroup;
 			children = (
 				6F61E4B02B5E694100F8AB20 /* AppConfiguration */,
@@ -432,7 +432,7 @@
 				6FCE2C0B2B90963E00D0801D /* LanguageModule */,
 				6FFB7F1F2B975F1A000CD639 /* PersonalInfoModule */,
 			);
-			path = KirisShygysAppStore;
+			path = KirisShygysApp;
 			sourceTree = "<group>";
 		};
 		6F61E4AF2B5E691D00F8AB20 /* OnboardingModule */ = {
@@ -889,9 +889,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6F61E4972B5D8A0B00F8AB20 /* KirisShygysAppStore */ = {
+		6F61E4972B5D8A0B00F8AB20 /* KirisShygysApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6F61E4AC2B5D8A0D00F8AB20 /* Build configuration list for PBXNativeTarget "KirisShygysAppStore" */;
+			buildConfigurationList = 6F61E4AC2B5D8A0D00F8AB20 /* Build configuration list for PBXNativeTarget "KirisShygysApp" */;
 			buildPhases = (
 				6F61E4942B5D8A0B00F8AB20 /* Sources */,
 				6F61E4952B5D8A0B00F8AB20 /* Frameworks */,
@@ -902,7 +902,7 @@
 			);
 			dependencies = (
 			);
-			name = KirisShygysAppStore;
+			name = KirisShygysApp;
 			packageProductDependencies = (
 				6F4580D82B5EE1D600869FF9 /* SnapKit */,
 				6F6444412B6580B70018238D /* FirebaseAnalytics */,
@@ -936,7 +936,7 @@
 				6FBD1FB82B9D8FD300B16B6F /* Lottie */,
 			);
 			productName = KirisShygysAppAppStoreVersion;
-			productReference = 6F4580D62B5EDFB200869FF9 /* KirisShygysAppStore.app */;
+			productReference = 6F4580D62B5EDFB200869FF9 /* KirisShygysApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -954,7 +954,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 6F61E4932B5D8A0B00F8AB20 /* Build configuration list for PBXProject "KirisShygysAppStore" */;
+			buildConfigurationList = 6F61E4932B5D8A0B00F8AB20 /* Build configuration list for PBXProject "KirisShygysApp" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = "kk-KZ";
 			hasScannedForEncodings = 0;
@@ -976,7 +976,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6F61E4972B5D8A0B00F8AB20 /* KirisShygysAppStore */,
+				6F61E4972B5D8A0B00F8AB20 /* KirisShygysApp */,
 			);
 		};
 /* End PBXProject section */
@@ -1170,7 +1170,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = KirisShygysAppStore/AppConfiguration/Info.plist;
+				INFOPLIST_FILE = KirisShygysApp/AppConfiguration/Info.plist;
 				INFOPLIST_KEY_UILaunchScreen_Generation = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
@@ -1230,7 +1230,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = KirisShygysAppStore/AppConfiguration/Info.plist;
+				INFOPLIST_FILE = KirisShygysApp/AppConfiguration/Info.plist;
 				INFOPLIST_KEY_UILaunchScreen_Generation = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
@@ -1251,8 +1251,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FDQK3FFVD6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = KirisShygysAppStore/AppConfiguration/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "kiris shygys";
+				INFOPLIST_FILE = KirisShygysApp/AppConfiguration/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Kiris Shyǵys";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -1263,7 +1264,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = nuriks.KirisShygysAppAppStoreVersion;
+				PRODUCT_BUNDLE_IDENTIFIER = nuriks.KirisShygysApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -1283,8 +1284,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FDQK3FFVD6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = KirisShygysAppStore/AppConfiguration/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "kiris shygys";
+				INFOPLIST_FILE = KirisShygysApp/AppConfiguration/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Kiris Shyǵys";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -1295,7 +1297,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = nuriks.KirisShygysAppAppStoreVersion;
+				PRODUCT_BUNDLE_IDENTIFIER = nuriks.KirisShygysApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -1309,7 +1311,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6F61E4932B5D8A0B00F8AB20 /* Build configuration list for PBXProject "KirisShygysAppStore" */ = {
+		6F61E4932B5D8A0B00F8AB20 /* Build configuration list for PBXProject "KirisShygysApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6F61E4AA2B5D8A0D00F8AB20 /* Debug */,
@@ -1318,7 +1320,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		6F61E4AC2B5D8A0D00F8AB20 /* Build configuration list for PBXNativeTarget "KirisShygysAppStore" */ = {
+		6F61E4AC2B5D8A0D00F8AB20 /* Build configuration list for PBXNativeTarget "KirisShygysApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6F61E4AD2B5D8A0D00F8AB20 /* Debug */,
