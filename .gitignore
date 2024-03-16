@@ -5,3 +5,4 @@ KirisShygysAppStore.xcodeproj/project.xcworkspace/xcuserdata/nurik.xcuserdatad/U
 
 
 # End of https://www.toptal.com/developers/gitignore/api/swift,macos
+*.xcuserstate
