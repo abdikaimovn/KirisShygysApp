@@ -15,7 +15,7 @@ protocol SendEmailAnimationDelegate: AnyObject {
 
 final class SentEmailAnimatedView: UIView {
     weak var parent: SendEmailAnimationDelegate?
-    private let animationView = LottieAnimationView(name: "emailAnimation.json")
+    private let animationView = LottieAnimationView(name: "successAnimation.json")
     
     private let messageLabel: UILabel = {
         let label = UILabel()
@@ -29,14 +29,14 @@ final class SentEmailAnimatedView: UIView {
     private let separatorView: UIView = {
         let view = UIView()
         view.backgroundColor = .lightGray
-        view.alpha = 0.7
+        view.alpha = 0.5
         return view
     }()
     
     private let okButton: UIButton = {
         let button = UIButton(type: .custom)
         button.titleLabel?.font = .font(style: .body, withSize: 18)
-        button.setTitle("Ok", for: .normal)
+        button.setTitle("Ок", for: .normal)
         button.backgroundColor = .clear
         button.setTitleColor(.systemBlue, for: .normal)
         button.layer.cornerRadius = 15
@@ -89,7 +89,7 @@ final class SentEmailAnimatedView: UIView {
         separatorView.snp.makeConstraints { make in
             make.top.equalTo(messageLabel.snp.bottom).offset(20)
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(1)
+            make.height.equalTo(0.5)
         }
         
         addSubview(okButton)

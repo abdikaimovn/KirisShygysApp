@@ -197,7 +197,7 @@ final class AuthorizationViewController: UIViewController {
         separatorView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(20)
             make.top.equalTo(signInButton.snp.bottom).offset(20)
-            make.height.equalTo(1)
+            make.height.equalTo(0.5)
         }
         
         view.addSubview(forgetPasswordLabel)
