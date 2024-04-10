@@ -65,9 +65,6 @@ final class TransactionTableViewCell: UITableViewCell {
     }
     
     func configure(transactionData: ValidatedTransactionModel?) {
-        let todayDate = Date.now.formatted().prefix(10)
-        let yesterdayDate = Date().yesterday.formatted().prefix(10)
-        
         if let safeData = transactionData {
             transName.text = safeData.transactionName
             priceLabel.text = "\("tenge".localized) \(safeData.transactionAmount.formattedWithSeparator)"
@@ -79,13 +76,16 @@ final class TransactionTableViewCell: UITableViewCell {
     }
     
     private func configureTransactionDate(_ date: String) -> String {
+        let todayDate = Date.now.formatted().prefix(10)
+        let yesterdayDate = Date().yesterday.formatted().prefix(10)
+        
         switch date.prefix(10) {
-        case Date.now.formatted().prefix(10):
+        case todayDate:
             return "today_label".localized
-        case Date().yesterday.formatted().prefix(10):
+        case yesterdayDate:
             return "yesterday_label".localized
         default:
-            return date
+            return String(date.prefix(10))
         }
     }
     
