@@ -31,8 +31,8 @@ final class ResetViewController: UIViewController {
         let label = UILabel()
         label.isHidden = true
         label.text = "invalidEmail_error".localized
-        label.font = UIFont.font(style: .body)
-        label.textColor = .red
+        label.font = UIFont.font(style: .body, withSize: 14.0)
+        label.textColor = .expenseColor
         label.numberOfLines = 0
         return label
     }()
@@ -96,9 +96,10 @@ final class ResetViewController: UIViewController {
     private func setupTextField() {
         emailTextField.placeholder = "email_textField_placeholder".localized
         emailTextField.delegate = self
-        emailTextField.borderStyle = .line
+        emailTextField.borderStyle = .roundedRect
         emailTextField.layer.cornerRadius = 10
-        emailTextField.layer.borderWidth = 1.0
+        emailTextField.layer.borderWidth = 0.5
+        emailTextField.layer.borderColor = UIColor.lightGray.cgColor
         emailTextField.layer.masksToBounds = true
         emailTextField.textColor = .black
         emailTextField.font = UIFont.font(style: .body)

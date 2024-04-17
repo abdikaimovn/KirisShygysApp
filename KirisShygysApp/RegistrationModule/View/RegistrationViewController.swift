@@ -26,8 +26,8 @@ final class RegistrationViewController: UIViewController {
     private let errorLabel: UILabel = {
         let label = UILabel()
         label.isHidden = true
-        label.font = UIFont.font(style: .body)
-        label.textColor = .red
+        label.font = UIFont.font(style: .body, withSize: 14.0)
+        label.textColor = .expenseColor
         label.numberOfLines = 0
         return label
     }()
@@ -60,9 +60,10 @@ final class RegistrationViewController: UIViewController {
     
     private func setupTextFields() {
         [nameTextField, emailTextField, passwordTextField].forEach { textField in
-            textField.borderStyle = .line
+            textField.borderStyle = .roundedRect
             textField.layer.cornerRadius = 10
-            textField.layer.borderWidth = 1.0
+            textField.layer.borderWidth = 0.5
+            textField.layer.borderColor = UIColor.lightGray.cgColor
             textField.layer.masksToBounds = true
             textField.textColor = .black
             textField.font = UIFont.font(style: .body)
