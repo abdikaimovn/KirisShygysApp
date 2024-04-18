@@ -17,6 +17,7 @@ protocol PrivacyPolicyViewDelegate: AnyObject {
 final class PrivacyPolicyView: UIView {
     weak var delegate: PrivacyPolicyViewDelegate?
     
+    //MARK: - UI Elements
     private let checkMarkButton: UIButton = {
         let button = ExtendedTapAreaButton()
         button.setImage(UIImage(systemName: "checkmark"), for: .normal)
@@ -45,6 +46,7 @@ final class PrivacyPolicyView: UIView {
         return label
     }()
     
+    //MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -54,6 +56,7 @@ final class PrivacyPolicyView: UIView {
         nil
     }
     
+    //MARK: - Functions
     @objc private func checkMarkTapped() {
         if checkMarkButton.tintColor == .clear {
             checkMarkButton.tintColor = .brownColor

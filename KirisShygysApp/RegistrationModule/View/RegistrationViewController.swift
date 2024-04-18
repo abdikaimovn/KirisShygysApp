@@ -11,9 +11,10 @@ import WebKit
 
 final class RegistrationViewController: UIViewController {
     private let presenter: RegistrationPresenter
-    private var verifyEmailAnimatedView: SentEmailAnimatedView?
     
     //MARK: - UI Elements
+    private var verifyEmailAnimatedView: SentEmailAnimatedView?
+    
     private let imageLogo: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "logo")
@@ -61,6 +62,7 @@ final class RegistrationViewController: UIViewController {
         setupView()
     }
     
+    //MARK: - Functions
     private func setupTextFields() {
         [nameTextField, emailTextField, passwordTextField].forEach { textField in
             textField.borderStyle = .roundedRect
@@ -166,6 +168,14 @@ final class RegistrationViewController: UIViewController {
     
     private func setupPrivacyViewDelegate() {
         privacyPolicyView.delegate = self
+    }
+    
+    private func buildPrivacyModule() -> UIViewController {
+        let presenter = PrivacyPresenter()
+        let view = PrivacyPolicyViewController(presenter: presenter)
+        presenter.view = view
+        
+        return view
     }
     
     private func setupView() {
@@ -299,6 +309,6 @@ extension RegistrationViewController: PrivacyPolicyViewDelegate {
     }
     
     func showPrivacyPolicyWebView() {
-        present(PrivacyPolicyViewController(), animated: true)
+        present(buildPrivacyModule(), animated: true)
     }
 }
