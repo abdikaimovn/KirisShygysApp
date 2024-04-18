@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import WebKit
 
 final class RegistrationViewController: UIViewController {
     private let presenter: RegistrationPresenter
@@ -39,6 +40,8 @@ final class RegistrationViewController: UIViewController {
     private let passwordTextField = UITextField()
     
     private let hidePasswordFieldButton = UIButton()
+    
+    private let privacyPolicyView = PrivacyPolicyView()
     
     private let signUpButton = UIButton()
     
@@ -151,13 +154,18 @@ final class RegistrationViewController: UIViewController {
         signUpButton.clipsToBounds = true
         signUpButton.tintColor = .black
         signUpButton.addTarget(self, action: #selector(signUpPressed), for: .touchUpInside)
-        signUpButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        signUpButton.alpha = 0.5
+        signUpButton.isEnabled = false
     }
 
     @objc func hideTextField(_ sender: UIButton) {
         passwordTextField.isSecureTextEntry.toggle()
         let imageName = passwordTextField.isSecureTextEntry ? "eye.slash" : "eye"
         hidePasswordFieldButton.setImage(UIImage(systemName: imageName), for: .normal)
+    }
+    
+    private func setupPrivacyViewDelegate() {
+        privacyPolicyView.delegate = self
     }
     
     private func setupView() {
@@ -167,6 +175,7 @@ final class RegistrationViewController: UIViewController {
         setupHidePasswordButton()
         setupTextFields()
         setupToHideKeyboardOnTapOnView()
+        setupPrivacyViewDelegate()
         
         view.addSubview(imageLogo)
         imageLogo.snp.makeConstraints { make in
@@ -196,10 +205,16 @@ final class RegistrationViewController: UIViewController {
             make.height.equalTo(50)
         }
         
+        view.addSubview(privacyPolicyView)
+        privacyPolicyView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(passwordTextField.snp.bottom).offset(10)
+        }
+        
         view.addSubview(signUpButton)
         signUpButton.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(15)
-            make.top.equalTo(passwordTextField.snp.bottom).offset(20)
+            make.top.equalTo(privacyPolicyView.snp.bottom).offset(20)
             make.height.equalTo(55)
         }
         
@@ -265,5 +280,25 @@ extension RegistrationViewController: SendEmailAnimationDelegate {
     func okDidTapped() {
         verifyEmailAnimatedView?.removeFromSuperview()
         navigationController?.popViewController(animated: true)
+    }
+}
+
+extension RegistrationViewController: PrivacyPolicyViewDelegate {
+    func disableSignUpButton() {
+        UIView.animate(withDuration: 0.2) {
+            self.signUpButton.alpha = 0.5
+        }
+        signUpButton.isEnabled = false
+    }
+    
+    func enableSignUpButton() {
+        UIView.animate(withDuration: 0.2) {
+            self.signUpButton.alpha = 1
+        }
+        signUpButton.isEnabled = true
+    }
+    
+    func showPrivacyPolicyWebView() {
+        present(PrivacyPolicyViewController(), animated: true)
     }
 }

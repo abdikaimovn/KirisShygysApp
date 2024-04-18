@@ -185,3 +185,8 @@
 
 //MARK: - Reset password page
 "resetPassword_message" = "Сіз көрсеткен электрондық пошта мекенжайына құпия сөзді қалпына келтіру сілтемесі жіберілді (спам қалтасын тексеріңіз)";
+
+//MARK: - Privacy policy text
+"privacyPolicyAcceptLabel" = "  келісесіз";
+"privacyPolicyLinkLabel" = "Құпиялылық Саясатымызға";
+"privacyPolicyTextLabel" = "Тіркелу арқылы сіз біздің  ";

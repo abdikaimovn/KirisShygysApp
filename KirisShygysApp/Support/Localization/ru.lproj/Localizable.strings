@@ -184,3 +184,8 @@
 
 //MARK: - Reset password page
 "resetPassword_message" = "На указанный вами адрес электронной почты отправлена ссылка для сброса пароля (Проверьте папку со спамом)";
+
+//MARK: - Privacy policy text
+"privacyPolicyAcceptLabel" = "";
+"privacyPolicyLinkLabel" = "Политикой Конфиденциальности";
+"privacyPolicyTextLabel" = "Регистрируясь, вы соглашаетесь с нашей  ";

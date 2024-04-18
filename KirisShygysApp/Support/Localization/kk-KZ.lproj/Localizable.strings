@@ -185,3 +185,8 @@
 
 //MARK: - Reset password page
 "resetPassword_message" = "Siz kórsetken elektrondyq poshta mekenjaıyna qupıa sózdi qalpyna keltirý siltemesi jiberildi (spam qaltasyn tekserińiz)";
+
+//MARK: - Privacy policy text
+"privacyPolicyAcceptLabel" = "  kelisesiz";
+"privacyPolicyLinkLabel" = "Qupıalylyq Saıasatymyzǵa";
+"privacyPolicyTextLabel" = "Tirkely arqyly siz bizdiń  ";
