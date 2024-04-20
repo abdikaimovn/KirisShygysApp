@@ -1,8 +1,8 @@
 //
-//  PrivacyPolicyData.swift
+//  PrivacyPolicyURL.swift
 //  KirisShygysApp
 //
-//  Created by Нурдаулет on 18.04.2024.
+//  Created by Нурдаулет on 21.04.2024.
 //
 
 struct PrivacyPolicyURL {
