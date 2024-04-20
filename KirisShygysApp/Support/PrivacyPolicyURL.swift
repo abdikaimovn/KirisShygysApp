@@ -6,5 +6,5 @@
 //
 
 struct PrivacyPolicyURL {
-    static let URLAddress = "https://www.instagram.com/"
+    static let URLAddress = "https://kiris-shygys-privacy-policy.tilda.ws"
 }

@@ -44,7 +44,7 @@ final class PrivacyPolicyViewController: UIViewController {
     required init?(coder: NSCoder) {
         nil
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -76,7 +76,8 @@ final class PrivacyPolicyViewController: UIViewController {
         
         view.addSubview(privacyPolicyWebView)
         privacyPolicyWebView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.leading.trailing.bottom.equalToSuperview()
         }
         
         view.addSubview(loaderView)

@@ -24,15 +24,14 @@ final class PrivacyPresenter {
         
         view?.showLoader()
         URLSession.shared.dataTask(with: requestToPrivacyWebPage) { [weak self] _, _, error in
-            
-            DispatchQueue.main.async {
-                self?.view?.hideLoader()
-            }
-            
             if error == nil {
                 DispatchQueue.main.async {
                     self?.view?.showWebView(request: requestToPrivacyWebPage)
                 }
+            }
+            
+            DispatchQueue.main.async {
+                self?.view?.hideLoader()
             }
         }.resume()
     }
